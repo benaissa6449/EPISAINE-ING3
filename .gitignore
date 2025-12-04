@@ -1,0 +1,9 @@
+/episaine-local-component/
+/episaine-talend-component/Jobs/
+
+
+*.zip
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
