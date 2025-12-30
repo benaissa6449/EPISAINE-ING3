@@ -1,0 +1,44 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  USER: ${USER}
+  USER_PASSWORD: ${USER_PASSWORD}
+  DEPLOY_PATH: "/home/$USER/"
+
+  Host_CICD: ${Host_CICD}
+  Host_Datalake: ${Host_Datalake}
+  Host_ETL: ${Host_ETL}
+  Host_ORCH: ${Host_ORCH}
+  Host_PSQL: ${Host_PSQL}
+
+  DEPLOY_HOST: Host_CICD Host_Datalake Host_ETL Host_ORCH Host_PSQL
+
+  SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
+
+before_script:
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - |
+    for host in $DEPLOY_HOST; do
+      ssh-keyscan $host >> ~/.ssh/known_hosts
+    done
+
+build-job:
+  stage: build
+  tags: [episaine-cicd]
+  only:
+    - dev
+  script:
+    - echo "Hello, $GITLAB_USER_LOGIN!"
+    - echo "Dummy job for now since nothing to build."
+
+deploy-job:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - dev
+  script:
+    - echo "Deployment started..."
