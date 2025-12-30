@@ -6,9 +6,9 @@ services:
     stdin_open: true
     volumes:
       - ./Jobs:/opt/talend
-      - ./Jobs/LoadBronze/proto/loadbronze_0_1/contexts:/opt/talend/LoadBronze/proto/loadbronze_0_1/contexts
-      - ./Jobs/LoadSilver/proto/loadsilver_0_1/contexts:/opt/talend/LoadSilver/proto/loadsilver_0_1/contexts
-      - ./Jobs/LoadGold/proto/loadgold_0_1/contexts:/opt/talend/LoadGold/proto/loadgold_0_1/contexts
+      - ./Jobs/LoadBronze/project/loadbronze_0_1/contexts:/opt/talend/LoadBronze/project/loadbronze_0_1/contexts
+      - ./Jobs/LoadSilver/project/loadsilver_0_1/contexts:/opt/talend/LoadSilver/project/loadsilver_0_1/contexts
+      - ./Jobs/LoadGold/project/loadgold_0_1/contexts:/opt/talend/LoadGold/project/loadgold_0_1/contexts
       - ./students.csv:/opt/data/students.csv
     networks:
       - episaine-network
