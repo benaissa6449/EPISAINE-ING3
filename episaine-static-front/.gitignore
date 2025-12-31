@@ -1,14 +1,3 @@
-/episaine-local-component/
-
-*.zip
-/.idea/
-/.vscode/
-*.iml
-.DS_Store
-
-/target
-/build
-
 # dependencies
 /node_modules
 /.pnp
