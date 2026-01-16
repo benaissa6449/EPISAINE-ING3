@@ -9,7 +9,7 @@ services:
       - ./Jobs/LoadBronze/project/loadbronze_0_1/contexts:/opt/talend/LoadBronze/project/loadbronze_0_1/contexts
       - ./Jobs/LoadSilver/project/loadsilver_0_1/contexts:/opt/talend/LoadSilver/project/loadsilver_0_1/contexts
       - ./Jobs/LoadGold/project/loadgold_0_1/contexts:/opt/talend/LoadGold/project/loadgold_0_1/contexts
-      - ./recipes_data.csv:/opt/data/recipes_data.csv
+      - ./recipes_data.csv:/opt/data/recipes_data.csv:ro
     networks:
       - episaine-network
 
