@@ -6,11 +6,11 @@
 *.iml
 .DS_Store
 
-/target
-/build
+*/target
+*/build
 
 # dependencies
-/node_modules
+*/node_modules
 /.pnp
 .pnp.js
 
