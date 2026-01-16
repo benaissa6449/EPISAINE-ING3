@@ -51,6 +51,11 @@ import java.util.Comparator;
 import java.util.ArrayList;
 
 
+	//the import part of tJavaRow_2
+	import java.util.List;
+import java.util.ArrayList;
+
+
 
 @SuppressWarnings("unused")
 
@@ -126,6 +131,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 
 		public void synchronizeContext(){
 			
+			if(kaggle_dataset != null){
+				
+					this.setProperty("kaggle_dataset", kaggle_dataset.toString());
+				
+			}
+			
 			if(letter != null){
 				
 					this.setProperty("letter", letter.toString());
@@ -138,9 +149,21 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
-			if(mongodb_collection_bronze != null){
+			if(mongodb_collection_bronze_k != null){
 				
-					this.setProperty("mongodb_collection_bronze", mongodb_collection_bronze.toString());
+					this.setProperty("mongodb_collection_bronze_k", mongodb_collection_bronze_k.toString());
+				
+			}
+			
+			if(mongodb_collection_bronze_tmdb != null){
+				
+					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
+				
+			}
+			
+			if(mongodb_collection_silver_k != null){
+				
+					this.setProperty("mongodb_collection_silver_k", mongodb_collection_silver_k.toString());
 				
 			}
 			
@@ -251,6 +274,10 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			return origin_value;
 		}
 
+public String kaggle_dataset;
+public String getKaggle_dataset(){
+	return this.kaggle_dataset;
+}
 public String letter;
 public String getLetter(){
 	return this.letter;
@@ -259,9 +286,17 @@ public String mongodb_authentificationDatabase;
 public String getMongodb_authentificationDatabase(){
 	return this.mongodb_authentificationDatabase;
 }
-public String mongodb_collection_bronze;
-public String getMongodb_collection_bronze(){
-	return this.mongodb_collection_bronze;
+public String mongodb_collection_bronze_k;
+public String getMongodb_collection_bronze_k(){
+	return this.mongodb_collection_bronze_k;
+}
+public String mongodb_collection_bronze_tmdb;
+public String getMongodb_collection_bronze_tmdb(){
+	return this.mongodb_collection_bronze_tmdb;
+}
+public String mongodb_collection_silver_k;
+public String getMongodb_collection_silver_k(){
+	return this.mongodb_collection_silver_k;
 }
 public String mongodb_collection_silver;
 public String getMongodb_collection_silver(){
@@ -498,6 +533,24 @@ private class TalendException extends Exception {
 					tMongoDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tFixedFlowInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tFixedFlowInput_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMongoDBOutput_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tFixedFlowInput_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tMongoDBInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -523,6 +576,42 @@ private class TalendException extends Exception {
 				status = "failure";
 				
 					tMongoDBInput_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMongoDBInput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tJavaRow_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMongoDBOutput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tMongoDBClose_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -553,7 +642,17 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
+			public void tFixedFlowInput_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
 			public void tMongoDBInput_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tMongoDBInput_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -960,9 +1059,9 @@ ok_Hash.put("tMongoDBConnection_1", true);
 end_Hash.put("tMongoDBConnection_1", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk2", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk6", 0, "ok");
 				}
-				tMongoDBInput_1Process(globalMap);
+				tFixedFlowInput_1Process(globalMap);
 
 
 
@@ -1020,6 +1119,664 @@ end_Hash.put("tMongoDBConnection_1", System.currentTimeMillis());
 		
 
 		globalMap.put("tMongoDBConnection_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+
+public static class row5Struct implements routines.system.IPersistableRow<row5Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
+
+	
+			    public Byte dummy;
+
+				public Byte getDummy () {
+					return this.dummy;
+				}
+				
+
+
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+			            length = dis.readByte();
+           				if (length == -1) {
+           	    			this.dummy = null;
+           				} else {
+           			    	this.dummy = dis.readByte();
+           				}
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+			            length = dis.readByte();
+           				if (length == -1) {
+           	    			this.dummy = null;
+           				} else {
+           			    	this.dummy = dis.readByte();
+           				}
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Byte
+				
+						if(this.dummy == null) {
+			                dos.writeByte(-1);
+						} else {
+               				dos.writeByte(0);
+           			    	dos.writeByte(this.dummy);
+		            	}
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Byte
+				
+						if(this.dummy == null) {
+			                dos.writeByte(-1);
+						} else {
+               				dos.writeByte(0);
+           			    	dos.writeByte(this.dummy);
+		            	}
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("dummy="+String.valueOf(dummy));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row5Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tFixedFlowInput_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tFixedFlowInput_1_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row5Struct row5 = new row5Struct();
+
+
+
+
+	
+	/**
+	 * [tMongoDBOutput_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMongoDBOutput_3", false);
+		start_Hash.put("tMongoDBOutput_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row5");
+					}
+				
+		int tos_count_tMongoDBOutput_3 = 0;
+		
+
+	
+
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+
+final String applicationName_tMongoDBOutput_3 = "Talend";
+
+    int nb_line_tMongoDBOutput_3 = 0;
+
+			class DBObjectUtil_tMongoDBOutput_3 {
+				
+				private org.bson.Document object = null;
+				//Put value to embedded document
+				//If have no embedded document, put the value to root document
+				public void put(String parentNode, String curentName, Object value) {
+					if (parentNode == null || "".equals(parentNode)) {
+						object.put(curentName, value);
+					} else {
+						String objNames[]= parentNode.split("\\.");
+						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
+						lastNode.put(curentName, value);
+						org.bson.Document parenttNode = null;
+						for (int i = objNames.length - 1; i >=0; i--) {
+							parenttNode=getParentNode(parentNode, i-1);
+							parenttNode.put(objNames[i], lastNode);
+							lastNode=clone(parenttNode);
+						}
+						object=lastNode;
+					}
+				}
+				
+				private org.bson.Document clone(org.bson.Document source){
+					org.bson.Document to = new org.bson.Document();
+					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
+						to.append(cur.getKey(), cur.getValue());
+					}
+					return to;
+				}
+				
+				//Get node(embedded document) by path configuration
+				public org.bson.Document getParentNode(String parentNode, int index) {
+					org.bson.Document document = object;
+					if (parentNode == null || "".equals(parentNode)) {
+						return object;
+					} else {
+						String objNames[] = parentNode.split("\\.");
+						for (int i = 0; i <= index; i++) {
+							document = (org.bson.Document) document
+									.get(objNames[i]);
+							if (document == null) {
+								document = new org.bson.Document();
+								return document;
+							}
+							if (i == index) {
+								break;
+							}
+						}
+						return document;
+					}
+				}
+				
+				public void putkeyNode(String parentNode, String curentName, Object value){
+					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
+						put(parentNode, curentName, value);
+					}else{
+						put("", parentNode+"."+curentName, value);
+					}
+				}
+			
+				public org.bson.Document getObject() {
+					return this.object;
+				}
+				
+				public void setObject(org.bson.Document object){
+					this.object=object;
+				}
+			
+			}
+            DBObjectUtil_tMongoDBOutput_3 updateObjectUtil_tMongoDBOutput_3=new DBObjectUtil_tMongoDBOutput_3();
+            DBObjectUtil_tMongoDBOutput_3 queryObjectUtil_tMongoDBOutput_3=new DBObjectUtil_tMongoDBOutput_3();
+            java.util.Map<String, String> pathMap_tMongoDBOutput_3=new java.util.HashMap<>();
+
+                pathMap_tMongoDBOutput_3.put("dummy","");
+
+
+
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_tMongoDBOutput_3=null;
+    com.mongodb.client.MongoDatabase db_tMongoDBOutput_3=null;
+
+        mongo_tMongoDBOutput_3=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
+        db_tMongoDBOutput_3 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
+
+        db_tMongoDBOutput_3.getCollection(context.mongodb_collection_silver).drop();
+    com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_3 = db_tMongoDBOutput_3.getCollection(context.mongodb_collection_silver);
+
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_3 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tFixedFlowInput_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tFixedFlowInput_1", false);
+		start_Hash.put("tFixedFlowInput_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+		int tos_count_tFixedFlowInput_1 = 0;
+		
+
+	    for (int i_tFixedFlowInput_1 = 0 ; i_tFixedFlowInput_1 < 1 ; i_tFixedFlowInput_1++) {
+	                	            	
+    	            		row5.dummy = 1;
+    	            	
+
+ 
+
+
+
+/**
+ * [tFixedFlowInput_1 begin ] stop
+ */
+	
+	/**
+	 * [tFixedFlowInput_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+
+ 
+
+
+	tos_count_tFixedFlowInput_1++;
+
+/**
+ * [tFixedFlowInput_1 main ] stop
+ */
+	
+	/**
+	 * [tFixedFlowInput_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tFixedFlowInput_1 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row5"
+						
+						);
+					}
+					
+
+	
+try{
+				updateObjectUtil_tMongoDBOutput_3.setObject(new org.bson.Document());
+				
+				
+
+				
+					queryObjectUtil_tMongoDBOutput_3.setObject(new org.bson.Document());
+					int countKey_tMongoDBOutput_3=0;
+				
+                                        updateObjectUtil_tMongoDBOutput_3.put(pathMap_tMongoDBOutput_3.get("dummy"),"dummy", row5.dummy);
+				org.bson.Document updateObj_tMongoDBOutput_3 = updateObjectUtil_tMongoDBOutput_3.getObject();
+				
+					if(countKey_tMongoDBOutput_3 <=0){
+						
+							System.err.println("Must have at least one key in schema");
+						
+					}else{
+						org.bson.Document queryObj_tMongoDBOutput_3 = queryObjectUtil_tMongoDBOutput_3.getObject();
+						
+									coll_tMongoDBOutput_3.deleteMany(queryObj_tMongoDBOutput_3);
+									
+					}
+				
+				} catch (Exception e_tMongoDBOutput_3) {
+				
+    					
+    						System.err.println(e_tMongoDBOutput_3.getMessage());
+    					
+    			}
+				nb_line_tMongoDBOutput_3 ++;
+				
+ 
+
+
+	tos_count_tMongoDBOutput_3++;
+
+/**
+ * [tMongoDBOutput_3 main ] stop
+ */
+	
+	/**
+	 * [tMongoDBOutput_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_3 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tMongoDBOutput_3 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_3 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tFixedFlowInput_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tFixedFlowInput_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tFixedFlowInput_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+
+        }
+        globalMap.put("tFixedFlowInput_1_NB_LINE", 1);        
+
+ 
+
+ok_Hash.put("tFixedFlowInput_1", true);
+end_Hash.put("tFixedFlowInput_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tFixedFlowInput_1 end ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_3 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+
+	globalMap.put("tMongoDBOutput_3_NB_LINE", nb_line_tMongoDBOutput_3);
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row5");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMongoDBOutput_3", true);
+end_Hash.put("tMongoDBOutput_3", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk2", 0, "ok");
+				}
+				tMongoDBInput_1Process(globalMap);
+
+
+
+/**
+ * [tMongoDBOutput_3 end ] stop
+ */
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tFixedFlowInput_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tFixedFlowInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tFixedFlowInput_1 finally ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_3 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_3";
+
+	
+
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_3 finally ] stop
+ */
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tFixedFlowInput_1_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -2834,7 +3591,7 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 
 
 				
-					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_1 = db_tMongoDBInput_1.getCollection(context.mongodb_collection_bronze);
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_1 = db_tMongoDBInput_1.getCollection(context.mongodb_collection_bronze_tmdb);
 				
 				
 				
@@ -3310,11 +4067,11 @@ for (int i = 1; i <= 20; i++) {
     if (measure != null) measure = measure.trim();
 
     if (ingredient != null && !ingredient.isEmpty() && measure != null && !measure.isEmpty()) {
-        pairs.add("(" + ingredient + "," + measure + ")");
+        pairs.add("\"" + measure + " " + ingredient + "\"");
     }
 }
 
-row2.ingredients = "[" + String.join(";", pairs) + "]";
+row2.ingredients = "[" + String.join(",", pairs) + "]";
 row2.strMeal = row1.strMeal;
 row2.strCategory = row1.strCategory;
 row2.strArea = row1.strArea;
@@ -3573,7 +4330,7 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 				if(execStat){   
    	 				runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
 				}
-				tMongoDBClose_1Process(globalMap);
+				tMongoDBInput_2Process(globalMap);
 
 
 
@@ -3686,6 +4443,1956 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 		
 
 		globalMap.put("tMongoDBInput_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+
+public static class row4Struct implements routines.system.IPersistableRow<row4Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
+
+	
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("strMeal="+strMeal);
+		sb.append(",ingredients="+ingredients);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",strCategory="+strCategory);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row4Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
+
+	
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("strMeal="+strMeal);
+		sb.append(",ingredients="+ingredients);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",strCategory="+strCategory);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(out1Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row3Struct implements routines.system.IPersistableRow<row3Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
+
+	
+			    public String _id;
+
+				public String get_id () {
+					return this._id;
+				}
+				
+			    public String title;
+
+				public String getTitle () {
+					return this.title;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+			    public String directions;
+
+				public String getDirections () {
+					return this.directions;
+				}
+				
+			    public String link;
+
+				public String getLink () {
+					return this.link;
+				}
+				
+			    public String source;
+
+				public String getSource () {
+					return this.source;
+				}
+				
+			    public String NER;
+
+				public String getNER () {
+					return this.NER;
+				}
+				
+			    public String site;
+
+				public String getSite () {
+					return this.site;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadSilver.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
+   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this._id = readString(dis);
+					
+					this.title = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.directions = readString(dis);
+					
+					this.link = readString(dis);
+					
+					this.source = readString(dis);
+					
+					this.NER = readString(dis);
+					
+					this.site = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
+
+        	try {
+
+        		int length = 0;
+		
+					this._id = readString(dis);
+					
+					this.title = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.directions = readString(dis);
+					
+					this.link = readString(dis);
+					
+					this.source = readString(dis);
+					
+					this.NER = readString(dis);
+					
+					this.site = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this._id,dos);
+					
+					// String
+				
+						writeString(this.title,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.directions,dos);
+					
+					// String
+				
+						writeString(this.link,dos);
+					
+					// String
+				
+						writeString(this.source,dos);
+					
+					// String
+				
+						writeString(this.NER,dos);
+					
+					// String
+				
+						writeString(this.site,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this._id,dos);
+					
+					// String
+				
+						writeString(this.title,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.directions,dos);
+					
+					// String
+				
+						writeString(this.link,dos);
+					
+					// String
+				
+						writeString(this.source,dos);
+					
+					// String
+				
+						writeString(this.NER,dos);
+					
+					// String
+				
+						writeString(this.site,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("_id="+_id);
+		sb.append(",title="+title);
+		sb.append(",ingredients="+ingredients);
+		sb.append(",directions="+directions);
+		sb.append(",link="+link);
+		sb.append(",source="+source);
+		sb.append(",NER="+NER);
+		sb.append(",site="+site);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row3Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tMongoDBInput_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tMongoDBInput_2_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row3Struct row3 = new row3Struct();
+out1Struct out1 = new out1Struct();
+row4Struct row4 = new row4Struct();
+
+
+
+
+
+
+	
+	/**
+	 * [tMongoDBOutput_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMongoDBOutput_2", false);
+		start_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row4");
+					}
+				
+		int tos_count_tMongoDBOutput_2 = 0;
+		
+
+	
+
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
+
+final String applicationName_tMongoDBOutput_2 = "Talend";
+
+    int nb_line_tMongoDBOutput_2 = 0;
+
+			class DBObjectUtil_tMongoDBOutput_2 {
+				
+				private org.bson.Document object = null;
+				//Put value to embedded document
+				//If have no embedded document, put the value to root document
+				public void put(String parentNode, String curentName, Object value) {
+					if (parentNode == null || "".equals(parentNode)) {
+						object.put(curentName, value);
+					} else {
+						String objNames[]= parentNode.split("\\.");
+						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
+						lastNode.put(curentName, value);
+						org.bson.Document parenttNode = null;
+						for (int i = objNames.length - 1; i >=0; i--) {
+							parenttNode=getParentNode(parentNode, i-1);
+							parenttNode.put(objNames[i], lastNode);
+							lastNode=clone(parenttNode);
+						}
+						object=lastNode;
+					}
+				}
+				
+				private org.bson.Document clone(org.bson.Document source){
+					org.bson.Document to = new org.bson.Document();
+					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
+						to.append(cur.getKey(), cur.getValue());
+					}
+					return to;
+				}
+				
+				//Get node(embedded document) by path configuration
+				public org.bson.Document getParentNode(String parentNode, int index) {
+					org.bson.Document document = object;
+					if (parentNode == null || "".equals(parentNode)) {
+						return object;
+					} else {
+						String objNames[] = parentNode.split("\\.");
+						for (int i = 0; i <= index; i++) {
+							document = (org.bson.Document) document
+									.get(objNames[i]);
+							if (document == null) {
+								document = new org.bson.Document();
+								return document;
+							}
+							if (i == index) {
+								break;
+							}
+						}
+						return document;
+					}
+				}
+				
+				public void putkeyNode(String parentNode, String curentName, Object value){
+					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
+						put(parentNode, curentName, value);
+					}else{
+						put("", parentNode+"."+curentName, value);
+					}
+				}
+			
+				public org.bson.Document getObject() {
+					return this.object;
+				}
+				
+				public void setObject(org.bson.Document object){
+					this.object=object;
+				}
+			
+			}
+            DBObjectUtil_tMongoDBOutput_2 updateObjectUtil_tMongoDBOutput_2=new DBObjectUtil_tMongoDBOutput_2();
+            DBObjectUtil_tMongoDBOutput_2 queryObjectUtil_tMongoDBOutput_2=new DBObjectUtil_tMongoDBOutput_2();
+            java.util.Map<String, String> pathMap_tMongoDBOutput_2=new java.util.HashMap<>();
+
+                pathMap_tMongoDBOutput_2.put("strMeal","");
+                pathMap_tMongoDBOutput_2.put("ingredients","");
+                pathMap_tMongoDBOutput_2.put("strInstructions","");
+                pathMap_tMongoDBOutput_2.put("strCategory","");
+
+
+
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_tMongoDBOutput_2=null;
+    com.mongodb.client.MongoDatabase db_tMongoDBOutput_2=null;
+
+        mongo_tMongoDBOutput_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
+        db_tMongoDBOutput_2 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
+
+        db_tMongoDBOutput_2.getCollection(context.mongodb_collection_silver).drop();
+    com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_2 = db_tMongoDBOutput_2.getCollection(context.mongodb_collection_silver);
+
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tJavaRow_2", false);
+		start_Hash.put("tJavaRow_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tJavaRow_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out1");
+					}
+				
+		int tos_count_tJavaRow_2 = 0;
+		
+
+int nb_line_tJavaRow_2 = 0;
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_1", false);
+		start_Hash.put("tMap_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row3");
+					}
+				
+		int tos_count_tMap_1 = 0;
+		
+
+
+
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+class  Var__tMap_1__Struct  {
+}
+Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+out1Struct out1_tmp = new out1Struct();
+// ###############################
+
+        
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+/**
+ * [tMap_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMongoDBInput_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMongoDBInput_2", false);
+		start_Hash.put("tMongoDBInput_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+		int tos_count_tMongoDBInput_2 = 0;
+		
+
+
+	
+
+final String applicationName_tMongoDBInput_2 = "Talend";
+
+	int nb_line_tMongoDBInput_2 = 0;
+	
+
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_tMongoDBInput_2=null;
+    com.mongodb.client.MongoDatabase db_tMongoDBInput_2=null;
+
+        mongo_tMongoDBInput_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
+        db_tMongoDBInput_2 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
+
+
+				
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_2 = db_tMongoDBInput_2.getCollection(context.mongodb_collection_bronze_k);
+				
+				
+				
+				try{
+					// Add warning if an index is not in the query.
+					boolean needIndexWarning = true;
+					String indexList = "";
+					java.lang.StringBuilder sb_tMongoDBInput_2 = new java.lang.StringBuilder();
+	                
+	                    for (com.mongodb.DBObject index: coll_tMongoDBInput_2.listIndexes(com.mongodb.DBObject.class)) {
+	                 
+	                        for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
+	                            // The regexp is:
+	                            // - contain the db DBcolumnName between two backslashed quotes
+	                            // - is followed at some point by a colon
+	                            // - there is no comma between the the DBcolumnName and the colon
+	                            if  (("{}").matches(".*" + key.replace("*","\\*") + "[^,]*:.*")) {
+	                                // We have an index, do not print error message
+	                                needIndexWarning = false;
+	                            } else {
+	                                // This index is not in the query, add it into the indexList
+	                                sb_tMongoDBInput_2.append(", ").append(key);
+	                            }
+	                        }
+	                        indexList = sb_tMongoDBInput_2.toString();
+	                    }
+	                if ((!"".equals(indexList)) && (needIndexWarning)) {
+	                    
+	                        System.err.println("tMongoDBInput_2 - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
+	                        
+	                }
+	            }catch(com.mongodb.MongoException e){
+	            	// caught an exception after issuing the getIndexInfo()
+	            	// don't fail the whole job
+	            	// maybe due to authorization
+	            }
+
+	                	
+							java.util.List<org.bson.conversions.Bson> aggregationStages_tMongoDBInput_2 = new java.util.ArrayList<>();
+						
+	                	
+	                
+						com.mongodb.client.MongoCursor<org.bson.Document> cursor_tMongoDBInput_2 = coll_tMongoDBInput_2.aggregate(aggregationStages_tMongoDBInput_2).allowDiskUse(false).iterator();
+						
+
+
+				
+				class DBObjectInputUtil_tMongoDBInput_2{
+					// Get the node value in embedded document, 
+					//If have no embedded document get root document node.
+					
+					public Object getValue(String parentNode,String currentName,org.bson.Document dbObject){
+						Object value=null;
+						if(dbObject==null){
+							return null;
+						}
+						if (parentNode == null || "".equals(parentNode)) {
+						    if ("*".equals(currentName)) {
+						        value = dbObject;
+						    } else if (dbObject.get(currentName)!=null){
+								value=dbObject.get(currentName);
+							}
+						}else{
+							String objNames[] = parentNode.split("\\.");
+							org.bson.Document currentObj=dbObject;
+							for(int i=0;i<objNames.length;i++){
+								currentObj=(org.bson.Document)currentObj.get(objNames[i]);
+								if(currentObj==null){
+									break;
+								}
+							}
+							if ("*".equals(currentName)) {
+                                value = currentObj;
+                            } else if(currentObj!=null){
+								value=currentObj.get(currentName);
+							}
+						}
+						
+						    if(value instanceof org.bson.Document){
+						        value = ((org.bson.Document)value).toJson();
+						    }else if (value instanceof java.util.List){
+
+						    java.util.List list = new java.util.ArrayList();
+						    ((java.util.List)value).stream().forEach(e -> {
+						    if(e instanceof org.bson.Document){
+						        list.add(((org.bson.Document)e).toJson());
+						    }else{
+						        list.add(e);
+						    }
+						    });
+						    value = list;
+						    }
+
+						
+						return value;
+					}
+				}
+				DBObjectInputUtil_tMongoDBInput_2 dbObjectInputUtil_tMongoDBInput_2=new DBObjectInputUtil_tMongoDBInput_2();
+				java.util.Map<String, String> pathMap_tMongoDBInput_2=new java.util.HashMap<>();
+				pathMap_tMongoDBInput_2.put("_id","");
+				pathMap_tMongoDBInput_2.put("title","");
+				pathMap_tMongoDBInput_2.put("ingredients","");
+				pathMap_tMongoDBInput_2.put("directions","");
+				pathMap_tMongoDBInput_2.put("link","");
+				pathMap_tMongoDBInput_2.put("source","");
+				pathMap_tMongoDBInput_2.put("NER","");
+				pathMap_tMongoDBInput_2.put("site","");
+
+						
+				while (cursor_tMongoDBInput_2.hasNext()){
+				org.bson.Document o_tMongoDBInput_2 = cursor_tMongoDBInput_2.next();
+				nb_line_tMongoDBInput_2++;
+				Object valueObj_tMongoDBInput_2=null;
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("_id"),"_id",o_tMongoDBInput_2);
+					
+				row3._id = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("title"),"title",o_tMongoDBInput_2);
+					
+				row3.title = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("ingredients"),"ingredients",o_tMongoDBInput_2);
+					
+				row3.ingredients = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("directions"),"directions",o_tMongoDBInput_2);
+					
+				row3.directions = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("link"),"link",o_tMongoDBInput_2);
+					
+				row3.link = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("source"),"source",o_tMongoDBInput_2);
+					
+				row3.source = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("NER"),"NER",o_tMongoDBInput_2);
+					
+				row3.NER = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+                    valueObj_tMongoDBInput_2=dbObjectInputUtil_tMongoDBInput_2.getValue(pathMap_tMongoDBInput_2.get("site"),"site",o_tMongoDBInput_2);
+					
+				row3.site = valueObj_tMongoDBInput_2==null ? null : valueObj_tMongoDBInput_2.toString();
+				
+
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_2 begin ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+
+ 
+
+
+	tos_count_tMongoDBInput_2++;
+
+/**
+ * [tMongoDBInput_2 main ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_2 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tMap_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row3"
+						
+						);
+					}
+					
+
+		
+		
+		boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+		
+
+        // ###############################
+        // # Input tables (lookups)
+		  boolean rejectedInnerJoin_tMap_1 = false;
+		  boolean mainRowRejected_tMap_1 = false;
+            				    								  
+		// ###############################
+        { // start of Var scope
+        
+	        // ###############################
+        	// # Vars tables
+        
+Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
+        // ###############################
+        // # Output tables
+
+out1 = null;
+
+
+// # Output table : 'out1'
+out1_tmp.strMeal = row3.title ;
+out1_tmp.ingredients = row3.ingredients ;
+out1_tmp.strInstructions = row3.directions ;
+out1_tmp.strCategory = row3.NER ;
+out1 = out1_tmp;
+// ###############################
+
+} // end of Var scope
+
+rejectedInnerJoin_tMap_1 = false;
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	tos_count_tMap_1++;
+
+/**
+ * [tMap_1 main ] stop
+ */
+	
+	/**
+	 * [tMap_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_begin ] stop
+ */
+// Start of branch "out1"
+if(out1 != null) { 
+
+
+
+	
+	/**
+	 * [tJavaRow_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"out1"
+						
+						);
+					}
+					
+
+    String[] tab = out1.strCategory.split(",");
+List<String> ingredients = new ArrayList<>();
+
+for (String t : tab) {
+    String ner = t.trim()
+        .replace("\"","")
+        .replace("[","")
+        .replace("]","")
+        .trim();
+
+    if (ner.isEmpty()) {
+        continue;
+    }
+
+    String formatted =
+        ner.substring(0, 1).toUpperCase() +
+        ner.substring(1).toLowerCase();
+
+    ingredients.add(formatted);
+}
+
+row4.ingredients = "[" + String.join(",", ingredients) + "]";
+row4.strMeal = out1.strMeal;
+row4.strInstructions = out1.strInstructions;
+row4.strCategory = out1.strCategory;
+
+    nb_line_tJavaRow_2++;   
+
+ 
+
+
+	tos_count_tJavaRow_2++;
+
+/**
+ * [tJavaRow_2 main ] stop
+ */
+	
+	/**
+	 * [tJavaRow_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row4"
+						
+						);
+					}
+					
+
+	
+try{
+				updateObjectUtil_tMongoDBOutput_2.setObject(new org.bson.Document());
+				
+				
+
+				
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strMeal"),"strMeal", row4.strMeal);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("ingredients"),"ingredients", row4.ingredients);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strInstructions"),"strInstructions", row4.strInstructions);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strCategory"),"strCategory", row4.strCategory);
+				org.bson.Document updateObj_tMongoDBOutput_2 = updateObjectUtil_tMongoDBOutput_2.getObject();
+				
+						coll_tMongoDBOutput_2.insertOne(updateObj_tMongoDBOutput_2);
+					
+				} catch (Exception e_tMongoDBOutput_2) {
+				
+    					
+    						System.err.println(e_tMongoDBOutput_2.getMessage());
+    					
+    			}
+				nb_line_tMongoDBOutput_2 ++;
+				
+ 
+
+
+	tos_count_tMongoDBOutput_2++;
+
+/**
+ * [tMongoDBOutput_2 main ] stop
+ */
+	
+	/**
+	 * [tMongoDBOutput_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_2 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tMongoDBOutput_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_2 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 process_data_end ] stop
+ */
+
+} // End of branch "out1"
+
+
+
+
+	
+	/**
+	 * [tMap_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMongoDBInput_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_2 process_data_end ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+
+            }
+    globalMap.put("tMongoDBInput_2_NB_LINE", nb_line_tMongoDBInput_2);
+ 
+
+ok_Hash.put("tMongoDBInput_2", true);
+end_Hash.put("tMongoDBInput_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMongoDBInput_2 end ] stop
+ */
+
+	
+	/**
+	 * [tMap_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_1", true);
+end_Hash.put("tMap_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_1 end ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+globalMap.put("tJavaRow_2_NB_LINE",nb_line_tJavaRow_2);
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"out1");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tJavaRow_2", true);
+end_Hash.put("tJavaRow_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tJavaRow_2 end ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+
+	globalMap.put("tMongoDBOutput_2_NB_LINE", nb_line_tMongoDBOutput_2);
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row4");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMongoDBOutput_2", true);
+end_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk5", 0, "ok");
+				}
+				tMongoDBClose_1Process(globalMap);
+
+
+
+/**
+ * [tMongoDBOutput_2 end ] stop
+ */
+
+
+
+
+
+
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tMongoDBInput_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tMap_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 finally ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tMongoDBOutput_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBOutput_2";
+
+	
+
+
+ 
+
+
+
+/**
+ * [tMongoDBOutput_2 finally ] stop
+ */
+
+
+
+
+
+
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tMongoDBInput_2_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -4248,6 +6955,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
             }
             class ContextProcessing {
                 private void processContext_0() {
+                        context.setContextType("kaggle_dataset", "id_String");
+                        if(context.getStringValue("kaggle_dataset") == null) {
+                            context.kaggle_dataset = null;
+                        } else {
+                            context.kaggle_dataset=(String) context.getProperty("kaggle_dataset");
+                        }
                         context.setContextType("letter", "id_String");
                         if(context.getStringValue("letter") == null) {
                             context.letter = null;
@@ -4260,11 +6973,23 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_authentificationDatabase=(String) context.getProperty("mongodb_authentificationDatabase");
                         }
-                        context.setContextType("mongodb_collection_bronze", "id_String");
-                        if(context.getStringValue("mongodb_collection_bronze") == null) {
-                            context.mongodb_collection_bronze = null;
+                        context.setContextType("mongodb_collection_bronze_k", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_k") == null) {
+                            context.mongodb_collection_bronze_k = null;
                         } else {
-                            context.mongodb_collection_bronze=(String) context.getProperty("mongodb_collection_bronze");
+                            context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
+                        }
+                        context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
+                            context.mongodb_collection_bronze_tmdb = null;
+                        } else {
+                            context.mongodb_collection_bronze_tmdb=(String) context.getProperty("mongodb_collection_bronze_tmdb");
+                        }
+                        context.setContextType("mongodb_collection_silver_k", "id_String");
+                        if(context.getStringValue("mongodb_collection_silver_k") == null) {
+                            context.mongodb_collection_silver_k = null;
+                        } else {
+                            context.mongodb_collection_silver_k=(String) context.getProperty("mongodb_collection_silver_k");
                         }
                         context.setContextType("mongodb_collection_silver", "id_String");
                         if(context.getStringValue("mongodb_collection_silver") == null) {
@@ -4375,12 +7100,18 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
         }
 
         // get context value from parent directly
-        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("letter")) {
+        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("kaggle_dataset")) {
+                context.kaggle_dataset = (String) parentContextMap.get("kaggle_dataset");
+            }if (parentContextMap.containsKey("letter")) {
                 context.letter = (String) parentContextMap.get("letter");
             }if (parentContextMap.containsKey("mongodb_authentificationDatabase")) {
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
-            }if (parentContextMap.containsKey("mongodb_collection_bronze")) {
-                context.mongodb_collection_bronze = (String) parentContextMap.get("mongodb_collection_bronze");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
+                context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
+                context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
+            }if (parentContextMap.containsKey("mongodb_collection_silver_k")) {
+                context.mongodb_collection_silver_k = (String) parentContextMap.get("mongodb_collection_silver_k");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
                 context.mongodb_collection_silver = (String) parentContextMap.get("mongodb_collection_silver");
             }if (parentContextMap.containsKey("mongodb_database")) {
@@ -4642,6 +7373,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     131592 characters generated by Talend Open Studio for Big Data 
- *     on the 31 décembre 2025, 00:39:35 CET
+ *     191669 characters generated by Talend Open Studio for Big Data 
+ *     on the 16 janvier 2026, 12:25:15 CET
  ************************************************************************************************/

@@ -1,0 +1,9 @@
+services:
+  haproxy:
+    image: haproxytech/haproxy-alpine:2.8.18
+    container_name: haproxy
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro

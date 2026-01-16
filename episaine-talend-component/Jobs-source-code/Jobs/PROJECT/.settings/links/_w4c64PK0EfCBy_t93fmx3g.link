@@ -1,0 +1,196 @@
+{
+  "itemId" : "_w4c64PK0EfCBy_t93fmx3g",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_RT7SIM-fEfCT24E9_qvxLA",
+    "parameterList" : [ {
+      "id" : "_gFgFoPK1EfCBy_t93fmx3g",
+      "name" : "kaggle_dataset"
+    }, {
+      "id" : "_XmW_4OWgEfCiPeGObmztcQ",
+      "name" : "letter"
+    }, {
+      "id" : "_Ese1-dBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_authentificationDatabase"
+    }, {
+      "id" : "_SM_BMPK2EfCBy_t93fmx3g",
+      "name" : "mongodb_collection_bronze_k"
+    }, {
+      "id" : "_Ese19NBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_bronze_tmdb"
+    }, {
+      "id" : "_Ese18tBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_database"
+    }, {
+      "id" : "_Ese1-NBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_password"
+    }, {
+      "id" : "_Ese189BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_port"
+    }, {
+      "id" : "_Ese18dBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_server"
+    }, {
+      "id" : "_Ese199BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_user"
+    }, {
+      "id" : "_WB8eMNBUEfCavakQCTtPUg",
+      "name" : "postgresql_database"
+    }, {
+      "id" : "_WB8eNNBUEfCavakQCTtPUg",
+      "name" : "postgresql_password"
+    }, {
+      "id" : "_WB8eMtBUEfCavakQCTtPUg",
+      "name" : "postgresql_port"
+    }, {
+      "id" : "_WB8eNdBUEfCavakQCTtPUg",
+      "name" : "postgresql_schema"
+    }, {
+      "id" : "_WB8eMdBUEfCavakQCTtPUg",
+      "name" : "postgresql_server"
+    }, {
+      "id" : "_2xIRMNBUEfCavakQCTtPUg",
+      "name" : "postgresql_table_area"
+    }, {
+      "id" : "_7FMbgNBhEfCavakQCTtPUg",
+      "name" : "postgresql_table_category"
+    }, {
+      "id" : "_7F9dUOWmEfCPz-N4yknRPg",
+      "name" : "postgresql_table_meals"
+    }, {
+      "id" : "_WB8eM9BUEfCavakQCTtPUg",
+      "name" : "postgresql_user"
+    }, {
+      "id" : "_Ese19tBOEfChG5CYVV-7ZQ",
+      "name" : "source"
+    } ]
+  }, {
+    "contextName" : "dev",
+    "repoId" : "_RT7SIM-fEfCT24E9_qvxLA",
+    "parameterList" : [ {
+      "id" : "_gFgFofK1EfCBy_t93fmx3g",
+      "name" : "kaggle_dataset"
+    }, {
+      "id" : "_XmW_4eWgEfCiPeGObmztcQ",
+      "name" : "letter"
+    }, {
+      "id" : "_Ese2A9BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_authentificationDatabase"
+    }, {
+      "id" : "_SM_BMfK2EfCBy_t93fmx3g",
+      "name" : "mongodb_collection_bronze_k"
+    }, {
+      "id" : "_Ese1_tBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_bronze_tmdb"
+    }, {
+      "id" : "_Ese1_NBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_database"
+    }, {
+      "id" : "_Ese2AtBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_password"
+    }, {
+      "id" : "_Ese1_dBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_port"
+    }, {
+      "id" : "_Ese1-9BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_server"
+    }, {
+      "id" : "_Ese2AdBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_user"
+    }, {
+      "id" : "_WB8eN9BUEfCavakQCTtPUg",
+      "name" : "postgresql_database"
+    }, {
+      "id" : "_WB8eO9BUEfCavakQCTtPUg",
+      "name" : "postgresql_password"
+    }, {
+      "id" : "_WB8eOdBUEfCavakQCTtPUg",
+      "name" : "postgresql_port"
+    }, {
+      "id" : "_WB8ePNBUEfCavakQCTtPUg",
+      "name" : "postgresql_schema"
+    }, {
+      "id" : "_WB8eONBUEfCavakQCTtPUg",
+      "name" : "postgresql_server"
+    }, {
+      "id" : "_2xIRMdBUEfCavakQCTtPUg",
+      "name" : "postgresql_table_area"
+    }, {
+      "id" : "_7FMbgdBhEfCavakQCTtPUg",
+      "name" : "postgresql_table_category"
+    }, {
+      "id" : "_7F9dUeWmEfCPz-N4yknRPg",
+      "name" : "postgresql_table_meals"
+    }, {
+      "id" : "_WB8eOtBUEfCavakQCTtPUg",
+      "name" : "postgresql_user"
+    }, {
+      "id" : "_Ese2ANBOEfChG5CYVV-7ZQ",
+      "name" : "source"
+    } ]
+  }, {
+    "contextName" : "local",
+    "repoId" : "_RT7SIM-fEfCT24E9_qvxLA",
+    "parameterList" : [ {
+      "id" : "_gFgFovK1EfCBy_t93fmx3g",
+      "name" : "kaggle_dataset"
+    }, {
+      "id" : "_XmW_4uWgEfCiPeGObmztcQ",
+      "name" : "letter"
+    }, {
+      "id" : "_Ese2DdBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_authentificationDatabase"
+    }, {
+      "id" : "_SM_BMvK2EfCBy_t93fmx3g",
+      "name" : "mongodb_collection_bronze_k"
+    }, {
+      "id" : "_Ese2CNBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_bronze_tmdb"
+    }, {
+      "id" : "_Ese2BtBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_database"
+    }, {
+      "id" : "_Ese2DNBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_password"
+    }, {
+      "id" : "_Ese2B9BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_port"
+    }, {
+      "id" : "_Ese2BdBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_server"
+    }, {
+      "id" : "_Ese2C9BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_user"
+    }, {
+      "id" : "_WB8ePtBUEfCavakQCTtPUg",
+      "name" : "postgresql_database"
+    }, {
+      "id" : "_WB8eQtBUEfCavakQCTtPUg",
+      "name" : "postgresql_password"
+    }, {
+      "id" : "_WB8eQNBUEfCavakQCTtPUg",
+      "name" : "postgresql_port"
+    }, {
+      "id" : "_WB8eQ9BUEfCavakQCTtPUg",
+      "name" : "postgresql_schema"
+    }, {
+      "id" : "_WB8eP9BUEfCavakQCTtPUg",
+      "name" : "postgresql_server"
+    }, {
+      "id" : "_2xIRMtBUEfCavakQCTtPUg",
+      "name" : "postgresql_table_area"
+    }, {
+      "id" : "_7FMbgtBhEfCavakQCTtPUg",
+      "name" : "postgresql_table_category"
+    }, {
+      "id" : "_7F9dUuWmEfCPz-N4yknRPg",
+      "name" : "postgresql_table_meals"
+    }, {
+      "id" : "_WB8eQdBUEfCavakQCTtPUg",
+      "name" : "postgresql_user"
+    }, {
+      "id" : "_Ese2CtBOEfChG5CYVV-7ZQ",
+      "name" : "source"
+    } ]
+  } ]
+}
