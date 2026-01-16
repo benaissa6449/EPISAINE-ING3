@@ -151,9 +151,9 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
-			if(mongodb_collection_silver_tmdb != null){
+			if(mongodb_collection_silver != null){
 				
-					this.setProperty("mongodb_collection_silver_tmdb", mongodb_collection_silver_tmdb.toString());
+					this.setProperty("mongodb_collection_silver", mongodb_collection_silver.toString());
 				
 			}
 			
@@ -278,9 +278,9 @@ public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
 }
-public String mongodb_collection_silver_tmdb;
-public String getMongodb_collection_silver_tmdb(){
-	return this.mongodb_collection_silver_tmdb;
+public String mongodb_collection_silver;
+public String getMongodb_collection_silver(){
+	return this.mongodb_collection_silver;
 }
 public String mongodb_database;
 public String getMongodb_database(){
@@ -877,8 +877,8 @@ public void tRunJob_1Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
                     paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
-                    parentContextMap_tRunJob_1.put("mongodb_collection_silver_tmdb", context.mongodb_collection_silver_tmdb);
-                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_silver_tmdb" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_collection_silver", context.mongodb_collection_silver);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_silver" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_database", context.mongodb_database);
                     paraList_tRunJob_1.add("--context_type " + "mongodb_database" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_password", context.mongodb_password);
@@ -1206,8 +1206,8 @@ public void tRunJob_2Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
                     paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
-                    parentContextMap_tRunJob_2.put("mongodb_collection_silver_tmdb", context.mongodb_collection_silver_tmdb);
-                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_silver_tmdb" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_collection_silver", context.mongodb_collection_silver);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_silver" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_database", context.mongodb_database);
                     paraList_tRunJob_2.add("--context_type " + "mongodb_database" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_password", context.mongodb_password);
@@ -1812,11 +1812,11 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_collection_bronze_tmdb=(String) context.getProperty("mongodb_collection_bronze_tmdb");
                         }
-                        context.setContextType("mongodb_collection_silver_tmdb", "id_String");
-                        if(context.getStringValue("mongodb_collection_silver_tmdb") == null) {
-                            context.mongodb_collection_silver_tmdb = null;
+                        context.setContextType("mongodb_collection_silver", "id_String");
+                        if(context.getStringValue("mongodb_collection_silver") == null) {
+                            context.mongodb_collection_silver = null;
                         } else {
-                            context.mongodb_collection_silver_tmdb=(String) context.getProperty("mongodb_collection_silver_tmdb");
+                            context.mongodb_collection_silver=(String) context.getProperty("mongodb_collection_silver");
                         }
                         context.setContextType("mongodb_database", "id_String");
                         if(context.getStringValue("mongodb_database") == null) {
@@ -1931,8 +1931,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
-            }if (parentContextMap.containsKey("mongodb_collection_silver_tmdb")) {
-                context.mongodb_collection_silver_tmdb = (String) parentContextMap.get("mongodb_collection_silver_tmdb");
+            }if (parentContextMap.containsKey("mongodb_collection_silver")) {
+                context.mongodb_collection_silver = (String) parentContextMap.get("mongodb_collection_silver");
             }if (parentContextMap.containsKey("mongodb_database")) {
                 context.mongodb_database = (String) parentContextMap.get("mongodb_database");
             }if (parentContextMap.containsKey("mongodb_password")) {
@@ -2192,6 +2192,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     72131 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 12:24:33 CET
+ *     72031 characters generated by Talend Open Studio for Big Data 
+ *     on the 16 janvier 2026, 15:17:53 CET
  ************************************************************************************************/

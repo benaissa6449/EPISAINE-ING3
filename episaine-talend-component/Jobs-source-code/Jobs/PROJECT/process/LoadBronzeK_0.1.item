@@ -1,76 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default">
-    <contextParameter comment="" name="mongodb_collection_bronze" prompt="mongodb_collection_bronze?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze" internalId="_6yCkQPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/data/recipes_data.csv&quot;" internalId="_6yCkQfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_6yCkQvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_6yCkQ_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_6yCkRPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_6yCkRfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_6yCkRvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yCkR_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_6yCkSPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_6yCkSfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.165" internalId="_6yCkSvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_6yCkS_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yCkTPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yCkTfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5433" internalId="_6yCkTvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_6yCkT_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.170" internalId="_6yCkUPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_6yCkUfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_6yCkUvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_6yCkU_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yCkVPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_6yCkVfK2EfCBy_t93fmx3g"/>
+    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;" internalId="_2wrcQPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_2wrcQfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_2wrcQvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_2wrcQ_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_2wrcRPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_2wrcRfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcRvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_2wrcR_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_2wrcSPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.165" internalId="_2wrcSfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_2wrcSvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcS_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcTPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5433" internalId="_2wrcTfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_2wrcTvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.170" internalId="_2wrcT_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_2wrcUPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_2wrcUfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_2wrcUvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcU_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_2wrcVPLlEfCJK4kwVvqy5w"/>
   </context>
   <context confirmationNeeded="false" name="dev">
-    <contextParameter comment="" name="mongodb_collection_bronze" prompt="mongodb_collection_bronze?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze" internalId="_6yCkVvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/data/recipes_data.csv&quot;" internalId="_6yCkV_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_6yCkWPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_6yDLUPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_6yDLUfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_6yDLUvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_6yDLU_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLVPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_6yDLVfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_6yDLVvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.165" internalId="_6yDLV_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_6yDLWPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLWfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLWvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5433" internalId="_6yDLW_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_6yDLXPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.170" internalId="_6yDLXfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_6yDLXvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_6yDLX_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_6yDLYPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLYfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_6yDLYvK2EfCBy_t93fmx3g"/>
+    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;" internalId="_2wrcVfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_2wrcVvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_2wrcV_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_2wrcWPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_2wrcWfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_2wrcWvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcW_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_2wrcXPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_2wrcXfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.165" internalId="_2wrcXvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="root" internalId="_2wrcX_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcYPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcYfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5433" internalId="_2wrcYvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_2wrcY_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="192.168.248.170" internalId="_2wrcZPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_2wrcZfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_2wrcZvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_2wrcZ_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcaPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_2wrcafLlEfCJK4kwVvqy5w"/>
   </context>
   <context confirmationNeeded="false" name="local">
-    <contextParameter comment="" name="mongodb_collection_bronze" prompt="mongodb_collection_bronze?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze" internalId="_6yDLY_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/recipes_data.csv&quot;" internalId="_6yDLZPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_6yDLZfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLZvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_6yDLZ_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_6yDLaPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_6yDLafK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLavK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLa_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_6yDLbPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="localhost" internalId="_6yDLbfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLbvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLb_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLcPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5432" internalId="_6yDLcfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_6yDLcvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine-postgres" internalId="_6yDLc_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_6yDLdPK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_6yDLdfK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_6yDLdvK2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_6yDLd_K2EfCBy_t93fmx3g"/>
-    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_6yDLePK2EfCBy_t93fmx3g"/>
+    <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/recipes_data.csv&quot;" internalId="_2wrcavLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_2wrca_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcbPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_2wrcbfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_2wrcbvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_2wrcb_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrccPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrccfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="27017" internalId="_2wrccvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="localhost" internalId="_2wrcc_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcdPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcdfLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcdvLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5432" internalId="_2wrcd_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_2wrcePLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine-postgres" internalId="_2wrcefLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_2wrcevLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_2wrce_LlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_2wrcfPLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_2wrcffLlEfCJK4kwVvqy5w"/>
+    <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_2wrcfvLlEfCJK4kwVvqy5w"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -114,7 +111,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:Bo/O0XPp+c0sTQn+TpDkSwQMaPntqzngcT4iXZd7" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:1/P24s2Z2k8FWzeUCW2iXb3jSIBmDh+wQZFnJhDU" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -149,7 +146,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:ej/LhL8IpYh+9ed2Dbu/TtGxIpoEBZh23R7exbsh" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:Wq6XYmSPoYbEmZuzAoLm8/8+ziKCAOOHn0KcGoOU" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -200,7 +197,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="true"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="context.mongodb_authentificationDatabase"/>
     <elementParameter field="TEXT" name="USERNAME" value="context.mongodb_user"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:q7709Q45MKooP1j7obPmeFkRZaczT9tFWxo80yv5FPBRjxPZmHI7q1uXR5Z9zZ4lUIJL7w=="/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:JmTgXlCpTNutxx2jpDUjZgS+wDvot4yLhAYGBoawKE8zGzwlzISaNdRyOIi5h59finuNbQ=="/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -254,7 +251,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:V7dlj6imJRfN8GBP3eAVfqv8Ie32IL373QuGZKSg" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:9cZ2zgASCi3esBa7GQnXwukqRIQAGzKDoHnDvCql" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -409,7 +406,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:iuVC2ZtbSCfckKWV+A1d3rWRjzOrLDHzlfE1UIDs" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:mW1Gz8x6YlVoAayGjX55MbS7If1cxZbmA7dq7250" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>

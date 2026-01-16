@@ -131,6 +131,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 
 		public void synchronizeContext(){
 			
+			if(mongodb_collection_silver_k != null){
+				
+					this.setProperty("mongodb_collection_silver_k", mongodb_collection_silver_k.toString());
+				
+			}
+			
 			if(kaggle_dataset != null){
 				
 					this.setProperty("kaggle_dataset", kaggle_dataset.toString());
@@ -158,12 +164,6 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_collection_bronze_tmdb != null){
 				
 					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
-				
-			}
-			
-			if(mongodb_collection_silver_k != null){
-				
-					this.setProperty("mongodb_collection_silver_k", mongodb_collection_silver_k.toString());
 				
 			}
 			
@@ -274,6 +274,10 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			return origin_value;
 		}
 
+public String mongodb_collection_silver_k;
+public String getMongodb_collection_silver_k(){
+	return this.mongodb_collection_silver_k;
+}
 public String kaggle_dataset;
 public String getKaggle_dataset(){
 	return this.kaggle_dataset;
@@ -293,10 +297,6 @@ public String getMongodb_collection_bronze_k(){
 public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
-}
-public String mongodb_collection_silver_k;
-public String getMongodb_collection_silver_k(){
-	return this.mongodb_collection_silver_k;
 }
 public String mongodb_collection_silver;
 public String getMongodb_collection_silver(){
@@ -6955,6 +6955,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
             }
             class ContextProcessing {
                 private void processContext_0() {
+                        context.setContextType("mongodb_collection_silver_k", "id_String");
+                        if(context.getStringValue("mongodb_collection_silver_k") == null) {
+                            context.mongodb_collection_silver_k = null;
+                        } else {
+                            context.mongodb_collection_silver_k=(String) context.getProperty("mongodb_collection_silver_k");
+                        }
                         context.setContextType("kaggle_dataset", "id_String");
                         if(context.getStringValue("kaggle_dataset") == null) {
                             context.kaggle_dataset = null;
@@ -6984,12 +6990,6 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                             context.mongodb_collection_bronze_tmdb = null;
                         } else {
                             context.mongodb_collection_bronze_tmdb=(String) context.getProperty("mongodb_collection_bronze_tmdb");
-                        }
-                        context.setContextType("mongodb_collection_silver_k", "id_String");
-                        if(context.getStringValue("mongodb_collection_silver_k") == null) {
-                            context.mongodb_collection_silver_k = null;
-                        } else {
-                            context.mongodb_collection_silver_k=(String) context.getProperty("mongodb_collection_silver_k");
                         }
                         context.setContextType("mongodb_collection_silver", "id_String");
                         if(context.getStringValue("mongodb_collection_silver") == null) {
@@ -7100,7 +7100,9 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
         }
 
         // get context value from parent directly
-        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("kaggle_dataset")) {
+        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("mongodb_collection_silver_k")) {
+                context.mongodb_collection_silver_k = (String) parentContextMap.get("mongodb_collection_silver_k");
+            }if (parentContextMap.containsKey("kaggle_dataset")) {
                 context.kaggle_dataset = (String) parentContextMap.get("kaggle_dataset");
             }if (parentContextMap.containsKey("letter")) {
                 context.letter = (String) parentContextMap.get("letter");
@@ -7110,8 +7112,6 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
-            }if (parentContextMap.containsKey("mongodb_collection_silver_k")) {
-                context.mongodb_collection_silver_k = (String) parentContextMap.get("mongodb_collection_silver_k");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
                 context.mongodb_collection_silver = (String) parentContextMap.get("mongodb_collection_silver");
             }if (parentContextMap.containsKey("mongodb_database")) {
@@ -7374,5 +7374,5 @@ if (execStat) {
 }
 /************************************************************************************************
  *     191669 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 12:25:15 CET
+ *     on the 16 janvier 2026, 15:19:04 CET
  ************************************************************************************************/

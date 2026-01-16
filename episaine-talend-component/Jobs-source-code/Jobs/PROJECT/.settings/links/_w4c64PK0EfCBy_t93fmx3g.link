@@ -19,6 +19,9 @@
       "id" : "_Ese19NBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
     }, {
+      "id" : "_Ese19dBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_silver"
+    }, {
       "id" : "_Ese18tBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_database"
     }, {
@@ -83,6 +86,9 @@
       "id" : "_Ese1_tBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
     }, {
+      "id" : "_Ese1_9BOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_silver"
+    }, {
       "id" : "_Ese1_NBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_database"
     }, {
@@ -146,6 +152,9 @@
     }, {
       "id" : "_Ese2CNBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
+    }, {
+      "id" : "_Ese2CdBOEfChG5CYVV-7ZQ",
+      "name" : "mongodb_collection_silver"
     }, {
       "id" : "_Ese2BtBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_database"

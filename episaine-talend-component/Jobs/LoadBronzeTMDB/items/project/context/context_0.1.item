@@ -20,7 +20,7 @@
     <contextParameter xmi:id="_7FMbgNBhEfCavakQCTtPUg" comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="category"/>
     <contextParameter xmi:id="_XmW_4OWgEfCiPeGObmztcQ" comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="a"/>
     <contextParameter xmi:id="_7F9dUOWmEfCPz-N4yknRPg" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
-    <contextParameter xmi:id="_gFgFoPK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/data/recipes_data.csv&quot;"/>
+    <contextParameter xmi:id="_gFgFoPK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;"/>
     <contextParameter xmi:id="_SM_BMPK2EfCBy_t93fmx3g" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
   </talendfile:ContextType>
   <talendfile:ContextType xmi:id="_Ese1-tBOEfChG5CYVV-7ZQ" confirmationNeeded="false" name="dev">
@@ -43,7 +43,7 @@
     <contextParameter xmi:id="_7FMbgdBhEfCavakQCTtPUg" comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="category"/>
     <contextParameter xmi:id="_XmW_4eWgEfCiPeGObmztcQ" comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="a"/>
     <contextParameter xmi:id="_7F9dUeWmEfCPz-N4yknRPg" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
-    <contextParameter xmi:id="_gFgFofK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/data/recipes_data.csv&quot;"/>
+    <contextParameter xmi:id="_gFgFofK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;"/>
     <contextParameter xmi:id="_SM_BMfK2EfCBy_t93fmx3g" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
   </talendfile:ContextType>
   <talendfile:ContextType xmi:id="_Ese2BNBOEfChG5CYVV-7ZQ" confirmationNeeded="false" name="local">
