@@ -46,9 +46,6 @@ import java.util.Comparator;
 
 
 
-	//the import part of tJava_1
-	//import java.util.List;
-
 
 @SuppressWarnings("unused")
 
@@ -124,6 +121,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 
 		public void synchronizeContext(){
 			
+			if(kaggle_dataset != null){
+				
+					this.setProperty("kaggle_dataset", kaggle_dataset.toString());
+				
+			}
+			
 			if(letter != null){
 				
 					this.setProperty("letter", letter.toString());
@@ -136,9 +139,15 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
-			if(mongodb_collection_bronze != null){
+			if(mongodb_collection_bronze_k != null){
 				
-					this.setProperty("mongodb_collection_bronze", mongodb_collection_bronze.toString());
+					this.setProperty("mongodb_collection_bronze_k", mongodb_collection_bronze_k.toString());
+				
+			}
+			
+			if(mongodb_collection_bronze_tmdb != null){
+				
+					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
 				
 			}
 			
@@ -249,6 +258,10 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			return origin_value;
 		}
 
+public String kaggle_dataset;
+public String getKaggle_dataset(){
+	return this.kaggle_dataset;
+}
 public String letter;
 public String getLetter(){
 	return this.letter;
@@ -257,9 +270,13 @@ public String mongodb_authentificationDatabase;
 public String getMongodb_authentificationDatabase(){
 	return this.mongodb_authentificationDatabase;
 }
-public String mongodb_collection_bronze;
-public String getMongodb_collection_bronze(){
-	return this.mongodb_collection_bronze;
+public String mongodb_collection_bronze_k;
+public String getMongodb_collection_bronze_k(){
+	return this.mongodb_collection_bronze_k;
+}
+public String mongodb_collection_bronze_tmdb;
+public String getMongodb_collection_bronze_tmdb(){
+	return this.mongodb_collection_bronze_tmdb;
 }
 public String mongodb_collection_silver;
 public String getMongodb_collection_silver(){
@@ -487,85 +504,22 @@ private class TalendException extends Exception {
 					tWarn_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
-			public void tMongoDBConnection_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tRunJob_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tMongoDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
+					tRunJob_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
-			public void tFixedFlowInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tRunJob_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tFixedFlowInput_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tMongoDBOutput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tFixedFlowInput_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tLoop_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tJava_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tREST_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tREST_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tExtractJSONFields_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tREST_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tMongoDBOutput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tREST_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tMongoDBClose_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tMongoDBClose_1_onSubJobError(exception, errorComponent, globalMap);
+					tRunJob_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tWarn_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -582,27 +536,12 @@ private class TalendException extends Exception {
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
-			public void tMongoDBConnection_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tRunJob_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
-			public void tFixedFlowInput_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-
-resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
-
-			}
-			public void tLoop_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-
-resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
-
-			}
-			public void tREST_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-
-resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
-
-			}
-			public void tMongoDBClose_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tRunJob_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -764,9 +703,9 @@ ok_Hash.put("tWarn_1", true);
 end_Hash.put("tWarn_1", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk1", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
 				}
-				tMongoDBConnection_1Process(globalMap);
+				tRunJob_1Process(globalMap);
 
 
 
@@ -827,8 +766,8 @@ end_Hash.put("tWarn_1", System.currentTimeMillis());
 	}
 	
 
-public void tMongoDBConnection_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tMongoDBConnection_1_SUBPROCESS_STATE", 0);
+public void tRunJob_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tRunJob_1_SUBPROCESS_STATE", 0);
 
  final boolean execStat = this.execStat;
 	
@@ -855,66 +794,351 @@ public void tMongoDBConnection_1Process(final java.util.Map<String, Object> glob
 
 	
 	/**
-	 * [tMongoDBConnection_1 begin ] start
+	 * [tRunJob_1 begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tMongoDBConnection_1", false);
-		start_Hash.put("tMongoDBConnection_1", System.currentTimeMillis());
+		ok_Hash.put("tRunJob_1", false);
+		start_Hash.put("tRunJob_1", System.currentTimeMillis());
 		
 	
-	currentComponent="tMongoDBConnection_1";
+	currentComponent="tRunJob_1";
 
 	
-		int tos_count_tMongoDBConnection_1 = 0;
+		int tos_count_tRunJob_1 = 0;
 		
 
-        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-        
-    
 
-final String applicationName_tMongoDBConnection_1 = "Talend";
-
-    // Declarations
-    com.mongodb.client.MongoClient mongo_tMongoDBConnection_1=null;
-    com.mongodb.client.MongoDatabase db_tMongoDBConnection_1=null;
-    List<com.mongodb.ServerAddress> addrs_tMongoDBConnection_1 = new java.util.ArrayList<>();
-    com.mongodb.MongoClientSettings.Builder clientSettingsBuilder_tMongoDBConnection_1 = com.mongodb.MongoClientSettings.builder().applicationName(applicationName_tMongoDBConnection_1);
-    com.mongodb.connection.ClusterSettings.Builder clusterSettingsBuilder_tMongoDBConnection_1 = com.mongodb.connection.ClusterSettings.builder();
-    com.mongodb.connection.ConnectionPoolSettings.Builder connPoolSettingsBuilder_tMongoDBConnection_1 = com.mongodb.connection.ConnectionPoolSettings.builder();
-    com.mongodb.connection.ServerSettings.Builder serverSettingsBuilder_tMongoDBConnection_1 = com.mongodb.connection.ServerSettings.builder();
-    com.mongodb.connection.SocketSettings.Builder socketSettingsBuilder_tMongoDBConnection_1 = com.mongodb.connection.SocketSettings.builder();
-    com.mongodb.connection.SslSettings.Builder sslSettingsBuilder_tMongoDBConnection_1 = com.mongodb.connection.SslSettings.builder();
+ 
 
 
 
-                // SSL
+/**
+ * [tRunJob_1 begin ] stop
+ */
+	
+	/**
+	 * [tRunJob_1 main ] start
+	 */
 
-                // Client Credentials
-                    // Authentication
-                    com.mongodb.MongoCredential mongoCredential_tMongoDBConnection_1;
-	final String decryptedPassword_tMongoDBConnection_1 = context.mongodb_password; 
-                        
-                            mongoCredential_tMongoDBConnection_1 = com.mongodb.MongoCredential.createCredential(context.mongodb_user, context.mongodb_authentificationDatabase, new String(decryptedPassword_tMongoDBConnection_1).toCharArray());
-                    clientSettingsBuilder_tMongoDBConnection_1.credential(mongoCredential_tMongoDBConnection_1);
-                    addrs_tMongoDBConnection_1.add(new com.mongodb.ServerAddress(context.mongodb_server, Integer.valueOf(context.mongodb_port).intValue()));
-                clusterSettingsBuilder_tMongoDBConnection_1.hosts(addrs_tMongoDBConnection_1);
+	
 
-                clientSettingsBuilder_tMongoDBConnection_1.applyToClusterSettings(builder -> builder.applySettings(clusterSettingsBuilder_tMongoDBConnection_1.build()));
+	
+	
+	currentComponent="tRunJob_1";
+
+	
+	java.util.List<String> paraList_tRunJob_1 = new java.util.ArrayList<String>();
+	
+	        				paraList_tRunJob_1.add("--father_pid="+pid);
+	      			
+	        				paraList_tRunJob_1.add("--root_pid="+rootPid);
+	      			
+	        				paraList_tRunJob_1.add("--father_node=tRunJob_1");
+	      			
+	        				paraList_tRunJob_1.add("--context=Default");
+	      			
+		if(enableLogStash){
+			paraList_tRunJob_1.add("--audit.enabled="+enableLogStash);
+		}
+		
+	//for feature:10589
+	
+		paraList_tRunJob_1.add("--stat_port=" + portStats);
+	
+
+	if(resuming_logs_dir_path != null){
+		paraList_tRunJob_1.add("--resuming_logs_dir_path=" + resuming_logs_dir_path);
+	}
+	String childResumePath_tRunJob_1 = ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path);
+	String tRunJobName_tRunJob_1 = ResumeUtil.getRighttRunJob(resuming_checkpoint_path);
+	if("tRunJob_1".equals(tRunJobName_tRunJob_1) && childResumePath_tRunJob_1 != null){
+		paraList_tRunJob_1.add("--resuming_checkpoint_path=" + ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path));
+	}
+	paraList_tRunJob_1.add("--parent_part_launcher=JOB:" + jobName + "/NODE:tRunJob_1");
+	
+	java.util.Map<String, Object> parentContextMap_tRunJob_1 = new java.util.HashMap<String, Object>();
+
+	
+		
+		context.synchronizeContext();
+            class ContextProcessor_tRunJob_1 {
+                    private void transmitContext_0() {
+                    parentContextMap_tRunJob_1.put("kaggle_dataset", context.kaggle_dataset);
+                    paraList_tRunJob_1.add("--context_type " + "kaggle_dataset" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("letter", context.letter);
+                    paraList_tRunJob_1.add("--context_type " + "letter" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_authentificationDatabase", context.mongodb_authentificationDatabase);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_authentificationDatabase" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_collection_bronze_k", context.mongodb_collection_bronze_k);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_collection_silver", context.mongodb_collection_silver);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_silver" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_database", context.mongodb_database);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_password", context.mongodb_password);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_port", context.mongodb_port);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_server", context.mongodb_server);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_user", context.mongodb_user);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_database", context.postgresql_database);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_password", context.postgresql_password);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_port", context.postgresql_port);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_schema", context.postgresql_schema);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_schema" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_server", context.postgresql_server);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_table_area", context.postgresql_table_area);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_table_area" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_table_category", context.postgresql_table_category);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_table_category" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_table_meals", context.postgresql_table_meals);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_table_meals" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("postgresql_user", context.postgresql_user);
+                    paraList_tRunJob_1.add("--context_type " + "postgresql_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("source", context.source);
+                    paraList_tRunJob_1.add("--context_type " + "source" + "=" + "id_String");
+                        }
+                    public void transmitAllContext() {
+                        transmitContext_0();
+                    }
+            }
+            new ContextProcessor_tRunJob_1().transmitAllContext();
+		java.util.Enumeration<?> propertyNames_tRunJob_1 = context.propertyNames();
+		while (propertyNames_tRunJob_1.hasMoreElements()) {
+			String key_tRunJob_1 = (String) propertyNames_tRunJob_1.nextElement();
+			Object value_tRunJob_1 = (Object) context.get(key_tRunJob_1);
+			if(value_tRunJob_1!=null) {  
+				paraList_tRunJob_1.add("--context_param " + key_tRunJob_1 + "=" + value_tRunJob_1);
+			} else {
+				paraList_tRunJob_1.add("--context_param " + key_tRunJob_1 + "=" + NULL_VALUE_EXPRESSION_IN_COMMAND_STRING_FOR_CHILD_JOB_ONLY);
+			}
+			
+		}
+		
+
+	Object obj_tRunJob_1 = null;
+
+	
+	
+		project.loadbronzetmdb_0_1.LoadBronzeTMDB childJob_tRunJob_1 = new project.loadbronzetmdb_0_1.LoadBronzeTMDB();
+	    // pass DataSources
+	    java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_1 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+	            .get(KEY_DB_DATASOURCES);
+	    if (null != talendDataSources_tRunJob_1) {
+	        java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_1 = new java.util.HashMap<String, javax.sql.DataSource>();
+	        for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_1 : talendDataSources_tRunJob_1
+			        .entrySet()) {
+	            dataSources_tRunJob_1.put(talendDataSourceEntry_tRunJob_1.getKey(),
+	                    talendDataSourceEntry_tRunJob_1.getValue().getRawDataSource());
+	        }
+	        childJob_tRunJob_1.setDataSources(dataSources_tRunJob_1);
+	    }
+		  
+			childJob_tRunJob_1.parentContextMap = parentContextMap_tRunJob_1;
+		  
+		
+		String[][] childReturn_tRunJob_1 = childJob_tRunJob_1.runJob((String[]) paraList_tRunJob_1.toArray(new String[paraList_tRunJob_1.size()]));
+		
+            if(childJob_tRunJob_1.getErrorCode() == null){
+                globalMap.put("tRunJob_1_CHILD_RETURN_CODE", childJob_tRunJob_1.getStatus() != null && ("failure").equals(childJob_tRunJob_1.getStatus()) ? 1 : 0);
+            }else{
+                globalMap.put("tRunJob_1_CHILD_RETURN_CODE", childJob_tRunJob_1.getErrorCode());
+            }
+            if (childJob_tRunJob_1.getExceptionStackTrace() != null) {
+                globalMap.put("tRunJob_1_CHILD_EXCEPTION_STACKTRACE", childJob_tRunJob_1.getExceptionStackTrace());
+            }
+                    errorCode = childJob_tRunJob_1.getErrorCode();
+                if (childJob_tRunJob_1.getErrorCode() != null || ("failure").equals(childJob_tRunJob_1.getStatus())) {
+                    java.lang.Exception ce_tRunJob_1 = childJob_tRunJob_1.getException();
+                    throw new RuntimeException("Child job running failed.\n" + ((ce_tRunJob_1!=null) ? (ce_tRunJob_1.getClass().getName() + ": " + ce_tRunJob_1.getMessage()) : ""));
+                }
+
+ 
+
+
+	tos_count_tRunJob_1++;
+
+/**
+ * [tRunJob_1 main ] stop
+ */
+	
+	/**
+	 * [tRunJob_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_1";
+
+	
+
+ 
 
 
 
+/**
+ * [tRunJob_1 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tRunJob_1 process_data_end ] start
+	 */
 
-    mongo_tMongoDBConnection_1 = com.mongodb.client.MongoClients.create(clientSettingsBuilder_tMongoDBConnection_1.build());
-    resourceMap.put("mongo_tMongoDBConnection_1", mongo_tMongoDBConnection_1);
-    db_tMongoDBConnection_1 = mongo_tMongoDBConnection_1.getDatabase(context.mongodb_database);
+	
+
+	
+	
+	currentComponent="tRunJob_1";
+
+	
+
+ 
 
 
-    globalMap.put("mongo_tMongoDBConnection_1", mongo_tMongoDBConnection_1);
-    globalMap.put("db_tMongoDBConnection_1", db_tMongoDBConnection_1);
+
+/**
+ * [tRunJob_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tRunJob_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_1";
+
+	
+
+ 
+
+ok_Hash.put("tRunJob_1", true);
+end_Hash.put("tRunJob_1", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk1", 0, "ok");
+				}
+				tRunJob_2Process(globalMap);
+
+
+
+/**
+ * [tRunJob_1 end ] stop
+ */
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tRunJob_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tRunJob_1 finally ] stop
+ */
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tRunJob_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+public void tRunJob_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tRunJob_2_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		
+
+
+	
+	/**
+	 * [tRunJob_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tRunJob_2", false);
+		start_Hash.put("tRunJob_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tRunJob_2";
+
+	
+		int tos_count_tRunJob_2 = 0;
+		
 
 
  
@@ -922,39 +1146,172 @@ final String applicationName_tMongoDBConnection_1 = "Talend";
 
 
 /**
- * [tMongoDBConnection_1 begin ] stop
+ * [tRunJob_2 begin ] stop
  */
 	
 	/**
-	 * [tMongoDBConnection_1 main ] start
+	 * [tRunJob_2 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBConnection_1";
+	currentComponent="tRunJob_2";
 
 	
+	java.util.List<String> paraList_tRunJob_2 = new java.util.ArrayList<String>();
+	
+	        				paraList_tRunJob_2.add("--father_pid="+pid);
+	      			
+	        				paraList_tRunJob_2.add("--root_pid="+rootPid);
+	      			
+	        				paraList_tRunJob_2.add("--father_node=tRunJob_2");
+	      			
+	        				paraList_tRunJob_2.add("--context=Default");
+	      			
+		if(enableLogStash){
+			paraList_tRunJob_2.add("--audit.enabled="+enableLogStash);
+		}
+		
+	//for feature:10589
+	
+		paraList_tRunJob_2.add("--stat_port=" + portStats);
+	
+
+	if(resuming_logs_dir_path != null){
+		paraList_tRunJob_2.add("--resuming_logs_dir_path=" + resuming_logs_dir_path);
+	}
+	String childResumePath_tRunJob_2 = ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path);
+	String tRunJobName_tRunJob_2 = ResumeUtil.getRighttRunJob(resuming_checkpoint_path);
+	if("tRunJob_2".equals(tRunJobName_tRunJob_2) && childResumePath_tRunJob_2 != null){
+		paraList_tRunJob_2.add("--resuming_checkpoint_path=" + ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path));
+	}
+	paraList_tRunJob_2.add("--parent_part_launcher=JOB:" + jobName + "/NODE:tRunJob_2");
+	
+	java.util.Map<String, Object> parentContextMap_tRunJob_2 = new java.util.HashMap<String, Object>();
+
+	
+		
+		context.synchronizeContext();
+            class ContextProcessor_tRunJob_2 {
+                    private void transmitContext_0() {
+                    parentContextMap_tRunJob_2.put("kaggle_dataset", context.kaggle_dataset);
+                    paraList_tRunJob_2.add("--context_type " + "kaggle_dataset" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("letter", context.letter);
+                    paraList_tRunJob_2.add("--context_type " + "letter" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_authentificationDatabase", context.mongodb_authentificationDatabase);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_authentificationDatabase" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_collection_bronze_k", context.mongodb_collection_bronze_k);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_collection_silver", context.mongodb_collection_silver);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_silver" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_database", context.mongodb_database);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_password", context.mongodb_password);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_port", context.mongodb_port);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_server", context.mongodb_server);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_user", context.mongodb_user);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_database", context.postgresql_database);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_password", context.postgresql_password);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_port", context.postgresql_port);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_schema", context.postgresql_schema);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_schema" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_server", context.postgresql_server);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_table_area", context.postgresql_table_area);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_table_area" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_table_category", context.postgresql_table_category);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_table_category" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_table_meals", context.postgresql_table_meals);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_table_meals" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("postgresql_user", context.postgresql_user);
+                    paraList_tRunJob_2.add("--context_type " + "postgresql_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("source", context.source);
+                    paraList_tRunJob_2.add("--context_type " + "source" + "=" + "id_String");
+                        }
+                    public void transmitAllContext() {
+                        transmitContext_0();
+                    }
+            }
+            new ContextProcessor_tRunJob_2().transmitAllContext();
+		java.util.Enumeration<?> propertyNames_tRunJob_2 = context.propertyNames();
+		while (propertyNames_tRunJob_2.hasMoreElements()) {
+			String key_tRunJob_2 = (String) propertyNames_tRunJob_2.nextElement();
+			Object value_tRunJob_2 = (Object) context.get(key_tRunJob_2);
+			if(value_tRunJob_2!=null) {  
+				paraList_tRunJob_2.add("--context_param " + key_tRunJob_2 + "=" + value_tRunJob_2);
+			} else {
+				paraList_tRunJob_2.add("--context_param " + key_tRunJob_2 + "=" + NULL_VALUE_EXPRESSION_IN_COMMAND_STRING_FOR_CHILD_JOB_ONLY);
+			}
+			
+		}
+		
+
+	Object obj_tRunJob_2 = null;
+
+	
+	
+		project.loadbronzek_0_1.LoadBronzeK childJob_tRunJob_2 = new project.loadbronzek_0_1.LoadBronzeK();
+	    // pass DataSources
+	    java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_2 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+	            .get(KEY_DB_DATASOURCES);
+	    if (null != talendDataSources_tRunJob_2) {
+	        java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_2 = new java.util.HashMap<String, javax.sql.DataSource>();
+	        for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_2 : talendDataSources_tRunJob_2
+			        .entrySet()) {
+	            dataSources_tRunJob_2.put(talendDataSourceEntry_tRunJob_2.getKey(),
+	                    talendDataSourceEntry_tRunJob_2.getValue().getRawDataSource());
+	        }
+	        childJob_tRunJob_2.setDataSources(dataSources_tRunJob_2);
+	    }
+		  
+			childJob_tRunJob_2.parentContextMap = parentContextMap_tRunJob_2;
+		  
+		
+		String[][] childReturn_tRunJob_2 = childJob_tRunJob_2.runJob((String[]) paraList_tRunJob_2.toArray(new String[paraList_tRunJob_2.size()]));
+		
+            if(childJob_tRunJob_2.getErrorCode() == null){
+                globalMap.put("tRunJob_2_CHILD_RETURN_CODE", childJob_tRunJob_2.getStatus() != null && ("failure").equals(childJob_tRunJob_2.getStatus()) ? 1 : 0);
+            }else{
+                globalMap.put("tRunJob_2_CHILD_RETURN_CODE", childJob_tRunJob_2.getErrorCode());
+            }
+            if (childJob_tRunJob_2.getExceptionStackTrace() != null) {
+                globalMap.put("tRunJob_2_CHILD_EXCEPTION_STACKTRACE", childJob_tRunJob_2.getExceptionStackTrace());
+            }
+                    errorCode = childJob_tRunJob_2.getErrorCode();
+                if (childJob_tRunJob_2.getErrorCode() != null || ("failure").equals(childJob_tRunJob_2.getStatus())) {
+                    java.lang.Exception ce_tRunJob_2 = childJob_tRunJob_2.getException();
+                    throw new RuntimeException("Child job running failed.\n" + ((ce_tRunJob_2!=null) ? (ce_tRunJob_2.getClass().getName() + ": " + ce_tRunJob_2.getMessage()) : ""));
+                }
 
  
 
 
-	tos_count_tMongoDBConnection_1++;
+	tos_count_tRunJob_2++;
 
 /**
- * [tMongoDBConnection_1 main ] stop
+ * [tRunJob_2 main ] stop
  */
 	
 	/**
-	 * [tMongoDBConnection_1 process_data_begin ] start
+	 * [tRunJob_2 process_data_begin ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBConnection_1";
+	currentComponent="tRunJob_2";
 
 	
 
@@ -963,18 +1320,18 @@ final String applicationName_tMongoDBConnection_1 = "Talend";
 
 
 /**
- * [tMongoDBConnection_1 process_data_begin ] stop
+ * [tRunJob_2 process_data_begin ] stop
  */
 	
 	/**
-	 * [tMongoDBConnection_1 process_data_end ] start
+	 * [tRunJob_2 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBConnection_1";
+	currentComponent="tRunJob_2";
 
 	
 
@@ -983,4721 +1340,35 @@ final String applicationName_tMongoDBConnection_1 = "Talend";
 
 
 /**
- * [tMongoDBConnection_1 process_data_end ] stop
+ * [tRunJob_2 process_data_end ] stop
  */
 	
 	/**
-	 * [tMongoDBConnection_1 end ] start
+	 * [tRunJob_2 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBConnection_1";
+	currentComponent="tRunJob_2";
 
 	
 
  
 
-ok_Hash.put("tMongoDBConnection_1", true);
-end_Hash.put("tMongoDBConnection_1", System.currentTimeMillis());
+ok_Hash.put("tRunJob_2", true);
+end_Hash.put("tRunJob_2", System.currentTimeMillis());
 
 				if(execStat){   
    	 				runStat.updateStatOnConnection("OnComponentOk2", 0, "ok");
-				}
-				tFixedFlowInput_1Process(globalMap);
-
-
-
-/**
- * [tMongoDBConnection_1 end ] stop
- */
-				}//end the resume
-
-				
-
-
-
-	
-			}catch(java.lang.Exception e){	
-				
-				TalendException te = new TalendException(e, currentComponent, globalMap);
-				
-				throw te;
-			}catch(java.lang.Error error){	
-				
-					runStat.stopThreadStat();
-				
-				throw error;
-			}finally{
-				
-				try{
-					
-	
-	/**
-	 * [tMongoDBConnection_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBConnection_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBConnection_1 finally ] stop
- */
-				}catch(java.lang.Exception e){	
-					//ignore
-				}catch(java.lang.Error error){
-					//ignore
-				}
-				resourceMap = null;
-			}
-		
-
-		globalMap.put("tMongoDBConnection_1_SUBPROCESS_STATE", 1);
-	}
-	
-
-
-public static class row3Struct implements routines.system.IPersistableRow<row3Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadBronze = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadBronze = new byte[0];
-
-	
-			    public Byte dummy;
-
-				public Byte getDummy () {
-					return this.dummy;
-				}
-				
-
-
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-			            length = dis.readByte();
-           				if (length == -1) {
-           	    			this.dummy = null;
-           				} else {
-           			    	this.dummy = dis.readByte();
-           				}
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-			            length = dis.readByte();
-           				if (length == -1) {
-           	    			this.dummy = null;
-           				} else {
-           			    	this.dummy = dis.readByte();
-           				}
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// Byte
-				
-						if(this.dummy == null) {
-			                dos.writeByte(-1);
-						} else {
-               				dos.writeByte(0);
-           			    	dos.writeByte(this.dummy);
-		            	}
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// Byte
-				
-						if(this.dummy == null) {
-			                dos.writeByte(-1);
-						} else {
-               				dos.writeByte(0);
-           			    	dos.writeByte(this.dummy);
-		            	}
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("dummy="+String.valueOf(dummy));
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row3Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-public void tFixedFlowInput_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tFixedFlowInput_1_SUBPROCESS_STATE", 0);
-
- final boolean execStat = this.execStat;
-	
-		String iterateId = "";
-	
-	
-	String currentComponent = "";
-	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-	try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { //start the resume
-				globalResumeTicket = true;
-
-
-
-		row3Struct row3 = new row3Struct();
-
-
-
-
-	
-	/**
-	 * [tMongoDBOutput_2 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tMongoDBOutput_2", false);
-		start_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
-		
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row3");
-					}
-				
-		int tos_count_tMongoDBOutput_2 = 0;
-		
-
-	
-
-        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-
-final String applicationName_tMongoDBOutput_2 = "Talend";
-
-    int nb_line_tMongoDBOutput_2 = 0;
-
-			class DBObjectUtil_tMongoDBOutput_2 {
-				
-				private org.bson.Document object = null;
-				//Put value to embedded document
-				//If have no embedded document, put the value to root document
-				public void put(String parentNode, String curentName, Object value) {
-					if (parentNode == null || "".equals(parentNode)) {
-						object.put(curentName, value);
-					} else {
-						String objNames[]= parentNode.split("\\.");
-						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
-						lastNode.put(curentName, value);
-						org.bson.Document parenttNode = null;
-						for (int i = objNames.length - 1; i >=0; i--) {
-							parenttNode=getParentNode(parentNode, i-1);
-							parenttNode.put(objNames[i], lastNode);
-							lastNode=clone(parenttNode);
-						}
-						object=lastNode;
-					}
-				}
-				
-				private org.bson.Document clone(org.bson.Document source){
-					org.bson.Document to = new org.bson.Document();
-					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
-						to.append(cur.getKey(), cur.getValue());
-					}
-					return to;
-				}
-				
-				//Get node(embedded document) by path configuration
-				public org.bson.Document getParentNode(String parentNode, int index) {
-					org.bson.Document document = object;
-					if (parentNode == null || "".equals(parentNode)) {
-						return object;
-					} else {
-						String objNames[] = parentNode.split("\\.");
-						for (int i = 0; i <= index; i++) {
-							document = (org.bson.Document) document
-									.get(objNames[i]);
-							if (document == null) {
-								document = new org.bson.Document();
-								return document;
-							}
-							if (i == index) {
-								break;
-							}
-						}
-						return document;
-					}
-				}
-				
-				public void putkeyNode(String parentNode, String curentName, Object value){
-					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
-						put(parentNode, curentName, value);
-					}else{
-						put("", parentNode+"."+curentName, value);
-					}
-				}
-			
-				public org.bson.Document getObject() {
-					return this.object;
-				}
-				
-				public void setObject(org.bson.Document object){
-					this.object=object;
-				}
-			
-			}
-            DBObjectUtil_tMongoDBOutput_2 updateObjectUtil_tMongoDBOutput_2=new DBObjectUtil_tMongoDBOutput_2();
-            DBObjectUtil_tMongoDBOutput_2 queryObjectUtil_tMongoDBOutput_2=new DBObjectUtil_tMongoDBOutput_2();
-            java.util.Map<String, String> pathMap_tMongoDBOutput_2=new java.util.HashMap<>();
-
-                pathMap_tMongoDBOutput_2.put("dummy","");
-
-
-
-
-    // Declarations
-    com.mongodb.client.MongoClient mongo_tMongoDBOutput_2=null;
-    com.mongodb.client.MongoDatabase db_tMongoDBOutput_2=null;
-
-        mongo_tMongoDBOutput_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
-        db_tMongoDBOutput_2 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
-
-    com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_2 = db_tMongoDBOutput_2.getCollection(context.mongodb_collection_bronze);
-
-
- 
-
-
-
-/**
- * [tMongoDBOutput_2 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tFixedFlowInput_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tFixedFlowInput_1", false);
-		start_Hash.put("tFixedFlowInput_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-		int tos_count_tFixedFlowInput_1 = 0;
-		
-
-	    for (int i_tFixedFlowInput_1 = 0 ; i_tFixedFlowInput_1 < 1 ; i_tFixedFlowInput_1++) {
-	                	            	
-    	            		row3.dummy = 1;
-    	            	
-
- 
-
-
-
-/**
- * [tFixedFlowInput_1 begin ] stop
- */
-	
-	/**
-	 * [tFixedFlowInput_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-
- 
-
-
-	tos_count_tFixedFlowInput_1++;
-
-/**
- * [tFixedFlowInput_1 main ] stop
- */
-	
-	/**
-	 * [tFixedFlowInput_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-
- 
-
-
-
-/**
- * [tFixedFlowInput_1 process_data_begin ] stop
- */
-
-	
-	/**
-	 * [tMongoDBOutput_2 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row3"
-						
-						);
-					}
-					
-
-	
-try{
-				updateObjectUtil_tMongoDBOutput_2.setObject(new org.bson.Document());
-				
-				
-
-				
-					queryObjectUtil_tMongoDBOutput_2.setObject(new org.bson.Document());
-					int countKey_tMongoDBOutput_2=0;
-				
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("dummy"),"dummy", row3.dummy);
-				org.bson.Document updateObj_tMongoDBOutput_2 = updateObjectUtil_tMongoDBOutput_2.getObject();
-				
-					if(countKey_tMongoDBOutput_2 <=0){
-						
-							System.err.println("Must have at least one key in schema");
-						
-					}else{
-						org.bson.Document queryObj_tMongoDBOutput_2 = queryObjectUtil_tMongoDBOutput_2.getObject();
-						
-									coll_tMongoDBOutput_2.deleteMany(queryObj_tMongoDBOutput_2);
-									
-					}
-				
-				} catch (Exception e_tMongoDBOutput_2) {
-				
-    					
-    						System.err.println(e_tMongoDBOutput_2.getMessage());
-    					
-    			}
-				nb_line_tMongoDBOutput_2 ++;
-				
- 
-
-
-	tos_count_tMongoDBOutput_2++;
-
-/**
- * [tMongoDBOutput_2 main ] stop
- */
-	
-	/**
-	 * [tMongoDBOutput_2 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBOutput_2 process_data_begin ] stop
- */
-	
-	/**
-	 * [tMongoDBOutput_2 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBOutput_2 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tFixedFlowInput_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-
- 
-
-
-
-/**
- * [tFixedFlowInput_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tFixedFlowInput_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-
-        }
-        globalMap.put("tFixedFlowInput_1_NB_LINE", 1);        
-
- 
-
-ok_Hash.put("tFixedFlowInput_1", true);
-end_Hash.put("tFixedFlowInput_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tFixedFlowInput_1 end ] stop
- */
-
-	
-	/**
-	 * [tMongoDBOutput_2 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-
-	globalMap.put("tMongoDBOutput_2_NB_LINE", nb_line_tMongoDBOutput_2);
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
-			  	}
-			  	
- 
-
-ok_Hash.put("tMongoDBOutput_2", true);
-end_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
-
-				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk6", 0, "ok");
-				}
-				tLoop_1Process(globalMap);
-
-
-
-/**
- * [tMongoDBOutput_2 end ] stop
- */
-
-
-
-				}//end the resume
-
-				
-
-
-
-	
-			}catch(java.lang.Exception e){	
-				
-				TalendException te = new TalendException(e, currentComponent, globalMap);
-				
-				throw te;
-			}catch(java.lang.Error error){	
-				
-					runStat.stopThreadStat();
-				
-				throw error;
-			}finally{
-				
-				try{
-					
-	
-	/**
-	 * [tFixedFlowInput_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tFixedFlowInput_1";
-
-	
-
- 
-
-
-
-/**
- * [tFixedFlowInput_1 finally ] stop
- */
-
-	
-	/**
-	 * [tMongoDBOutput_2 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_2";
-
-	
-
-
- 
-
-
-
-/**
- * [tMongoDBOutput_2 finally ] stop
- */
-
-
-
-				}catch(java.lang.Exception e){	
-					//ignore
-				}catch(java.lang.Error error){
-					//ignore
-				}
-				resourceMap = null;
-			}
-		
-
-		globalMap.put("tFixedFlowInput_1_SUBPROCESS_STATE", 1);
-	}
-	
-
-public void tLoop_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tLoop_1_SUBPROCESS_STATE", 0);
-
- final boolean execStat = this.execStat;
-	
-		String iterateId = "";
-	
-	
-	String currentComponent = "";
-	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-	try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { //start the resume
-				globalResumeTicket = true;
-
-
-
-		
-
-
-	
-	/**
-	 * [tLoop_1 begin ] start
-	 */
-
-				
-			int NB_ITERATE_tJava_1 = 0; //for statistics
-			
-
-	
-		
-		ok_Hash.put("tLoop_1", false);
-		start_Hash.put("tLoop_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tLoop_1";
-
-	
-		int tos_count_tLoop_1 = 0;
-		
-
-int current_iteration_tLoop_1 = 0;
-
-for(int looptLoop_1 =97; looptLoop_1<=122; looptLoop_1=looptLoop_1+1){
-	
-current_iteration_tLoop_1++;
-globalMap.put("tLoop_1_CURRENT_VALUE",looptLoop_1);
-globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
-
-
- 
-
-
-
-/**
- * [tLoop_1 begin ] stop
- */
-	
-	/**
-	 * [tLoop_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tLoop_1";
-
-	
-
- 
-
-
-	tos_count_tLoop_1++;
-
-/**
- * [tLoop_1 main ] stop
- */
-	
-	/**
-	 * [tLoop_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tLoop_1";
-
-	
-
- 
-
-
-
-/**
- * [tLoop_1 process_data_begin ] stop
- */
-	NB_ITERATE_tJava_1++;
-	
-	
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row1", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("OnComponentOk3", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row2", 3, 0);
-					}           			
-				
-				if(execStat){
-					runStat.updateStatOnConnection("iterate1", 1, "exec" + NB_ITERATE_tJava_1);
-					//Thread.sleep(1000);
-				}				
-			
-
-	
-	/**
-	 * [tJava_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tJava_1", false);
-		start_Hash.put("tJava_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tJava_1";
-
-	
-		int tos_count_tJava_1 = 0;
-		
-
-
-context.letter = String.valueOf((char) ((Integer)globalMap.get("tLoop_1_CURRENT_VALUE")).intValue());
- 
-
-
-
-/**
- * [tJava_1 begin ] stop
- */
-	
-	/**
-	 * [tJava_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJava_1";
-
-	
-
- 
-
-
-	tos_count_tJava_1++;
-
-/**
- * [tJava_1 main ] stop
- */
-	
-	/**
-	 * [tJava_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJava_1";
-
-	
-
- 
-
-
-
-/**
- * [tJava_1 process_data_begin ] stop
- */
-	
-	/**
-	 * [tJava_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJava_1";
-
-	
-
- 
-
-
-
-/**
- * [tJava_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tJava_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJava_1";
-
-	
-
- 
-
-ok_Hash.put("tJava_1", true);
-end_Hash.put("tJava_1", System.currentTimeMillis());
-
-				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
-				}
-				tREST_1Process(globalMap);
-
-
-
-/**
- * [tJava_1 end ] stop
- */
-						if(execStat){
-							runStat.updateStatOnConnection("iterate1", 2, "exec" + NB_ITERATE_tJava_1);
-						}				
-					
-
-
-
-
-	
-	/**
-	 * [tLoop_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tLoop_1";
-
-	
-
- 
-
-
-
-/**
- * [tLoop_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tLoop_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tLoop_1";
-
-	
-
-
-	}
-
-
- 
-
-ok_Hash.put("tLoop_1", true);
-end_Hash.put("tLoop_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tLoop_1 end ] stop
- */
-				}//end the resume
-
-				
-				    			if(resumeEntryMethodName == null || globalResumeTicket){
-				    				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tLoop_1:OnSubjobOk", "", Thread.currentThread().getId() + "", "", "", "", "", "");
-								}	    				    			
-					    	
-								if(execStat){    	
-									runStat.updateStatOnConnection("OnSubjobOk1", 0, "ok");
-								} 
-							
-							tMongoDBClose_1Process(globalMap); 
-						
-
-
-
-	
-			}catch(java.lang.Exception e){	
-				
-				TalendException te = new TalendException(e, currentComponent, globalMap);
-				
-				throw te;
-			}catch(java.lang.Error error){	
-				
-					runStat.stopThreadStat();
-				
-				throw error;
-			}finally{
-				
-				try{
-					
-	
-	/**
-	 * [tLoop_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tLoop_1";
-
-	
-
- 
-
-
-
-/**
- * [tLoop_1 finally ] stop
- */
-
-	
-	/**
-	 * [tJava_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJava_1";
-
-	
-
- 
-
-
-
-/**
- * [tJava_1 finally ] stop
- */
-
-
-
-				}catch(java.lang.Exception e){	
-					//ignore
-				}catch(java.lang.Error error){
-					//ignore
-				}
-				resourceMap = null;
-			}
-		
-
-		globalMap.put("tLoop_1_SUBPROCESS_STATE", 1);
-	}
-	
-
-
-public static class row2Struct implements routines.system.IPersistableRow<row2Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadBronze = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadBronze = new byte[0];
-
-	
-			    public String idMeal;
-
-				public String getIdMeal () {
-					return this.idMeal;
-				}
-				
-			    public String strMeal;
-
-				public String getStrMeal () {
-					return this.strMeal;
-				}
-				
-			    public String strCategory;
-
-				public String getStrCategory () {
-					return this.strCategory;
-				}
-				
-			    public String strArea;
-
-				public String getStrArea () {
-					return this.strArea;
-				}
-				
-			    public String strInstructions;
-
-				public String getStrInstructions () {
-					return this.strInstructions;
-				}
-				
-			    public String strIngredient1;
-
-				public String getStrIngredient1 () {
-					return this.strIngredient1;
-				}
-				
-			    public String strIngredient2;
-
-				public String getStrIngredient2 () {
-					return this.strIngredient2;
-				}
-				
-			    public String strIngredient3;
-
-				public String getStrIngredient3 () {
-					return this.strIngredient3;
-				}
-				
-			    public String strIngredient4;
-
-				public String getStrIngredient4 () {
-					return this.strIngredient4;
-				}
-				
-			    public String strIngredient5;
-
-				public String getStrIngredient5 () {
-					return this.strIngredient5;
-				}
-				
-			    public String strIngredient6;
-
-				public String getStrIngredient6 () {
-					return this.strIngredient6;
-				}
-				
-			    public String strIngredient7;
-
-				public String getStrIngredient7 () {
-					return this.strIngredient7;
-				}
-				
-			    public String strIngredient8;
-
-				public String getStrIngredient8 () {
-					return this.strIngredient8;
-				}
-				
-			    public String strIngredient9;
-
-				public String getStrIngredient9 () {
-					return this.strIngredient9;
-				}
-				
-			    public String strIngredient10;
-
-				public String getStrIngredient10 () {
-					return this.strIngredient10;
-				}
-				
-			    public String strIngredient11;
-
-				public String getStrIngredient11 () {
-					return this.strIngredient11;
-				}
-				
-			    public String strIngredient12;
-
-				public String getStrIngredient12 () {
-					return this.strIngredient12;
-				}
-				
-			    public String strIngredient13;
-
-				public String getStrIngredient13 () {
-					return this.strIngredient13;
-				}
-				
-			    public String strIngredient14;
-
-				public String getStrIngredient14 () {
-					return this.strIngredient14;
-				}
-				
-			    public String strIngredient15;
-
-				public String getStrIngredient15 () {
-					return this.strIngredient15;
-				}
-				
-			    public String strIngredient16;
-
-				public String getStrIngredient16 () {
-					return this.strIngredient16;
-				}
-				
-			    public String strIngredient17;
-
-				public String getStrIngredient17 () {
-					return this.strIngredient17;
-				}
-				
-			    public String strIngredient18;
-
-				public String getStrIngredient18 () {
-					return this.strIngredient18;
-				}
-				
-			    public String strIngredient19;
-
-				public String getStrIngredient19 () {
-					return this.strIngredient19;
-				}
-				
-			    public String strIngredient20;
-
-				public String getStrIngredient20 () {
-					return this.strIngredient20;
-				}
-				
-			    public String strMeasure1;
-
-				public String getStrMeasure1 () {
-					return this.strMeasure1;
-				}
-				
-			    public String strMeasure2;
-
-				public String getStrMeasure2 () {
-					return this.strMeasure2;
-				}
-				
-			    public String strMeasure3;
-
-				public String getStrMeasure3 () {
-					return this.strMeasure3;
-				}
-				
-			    public String strMeasure4;
-
-				public String getStrMeasure4 () {
-					return this.strMeasure4;
-				}
-				
-			    public String strMeasure5;
-
-				public String getStrMeasure5 () {
-					return this.strMeasure5;
-				}
-				
-			    public String strMeasure6;
-
-				public String getStrMeasure6 () {
-					return this.strMeasure6;
-				}
-				
-			    public String strMeasure7;
-
-				public String getStrMeasure7 () {
-					return this.strMeasure7;
-				}
-				
-			    public String strMeasure8;
-
-				public String getStrMeasure8 () {
-					return this.strMeasure8;
-				}
-				
-			    public String strMeasure9;
-
-				public String getStrMeasure9 () {
-					return this.strMeasure9;
-				}
-				
-			    public String strMeasure10;
-
-				public String getStrMeasure10 () {
-					return this.strMeasure10;
-				}
-				
-			    public String strMeasure11;
-
-				public String getStrMeasure11 () {
-					return this.strMeasure11;
-				}
-				
-			    public String strMeasure12;
-
-				public String getStrMeasure12 () {
-					return this.strMeasure12;
-				}
-				
-			    public String strMeasure13;
-
-				public String getStrMeasure13 () {
-					return this.strMeasure13;
-				}
-				
-			    public String strMeasure14;
-
-				public String getStrMeasure14 () {
-					return this.strMeasure14;
-				}
-				
-			    public String strMeasure15;
-
-				public String getStrMeasure15 () {
-					return this.strMeasure15;
-				}
-				
-			    public String strMeasure16;
-
-				public String getStrMeasure16 () {
-					return this.strMeasure16;
-				}
-				
-			    public String strMeasure17;
-
-				public String getStrMeasure17 () {
-					return this.strMeasure17;
-				}
-				
-			    public String strMeasure18;
-
-				public String getStrMeasure18 () {
-					return this.strMeasure18;
-				}
-				
-			    public String strMeasure19;
-
-				public String getStrMeasure19 () {
-					return this.strMeasure19;
-				}
-				
-			    public String strMeasure20;
-
-				public String getStrMeasure20 () {
-					return this.strMeasure20;
-				}
-				
-			    public String strMealAlternate;
-
-				public String getStrMealAlternate () {
-					return this.strMealAlternate;
-				}
-				
-			    public String strMealThumb;
-
-				public String getStrMealThumb () {
-					return this.strMealThumb;
-				}
-				
-			    public String strTags;
-
-				public String getStrTags () {
-					return this.strTags;
-				}
-				
-			    public String strYoutube;
-
-				public String getStrYoutube () {
-					return this.strYoutube;
-				}
-				
-			    public String strSource;
-
-				public String getStrSource () {
-					return this.strSource;
-				}
-				
-			    public String strImageSource;
-
-				public String getStrImageSource () {
-					return this.strImageSource;
-				}
-				
-			    public String strCreativeCommonsConfirmed;
-
-				public String getStrCreativeCommonsConfirmed () {
-					return this.strCreativeCommonsConfirmed;
-				}
-				
-			    public String dateModified;
-
-				public String getDateModified () {
-					return this.dateModified;
-				}
-				
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadBronze.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadBronze.length == 0) {
-   					commonByteArray_PROJECT_LoadBronze = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadBronze = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadBronze, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadBronze, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadBronze.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadBronze.length == 0) {
-   					commonByteArray_PROJECT_LoadBronze = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadBronze = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadBronze, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadBronze, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.idMeal = readString(dis);
-					
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.strIngredient1 = readString(dis);
-					
-					this.strIngredient2 = readString(dis);
-					
-					this.strIngredient3 = readString(dis);
-					
-					this.strIngredient4 = readString(dis);
-					
-					this.strIngredient5 = readString(dis);
-					
-					this.strIngredient6 = readString(dis);
-					
-					this.strIngredient7 = readString(dis);
-					
-					this.strIngredient8 = readString(dis);
-					
-					this.strIngredient9 = readString(dis);
-					
-					this.strIngredient10 = readString(dis);
-					
-					this.strIngredient11 = readString(dis);
-					
-					this.strIngredient12 = readString(dis);
-					
-					this.strIngredient13 = readString(dis);
-					
-					this.strIngredient14 = readString(dis);
-					
-					this.strIngredient15 = readString(dis);
-					
-					this.strIngredient16 = readString(dis);
-					
-					this.strIngredient17 = readString(dis);
-					
-					this.strIngredient18 = readString(dis);
-					
-					this.strIngredient19 = readString(dis);
-					
-					this.strIngredient20 = readString(dis);
-					
-					this.strMeasure1 = readString(dis);
-					
-					this.strMeasure2 = readString(dis);
-					
-					this.strMeasure3 = readString(dis);
-					
-					this.strMeasure4 = readString(dis);
-					
-					this.strMeasure5 = readString(dis);
-					
-					this.strMeasure6 = readString(dis);
-					
-					this.strMeasure7 = readString(dis);
-					
-					this.strMeasure8 = readString(dis);
-					
-					this.strMeasure9 = readString(dis);
-					
-					this.strMeasure10 = readString(dis);
-					
-					this.strMeasure11 = readString(dis);
-					
-					this.strMeasure12 = readString(dis);
-					
-					this.strMeasure13 = readString(dis);
-					
-					this.strMeasure14 = readString(dis);
-					
-					this.strMeasure15 = readString(dis);
-					
-					this.strMeasure16 = readString(dis);
-					
-					this.strMeasure17 = readString(dis);
-					
-					this.strMeasure18 = readString(dis);
-					
-					this.strMeasure19 = readString(dis);
-					
-					this.strMeasure20 = readString(dis);
-					
-					this.strMealAlternate = readString(dis);
-					
-					this.strMealThumb = readString(dis);
-					
-					this.strTags = readString(dis);
-					
-					this.strYoutube = readString(dis);
-					
-					this.strSource = readString(dis);
-					
-					this.strImageSource = readString(dis);
-					
-					this.strCreativeCommonsConfirmed = readString(dis);
-					
-					this.dateModified = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.idMeal = readString(dis);
-					
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.strIngredient1 = readString(dis);
-					
-					this.strIngredient2 = readString(dis);
-					
-					this.strIngredient3 = readString(dis);
-					
-					this.strIngredient4 = readString(dis);
-					
-					this.strIngredient5 = readString(dis);
-					
-					this.strIngredient6 = readString(dis);
-					
-					this.strIngredient7 = readString(dis);
-					
-					this.strIngredient8 = readString(dis);
-					
-					this.strIngredient9 = readString(dis);
-					
-					this.strIngredient10 = readString(dis);
-					
-					this.strIngredient11 = readString(dis);
-					
-					this.strIngredient12 = readString(dis);
-					
-					this.strIngredient13 = readString(dis);
-					
-					this.strIngredient14 = readString(dis);
-					
-					this.strIngredient15 = readString(dis);
-					
-					this.strIngredient16 = readString(dis);
-					
-					this.strIngredient17 = readString(dis);
-					
-					this.strIngredient18 = readString(dis);
-					
-					this.strIngredient19 = readString(dis);
-					
-					this.strIngredient20 = readString(dis);
-					
-					this.strMeasure1 = readString(dis);
-					
-					this.strMeasure2 = readString(dis);
-					
-					this.strMeasure3 = readString(dis);
-					
-					this.strMeasure4 = readString(dis);
-					
-					this.strMeasure5 = readString(dis);
-					
-					this.strMeasure6 = readString(dis);
-					
-					this.strMeasure7 = readString(dis);
-					
-					this.strMeasure8 = readString(dis);
-					
-					this.strMeasure9 = readString(dis);
-					
-					this.strMeasure10 = readString(dis);
-					
-					this.strMeasure11 = readString(dis);
-					
-					this.strMeasure12 = readString(dis);
-					
-					this.strMeasure13 = readString(dis);
-					
-					this.strMeasure14 = readString(dis);
-					
-					this.strMeasure15 = readString(dis);
-					
-					this.strMeasure16 = readString(dis);
-					
-					this.strMeasure17 = readString(dis);
-					
-					this.strMeasure18 = readString(dis);
-					
-					this.strMeasure19 = readString(dis);
-					
-					this.strMeasure20 = readString(dis);
-					
-					this.strMealAlternate = readString(dis);
-					
-					this.strMealThumb = readString(dis);
-					
-					this.strTags = readString(dis);
-					
-					this.strYoutube = readString(dis);
-					
-					this.strSource = readString(dis);
-					
-					this.strImageSource = readString(dis);
-					
-					this.strCreativeCommonsConfirmed = readString(dis);
-					
-					this.dateModified = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.idMeal,dos);
-					
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.strIngredient1,dos);
-					
-					// String
-				
-						writeString(this.strIngredient2,dos);
-					
-					// String
-				
-						writeString(this.strIngredient3,dos);
-					
-					// String
-				
-						writeString(this.strIngredient4,dos);
-					
-					// String
-				
-						writeString(this.strIngredient5,dos);
-					
-					// String
-				
-						writeString(this.strIngredient6,dos);
-					
-					// String
-				
-						writeString(this.strIngredient7,dos);
-					
-					// String
-				
-						writeString(this.strIngredient8,dos);
-					
-					// String
-				
-						writeString(this.strIngredient9,dos);
-					
-					// String
-				
-						writeString(this.strIngredient10,dos);
-					
-					// String
-				
-						writeString(this.strIngredient11,dos);
-					
-					// String
-				
-						writeString(this.strIngredient12,dos);
-					
-					// String
-				
-						writeString(this.strIngredient13,dos);
-					
-					// String
-				
-						writeString(this.strIngredient14,dos);
-					
-					// String
-				
-						writeString(this.strIngredient15,dos);
-					
-					// String
-				
-						writeString(this.strIngredient16,dos);
-					
-					// String
-				
-						writeString(this.strIngredient17,dos);
-					
-					// String
-				
-						writeString(this.strIngredient18,dos);
-					
-					// String
-				
-						writeString(this.strIngredient19,dos);
-					
-					// String
-				
-						writeString(this.strIngredient20,dos);
-					
-					// String
-				
-						writeString(this.strMeasure1,dos);
-					
-					// String
-				
-						writeString(this.strMeasure2,dos);
-					
-					// String
-				
-						writeString(this.strMeasure3,dos);
-					
-					// String
-				
-						writeString(this.strMeasure4,dos);
-					
-					// String
-				
-						writeString(this.strMeasure5,dos);
-					
-					// String
-				
-						writeString(this.strMeasure6,dos);
-					
-					// String
-				
-						writeString(this.strMeasure7,dos);
-					
-					// String
-				
-						writeString(this.strMeasure8,dos);
-					
-					// String
-				
-						writeString(this.strMeasure9,dos);
-					
-					// String
-				
-						writeString(this.strMeasure10,dos);
-					
-					// String
-				
-						writeString(this.strMeasure11,dos);
-					
-					// String
-				
-						writeString(this.strMeasure12,dos);
-					
-					// String
-				
-						writeString(this.strMeasure13,dos);
-					
-					// String
-				
-						writeString(this.strMeasure14,dos);
-					
-					// String
-				
-						writeString(this.strMeasure15,dos);
-					
-					// String
-				
-						writeString(this.strMeasure16,dos);
-					
-					// String
-				
-						writeString(this.strMeasure17,dos);
-					
-					// String
-				
-						writeString(this.strMeasure18,dos);
-					
-					// String
-				
-						writeString(this.strMeasure19,dos);
-					
-					// String
-				
-						writeString(this.strMeasure20,dos);
-					
-					// String
-				
-						writeString(this.strMealAlternate,dos);
-					
-					// String
-				
-						writeString(this.strMealThumb,dos);
-					
-					// String
-				
-						writeString(this.strTags,dos);
-					
-					// String
-				
-						writeString(this.strYoutube,dos);
-					
-					// String
-				
-						writeString(this.strSource,dos);
-					
-					// String
-				
-						writeString(this.strImageSource,dos);
-					
-					// String
-				
-						writeString(this.strCreativeCommonsConfirmed,dos);
-					
-					// String
-				
-						writeString(this.dateModified,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.idMeal,dos);
-					
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.strIngredient1,dos);
-					
-					// String
-				
-						writeString(this.strIngredient2,dos);
-					
-					// String
-				
-						writeString(this.strIngredient3,dos);
-					
-					// String
-				
-						writeString(this.strIngredient4,dos);
-					
-					// String
-				
-						writeString(this.strIngredient5,dos);
-					
-					// String
-				
-						writeString(this.strIngredient6,dos);
-					
-					// String
-				
-						writeString(this.strIngredient7,dos);
-					
-					// String
-				
-						writeString(this.strIngredient8,dos);
-					
-					// String
-				
-						writeString(this.strIngredient9,dos);
-					
-					// String
-				
-						writeString(this.strIngredient10,dos);
-					
-					// String
-				
-						writeString(this.strIngredient11,dos);
-					
-					// String
-				
-						writeString(this.strIngredient12,dos);
-					
-					// String
-				
-						writeString(this.strIngredient13,dos);
-					
-					// String
-				
-						writeString(this.strIngredient14,dos);
-					
-					// String
-				
-						writeString(this.strIngredient15,dos);
-					
-					// String
-				
-						writeString(this.strIngredient16,dos);
-					
-					// String
-				
-						writeString(this.strIngredient17,dos);
-					
-					// String
-				
-						writeString(this.strIngredient18,dos);
-					
-					// String
-				
-						writeString(this.strIngredient19,dos);
-					
-					// String
-				
-						writeString(this.strIngredient20,dos);
-					
-					// String
-				
-						writeString(this.strMeasure1,dos);
-					
-					// String
-				
-						writeString(this.strMeasure2,dos);
-					
-					// String
-				
-						writeString(this.strMeasure3,dos);
-					
-					// String
-				
-						writeString(this.strMeasure4,dos);
-					
-					// String
-				
-						writeString(this.strMeasure5,dos);
-					
-					// String
-				
-						writeString(this.strMeasure6,dos);
-					
-					// String
-				
-						writeString(this.strMeasure7,dos);
-					
-					// String
-				
-						writeString(this.strMeasure8,dos);
-					
-					// String
-				
-						writeString(this.strMeasure9,dos);
-					
-					// String
-				
-						writeString(this.strMeasure10,dos);
-					
-					// String
-				
-						writeString(this.strMeasure11,dos);
-					
-					// String
-				
-						writeString(this.strMeasure12,dos);
-					
-					// String
-				
-						writeString(this.strMeasure13,dos);
-					
-					// String
-				
-						writeString(this.strMeasure14,dos);
-					
-					// String
-				
-						writeString(this.strMeasure15,dos);
-					
-					// String
-				
-						writeString(this.strMeasure16,dos);
-					
-					// String
-				
-						writeString(this.strMeasure17,dos);
-					
-					// String
-				
-						writeString(this.strMeasure18,dos);
-					
-					// String
-				
-						writeString(this.strMeasure19,dos);
-					
-					// String
-				
-						writeString(this.strMeasure20,dos);
-					
-					// String
-				
-						writeString(this.strMealAlternate,dos);
-					
-					// String
-				
-						writeString(this.strMealThumb,dos);
-					
-					// String
-				
-						writeString(this.strTags,dos);
-					
-					// String
-				
-						writeString(this.strYoutube,dos);
-					
-					// String
-				
-						writeString(this.strSource,dos);
-					
-					// String
-				
-						writeString(this.strImageSource,dos);
-					
-					// String
-				
-						writeString(this.strCreativeCommonsConfirmed,dos);
-					
-					// String
-				
-						writeString(this.dateModified,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("idMeal="+idMeal);
-		sb.append(",strMeal="+strMeal);
-		sb.append(",strCategory="+strCategory);
-		sb.append(",strArea="+strArea);
-		sb.append(",strInstructions="+strInstructions);
-		sb.append(",strIngredient1="+strIngredient1);
-		sb.append(",strIngredient2="+strIngredient2);
-		sb.append(",strIngredient3="+strIngredient3);
-		sb.append(",strIngredient4="+strIngredient4);
-		sb.append(",strIngredient5="+strIngredient5);
-		sb.append(",strIngredient6="+strIngredient6);
-		sb.append(",strIngredient7="+strIngredient7);
-		sb.append(",strIngredient8="+strIngredient8);
-		sb.append(",strIngredient9="+strIngredient9);
-		sb.append(",strIngredient10="+strIngredient10);
-		sb.append(",strIngredient11="+strIngredient11);
-		sb.append(",strIngredient12="+strIngredient12);
-		sb.append(",strIngredient13="+strIngredient13);
-		sb.append(",strIngredient14="+strIngredient14);
-		sb.append(",strIngredient15="+strIngredient15);
-		sb.append(",strIngredient16="+strIngredient16);
-		sb.append(",strIngredient17="+strIngredient17);
-		sb.append(",strIngredient18="+strIngredient18);
-		sb.append(",strIngredient19="+strIngredient19);
-		sb.append(",strIngredient20="+strIngredient20);
-		sb.append(",strMeasure1="+strMeasure1);
-		sb.append(",strMeasure2="+strMeasure2);
-		sb.append(",strMeasure3="+strMeasure3);
-		sb.append(",strMeasure4="+strMeasure4);
-		sb.append(",strMeasure5="+strMeasure5);
-		sb.append(",strMeasure6="+strMeasure6);
-		sb.append(",strMeasure7="+strMeasure7);
-		sb.append(",strMeasure8="+strMeasure8);
-		sb.append(",strMeasure9="+strMeasure9);
-		sb.append(",strMeasure10="+strMeasure10);
-		sb.append(",strMeasure11="+strMeasure11);
-		sb.append(",strMeasure12="+strMeasure12);
-		sb.append(",strMeasure13="+strMeasure13);
-		sb.append(",strMeasure14="+strMeasure14);
-		sb.append(",strMeasure15="+strMeasure15);
-		sb.append(",strMeasure16="+strMeasure16);
-		sb.append(",strMeasure17="+strMeasure17);
-		sb.append(",strMeasure18="+strMeasure18);
-		sb.append(",strMeasure19="+strMeasure19);
-		sb.append(",strMeasure20="+strMeasure20);
-		sb.append(",strMealAlternate="+strMealAlternate);
-		sb.append(",strMealThumb="+strMealThumb);
-		sb.append(",strTags="+strTags);
-		sb.append(",strYoutube="+strYoutube);
-		sb.append(",strSource="+strSource);
-		sb.append(",strImageSource="+strImageSource);
-		sb.append(",strCreativeCommonsConfirmed="+strCreativeCommonsConfirmed);
-		sb.append(",dateModified="+dateModified);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row2Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
-public static class row1Struct implements routines.system.IPersistableRow<row1Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadBronze = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadBronze = new byte[0];
-
-	
-			    public String Body;
-
-				public String getBody () {
-					return this.Body;
-				}
-				
-			    public Integer ERROR_CODE;
-
-				public Integer getERROR_CODE () {
-					return this.ERROR_CODE;
-				}
-				
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadBronze.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadBronze.length == 0) {
-   					commonByteArray_PROJECT_LoadBronze = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadBronze = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadBronze, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadBronze, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadBronze.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadBronze.length == 0) {
-   					commonByteArray_PROJECT_LoadBronze = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadBronze = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadBronze, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadBronze, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-	private Integer readInteger(ObjectInputStream dis) throws IOException{
-		Integer intReturn;
-        int length = 0;
-        length = dis.readByte();
-		if (length == -1) {
-			intReturn = null;
-		} else {
-	    	intReturn = dis.readInt();
-		}
-		return intReturn;
-	}
-	
-	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
-		Integer intReturn;
-        int length = 0;
-        length = dis.readByte();
-		if (length == -1) {
-			intReturn = null;
-		} else {
-	    	intReturn = dis.readInt();
-		}
-		return intReturn;
-	}
-
-	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
-		if(intNum == null) {
-            dos.writeByte(-1);
-		} else {
-			dos.writeByte(0);
-	    	dos.writeInt(intNum);
-    	}
-	}
-	
-	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(intNum == null) {
-			marshaller.writeByte(-1);
-		} else {
-			marshaller.writeByte(0);
-			marshaller.writeInt(intNum);
-    	}
-	}
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.Body = readString(dis);
-					
-						this.ERROR_CODE = readInteger(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadBronze) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.Body = readString(dis);
-					
-						this.ERROR_CODE = readInteger(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.Body,dos);
-					
-					// Integer
-				
-						writeInteger(this.ERROR_CODE,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.Body,dos);
-					
-					// Integer
-				
-						writeInteger(this.ERROR_CODE,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("Body="+Body);
-		sb.append(",ERROR_CODE="+String.valueOf(ERROR_CODE));
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row1Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-public void tREST_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tREST_1_SUBPROCESS_STATE", 0);
-
- final boolean execStat = this.execStat;
-	
-		String iterateId = "";
-	
-	
-	String currentComponent = "";
-	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-	try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { //start the resume
-				globalResumeTicket = true;
-
-
-
-		row1Struct row1 = new row1Struct();
-row2Struct row2 = new row2Struct();
-
-
-
-
-
-	
-	/**
-	 * [tMongoDBOutput_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tMongoDBOutput_1", false);
-		start_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row2");
-					}
-				
-		int tos_count_tMongoDBOutput_1 = 0;
-		
-
-	
-
-        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(java.util.logging.Level.SEVERE);
-
-final String applicationName_tMongoDBOutput_1 = "Talend";
-
-    int nb_line_tMongoDBOutput_1 = 0;
-
-			class DBObjectUtil_tMongoDBOutput_1 {
-				
-				private org.bson.Document object = null;
-				//Put value to embedded document
-				//If have no embedded document, put the value to root document
-				public void put(String parentNode, String curentName, Object value) {
-					if (parentNode == null || "".equals(parentNode)) {
-						object.put(curentName, value);
-					} else {
-						String objNames[]= parentNode.split("\\.");
-						org.bson.Document lastNode = getParentNode(parentNode, objNames.length-1);
-						lastNode.put(curentName, value);
-						org.bson.Document parenttNode = null;
-						for (int i = objNames.length - 1; i >=0; i--) {
-							parenttNode=getParentNode(parentNode, i-1);
-							parenttNode.put(objNames[i], lastNode);
-							lastNode=clone(parenttNode);
-						}
-						object=lastNode;
-					}
-				}
-				
-				private org.bson.Document clone(org.bson.Document source){
-					org.bson.Document to = new org.bson.Document();
-					for(java.util.Map.Entry<String,Object> cur:source.entrySet()) {
-						to.append(cur.getKey(), cur.getValue());
-					}
-					return to;
-				}
-				
-				//Get node(embedded document) by path configuration
-				public org.bson.Document getParentNode(String parentNode, int index) {
-					org.bson.Document document = object;
-					if (parentNode == null || "".equals(parentNode)) {
-						return object;
-					} else {
-						String objNames[] = parentNode.split("\\.");
-						for (int i = 0; i <= index; i++) {
-							document = (org.bson.Document) document
-									.get(objNames[i]);
-							if (document == null) {
-								document = new org.bson.Document();
-								return document;
-							}
-							if (i == index) {
-								break;
-							}
-						}
-						return document;
-					}
-				}
-				
-				public void putkeyNode(String parentNode, String curentName, Object value){
-					if (parentNode == null || "".equals(parentNode) || ".".equals(parentNode)) {
-						put(parentNode, curentName, value);
-					}else{
-						put("", parentNode+"."+curentName, value);
-					}
-				}
-			
-				public org.bson.Document getObject() {
-					return this.object;
-				}
-				
-				public void setObject(org.bson.Document object){
-					this.object=object;
-				}
-			
-			}
-            DBObjectUtil_tMongoDBOutput_1 updateObjectUtil_tMongoDBOutput_1=new DBObjectUtil_tMongoDBOutput_1();
-            DBObjectUtil_tMongoDBOutput_1 queryObjectUtil_tMongoDBOutput_1=new DBObjectUtil_tMongoDBOutput_1();
-            java.util.Map<String, String> pathMap_tMongoDBOutput_1=new java.util.HashMap<>();
-
-                pathMap_tMongoDBOutput_1.put("idMeal","");
-                pathMap_tMongoDBOutput_1.put("strMeal","");
-                pathMap_tMongoDBOutput_1.put("strCategory","");
-                pathMap_tMongoDBOutput_1.put("strArea","");
-                pathMap_tMongoDBOutput_1.put("strInstructions","");
-                pathMap_tMongoDBOutput_1.put("strIngredient1","");
-                pathMap_tMongoDBOutput_1.put("strIngredient2","");
-                pathMap_tMongoDBOutput_1.put("strIngredient3","");
-                pathMap_tMongoDBOutput_1.put("strIngredient4","");
-                pathMap_tMongoDBOutput_1.put("strIngredient5","");
-                pathMap_tMongoDBOutput_1.put("strIngredient6","");
-                pathMap_tMongoDBOutput_1.put("strIngredient7","");
-                pathMap_tMongoDBOutput_1.put("strIngredient8","");
-                pathMap_tMongoDBOutput_1.put("strIngredient9","");
-                pathMap_tMongoDBOutput_1.put("strIngredient10","");
-                pathMap_tMongoDBOutput_1.put("strIngredient11","");
-                pathMap_tMongoDBOutput_1.put("strIngredient12","");
-                pathMap_tMongoDBOutput_1.put("strIngredient13","");
-                pathMap_tMongoDBOutput_1.put("strIngredient14","");
-                pathMap_tMongoDBOutput_1.put("strIngredient15","");
-                pathMap_tMongoDBOutput_1.put("strIngredient16","");
-                pathMap_tMongoDBOutput_1.put("strIngredient17","");
-                pathMap_tMongoDBOutput_1.put("strIngredient18","");
-                pathMap_tMongoDBOutput_1.put("strIngredient19","");
-                pathMap_tMongoDBOutput_1.put("strIngredient20","");
-                pathMap_tMongoDBOutput_1.put("strMeasure1","");
-                pathMap_tMongoDBOutput_1.put("strMeasure2","");
-                pathMap_tMongoDBOutput_1.put("strMeasure3","");
-                pathMap_tMongoDBOutput_1.put("strMeasure4","");
-                pathMap_tMongoDBOutput_1.put("strMeasure5","");
-                pathMap_tMongoDBOutput_1.put("strMeasure6","");
-                pathMap_tMongoDBOutput_1.put("strMeasure7","");
-                pathMap_tMongoDBOutput_1.put("strMeasure8","");
-                pathMap_tMongoDBOutput_1.put("strMeasure9","");
-                pathMap_tMongoDBOutput_1.put("strMeasure10","");
-                pathMap_tMongoDBOutput_1.put("strMeasure11","");
-                pathMap_tMongoDBOutput_1.put("strMeasure12","");
-                pathMap_tMongoDBOutput_1.put("strMeasure13","");
-                pathMap_tMongoDBOutput_1.put("strMeasure14","");
-                pathMap_tMongoDBOutput_1.put("strMeasure15","");
-                pathMap_tMongoDBOutput_1.put("strMeasure16","");
-                pathMap_tMongoDBOutput_1.put("strMeasure17","");
-                pathMap_tMongoDBOutput_1.put("strMeasure18","");
-                pathMap_tMongoDBOutput_1.put("strMeasure19","");
-                pathMap_tMongoDBOutput_1.put("strMeasure20","");
-                pathMap_tMongoDBOutput_1.put("strMealAlternate","");
-                pathMap_tMongoDBOutput_1.put("strMealThumb","");
-                pathMap_tMongoDBOutput_1.put("strTags","");
-                pathMap_tMongoDBOutput_1.put("strYoutube","");
-                pathMap_tMongoDBOutput_1.put("strSource","");
-                pathMap_tMongoDBOutput_1.put("strImageSource","");
-                pathMap_tMongoDBOutput_1.put("strCreativeCommonsConfirmed","");
-                pathMap_tMongoDBOutput_1.put("dateModified","");
-
-
-
-
-    // Declarations
-    com.mongodb.client.MongoClient mongo_tMongoDBOutput_1=null;
-    com.mongodb.client.MongoDatabase db_tMongoDBOutput_1=null;
-
-        mongo_tMongoDBOutput_1=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
-        db_tMongoDBOutput_1 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
-
-    com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_1 = db_tMongoDBOutput_1.getCollection(context.mongodb_collection_bronze);
-
-
- 
-
-
-
-/**
- * [tMongoDBOutput_1 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tExtractJSONFields_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tExtractJSONFields_1", false);
-		start_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row1");
-					}
-				
-		int tos_count_tExtractJSONFields_1 = 0;
-		
-
-int nb_line_tExtractJSONFields_1 = 0;
-String jsonStr_tExtractJSONFields_1 = "";
-
-	
-
-class JsonPathCache_tExtractJSONFields_1 {
-	final java.util.Map<String,com.jayway.jsonpath.JsonPath> jsonPathString2compiledJsonPath = new java.util.HashMap<String,com.jayway.jsonpath.JsonPath>();
-	
-	public com.jayway.jsonpath.JsonPath getCompiledJsonPath(String jsonPath) {
-		if(jsonPathString2compiledJsonPath.containsKey(jsonPath)) {
-			return jsonPathString2compiledJsonPath.get(jsonPath);
-		} else {
-			com.jayway.jsonpath.JsonPath compiledLoopPath = com.jayway.jsonpath.JsonPath.compile(jsonPath);
-			jsonPathString2compiledJsonPath.put(jsonPath,compiledLoopPath);
-			return compiledLoopPath;
-		}
-	}
-}
-
-JsonPathCache_tExtractJSONFields_1 jsonPathCache_tExtractJSONFields_1 = new JsonPathCache_tExtractJSONFields_1();
-
- 
-
-
-
-/**
- * [tExtractJSONFields_1 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tREST_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tREST_1", false);
-		start_Hash.put("tREST_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tREST_1";
-
-	
-		int tos_count_tREST_1 = 0;
-		
-	
-
-	
-	String endpoint_tREST_1 = context.source + context.letter;
-	
-	String trustStoreFile_tREST_1 = System.getProperty("javax.net.ssl.trustStore");
-	String trustStoreType_tREST_1 = System.getProperty("javax.net.ssl.trustStoreType");
-	String trustStorePWD_tREST_1 = System.getProperty("javax.net.ssl.trustStorePassword");
-	
-	String keyStoreFile_tREST_1 = System.getProperty("javax.net.ssl.keyStore");
-	String keyStoreType_tREST_1 = System.getProperty("javax.net.ssl.keyStoreType");
-	String keyStorePWD_tREST_1 = System.getProperty("javax.net.ssl.keyStorePassword");
-	
-	com.sun.jersey.api.client.config.ClientConfig config_tREST_1 = new com.sun.jersey.api.client.config.DefaultClientConfig();
-	javax.net.ssl.SSLContext ctx_tREST_1 = javax.net.ssl.SSLContext.getInstance("SSL");
-	
-	javax.net.ssl.TrustManager[] tms_tREST_1 = null;
-	if(trustStoreFile_tREST_1!=null && trustStoreType_tREST_1!=null){
-		char[] password_tREST_1 = null;
-		if(trustStorePWD_tREST_1!=null)
-			password_tREST_1 = trustStorePWD_tREST_1.toCharArray();
-		java.security.KeyStore trustStore_tREST_1 = java.security.KeyStore.getInstance(trustStoreType_tREST_1);
-		trustStore_tREST_1.load(new java.io.FileInputStream(trustStoreFile_tREST_1), password_tREST_1);
-		
-		javax.net.ssl.TrustManagerFactory tmf_tREST_1 = javax.net.ssl.TrustManagerFactory.getInstance(javax.net.ssl.KeyManagerFactory.getDefaultAlgorithm());
-        tmf_tREST_1.init(trustStore_tREST_1);
-        tms_tREST_1 = tmf_tREST_1.getTrustManagers();
-	}
-	
-	javax.net.ssl.KeyManager[] kms_tREST_1 = null;
-	if(keyStoreFile_tREST_1!=null && keyStoreType_tREST_1!=null){
-		char[] password_tREST_1 = null;
-		if(keyStorePWD_tREST_1!=null)
-			password_tREST_1 = keyStorePWD_tREST_1.toCharArray();
-		java.security.KeyStore keyStore_tREST_1 = java.security.KeyStore.getInstance(keyStoreType_tREST_1);
-		keyStore_tREST_1.load(new java.io.FileInputStream(keyStoreFile_tREST_1), password_tREST_1);
-		
-		javax.net.ssl.KeyManagerFactory kmf_tREST_1 = javax.net.ssl.KeyManagerFactory.getInstance(javax.net.ssl.KeyManagerFactory.getDefaultAlgorithm());
-        kmf_tREST_1.init(keyStore_tREST_1,password_tREST_1);
-        kms_tREST_1 = kmf_tREST_1.getKeyManagers();
-	}
-	
-    ctx_tREST_1.init(kms_tREST_1, tms_tREST_1 , null);
-    config_tREST_1.getProperties().put(com.sun.jersey.client.urlconnection.HTTPSProperties.PROPERTY_HTTPS_PROPERTIES,
-                new com.sun.jersey.client.urlconnection.HTTPSProperties(new javax.net.ssl.HostnameVerifier() {
-
-                    public boolean verify(String hostName, javax.net.ssl.SSLSession session) {
-                        return true;
-                    }
-                }, ctx_tREST_1));
-
-	com.sun.jersey.api.client.Client restClient_tREST_1 = com.sun.jersey.api.client.Client.create(config_tREST_1);
-	
-	java.util.Map<String, Object> headers_tREST_1 = new java.util.HashMap<String, Object>();
-	
-	
-	Object transfer_encoding_tREST_1 = headers_tREST_1.get("Transfer-Encoding");
-	if(transfer_encoding_tREST_1!=null && "chunked".equals(transfer_encoding_tREST_1)) {
-		restClient_tREST_1.setChunkedEncodingSize(4096);
-	}
-	
-	com.sun.jersey.api.client.WebResource restResource_tREST_1;
-	if(endpoint_tREST_1!=null && !("").equals(endpoint_tREST_1)){
-		restResource_tREST_1 = restClient_tREST_1.resource(endpoint_tREST_1);
-	}else{
-		throw new IllegalArgumentException("url can't be empty!");
-	}
-	
-	com.sun.jersey.api.client.ClientResponse errorResponse_tREST_1 = null;
-	String restResponse_tREST_1 = "";
-	try{
-		
-		com.sun.jersey.api.client.WebResource.Builder builder_tREST_1 = null;
-		for(java.util.Map.Entry<String, Object> header_tREST_1 : headers_tREST_1.entrySet()) {
-			if(builder_tREST_1 == null) {
-				builder_tREST_1 = restResource_tREST_1.header(header_tREST_1.getKey(), header_tREST_1.getValue());
-			} else {
-				builder_tREST_1.header(header_tREST_1.getKey(), header_tREST_1.getValue());
-			}
-		}
-		
-		
-			if(builder_tREST_1!=null) {
-				restResponse_tREST_1 = builder_tREST_1.get(String.class);
-			} else {
-				restResponse_tREST_1 = restResource_tREST_1.get(String.class);
-			} 
-			
-		
-	}catch (com.sun.jersey.api.client.UniformInterfaceException ue) {
-globalMap.put("tREST_1_ERROR_MESSAGE",ue.getMessage());
-        errorResponse_tREST_1 = ue.getResponse();
-    }
-	
-	// for output
-			
-				row1 = new row1Struct();
-				if(errorResponse_tREST_1!=null){
-					row1.ERROR_CODE = errorResponse_tREST_1.getStatus();
-					if(row1.ERROR_CODE!=204){
-					    row1.Body = errorResponse_tREST_1.getEntity(String.class);
-					}
-				}else{
-					row1.Body = restResponse_tREST_1;
-				}
-			
-
- 
-
-
-
-/**
- * [tREST_1 begin ] stop
- */
-	
-	/**
-	 * [tREST_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tREST_1";
-
-	
-
- 
-
-
-	tos_count_tREST_1++;
-
-/**
- * [tREST_1 main ] stop
- */
-	
-	/**
-	 * [tREST_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tREST_1";
-
-	
-
- 
-
-
-
-/**
- * [tREST_1 process_data_begin ] stop
- */
-
-	
-	/**
-	 * [tExtractJSONFields_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row1"
-						
-						);
-					}
-					
-
-            if(row1.Body!=null){// C_01
-                jsonStr_tExtractJSONFields_1 = row1.Body.toString();
-   
-row2 = null;
-
-	
-
-String loopPath_tExtractJSONFields_1 = "$.meals[*]";
-java.util.List<Object> resultset_tExtractJSONFields_1 = new java.util.ArrayList<Object>();
-
-boolean isStructError_tExtractJSONFields_1 = true;
-com.jayway.jsonpath.ReadContext document_tExtractJSONFields_1 = null;
-try {
-	document_tExtractJSONFields_1 = com.jayway.jsonpath.JsonPath.parse(jsonStr_tExtractJSONFields_1);
-	com.jayway.jsonpath.JsonPath compiledLoopPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(loopPath_tExtractJSONFields_1);
-	Object result_tExtractJSONFields_1 = document_tExtractJSONFields_1.read(compiledLoopPath_tExtractJSONFields_1,net.minidev.json.JSONObject.class);
-	if (result_tExtractJSONFields_1 instanceof net.minidev.json.JSONArray) {
-		resultset_tExtractJSONFields_1 = (net.minidev.json.JSONArray) result_tExtractJSONFields_1;
-	} else {
-		resultset_tExtractJSONFields_1.add(result_tExtractJSONFields_1);
-	}
-	
-	isStructError_tExtractJSONFields_1 = false;
-} catch (java.lang.Exception ex_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",ex_tExtractJSONFields_1.getMessage());
-		System.err.println(ex_tExtractJSONFields_1.getMessage());
-}
-
-String jsonPath_tExtractJSONFields_1 = null;
-com.jayway.jsonpath.JsonPath compiledJsonPath_tExtractJSONFields_1 = null;
-
-Object value_tExtractJSONFields_1 = null;
-
-Object root_tExtractJSONFields_1 = null;
-for(int i_tExtractJSONFields_1=0; isStructError_tExtractJSONFields_1 || (i_tExtractJSONFields_1 < resultset_tExtractJSONFields_1.size());i_tExtractJSONFields_1++){
-	if(!isStructError_tExtractJSONFields_1){
-		Object row_tExtractJSONFields_1 = resultset_tExtractJSONFields_1.get(i_tExtractJSONFields_1);
-            row2 = null;
-	row2 = new row2Struct();
-	nb_line_tExtractJSONFields_1++;
-	try {
-		jsonPath_tExtractJSONFields_1 = "$.idMeal";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.idMeal = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.idMeal = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeal";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeal = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeal = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strCategory";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strCategory = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strCategory = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strArea";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strArea = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strArea = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strInstructions";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strInstructions = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strInstructions = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient1";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient1 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient1 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient2";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient2 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient2 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient3";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient3 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient3 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient4";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient4 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient4 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient5";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient5 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient5 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient6";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient6 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient6 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient7";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient7 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient7 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient8";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient8 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient8 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient9";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient9 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient9 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient10";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient10 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient10 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient11";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient11 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient11 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient12";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient12 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient12 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient13";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient13 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient13 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient14";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient14 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient14 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient15";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient15 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient15 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient16";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient16 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient16 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient17";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient17 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient17 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient18";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient18 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient18 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient19";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient19 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient19 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strIngredient20";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strIngredient20 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strIngredient20 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure1";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure1 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure1 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure2";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure2 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure2 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure3";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure3 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure3 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure4";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure4 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure4 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure5";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure5 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure5 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure6";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure6 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure6 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure7";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure7 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure7 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure8";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure8 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure8 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure9";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure9 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure9 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure10";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure10 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure10 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure11";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure11 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure11 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure12";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure12 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure12 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure13";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure13 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure13 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure14";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure14 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure14 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure15";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure15 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure15 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure16";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure16 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure16 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure17";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure17 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure17 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure18";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure18 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure18 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure19";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure19 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure19 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMeasure20";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMeasure20 = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMeasure20 = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.str.MealAlternate";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMealAlternate = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMealAlternate = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strMealThumb";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strMealThumb = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strMealThumb = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strTags";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strTags = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strTags = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strYoutube";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strYoutube = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strYoutube = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strSource";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strSource = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strSource = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strImageSource";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strImageSource = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strImageSource = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.strCreativeCommonsConfirmed";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.strCreativeCommonsConfirmed = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.strCreativeCommonsConfirmed = 
-
-		null
-
-;
-		}
-		jsonPath_tExtractJSONFields_1 = "$.dateModified";
-		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
-		
-		try {
-		    
-		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
-		    
-				row2.dateModified = value_tExtractJSONFields_1 == null ? 
-
-		null
-
- : value_tExtractJSONFields_1.toString();
-		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
-			row2.dateModified = 
-
-		null
-
-;
-		}	
-	} catch (java.lang.Exception ex_tExtractJSONFields_1) {
-globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",ex_tExtractJSONFields_1.getMessage());
-		    System.err.println(ex_tExtractJSONFields_1.getMessage());
-		    row2 = null;	
-	}
-	
-	}
-    
-	isStructError_tExtractJSONFields_1 = false;
-	
-//}
-
-
- 
-
-
-	tos_count_tExtractJSONFields_1++;
-
-/**
- * [tExtractJSONFields_1 main ] stop
- */
-	
-	/**
-	 * [tExtractJSONFields_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-
- 
-
-
-
-/**
- * [tExtractJSONFields_1 process_data_begin ] stop
- */
-// Start of branch "row2"
-if(row2 != null) { 
-
-
-
-	
-	/**
-	 * [tMongoDBOutput_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row2"
-						
-						);
-					}
-					
-
-	
-try{
-				updateObjectUtil_tMongoDBOutput_1.setObject(new org.bson.Document());
-				
-				
-
-				
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("idMeal"),"idMeal", row2.idMeal);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeal"),"strMeal", row2.strMeal);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCategory"),"strCategory", row2.strCategory);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strArea"),"strArea", row2.strArea);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strInstructions"),"strInstructions", row2.strInstructions);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient1"),"strIngredient1", row2.strIngredient1);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient2"),"strIngredient2", row2.strIngredient2);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient3"),"strIngredient3", row2.strIngredient3);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient4"),"strIngredient4", row2.strIngredient4);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient5"),"strIngredient5", row2.strIngredient5);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient6"),"strIngredient6", row2.strIngredient6);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient7"),"strIngredient7", row2.strIngredient7);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient8"),"strIngredient8", row2.strIngredient8);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient9"),"strIngredient9", row2.strIngredient9);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient10"),"strIngredient10", row2.strIngredient10);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient11"),"strIngredient11", row2.strIngredient11);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient12"),"strIngredient12", row2.strIngredient12);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient13"),"strIngredient13", row2.strIngredient13);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient14"),"strIngredient14", row2.strIngredient14);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient15"),"strIngredient15", row2.strIngredient15);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient16"),"strIngredient16", row2.strIngredient16);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient17"),"strIngredient17", row2.strIngredient17);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient18"),"strIngredient18", row2.strIngredient18);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient19"),"strIngredient19", row2.strIngredient19);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient20"),"strIngredient20", row2.strIngredient20);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure1"),"strMeasure1", row2.strMeasure1);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure2"),"strMeasure2", row2.strMeasure2);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure3"),"strMeasure3", row2.strMeasure3);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure4"),"strMeasure4", row2.strMeasure4);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure5"),"strMeasure5", row2.strMeasure5);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure6"),"strMeasure6", row2.strMeasure6);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure7"),"strMeasure7", row2.strMeasure7);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure8"),"strMeasure8", row2.strMeasure8);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure9"),"strMeasure9", row2.strMeasure9);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure10"),"strMeasure10", row2.strMeasure10);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure11"),"strMeasure11", row2.strMeasure11);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure12"),"strMeasure12", row2.strMeasure12);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure13"),"strMeasure13", row2.strMeasure13);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure14"),"strMeasure14", row2.strMeasure14);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure15"),"strMeasure15", row2.strMeasure15);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure16"),"strMeasure16", row2.strMeasure16);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure17"),"strMeasure17", row2.strMeasure17);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure18"),"strMeasure18", row2.strMeasure18);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure19"),"strMeasure19", row2.strMeasure19);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure20"),"strMeasure20", row2.strMeasure20);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealAlternate"),"strMealAlternate", row2.strMealAlternate);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealThumb"),"strMealThumb", row2.strMealThumb);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strTags"),"strTags", row2.strTags);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strYoutube"),"strYoutube", row2.strYoutube);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strSource"),"strSource", row2.strSource);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strImageSource"),"strImageSource", row2.strImageSource);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCreativeCommonsConfirmed"),"strCreativeCommonsConfirmed", row2.strCreativeCommonsConfirmed);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("dateModified"),"dateModified", row2.dateModified);
-				org.bson.Document updateObj_tMongoDBOutput_1 = updateObjectUtil_tMongoDBOutput_1.getObject();
-				
-						coll_tMongoDBOutput_1.insertOne(updateObj_tMongoDBOutput_1);
-					
-				} catch (Exception e_tMongoDBOutput_1) {
-				
-    					
-    						System.err.println(e_tMongoDBOutput_1.getMessage());
-    					
-    			}
-				nb_line_tMongoDBOutput_1 ++;
-				
- 
-
-
-	tos_count_tMongoDBOutput_1++;
-
-/**
- * [tMongoDBOutput_1 main ] stop
- */
-	
-	/**
-	 * [tMongoDBOutput_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBOutput_1 process_data_begin ] stop
- */
-	
-	/**
-	 * [tMongoDBOutput_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBOutput_1 process_data_end ] stop
- */
-
-} // End of branch "row2"
-
-		// end for
-	}
-
-
-	
-		} // C_01
-	
-	
-	/**
-	 * [tExtractJSONFields_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-
- 
-
-
-
-/**
- * [tExtractJSONFields_1 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tREST_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tREST_1";
-
-	
-
- 
-
-
-
-/**
- * [tREST_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tREST_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tREST_1";
-
-	
-
- 
-
-ok_Hash.put("tREST_1", true);
-end_Hash.put("tREST_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tREST_1 end ] stop
- */
-
-	
-	/**
-	 * [tExtractJSONFields_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-   globalMap.put("tExtractJSONFields_1_NB_LINE", nb_line_tExtractJSONFields_1);
-
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row1");
-			  	}
-			  	
- 
-
-ok_Hash.put("tExtractJSONFields_1", true);
-end_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tExtractJSONFields_1 end ] stop
- */
-
-	
-	/**
-	 * [tMongoDBOutput_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-
-	globalMap.put("tMongoDBOutput_1_NB_LINE", nb_line_tMongoDBOutput_1);
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row2");
-			  	}
-			  	
- 
-
-ok_Hash.put("tMongoDBOutput_1", true);
-end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tMongoDBOutput_1 end ] stop
- */
-
-
-
-
-
-
-				}//end the resume
-
-				
-
-
-
-	
-			}catch(java.lang.Exception e){	
-				
-				TalendException te = new TalendException(e, currentComponent, globalMap);
-				
-				throw te;
-			}catch(java.lang.Error error){	
-				
-					runStat.stopThreadStat();
-				
-				throw error;
-			}finally{
-				
-				try{
-					
-	
-	/**
-	 * [tREST_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tREST_1";
-
-	
-
- 
-
-
-
-/**
- * [tREST_1 finally ] stop
- */
-
-	
-	/**
-	 * [tExtractJSONFields_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tExtractJSONFields_1";
-
-	
-
- 
-
-
-
-/**
- * [tExtractJSONFields_1 finally ] stop
- */
-
-	
-	/**
-	 * [tMongoDBOutput_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBOutput_1";
-
-	
-
-
- 
-
-
-
-/**
- * [tMongoDBOutput_1 finally ] stop
- */
-
-
-
-
-
-
-				}catch(java.lang.Exception e){	
-					//ignore
-				}catch(java.lang.Error error){
-					//ignore
-				}
-				resourceMap = null;
-			}
-		
-
-		globalMap.put("tREST_1_SUBPROCESS_STATE", 1);
-	}
-	
-
-public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tMongoDBClose_1_SUBPROCESS_STATE", 0);
-
- final boolean execStat = this.execStat;
-	
-		String iterateId = "";
-	
-	
-	String currentComponent = "";
-	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-	try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { //start the resume
-				globalResumeTicket = true;
-
-
-
-		
-
-
-	
-	/**
-	 * [tMongoDBClose_1 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tMongoDBClose_1", false);
-		start_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tMongoDBClose_1";
-
-	
-		int tos_count_tMongoDBClose_1 = 0;
-		
-
- 
-
-
-
-/**
- * [tMongoDBClose_1 begin ] stop
- */
-	
-	/**
-	 * [tMongoDBClose_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBClose_1";
-
-	
-        com.mongodb.client.MongoClient mongo_tMongoDBClose_1=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
-        if(mongo_tMongoDBClose_1 != null ) {
-            mongo_tMongoDBClose_1.close();
-        }
-
-
-
- 
-
-
-	tos_count_tMongoDBClose_1++;
-
-/**
- * [tMongoDBClose_1 main ] stop
- */
-	
-	/**
-	 * [tMongoDBClose_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBClose_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBClose_1 process_data_begin ] stop
- */
-	
-	/**
-	 * [tMongoDBClose_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBClose_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBClose_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tMongoDBClose_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBClose_1";
-
-	
-
- 
-
-ok_Hash.put("tMongoDBClose_1", true);
-end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
-
-				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk4", 0, "ok");
 				}
 				tWarn_2Process(globalMap);
 
 
 
 /**
- * [tMongoDBClose_1 end ] stop
+ * [tRunJob_2 end ] stop
  */
 				}//end the resume
 
@@ -5722,14 +1393,14 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 					
 	
 	/**
-	 * [tMongoDBClose_1 finally ] start
+	 * [tRunJob_2 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tRunJob_2";
 
 	
 
@@ -5738,7 +1409,7 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 
 
 /**
- * [tMongoDBClose_1 finally ] stop
+ * [tRunJob_2 finally ] stop
  */
 				}catch(java.lang.Exception e){	
 					//ignore
@@ -5749,7 +1420,7 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 			}
 		
 
-		globalMap.put("tMongoDBClose_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tRunJob_2_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -6111,6 +1782,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
             }
             class ContextProcessing {
                 private void processContext_0() {
+                        context.setContextType("kaggle_dataset", "id_String");
+                        if(context.getStringValue("kaggle_dataset") == null) {
+                            context.kaggle_dataset = null;
+                        } else {
+                            context.kaggle_dataset=(String) context.getProperty("kaggle_dataset");
+                        }
                         context.setContextType("letter", "id_String");
                         if(context.getStringValue("letter") == null) {
                             context.letter = null;
@@ -6123,11 +1800,17 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_authentificationDatabase=(String) context.getProperty("mongodb_authentificationDatabase");
                         }
-                        context.setContextType("mongodb_collection_bronze", "id_String");
-                        if(context.getStringValue("mongodb_collection_bronze") == null) {
-                            context.mongodb_collection_bronze = null;
+                        context.setContextType("mongodb_collection_bronze_k", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_k") == null) {
+                            context.mongodb_collection_bronze_k = null;
                         } else {
-                            context.mongodb_collection_bronze=(String) context.getProperty("mongodb_collection_bronze");
+                            context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
+                        }
+                        context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
+                            context.mongodb_collection_bronze_tmdb = null;
+                        } else {
+                            context.mongodb_collection_bronze_tmdb=(String) context.getProperty("mongodb_collection_bronze_tmdb");
                         }
                         context.setContextType("mongodb_collection_silver", "id_String");
                         if(context.getStringValue("mongodb_collection_silver") == null) {
@@ -6238,12 +1921,16 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
         }
 
         // get context value from parent directly
-        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("letter")) {
+        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("kaggle_dataset")) {
+                context.kaggle_dataset = (String) parentContextMap.get("kaggle_dataset");
+            }if (parentContextMap.containsKey("letter")) {
                 context.letter = (String) parentContextMap.get("letter");
             }if (parentContextMap.containsKey("mongodb_authentificationDatabase")) {
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
-            }if (parentContextMap.containsKey("mongodb_collection_bronze")) {
-                context.mongodb_collection_bronze = (String) parentContextMap.get("mongodb_collection_bronze");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
+                context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
+                context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
                 context.mongodb_collection_silver = (String) parentContextMap.get("mongodb_collection_silver");
             }if (parentContextMap.containsKey("mongodb_database")) {
@@ -6505,6 +2192,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     175132 characters generated by Talend Open Studio for Big Data 
- *     on the 31 décembre 2025, 00:39:24 CET
+ *     72031 characters generated by Talend Open Studio for Big Data 
+ *     on the 16 janvier 2026, 15:17:53 CET
  ************************************************************************************************/
