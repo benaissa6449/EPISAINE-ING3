@@ -20,6 +20,7 @@ echo "Création de l'utilisateur Kafka..."
 sudo useradd -r -m -U -d /opt/kafka -s /bin/bash kafka
 
 # Télécharger et installer Kafka
+
 echo "Téléchargement et installation de Kafka..."
 cd /tmp
 wget https://dlcdn.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
