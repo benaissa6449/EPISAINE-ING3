@@ -15,7 +15,6 @@ def afficher_infos(df):
     print("\nTypes de données :")
     print(df.dtypes)
 
-
 afficher_infos(df)
 print(f"\nNombre total de lignes dans le dataset : {len(df)}")
 
