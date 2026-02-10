@@ -16,6 +16,9 @@
       "id" : "_SM_BMPK2EfCBy_t93fmx3g",
       "name" : "mongodb_collection_bronze_k"
     }, {
+      "id" : "_ZH25YP2-EfCZb_I4jnsinA",
+      "name" : "mongodb_collection_bronze_nutritional"
+    }, {
       "id" : "_Ese19NBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
     }, {
@@ -36,6 +39,9 @@
     }, {
       "id" : "_Ese199BOEfChG5CYVV-7ZQ",
       "name" : "mongodb_user"
+    }, {
+      "id" : "_jMtpgP2-EfCZb_I4jnsinA",
+      "name" : "nutrition_dataset"
     }, {
       "id" : "_WB8eMNBUEfCavakQCTtPUg",
       "name" : "postgresql_database"
@@ -83,6 +89,9 @@
       "id" : "_SM_BMfK2EfCBy_t93fmx3g",
       "name" : "mongodb_collection_bronze_k"
     }, {
+      "id" : "_ZH25Yf2-EfCZb_I4jnsinA",
+      "name" : "mongodb_collection_bronze_nutritional"
+    }, {
       "id" : "_Ese1_tBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
     }, {
@@ -103,6 +112,9 @@
     }, {
       "id" : "_Ese2AdBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_user"
+    }, {
+      "id" : "_jMtpgf2-EfCZb_I4jnsinA",
+      "name" : "nutrition_dataset"
     }, {
       "id" : "_WB8eN9BUEfCavakQCTtPUg",
       "name" : "postgresql_database"
@@ -150,6 +162,9 @@
       "id" : "_SM_BMvK2EfCBy_t93fmx3g",
       "name" : "mongodb_collection_bronze_k"
     }, {
+      "id" : "_ZH25Yv2-EfCZb_I4jnsinA",
+      "name" : "mongodb_collection_bronze_nutritional"
+    }, {
       "id" : "_Ese2CNBOEfChG5CYVV-7ZQ",
       "name" : "mongodb_collection_bronze_tmdb"
     }, {
@@ -170,6 +185,9 @@
     }, {
       "id" : "_Ese2C9BOEfChG5CYVV-7ZQ",
       "name" : "mongodb_user"
+    }, {
+      "id" : "_jMtpgv2-EfCZb_I4jnsinA",
+      "name" : "nutrition_dataset"
     }, {
       "id" : "_WB8ePtBUEfCavakQCTtPUg",
       "name" : "postgresql_database"
@@ -200,6 +218,79 @@
     }, {
       "id" : "_Ese2CtBOEfChG5CYVV-7ZQ",
       "name" : "source"
+    } ]
+  }, {
+    "contextName" : "local_docker",
+    "repoId" : "_RT7SIM-fEfCT24E9_qvxLA",
+    "parameterList" : [ {
+      "id" : "_gkbCUQT1EfGFupJI3svJTw",
+      "name" : "mongodb_server"
+    }, {
+      "id" : "_gkbCUgT1EfGFupJI3svJTw",
+      "name" : "mongodb_database"
+    }, {
+      "id" : "_gkbCUwT1EfGFupJI3svJTw",
+      "name" : "mongodb_port"
+    }, {
+      "id" : "_gkbCVAT1EfGFupJI3svJTw",
+      "name" : "mongodb_collection_bronze_tmdb"
+    }, {
+      "id" : "_gkbCVQT1EfGFupJI3svJTw",
+      "name" : "mongodb_collection_silver"
+    }, {
+      "id" : "_gkbCVgT1EfGFupJI3svJTw",
+      "name" : "source"
+    }, {
+      "id" : "_gkbCVwT1EfGFupJI3svJTw",
+      "name" : "mongodb_user"
+    }, {
+      "id" : "_gkbCWAT1EfGFupJI3svJTw",
+      "name" : "mongodb_password"
+    }, {
+      "id" : "_gkbCWQT1EfGFupJI3svJTw",
+      "name" : "mongodb_authentificationDatabase"
+    }, {
+      "id" : "_gkbCWgT1EfGFupJI3svJTw",
+      "name" : "postgresql_database"
+    }, {
+      "id" : "_gkbCWwT1EfGFupJI3svJTw",
+      "name" : "postgresql_server"
+    }, {
+      "id" : "_gkbCXAT1EfGFupJI3svJTw",
+      "name" : "postgresql_port"
+    }, {
+      "id" : "_gkbCXQT1EfGFupJI3svJTw",
+      "name" : "postgresql_user"
+    }, {
+      "id" : "_gkbCXgT1EfGFupJI3svJTw",
+      "name" : "postgresql_password"
+    }, {
+      "id" : "_gkbCXwT1EfGFupJI3svJTw",
+      "name" : "postgresql_schema"
+    }, {
+      "id" : "_gkbCYAT1EfGFupJI3svJTw",
+      "name" : "postgresql_table_area"
+    }, {
+      "id" : "_gkbCYQT1EfGFupJI3svJTw",
+      "name" : "postgresql_table_category"
+    }, {
+      "id" : "_gkbCYgT1EfGFupJI3svJTw",
+      "name" : "letter"
+    }, {
+      "id" : "_gkbCYwT1EfGFupJI3svJTw",
+      "name" : "postgresql_table_meals"
+    }, {
+      "id" : "_gkbCZAT1EfGFupJI3svJTw",
+      "name" : "kaggle_dataset"
+    }, {
+      "id" : "_gkbCZQT1EfGFupJI3svJTw",
+      "name" : "mongodb_collection_bronze_k"
+    }, {
+      "id" : "_gkbCZgT1EfGFupJI3svJTw",
+      "name" : "mongodb_collection_bronze_nutritional"
+    }, {
+      "id" : "_gkbCZwT1EfGFupJI3svJTw",
+      "name" : "nutrition_dataset"
     } ]
   } ]
 }

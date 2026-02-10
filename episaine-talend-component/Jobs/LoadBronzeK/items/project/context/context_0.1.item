@@ -22,6 +22,10 @@
     <contextParameter xmi:id="_7F9dUOWmEfCPz-N4yknRPg" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
     <contextParameter xmi:id="_gFgFoPK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;"/>
     <contextParameter xmi:id="_SM_BMPK2EfCBy_t93fmx3g" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
+    <contextParameter xmi:id="_ZH25YP2-EfCZb_I4jnsinA" comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_nutrition"/>
+    <contextParameter xmi:id="_jMtpgP2-EfCZb_I4jnsinA" comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/USDA.csv&quot;"/>
+    <contextParameter xmi:id="_jvtsEP3CEfCZb_I4jnsinA" comment="" name="mongodb_collection_silver_nutrition" prompt="mongodb_collection_silver_nutrition?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_silver_nutrition"/>
+    <contextParameter xmi:id="_wpOBMAUtEfG8iLok-x9E_w" comment="" name="postgresql_table_meals_temp" prompt="postgresql_table_meals_temp?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals_temp"/>
   </talendfile:ContextType>
   <talendfile:ContextType xmi:id="_Ese1-tBOEfChG5CYVV-7ZQ" confirmationNeeded="false" name="dev">
     <contextParameter xmi:id="_Ese1-9BOEfChG5CYVV-7ZQ" comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="192.168.248.165"/>
@@ -45,6 +49,10 @@
     <contextParameter xmi:id="_7F9dUeWmEfCPz-N4yknRPg" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
     <contextParameter xmi:id="_gFgFofK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;"/>
     <contextParameter xmi:id="_SM_BMfK2EfCBy_t93fmx3g" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
+    <contextParameter xmi:id="_ZH25Yf2-EfCZb_I4jnsinA" comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_nutrition"/>
+    <contextParameter xmi:id="_jMtpgf2-EfCZb_I4jnsinA" comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/USDA.csv&quot;"/>
+    <contextParameter xmi:id="_jvtsEf3CEfCZb_I4jnsinA" comment="" name="mongodb_collection_silver_nutrition" prompt="mongodb_collection_silver_nutrition?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_silver_nutrition"/>
+    <contextParameter xmi:id="_wpOBMQUtEfG8iLok-x9E_w" comment="" name="postgresql_table_meals_temp" prompt="postgresql_table_meals_temp?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals_temp"/>
   </talendfile:ContextType>
   <talendfile:ContextType xmi:id="_Ese2BNBOEfChG5CYVV-7ZQ" confirmationNeeded="false" name="local">
     <contextParameter xmi:id="_Ese2BdBOEfChG5CYVV-7ZQ" comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="localhost"/>
@@ -57,7 +65,7 @@
     <contextParameter xmi:id="_Ese2DNBOEfChG5CYVV-7ZQ" comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
     <contextParameter xmi:id="_Ese2DdBOEfChG5CYVV-7ZQ" comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
     <contextParameter xmi:id="_WB8ePtBUEfCavakQCTtPUg" comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
-    <contextParameter xmi:id="_WB8eP9BUEfCavakQCTtPUg" comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine-postgres"/>
+    <contextParameter xmi:id="_WB8eP9BUEfCavakQCTtPUg" comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="localhost"/>
     <contextParameter xmi:id="_WB8eQNBUEfCavakQCTtPUg" comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="5432"/>
     <contextParameter xmi:id="_WB8eQdBUEfCavakQCTtPUg" comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
     <contextParameter xmi:id="_WB8eQtBUEfCavakQCTtPUg" comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
@@ -66,7 +74,38 @@
     <contextParameter xmi:id="_7FMbgtBhEfCavakQCTtPUg" comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="category"/>
     <contextParameter xmi:id="_XmW_4uWgEfCiPeGObmztcQ" comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="a"/>
     <contextParameter xmi:id="_7F9dUuWmEfCPz-N4yknRPg" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
-    <contextParameter xmi:id="_gFgFovK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/recipes_data.csv&quot;"/>
+    <contextParameter xmi:id="_gFgFovK1EfCBy_t93fmx3g" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/episaine-talend-component/recipes_data.csv&quot;"/>
     <contextParameter xmi:id="_SM_BMvK2EfCBy_t93fmx3g" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
+    <contextParameter xmi:id="_ZH25Yv2-EfCZb_I4jnsinA" comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_nutrition"/>
+    <contextParameter xmi:id="_jMtpgv2-EfCZb_I4jnsinA" comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/episaine-talend-component/USDA.csv&quot;"/>
+    <contextParameter xmi:id="_jvuTIP3CEfCZb_I4jnsinA" comment="" name="mongodb_collection_silver_nutrition" prompt="mongodb_collection_silver_nutrition?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_silver_nutrition"/>
+    <contextParameter xmi:id="_wpOBMgUtEfG8iLok-x9E_w" comment="" name="postgresql_table_meals_temp" prompt="postgresql_table_meals_temp?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals_temp"/>
+  </talendfile:ContextType>
+  <talendfile:ContextType xmi:id="_gkbCUAT1EfGFupJI3svJTw" confirmationNeeded="false" name="local_docker">
+    <contextParameter xmi:id="_gkbCUQT1EfGFupJI3svJTw" comment="" name="mongodb_server" prompt="mongodb_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine-mongodb"/>
+    <contextParameter xmi:id="_gkbCUgT1EfGFupJI3svJTw" comment="" name="mongodb_database" prompt="mongodb_database?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCUwT1EfGFupJI3svJTw" comment="" name="mongodb_port" prompt="mongodb_port?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="27017"/>
+    <contextParameter xmi:id="_gkbCVAT1EfGFupJI3svJTw" comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_tmdb"/>
+    <contextParameter xmi:id="_gkbCVQT1EfGFupJI3svJTw" comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_silver"/>
+    <contextParameter xmi:id="_gkbCVgT1EfGFupJI3svJTw" comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;"/>
+    <contextParameter xmi:id="_gkbCVwT1EfGFupJI3svJTw" comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCWAT1EfGFupJI3svJTw" comment="" name="mongodb_password" prompt="mongodb_password?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCWQT1EfGFupJI3svJTw" comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCWgT1EfGFupJI3svJTw" comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCWwT1EfGFupJI3svJTw" comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine-postgres"/>
+    <contextParameter xmi:id="_gkbCXAT1EfGFupJI3svJTw" comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="5432"/>
+    <contextParameter xmi:id="_gkbCXQT1EfGFupJI3svJTw" comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCXgT1EfGFupJI3svJTw" comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine"/>
+    <contextParameter xmi:id="_gkbCXwT1EfGFupJI3svJTw" comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="gold"/>
+    <contextParameter xmi:id="_gkbCYAT1EfGFupJI3svJTw" comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="area"/>
+    <contextParameter xmi:id="_gkbCYQT1EfGFupJI3svJTw" comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="category"/>
+    <contextParameter xmi:id="_gkbCYgT1EfGFupJI3svJTw" comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="a"/>
+    <contextParameter xmi:id="_gkbCYwT1EfGFupJI3svJTw" comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals"/>
+    <contextParameter xmi:id="_gkbCZAT1EfGFupJI3svJTw" comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;"/>
+    <contextParameter xmi:id="_gkbCZQT1EfGFupJI3svJTw" comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_k"/>
+    <contextParameter xmi:id="_gkbCZgT1EfGFupJI3svJTw" comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_bronze_nutrition"/>
+    <contextParameter xmi:id="_gkbCZwT1EfGFupJI3svJTw" comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="&quot;/opt/data/USDA.csv&quot;"/>
+    <contextParameter xmi:id="_gkbCaAT1EfGFupJI3svJTw" comment="" name="mongodb_collection_silver_nutrition" prompt="mongodb_collection_silver_nutrition?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="episaine_silver_nutrition"/>
+    <contextParameter xmi:id="_wpOBMwUtEfG8iLok-x9E_w" comment="" name="postgresql_table_meals_temp" prompt="postgresql_table_meals_temp?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="meals_temp"/>
   </talendfile:ContextType>
 </xmi:XMI>

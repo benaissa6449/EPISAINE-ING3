@@ -145,6 +145,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
+			if(mongodb_collection_bronze_nutritional != null){
+				
+					this.setProperty("mongodb_collection_bronze_nutritional", mongodb_collection_bronze_nutritional.toString());
+				
+			}
+			
 			if(mongodb_collection_bronze_tmdb != null){
 				
 					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
@@ -184,6 +190,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_user != null){
 				
 					this.setProperty("mongodb_user", mongodb_user.toString());
+				
+			}
+			
+			if(nutrition_dataset != null){
+				
+					this.setProperty("nutrition_dataset", nutrition_dataset.toString());
 				
 			}
 			
@@ -274,6 +286,10 @@ public String mongodb_collection_bronze_k;
 public String getMongodb_collection_bronze_k(){
 	return this.mongodb_collection_bronze_k;
 }
+public String mongodb_collection_bronze_nutritional;
+public String getMongodb_collection_bronze_nutritional(){
+	return this.mongodb_collection_bronze_nutritional;
+}
 public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
@@ -301,6 +317,10 @@ public String getMongodb_server(){
 public String mongodb_user;
 public String getMongodb_user(){
 	return this.mongodb_user;
+}
+public String nutrition_dataset;
+public String getNutrition_dataset(){
+	return this.nutrition_dataset;
 }
 public String postgresql_database;
 public String getPostgresql_database(){
@@ -522,6 +542,15 @@ private class TalendException extends Exception {
 					tRunJob_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tRunJob_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tRunJob_3_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tWarn_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -542,6 +571,11 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 
 			}
 			public void tRunJob_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tRunJob_3_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -875,6 +909,8 @@ public void tRunJob_1Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_1.add("--context_type " + "mongodb_authentificationDatabase" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_collection_bronze_k", context.mongodb_collection_bronze_k);
                     paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("mongodb_collection_bronze_nutritional", context.mongodb_collection_bronze_nutritional);
+                    paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_nutritional" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
                     paraList_tRunJob_1.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_collection_silver", context.mongodb_collection_silver);
@@ -889,6 +925,8 @@ public void tRunJob_1Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_1.add("--context_type " + "mongodb_server" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("mongodb_user", context.mongodb_user);
                     paraList_tRunJob_1.add("--context_type " + "mongodb_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_1.put("nutrition_dataset", context.nutrition_dataset);
+                    paraList_tRunJob_1.add("--context_type " + "nutrition_dataset" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("postgresql_database", context.postgresql_database);
                     paraList_tRunJob_1.add("--context_type " + "postgresql_database" + "=" + "id_String");
                     parentContextMap_tRunJob_1.put("postgresql_password", context.postgresql_password);
@@ -1204,6 +1242,8 @@ public void tRunJob_2Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_2.add("--context_type " + "mongodb_authentificationDatabase" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_collection_bronze_k", context.mongodb_collection_bronze_k);
                     paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("mongodb_collection_bronze_nutritional", context.mongodb_collection_bronze_nutritional);
+                    paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_nutritional" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
                     paraList_tRunJob_2.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_collection_silver", context.mongodb_collection_silver);
@@ -1218,6 +1258,8 @@ public void tRunJob_2Process(final java.util.Map<String, Object> globalMap) thro
                     paraList_tRunJob_2.add("--context_type " + "mongodb_server" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("mongodb_user", context.mongodb_user);
                     paraList_tRunJob_2.add("--context_type " + "mongodb_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_2.put("nutrition_dataset", context.nutrition_dataset);
+                    paraList_tRunJob_2.add("--context_type " + "nutrition_dataset" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("postgresql_database", context.postgresql_database);
                     paraList_tRunJob_2.add("--context_type " + "postgresql_database" + "=" + "id_String");
                     parentContextMap_tRunJob_2.put("postgresql_password", context.postgresql_password);
@@ -1363,7 +1405,7 @@ end_Hash.put("tRunJob_2", System.currentTimeMillis());
 				if(execStat){   
    	 				runStat.updateStatOnConnection("OnComponentOk2", 0, "ok");
 				}
-				tWarn_2Process(globalMap);
+				tRunJob_3Process(globalMap);
 
 
 
@@ -1421,6 +1463,339 @@ end_Hash.put("tRunJob_2", System.currentTimeMillis());
 		
 
 		globalMap.put("tRunJob_2_SUBPROCESS_STATE", 1);
+	}
+	
+
+public void tRunJob_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tRunJob_3_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		
+
+
+	
+	/**
+	 * [tRunJob_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tRunJob_3", false);
+		start_Hash.put("tRunJob_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tRunJob_3";
+
+	
+		int tos_count_tRunJob_3 = 0;
+		
+
+
+ 
+
+
+
+/**
+ * [tRunJob_3 begin ] stop
+ */
+	
+	/**
+	 * [tRunJob_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_3";
+
+	
+	java.util.List<String> paraList_tRunJob_3 = new java.util.ArrayList<String>();
+	
+	        				paraList_tRunJob_3.add("--father_pid="+pid);
+	      			
+	        				paraList_tRunJob_3.add("--root_pid="+rootPid);
+	      			
+	        				paraList_tRunJob_3.add("--father_node=tRunJob_3");
+	      			
+	        				paraList_tRunJob_3.add("--context=Default");
+	      			
+		if(enableLogStash){
+			paraList_tRunJob_3.add("--audit.enabled="+enableLogStash);
+		}
+		
+	//for feature:10589
+	
+		paraList_tRunJob_3.add("--stat_port=" + portStats);
+	
+
+	if(resuming_logs_dir_path != null){
+		paraList_tRunJob_3.add("--resuming_logs_dir_path=" + resuming_logs_dir_path);
+	}
+	String childResumePath_tRunJob_3 = ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path);
+	String tRunJobName_tRunJob_3 = ResumeUtil.getRighttRunJob(resuming_checkpoint_path);
+	if("tRunJob_3".equals(tRunJobName_tRunJob_3) && childResumePath_tRunJob_3 != null){
+		paraList_tRunJob_3.add("--resuming_checkpoint_path=" + ResumeUtil.getChildJobCheckPointPath(resuming_checkpoint_path));
+	}
+	paraList_tRunJob_3.add("--parent_part_launcher=JOB:" + jobName + "/NODE:tRunJob_3");
+	
+	java.util.Map<String, Object> parentContextMap_tRunJob_3 = new java.util.HashMap<String, Object>();
+
+	
+		
+		context.synchronizeContext();
+            class ContextProcessor_tRunJob_3 {
+                    private void transmitContext_0() {
+                    parentContextMap_tRunJob_3.put("kaggle_dataset", context.kaggle_dataset);
+                    paraList_tRunJob_3.add("--context_type " + "kaggle_dataset" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("letter", context.letter);
+                    paraList_tRunJob_3.add("--context_type " + "letter" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_authentificationDatabase", context.mongodb_authentificationDatabase);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_authentificationDatabase" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_collection_bronze_k", context.mongodb_collection_bronze_k);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_collection_bronze_k" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_collection_bronze_nutritional", context.mongodb_collection_bronze_nutritional);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_collection_bronze_nutritional" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_collection_bronze_tmdb", context.mongodb_collection_bronze_tmdb);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_collection_bronze_tmdb" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_collection_silver", context.mongodb_collection_silver);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_collection_silver" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_database", context.mongodb_database);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_password", context.mongodb_password);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_port", context.mongodb_port);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_server", context.mongodb_server);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("mongodb_user", context.mongodb_user);
+                    paraList_tRunJob_3.add("--context_type " + "mongodb_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("nutrition_dataset", context.nutrition_dataset);
+                    paraList_tRunJob_3.add("--context_type " + "nutrition_dataset" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_database", context.postgresql_database);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_database" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_password", context.postgresql_password);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_password" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_port", context.postgresql_port);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_port" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_schema", context.postgresql_schema);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_schema" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_server", context.postgresql_server);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_server" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_table_area", context.postgresql_table_area);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_table_area" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_table_category", context.postgresql_table_category);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_table_category" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_table_meals", context.postgresql_table_meals);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_table_meals" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("postgresql_user", context.postgresql_user);
+                    paraList_tRunJob_3.add("--context_type " + "postgresql_user" + "=" + "id_String");
+                    parentContextMap_tRunJob_3.put("source", context.source);
+                    paraList_tRunJob_3.add("--context_type " + "source" + "=" + "id_String");
+                        }
+                    public void transmitAllContext() {
+                        transmitContext_0();
+                    }
+            }
+            new ContextProcessor_tRunJob_3().transmitAllContext();
+		java.util.Enumeration<?> propertyNames_tRunJob_3 = context.propertyNames();
+		while (propertyNames_tRunJob_3.hasMoreElements()) {
+			String key_tRunJob_3 = (String) propertyNames_tRunJob_3.nextElement();
+			Object value_tRunJob_3 = (Object) context.get(key_tRunJob_3);
+			if(value_tRunJob_3!=null) {  
+				paraList_tRunJob_3.add("--context_param " + key_tRunJob_3 + "=" + value_tRunJob_3);
+			} else {
+				paraList_tRunJob_3.add("--context_param " + key_tRunJob_3 + "=" + NULL_VALUE_EXPRESSION_IN_COMMAND_STRING_FOR_CHILD_JOB_ONLY);
+			}
+			
+		}
+		
+
+	Object obj_tRunJob_3 = null;
+
+	
+	
+		project.loadbronzenutritional_0_1.LoadBronzeNutritional childJob_tRunJob_3 = new project.loadbronzenutritional_0_1.LoadBronzeNutritional();
+	    // pass DataSources
+	    java.util.Map<String, routines.system.TalendDataSource> talendDataSources_tRunJob_3 = (java.util.Map<String, routines.system.TalendDataSource>) globalMap
+	            .get(KEY_DB_DATASOURCES);
+	    if (null != talendDataSources_tRunJob_3) {
+	        java.util.Map<String, javax.sql.DataSource> dataSources_tRunJob_3 = new java.util.HashMap<String, javax.sql.DataSource>();
+	        for (java.util.Map.Entry<String, routines.system.TalendDataSource> talendDataSourceEntry_tRunJob_3 : talendDataSources_tRunJob_3
+			        .entrySet()) {
+	            dataSources_tRunJob_3.put(talendDataSourceEntry_tRunJob_3.getKey(),
+	                    talendDataSourceEntry_tRunJob_3.getValue().getRawDataSource());
+	        }
+	        childJob_tRunJob_3.setDataSources(dataSources_tRunJob_3);
+	    }
+		  
+			childJob_tRunJob_3.parentContextMap = parentContextMap_tRunJob_3;
+		  
+		
+		String[][] childReturn_tRunJob_3 = childJob_tRunJob_3.runJob((String[]) paraList_tRunJob_3.toArray(new String[paraList_tRunJob_3.size()]));
+		
+            if(childJob_tRunJob_3.getErrorCode() == null){
+                globalMap.put("tRunJob_3_CHILD_RETURN_CODE", childJob_tRunJob_3.getStatus() != null && ("failure").equals(childJob_tRunJob_3.getStatus()) ? 1 : 0);
+            }else{
+                globalMap.put("tRunJob_3_CHILD_RETURN_CODE", childJob_tRunJob_3.getErrorCode());
+            }
+            if (childJob_tRunJob_3.getExceptionStackTrace() != null) {
+                globalMap.put("tRunJob_3_CHILD_EXCEPTION_STACKTRACE", childJob_tRunJob_3.getExceptionStackTrace());
+            }
+                    errorCode = childJob_tRunJob_3.getErrorCode();
+                if (childJob_tRunJob_3.getErrorCode() != null || ("failure").equals(childJob_tRunJob_3.getStatus())) {
+                    java.lang.Exception ce_tRunJob_3 = childJob_tRunJob_3.getException();
+                    throw new RuntimeException("Child job running failed.\n" + ((ce_tRunJob_3!=null) ? (ce_tRunJob_3.getClass().getName() + ": " + ce_tRunJob_3.getMessage()) : ""));
+                }
+
+ 
+
+
+	tos_count_tRunJob_3++;
+
+/**
+ * [tRunJob_3 main ] stop
+ */
+	
+	/**
+	 * [tRunJob_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tRunJob_3 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tRunJob_3 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tRunJob_3 process_data_end ] stop
+ */
+	
+	/**
+	 * [tRunJob_3 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_3";
+
+	
+
+ 
+
+ok_Hash.put("tRunJob_3", true);
+end_Hash.put("tRunJob_3", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk5", 0, "ok");
+				}
+				tWarn_2Process(globalMap);
+
+
+
+/**
+ * [tRunJob_3 end ] stop
+ */
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tRunJob_3 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tRunJob_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tRunJob_3 finally ] stop
+ */
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tRunJob_3_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -1806,6 +2181,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
                         }
+                        context.setContextType("mongodb_collection_bronze_nutritional", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_nutritional") == null) {
+                            context.mongodb_collection_bronze_nutritional = null;
+                        } else {
+                            context.mongodb_collection_bronze_nutritional=(String) context.getProperty("mongodb_collection_bronze_nutritional");
+                        }
                         context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
                         if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
                             context.mongodb_collection_bronze_tmdb = null;
@@ -1847,6 +2228,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                             context.mongodb_user = null;
                         } else {
                             context.mongodb_user=(String) context.getProperty("mongodb_user");
+                        }
+                        context.setContextType("nutrition_dataset", "id_String");
+                        if(context.getStringValue("nutrition_dataset") == null) {
+                            context.nutrition_dataset = null;
+                        } else {
+                            context.nutrition_dataset=(String) context.getProperty("nutrition_dataset");
                         }
                         context.setContextType("postgresql_database", "id_String");
                         if(context.getStringValue("postgresql_database") == null) {
@@ -1929,6 +2316,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_nutritional")) {
+                context.mongodb_collection_bronze_nutritional = (String) parentContextMap.get("mongodb_collection_bronze_nutritional");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
@@ -1943,6 +2332,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_server = (String) parentContextMap.get("mongodb_server");
             }if (parentContextMap.containsKey("mongodb_user")) {
                 context.mongodb_user = (String) parentContextMap.get("mongodb_user");
+            }if (parentContextMap.containsKey("nutrition_dataset")) {
+                context.nutrition_dataset = (String) parentContextMap.get("nutrition_dataset");
             }if (parentContextMap.containsKey("postgresql_database")) {
                 context.postgresql_database = (String) parentContextMap.get("postgresql_database");
             }if (parentContextMap.containsKey("postgresql_password")) {
@@ -2192,6 +2583,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     72031 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 16:26:49 CET
+ *     87564 characters generated by Talend Open Studio for Big Data 
+ *     on the 10 février 2026, 10:01:24 CET
  ************************************************************************************************/

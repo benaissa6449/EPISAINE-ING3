@@ -145,6 +145,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
+			if(mongodb_collection_bronze_nutritional != null){
+				
+					this.setProperty("mongodb_collection_bronze_nutritional", mongodb_collection_bronze_nutritional.toString());
+				
+			}
+			
 			if(mongodb_collection_bronze_tmdb != null){
 				
 					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
@@ -184,6 +190,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_user != null){
 				
 					this.setProperty("mongodb_user", mongodb_user.toString());
+				
+			}
+			
+			if(nutrition_dataset != null){
+				
+					this.setProperty("nutrition_dataset", nutrition_dataset.toString());
 				
 			}
 			
@@ -274,6 +286,10 @@ public String mongodb_collection_bronze_k;
 public String getMongodb_collection_bronze_k(){
 	return this.mongodb_collection_bronze_k;
 }
+public String mongodb_collection_bronze_nutritional;
+public String getMongodb_collection_bronze_nutritional(){
+	return this.mongodb_collection_bronze_nutritional;
+}
 public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
@@ -301,6 +317,10 @@ public String getMongodb_server(){
 public String mongodb_user;
 public String getMongodb_user(){
 	return this.mongodb_user;
+}
+public String nutrition_dataset;
+public String getNutrition_dataset(){
+	return this.nutrition_dataset;
 }
 public String postgresql_database;
 public String getPostgresql_database(){
@@ -540,6 +560,15 @@ private class TalendException extends Exception {
 					tFileInputDelimited_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tFileInputDelimited_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tMongoDBOutput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -671,8 +700,8 @@ public void tWarn_1Process(final java.util.Map<String, Object> globalMap) throws
 		
 try {
 	
-	resumeUtil.addLog("USER_DEF_LOG", "NODE:tWarn_1", "", Thread.currentThread().getId() + "", "INFO","","LoadBronze begin","", "");
-	globalMap.put("tWarn_1_WARN_MESSAGES", "LoadBronze begin"); 
+	resumeUtil.addLog("USER_DEF_LOG", "NODE:tWarn_1", "", Thread.currentThread().getId() + "", "INFO","","LoadBronzeK begin","", "");
+	globalMap.put("tWarn_1_WARN_MESSAGES", "LoadBronzeK begin"); 
 	globalMap.put("tWarn_1_WARN_PRIORITY", 3);
 	globalMap.put("tWarn_1_WARN_CODE", 42);
 	
@@ -1355,6 +1384,7 @@ final String applicationName_tMongoDBOutput_2 = "Talend";
         mongo_tMongoDBOutput_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
         db_tMongoDBOutput_2 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
 
+        db_tMongoDBOutput_2.getCollection(context.mongodb_collection_bronze_k).drop();
     com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_2 = db_tMongoDBOutput_2.getCollection(context.mongodb_collection_bronze_k);
 
 
@@ -1710,6 +1740,447 @@ end_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
 	
 
 
+public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadBronzeK = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadBronzeK = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
+			    public String title;
+
+				public String getTitle () {
+					return this.title;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+			    public String directions;
+
+				public String getDirections () {
+					return this.directions;
+				}
+				
+			    public String link;
+
+				public String getLink () {
+					return this.link;
+				}
+				
+			    public String source;
+
+				public String getSource () {
+					return this.source;
+				}
+				
+			    public String NER;
+
+				public String getNER () {
+					return this.NER;
+				}
+				
+			    public String site;
+
+				public String getSite () {
+					return this.site;
+				}
+				
+
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this._id == null) ? 0 : this._id.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final out1Struct other = (out1Struct) obj;
+		
+						if (this._id == null) {
+							if (other._id != null)
+								return false;
+						
+						} else if (!this._id.equals(other._id))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(out1Struct other) {
+
+		other._id = this._id;
+	            other.title = this.title;
+	            other.ingredients = this.ingredients;
+	            other.directions = this.directions;
+	            other.link = this.link;
+	            other.source = this.source;
+	            other.NER = this.NER;
+	            other.site = this.site;
+	            
+	}
+
+	public void copyKeysDataTo(out1Struct other) {
+
+		other._id = this._id;
+	            	
+	}
+
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadBronzeK.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadBronzeK.length == 0) {
+   					commonByteArray_PROJECT_LoadBronzeK = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadBronzeK = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadBronzeK, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadBronzeK, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadBronzeK.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadBronzeK.length == 0) {
+   					commonByteArray_PROJECT_LoadBronzeK = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadBronzeK = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadBronzeK, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadBronzeK, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadBronzeK) {
+
+        	try {
+
+        		int length = 0;
+		
+						this._id = readInteger(dis);
+					
+					this.title = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.directions = readString(dis);
+					
+					this.link = readString(dis);
+					
+					this.source = readString(dis);
+					
+					this.NER = readString(dis);
+					
+					this.site = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadBronzeK) {
+
+        	try {
+
+        		int length = 0;
+		
+						this._id = readInteger(dis);
+					
+					this.title = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+					this.directions = readString(dis);
+					
+					this.link = readString(dis);
+					
+					this.source = readString(dis);
+					
+					this.NER = readString(dis);
+					
+					this.site = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
+					// String
+				
+						writeString(this.title,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.directions,dos);
+					
+					// String
+				
+						writeString(this.link,dos);
+					
+					// String
+				
+						writeString(this.source,dos);
+					
+					// String
+				
+						writeString(this.NER,dos);
+					
+					// String
+				
+						writeString(this.site,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
+					// String
+				
+						writeString(this.title,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+					// String
+				
+						writeString(this.directions,dos);
+					
+					// String
+				
+						writeString(this.link,dos);
+					
+					// String
+				
+						writeString(this.source,dos);
+					
+					// String
+				
+						writeString(this.NER,dos);
+					
+					// String
+				
+						writeString(this.site,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",title="+title);
+		sb.append(",ingredients="+ingredients);
+		sb.append(",directions="+directions);
+		sb.append(",link="+link);
+		sb.append(",source="+source);
+		sb.append(",NER="+NER);
+		sb.append(",site="+site);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(out1Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this._id, other._id);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
 public static class row1Struct implements routines.system.IPersistableRow<row1Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadBronzeK = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadBronzeK = new byte[0];
@@ -2046,6 +2517,8 @@ public void tFileInputDelimited_1Process(final java.util.Map<String, Object> glo
 
 
 		row1Struct row1 = new row1Struct();
+out1Struct out1 = new out1Struct();
+
 
 
 
@@ -2067,7 +2540,7 @@ public void tFileInputDelimited_1Process(final java.util.Map<String, Object> glo
 
 	
 					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row1");
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out1");
 					}
 				
 		int tos_count_tMongoDBOutput_1 = 0;
@@ -2154,6 +2627,7 @@ final String applicationName_tMongoDBOutput_1 = "Talend";
             DBObjectUtil_tMongoDBOutput_1 queryObjectUtil_tMongoDBOutput_1=new DBObjectUtil_tMongoDBOutput_1();
             java.util.Map<String, String> pathMap_tMongoDBOutput_1=new java.util.HashMap<>();
 
+                pathMap_tMongoDBOutput_1.put("_id","");
                 pathMap_tMongoDBOutput_1.put("title","");
                 pathMap_tMongoDBOutput_1.put("ingredients","");
                 pathMap_tMongoDBOutput_1.put("directions","");
@@ -2181,6 +2655,73 @@ final String applicationName_tMongoDBOutput_1 = "Talend";
 
 /**
  * [tMongoDBOutput_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_1", false);
+		start_Hash.put("tMap_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row1");
+					}
+				
+		int tos_count_tMap_1 = 0;
+		
+
+
+
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+class  Var__tMap_1__Struct  {
+}
+Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+out1Struct out1_tmp = new out1Struct();
+// ###############################
+
+        
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+/**
+ * [tMap_1 begin ] stop
  */
 
 
@@ -2611,6 +3152,108 @@ if(row1 != null) {
 
 	
 	/**
+	 * [tMap_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row1"
+						
+						);
+					}
+					
+
+		
+		
+		boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+		
+
+        // ###############################
+        // # Input tables (lookups)
+		  boolean rejectedInnerJoin_tMap_1 = false;
+		  boolean mainRowRejected_tMap_1 = false;
+            				    								  
+		// ###############################
+        { // start of Var scope
+        
+	        // ###############################
+        	// # Vars tables
+        
+Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
+        // ###############################
+        // # Output tables
+
+out1 = null;
+
+
+// # Output table : 'out1'
+out1_tmp._id = Numeric.sequence("s2", 1, 1);
+out1_tmp.title = row1.title ;
+out1_tmp.ingredients = row1.ingredients ;
+out1_tmp.directions = row1.directions ;
+out1_tmp.link = row1.link ;
+out1_tmp.source = row1.source ;
+out1_tmp.NER = row1.NER ;
+out1_tmp.site = row1.site ;
+out1 = out1_tmp;
+// ###############################
+
+} // end of Var scope
+
+rejectedInnerJoin_tMap_1 = false;
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	tos_count_tMap_1++;
+
+/**
+ * [tMap_1 main ] stop
+ */
+	
+	/**
+	 * [tMap_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_begin ] stop
+ */
+// Start of branch "out1"
+if(out1 != null) { 
+
+
+
+	
+	/**
 	 * [tMongoDBOutput_1 main ] start
 	 */
 
@@ -2624,7 +3267,7 @@ if(row1 != null) {
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row1"
+							,"out1"
 						
 						);
 					}
@@ -2637,13 +3280,14 @@ try{
 				
 
 				
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("title"),"title", row1.title);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("ingredients"),"ingredients", row1.ingredients);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("directions"),"directions", row1.directions);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("link"),"link", row1.link);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("source"),"source", row1.source);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("NER"),"NER", row1.NER);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("site"),"site", row1.site);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("_id"),"_id", out1._id);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("title"),"title", out1.title);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("ingredients"),"ingredients", out1.ingredients);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("directions"),"directions", out1.directions);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("link"),"link", out1.link);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("source"),"source", out1.source);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("NER"),"NER", out1.NER);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("site"),"site", out1.site);
 				org.bson.Document updateObj_tMongoDBOutput_1 = updateObjectUtil_tMongoDBOutput_1.getObject();
 				
 						coll_tMongoDBOutput_1.insertOne(updateObj_tMongoDBOutput_1);
@@ -2703,6 +3347,32 @@ try{
 
 /**
  * [tMongoDBOutput_1 process_data_end ] stop
+ */
+
+} // End of branch "out1"
+
+
+
+
+	
+	/**
+	 * [tMap_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_end ] stop
  */
 
 } // End of branch "row1"
@@ -2774,6 +3444,44 @@ end_Hash.put("tFileInputDelimited_1", System.currentTimeMillis());
 
 	
 	/**
+	 * [tMap_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row1");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_1", true);
+end_Hash.put("tMap_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_1 end ] stop
+ */
+
+	
+	/**
 	 * [tMongoDBOutput_1 end ] start
 	 */
 
@@ -2788,7 +3496,7 @@ end_Hash.put("tFileInputDelimited_1", System.currentTimeMillis());
 	globalMap.put("tMongoDBOutput_1_NB_LINE", nb_line_tMongoDBOutput_1);
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row1");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"out1");
 			  	}
 			  	
  
@@ -2806,6 +3514,9 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_1 end ] stop
  */
+
+
+
 
 
 
@@ -2853,6 +3564,27 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 
 	
 	/**
+	 * [tMap_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 finally ] stop
+ */
+
+	
+	/**
 	 * [tMongoDBOutput_1 finally ] start
 	 */
 
@@ -2872,6 +3604,9 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_1 finally ] stop
  */
+
+
+
 
 
 
@@ -3471,6 +4206,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
                         }
+                        context.setContextType("mongodb_collection_bronze_nutritional", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_nutritional") == null) {
+                            context.mongodb_collection_bronze_nutritional = null;
+                        } else {
+                            context.mongodb_collection_bronze_nutritional=(String) context.getProperty("mongodb_collection_bronze_nutritional");
+                        }
                         context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
                         if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
                             context.mongodb_collection_bronze_tmdb = null;
@@ -3512,6 +4253,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                             context.mongodb_user = null;
                         } else {
                             context.mongodb_user=(String) context.getProperty("mongodb_user");
+                        }
+                        context.setContextType("nutrition_dataset", "id_String");
+                        if(context.getStringValue("nutrition_dataset") == null) {
+                            context.nutrition_dataset = null;
+                        } else {
+                            context.nutrition_dataset=(String) context.getProperty("nutrition_dataset");
                         }
                         context.setContextType("postgresql_database", "id_String");
                         if(context.getStringValue("postgresql_database") == null) {
@@ -3594,6 +4341,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_nutritional")) {
+                context.mongodb_collection_bronze_nutritional = (String) parentContextMap.get("mongodb_collection_bronze_nutritional");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
@@ -3608,6 +4357,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_server = (String) parentContextMap.get("mongodb_server");
             }if (parentContextMap.containsKey("mongodb_user")) {
                 context.mongodb_user = (String) parentContextMap.get("mongodb_user");
+            }if (parentContextMap.containsKey("nutrition_dataset")) {
+                context.nutrition_dataset = (String) parentContextMap.get("nutrition_dataset");
             }if (parentContextMap.containsKey("postgresql_database")) {
                 context.postgresql_database = (String) parentContextMap.get("postgresql_database");
             }if (parentContextMap.containsKey("postgresql_password")) {
@@ -3857,6 +4608,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     101484 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 16:26:49 CET
+ *     117190 characters generated by Talend Open Studio for Big Data 
+ *     on the 10 février 2026, 10:01:23 CET
  ************************************************************************************************/

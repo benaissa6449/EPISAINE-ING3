@@ -46,6 +46,18 @@ import java.util.Comparator;
 
 
 
+	//the import part of tJavaRow_3
+	//import java.util.List;
+
+	//the import part of tJavaRow_4
+	//import java.util.List;
+
+	//the import part of tJavaRow_1
+	//import java.util.List;
+
+	//the import part of tJavaRow_2
+	//import java.util.List;
+
 
 @SuppressWarnings("unused")
 
@@ -121,12 +133,6 @@ protected static void logIgnoredError(String message, Throwable cause) {
 
 		public void synchronizeContext(){
 			
-			if(mongodb_collection_silver_tmdb != null){
-				
-					this.setProperty("mongodb_collection_silver_tmdb", mongodb_collection_silver_tmdb.toString());
-				
-			}
-			
 			if(kaggle_dataset != null){
 				
 					this.setProperty("kaggle_dataset", kaggle_dataset.toString());
@@ -151,6 +157,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
+			if(mongodb_collection_bronze_nutritional != null){
+				
+					this.setProperty("mongodb_collection_bronze_nutritional", mongodb_collection_bronze_nutritional.toString());
+				
+			}
+			
 			if(mongodb_collection_bronze_tmdb != null){
 				
 					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
@@ -160,6 +172,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_collection_silver != null){
 				
 					this.setProperty("mongodb_collection_silver", mongodb_collection_silver.toString());
+				
+			}
+			
+			if(mongodb_collection_silver_nutrition != null){
+				
+					this.setProperty("mongodb_collection_silver_nutrition", mongodb_collection_silver_nutrition.toString());
 				
 			}
 			
@@ -190,6 +208,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_user != null){
 				
 					this.setProperty("mongodb_user", mongodb_user.toString());
+				
+			}
+			
+			if(nutrition_dataset != null){
+				
+					this.setProperty("nutrition_dataset", nutrition_dataset.toString());
 				
 			}
 			
@@ -241,6 +265,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
+			if(postgresql_table_meals_temp != null){
+				
+					this.setProperty("postgresql_table_meals_temp", postgresql_table_meals_temp.toString());
+				
+			}
+			
 			if(postgresql_user != null){
 				
 					this.setProperty("postgresql_user", postgresql_user.toString());
@@ -264,10 +294,6 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			return origin_value;
 		}
 
-public String mongodb_collection_silver_tmdb;
-public String getMongodb_collection_silver_tmdb(){
-	return this.mongodb_collection_silver_tmdb;
-}
 public String kaggle_dataset;
 public String getKaggle_dataset(){
 	return this.kaggle_dataset;
@@ -284,6 +310,10 @@ public String mongodb_collection_bronze_k;
 public String getMongodb_collection_bronze_k(){
 	return this.mongodb_collection_bronze_k;
 }
+public String mongodb_collection_bronze_nutritional;
+public String getMongodb_collection_bronze_nutritional(){
+	return this.mongodb_collection_bronze_nutritional;
+}
 public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
@@ -291,6 +321,10 @@ public String getMongodb_collection_bronze_tmdb(){
 public String mongodb_collection_silver;
 public String getMongodb_collection_silver(){
 	return this.mongodb_collection_silver;
+}
+public String mongodb_collection_silver_nutrition;
+public String getMongodb_collection_silver_nutrition(){
+	return this.mongodb_collection_silver_nutrition;
 }
 public String mongodb_database;
 public String getMongodb_database(){
@@ -311,6 +345,10 @@ public String getMongodb_server(){
 public String mongodb_user;
 public String getMongodb_user(){
 	return this.mongodb_user;
+}
+public String nutrition_dataset;
+public String getNutrition_dataset(){
+	return this.nutrition_dataset;
 }
 public String postgresql_database;
 public String getPostgresql_database(){
@@ -343,6 +381,10 @@ public String getPostgresql_table_category(){
 public String postgresql_table_meals;
 public String getPostgresql_table_meals(){
 	return this.postgresql_table_meals;
+}
+public String postgresql_table_meals_temp;
+public String getPostgresql_table_meals_temp(){
+	return this.postgresql_table_meals_temp;
 }
 public String postgresql_user;
 public String getPostgresql_user(){
@@ -541,67 +583,13 @@ private class TalendException extends Exception {
 					tMongoDBInput_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
-			public void tBufferOutput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tMongoDBInput_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tBufferInput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tMap_5_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tUniqRow_4_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tMap_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tUniqRow_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
 			public void tDBOutput_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tBufferInput_2_onSubJobError(exception, errorComponent, globalMap);
+					tMongoDBInput_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tDBCommit_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -613,13 +601,31 @@ private class TalendException extends Exception {
 					tDBCommit_3_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
-			public void tBufferInput_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tMongoDBInput_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tBufferInput_3_onSubJobError(exception, errorComponent, globalMap);
+					tMongoDBInput_3_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tBufferOutput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBInput_3_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tDBInput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tMap_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -628,7 +634,25 @@ private class TalendException extends Exception {
 				
 				status = "failure";
 				
-					tBufferInput_3_onSubJobError(exception, errorComponent, globalMap);
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tJavaRow_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tUniqRow_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tDBOutput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -637,7 +661,7 @@ private class TalendException extends Exception {
 				
 				status = "failure";
 				
-					tBufferInput_3_onSubJobError(exception, errorComponent, globalMap);
+					tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tDBCommit_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -649,13 +673,49 @@ private class TalendException extends Exception {
 					tDBCommit_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
-			public void tMongoDBClose_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tDBInput_4_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tMongoDBClose_1_onSubJobError(exception, errorComponent, globalMap);
+					tDBInput_4_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tJavaRow_4_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBInput_4_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tLoop_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tDBCommit_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBCommit_2_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMongoDBClose_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tMongoDBClose_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tWarn_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -667,13 +727,85 @@ private class TalendException extends Exception {
 					tWarn_2_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tDBInput_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMap_3_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tExtractJSONFields_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tJavaRow_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMap_4_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tJavaRow_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tDBOutput_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tDBInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
 				status = "failure";
 				
-					tBufferInput_3_onSubJobError(exception, errorComponent, globalMap);
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tBufferInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tAdvancedHash_row4_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -682,7 +814,31 @@ private class TalendException extends Exception {
 				
 				status = "failure";
 				
-					tBufferInput_3_onSubJobError(exception, errorComponent, globalMap);
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tAdvancedHash_row9_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tAggregateRow_1_AGGOUT_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+							tAggregateRow_1_AGGIN_error(exception, errorComponent, globalMap);
+						
+						}
+					
+			public void tAggregateRow_1_AGGIN_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
 			public void tWarn_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
@@ -705,17 +861,17 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
-			public void tBufferInput_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-
-resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
-
-			}
 			public void tDBCommit_3_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
-			public void tBufferInput_3_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tMongoDBInput_3_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tDBInput_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -725,7 +881,22 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
 			}
-			public void tMongoDBClose_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+			public void tDBInput_4_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tLoop_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tDBCommit_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tMongoDBClose_2_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -809,9 +980,9 @@ public void tWarn_1Process(final java.util.Map<String, Object> globalMap) throws
 		
 try {
 	
-	resumeUtil.addLog("USER_DEF_LOG", "NODE:tWarn_1", "", Thread.currentThread().getId() + "", "INFO","","LoadGold begin","", "");
+	resumeUtil.addLog("USER_DEF_LOG", "NODE:tWarn_1", "", Thread.currentThread().getId() + "", "ERROR","","LoadGold begin","", "");
 	globalMap.put("tWarn_1_WARN_MESSAGES", "LoadGold begin"); 
-	globalMap.put("tWarn_1_WARN_PRIORITY", 3);
+	globalMap.put("tWarn_1_WARN_PRIORITY", 5);
 	globalMap.put("tWarn_1_WARN_CODE", 42);
 	
 } catch (Exception e_tWarn_1) {
@@ -1127,7 +1298,7 @@ ok_Hash.put("tMongoDBConnection_1", true);
 end_Hash.put("tMongoDBConnection_1", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk2", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
 				}
 				tDBConnection_1Process(globalMap);
 
@@ -1369,7 +1540,7 @@ ok_Hash.put("tDBConnection_1", true);
 end_Hash.put("tDBConnection_1", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk3", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk4", 0, "ok");
 				}
 				tMongoDBInput_1Process(globalMap);
 
@@ -1438,6 +1609,12 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
 			    public String strMeal;
 
 				public String getStrMeal () {
@@ -1470,6 +1647,47 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 				
 
 
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
 
 	private String readString(ObjectInputStream dis) throws IOException{
 		String strReturn = null;
@@ -1539,6 +1757,8 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -1571,6 +1791,8 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -1599,6 +1821,10 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -1630,6 +1856,10 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -1663,7 +1893,8 @@ public static class row1Struct implements routines.system.IPersistableRow<row1St
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("strMeal="+strMeal);
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
 		sb.append(",strArea="+strArea);
 		sb.append(",strInstructions="+strInstructions);
@@ -1737,33 +1968,111 @@ public void tMongoDBInput_1Process(final java.util.Map<String, Object> globalMap
 
 	
 	/**
-	 * [tBufferOutput_1 begin ] start
+	 * [tDBOutput_3 begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tBufferOutput_1", false);
-		start_Hash.put("tBufferOutput_1", System.currentTimeMillis());
+		ok_Hash.put("tDBOutput_3", false);
+		start_Hash.put("tDBOutput_3", System.currentTimeMillis());
 		
 	
-	currentComponent="tBufferOutput_1";
+	currentComponent="tDBOutput_3";
 
 	
 					if(execStat) {
 						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row1");
 					}
 				
-		int tos_count_tBufferOutput_1 = 0;
+		int tos_count_tDBOutput_3 = 0;
 		
+
+
+
+
+
+String dbschema_tDBOutput_3 = null;
+	dbschema_tDBOutput_3 = (String)globalMap.get("schema_" + "tDBConnection_1");
+	
+
+String tableName_tDBOutput_3 = null;
+if(dbschema_tDBOutput_3 == null || dbschema_tDBOutput_3.trim().length() == 0) {
+	tableName_tDBOutput_3 = (context.postgresql_table_meals_temp);
+} else {
+	tableName_tDBOutput_3 = dbschema_tDBOutput_3 + "\".\"" + (context.postgresql_table_meals_temp);
+}
+
+
+int nb_line_tDBOutput_3 = 0;
+int nb_line_update_tDBOutput_3 = 0;
+int nb_line_inserted_tDBOutput_3 = 0;
+int nb_line_deleted_tDBOutput_3 = 0;
+int nb_line_rejected_tDBOutput_3 = 0;
+
+int deletedCount_tDBOutput_3=0;
+int updatedCount_tDBOutput_3=0;
+int insertedCount_tDBOutput_3=0;
+int rowsToCommitCount_tDBOutput_3=0;
+int rejectedCount_tDBOutput_3=0;
+
+boolean whetherReject_tDBOutput_3 = false;
+
+java.sql.Connection conn_tDBOutput_3 = null;
+String dbUser_tDBOutput_3 = null;
+
+	conn_tDBOutput_3 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	
+	
+
+
+   int batchSize_tDBOutput_3 = 10000;
+   int batchSizeCounter_tDBOutput_3=0;
+
+int count_tDBOutput_3=0;
+                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_3 = conn_tDBOutput_3.getMetaData();
+                                boolean whetherExist_tDBOutput_3 = false;
+                                try (java.sql.ResultSet rsTable_tDBOutput_3 = dbMetaData_tDBOutput_3.getTables(null, null, null, new String[]{"TABLE"})) {
+                                    String defaultSchema_tDBOutput_3 = "public";
+                                    if(dbschema_tDBOutput_3 == null || dbschema_tDBOutput_3.trim().length() == 0) {
+                                        try(java.sql.Statement stmtSchema_tDBOutput_3 = conn_tDBOutput_3.createStatement();
+                                            java.sql.ResultSet rsSchema_tDBOutput_3 = stmtSchema_tDBOutput_3.executeQuery("select current_schema() ")) {
+                                            while(rsSchema_tDBOutput_3.next()){
+                                                defaultSchema_tDBOutput_3 = rsSchema_tDBOutput_3.getString("current_schema");
+                                            }
+                                        }
+                                    }
+                                    while(rsTable_tDBOutput_3.next()) {
+                                        String table_tDBOutput_3 = rsTable_tDBOutput_3.getString("TABLE_NAME");
+                                        String schema_tDBOutput_3 = rsTable_tDBOutput_3.getString("TABLE_SCHEM");
+                                        if(table_tDBOutput_3.equals((context.postgresql_table_meals_temp))
+                                            && (schema_tDBOutput_3.equals(dbschema_tDBOutput_3) || ((dbschema_tDBOutput_3 ==null || dbschema_tDBOutput_3.trim().length() ==0) && defaultSchema_tDBOutput_3.equals(schema_tDBOutput_3)))) {
+                                            whetherExist_tDBOutput_3 = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(whetherExist_tDBOutput_3) {
+                                    try (java.sql.Statement stmtDrop_tDBOutput_3 = conn_tDBOutput_3.createStatement()) {
+                                        stmtDrop_tDBOutput_3.execute("DROP TABLE \"" + tableName_tDBOutput_3 + "\"" );
+                                    }
+                                }
+                                try(java.sql.Statement stmtCreate_tDBOutput_3 = conn_tDBOutput_3.createStatement()) {
+                                    stmtCreate_tDBOutput_3.execute("CREATE TABLE \"" + tableName_tDBOutput_3 + "\"(\"_id\" INT4 ,\"strMeal\" VARCHAR ,\"strCategory\" VARCHAR ,\"strArea\" VARCHAR ,\"strInstructions\" VARCHAR ,\"ingredients\" VARCHAR )");
+                                }
+	    String insert_tDBOutput_3 = "INSERT INTO \"" + tableName_tDBOutput_3 + "\" (\"_id\",\"strMeal\",\"strCategory\",\"strArea\",\"strInstructions\",\"ingredients\") VALUES (?,?,?,?,?,?)";
+	    
+	    java.sql.PreparedStatement pstmt_tDBOutput_3 = conn_tDBOutput_3.prepareStatement(insert_tDBOutput_3);
+	    resourceMap.put("pstmt_tDBOutput_3", pstmt_tDBOutput_3);
+	    
 
  
 
 
 
 /**
- * [tBufferOutput_1 begin ] stop
+ * [tDBOutput_3 begin ] stop
  */
 
 
@@ -1805,7 +2114,7 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 
 
 				
-					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_1 = db_tMongoDBInput_1.getCollection(context.mongodb_collection_silver_tmdb);
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_1 = db_tMongoDBInput_1.getCollection(context.mongodb_collection_silver);
 				
 				
 				
@@ -1905,6 +2214,7 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 				}
 				DBObjectInputUtil_tMongoDBInput_1 dbObjectInputUtil_tMongoDBInput_1=new DBObjectInputUtil_tMongoDBInput_1();
 				java.util.Map<String, String> pathMap_tMongoDBInput_1=new java.util.HashMap<>();
+				pathMap_tMongoDBInput_1.put("_id","");
 				pathMap_tMongoDBInput_1.put("strMeal","");
 				pathMap_tMongoDBInput_1.put("strCategory","");
 				pathMap_tMongoDBInput_1.put("strArea","");
@@ -1916,6 +2226,16 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 				org.bson.Document o_tMongoDBInput_1 = cursor_tMongoDBInput_1.next();
 				nb_line_tMongoDBInput_1++;
 				Object valueObj_tMongoDBInput_1=null;
+                    valueObj_tMongoDBInput_1=dbObjectInputUtil_tMongoDBInput_1.getValue(pathMap_tMongoDBInput_1.get("_id"),"_id",o_tMongoDBInput_1);
+				if(valueObj_tMongoDBInput_1!=null && valueObj_tMongoDBInput_1.toString().length() > 0) {
+                            if (valueObj_tMongoDBInput_1.getClass().equals(Double.class)) {
+                                row1._id = ParserUtils.parseTo_Double(valueObj_tMongoDBInput_1.toString()).intValue();
+                            } else {
+                                row1._id = ParserUtils.parseTo_Integer(valueObj_tMongoDBInput_1.toString());
+                            }
+				}else{
+					row1._id = null;
+				}
                     valueObj_tMongoDBInput_1=dbObjectInputUtil_tMongoDBInput_1.getValue(pathMap_tMongoDBInput_1.get("strMeal"),"strMeal",o_tMongoDBInput_1);
 					
 				row1.strMeal = valueObj_tMongoDBInput_1==null ? null : valueObj_tMongoDBInput_1.toString();
@@ -1989,2434 +2309,6 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 
 	
 	/**
-	 * [tBufferOutput_1 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferOutput_1";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row1"
-						
-						);
-					}
-					
-
-
-
-String[] row_tBufferOutput_1=new String[]{"","","","","",};		
-	    if(row1.strMeal != null){
-	        
-	            row_tBufferOutput_1[0] = row1.strMeal;
-	                        			    
-	    }else{
-	    	row_tBufferOutput_1[0] = null;
-	    }
-	    if(row1.strCategory != null){
-	        
-	            row_tBufferOutput_1[1] = row1.strCategory;
-	                        			    
-	    }else{
-	    	row_tBufferOutput_1[1] = null;
-	    }
-	    if(row1.strArea != null){
-	        
-	            row_tBufferOutput_1[2] = row1.strArea;
-	                        			    
-	    }else{
-	    	row_tBufferOutput_1[2] = null;
-	    }
-	    if(row1.strInstructions != null){
-	        
-	            row_tBufferOutput_1[3] = row1.strInstructions;
-	                        			    
-	    }else{
-	    	row_tBufferOutput_1[3] = null;
-	    }
-	    if(row1.ingredients != null){
-	        
-	            row_tBufferOutput_1[4] = row1.ingredients;
-	                        			    
-	    }else{
-	    	row_tBufferOutput_1[4] = null;
-	    }
-	globalBuffer.add(row_tBufferOutput_1);	
-	
- 
-
-
-	tos_count_tBufferOutput_1++;
-
-/**
- * [tBufferOutput_1 main ] stop
- */
-	
-	/**
-	 * [tBufferOutput_1 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferOutput_1";
-
-	
-
- 
-
-
-
-/**
- * [tBufferOutput_1 process_data_begin ] stop
- */
-	
-	/**
-	 * [tBufferOutput_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferOutput_1";
-
-	
-
- 
-
-
-
-/**
- * [tBufferOutput_1 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tMongoDBInput_1 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBInput_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBInput_1 process_data_end ] stop
- */
-	
-	/**
-	 * [tMongoDBInput_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBInput_1";
-
-	
-
-            }
-    globalMap.put("tMongoDBInput_1_NB_LINE", nb_line_tMongoDBInput_1);
- 
-
-ok_Hash.put("tMongoDBInput_1", true);
-end_Hash.put("tMongoDBInput_1", System.currentTimeMillis());
-
-
-
-
-/**
- * [tMongoDBInput_1 end ] stop
- */
-
-	
-	/**
-	 * [tBufferOutput_1 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferOutput_1";
-
-	
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row1");
-			  	}
-			  	
- 
-
-ok_Hash.put("tBufferOutput_1", true);
-end_Hash.put("tBufferOutput_1", System.currentTimeMillis());
-
-				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk9", 0, "ok");
-				}
-				tBufferInput_2Process(globalMap);
-
-
-
-/**
- * [tBufferOutput_1 end ] stop
- */
-
-
-
-				}//end the resume
-
-				
-
-
-
-	
-			}catch(java.lang.Exception e){	
-				
-				TalendException te = new TalendException(e, currentComponent, globalMap);
-				
-				throw te;
-			}catch(java.lang.Error error){	
-				
-					runStat.stopThreadStat();
-				
-				throw error;
-			}finally{
-				
-				try{
-					
-	
-	/**
-	 * [tMongoDBInput_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMongoDBInput_1";
-
-	
-
- 
-
-
-
-/**
- * [tMongoDBInput_1 finally ] stop
- */
-
-	
-	/**
-	 * [tBufferOutput_1 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferOutput_1";
-
-	
-
- 
-
-
-
-/**
- * [tBufferOutput_1 finally ] stop
- */
-
-
-
-				}catch(java.lang.Exception e){	
-					//ignore
-				}catch(java.lang.Error error){
-					//ignore
-				}
-				resourceMap = null;
-			}
-		
-
-		globalMap.put("tMongoDBInput_1_SUBPROCESS_STATE", 1);
-	}
-	
-
-
-public static class row7Struct implements routines.system.IPersistableRow<row7Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
-	protected static final int DEFAULT_HASHCODE = 1;
-    protected static final int PRIME = 31;
-    protected int hashCode = DEFAULT_HASHCODE;
-    public boolean hashCodeDirty = true;
-
-    public String loopKey;
-
-
-
-	
-			    public String area;
-
-				public String getArea () {
-					return this.area;
-				}
-				
-			    public String area_id;
-
-				public String getArea_id () {
-					return this.area_id;
-				}
-				
-
-
-	@Override
-	public int hashCode() {
-		if (this.hashCodeDirty) {
-			final int prime = PRIME;
-			int result = DEFAULT_HASHCODE;
-	
-						result = prime * result + ((this.area == null) ? 0 : this.area.hashCode());
-					
-    		this.hashCode = result;
-    		this.hashCodeDirty = false;
-		}
-		return this.hashCode;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
-		final row7Struct other = (row7Struct) obj;
-		
-						if (this.area == null) {
-							if (other.area != null)
-								return false;
-						
-						} else if (!this.area.equals(other.area))
-						
-							return false;
-					
-
-		return true;
-    }
-
-	public void copyDataTo(row7Struct other) {
-
-		other.area = this.area;
-	            other.area_id = this.area_id;
-	            
-	}
-
-	public void copyKeysDataTo(row7Struct other) {
-
-		other.area = this.area;
-	            	
-	}
-
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.area = readString(dis);
-					
-					this.area_id = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.area = readString(dis);
-					
-					this.area_id = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.area,dos);
-					
-					// String
-				
-						writeString(this.area_id,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.area,dos);
-					
-					// String
-				
-						writeString(this.area_id,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("area="+area);
-		sb.append(",area_id="+area_id);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row7Struct other) {
-
-		int returnValue = -1;
-		
-						returnValue = checkNullsAndCompare(this.area, other.area);
-						if(returnValue != 0) {
-							return returnValue;
-						}
-
-					
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
-public static class copyOfout1Struct implements routines.system.IPersistableRow<copyOfout1Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
-	protected static final int DEFAULT_HASHCODE = 1;
-    protected static final int PRIME = 31;
-    protected int hashCode = DEFAULT_HASHCODE;
-    public boolean hashCodeDirty = true;
-
-    public String loopKey;
-
-
-
-	
-			    public String area;
-
-				public String getArea () {
-					return this.area;
-				}
-				
-			    public String area_id;
-
-				public String getArea_id () {
-					return this.area_id;
-				}
-				
-
-
-	@Override
-	public int hashCode() {
-		if (this.hashCodeDirty) {
-			final int prime = PRIME;
-			int result = DEFAULT_HASHCODE;
-	
-						result = prime * result + ((this.area == null) ? 0 : this.area.hashCode());
-					
-    		this.hashCode = result;
-    		this.hashCodeDirty = false;
-		}
-		return this.hashCode;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
-		final copyOfout1Struct other = (copyOfout1Struct) obj;
-		
-						if (this.area == null) {
-							if (other.area != null)
-								return false;
-						
-						} else if (!this.area.equals(other.area))
-						
-							return false;
-					
-
-		return true;
-    }
-
-	public void copyDataTo(copyOfout1Struct other) {
-
-		other.area = this.area;
-	            other.area_id = this.area_id;
-	            
-	}
-
-	public void copyKeysDataTo(copyOfout1Struct other) {
-
-		other.area = this.area;
-	            	
-	}
-
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.area = readString(dis);
-					
-					this.area_id = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.area = readString(dis);
-					
-					this.area_id = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.area,dos);
-					
-					// String
-				
-						writeString(this.area_id,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.area,dos);
-					
-					// String
-				
-						writeString(this.area_id,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("area="+area);
-		sb.append(",area_id="+area_id);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(copyOfout1Struct other) {
-
-		int returnValue = -1;
-		
-						returnValue = checkNullsAndCompare(this.area, other.area);
-						if(returnValue != 0) {
-							return returnValue;
-						}
-
-					
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
-public static class row10Struct implements routines.system.IPersistableRow<row10Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
-
-	
-			    public String strArea;
-
-				public String getStrArea () {
-					return this.strArea;
-				}
-				
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strArea = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strArea = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strArea,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strArea,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("strArea="+strArea);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row10Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
-public static class out4Struct implements routines.system.IPersistableRow<out4Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
-
-	
-			    public String strArea;
-
-				public String getStrArea () {
-					return this.strArea;
-				}
-				
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strArea = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strArea = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strArea,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strArea,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("strArea="+strArea);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(out4Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
-public static class row6Struct implements routines.system.IPersistableRow<row6Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
-
-	
-			    public String strMeal;
-
-				public String getStrMeal () {
-					return this.strMeal;
-				}
-				
-			    public String strCategory;
-
-				public String getStrCategory () {
-					return this.strCategory;
-				}
-				
-			    public String strArea;
-
-				public String getStrArea () {
-					return this.strArea;
-				}
-				
-			    public String strInstructions;
-
-				public String getStrInstructions () {
-					return this.strInstructions;
-				}
-				
-			    public String ingredients;
-
-				public String getIngredients () {
-					return this.ingredients;
-				}
-				
-
-
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
-
-        	try {
-
-        		int length = 0;
-		
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("strMeal="+strMeal);
-		sb.append(",strCategory="+strCategory);
-		sb.append(",strArea="+strArea);
-		sb.append(",strInstructions="+strInstructions);
-		sb.append(",ingredients="+ingredients);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row6Struct other) {
-
-		int returnValue = -1;
-		
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-public void tBufferInput_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tBufferInput_2_SUBPROCESS_STATE", 0);
-
- final boolean execStat = this.execStat;
-	
-		String iterateId = "";
-	
-	
-	String currentComponent = "";
-	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
-
-	try {
-			// TDI-39566 avoid throwing an useless Exception
-			boolean resumeIt = true;
-			if (globalResumeTicket == false && resumeEntryMethodName != null) {
-				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
-				resumeIt = resumeEntryMethodName.equals(currentMethodName);
-			}
-			if (resumeIt || globalResumeTicket) { //start the resume
-				globalResumeTicket = true;
-
-
-
-		row6Struct row6 = new row6Struct();
-out4Struct out4 = new out4Struct();
-row10Struct row10 = new row10Struct();
-copyOfout1Struct copyOfout1 = new copyOfout1Struct();
-row7Struct row7 = new row7Struct();
-
-
-
-
-
-
-
-
-	
-	/**
-	 * [tDBOutput_3 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tDBOutput_3", false);
-		start_Hash.put("tDBOutput_3", System.currentTimeMillis());
-		
-	
-	currentComponent="tDBOutput_3";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row7");
-					}
-				
-		int tos_count_tDBOutput_3 = 0;
-		
-
-
-
-
-
-String dbschema_tDBOutput_3 = null;
-	dbschema_tDBOutput_3 = (String)globalMap.get("schema_" + "tDBConnection_1");
-	
-
-String tableName_tDBOutput_3 = null;
-if(dbschema_tDBOutput_3 == null || dbschema_tDBOutput_3.trim().length() == 0) {
-	tableName_tDBOutput_3 = (context.postgresql_table_area);
-} else {
-	tableName_tDBOutput_3 = dbschema_tDBOutput_3 + "\".\"" + (context.postgresql_table_area);
-}
-
-
-int nb_line_tDBOutput_3 = 0;
-int nb_line_update_tDBOutput_3 = 0;
-int nb_line_inserted_tDBOutput_3 = 0;
-int nb_line_deleted_tDBOutput_3 = 0;
-int nb_line_rejected_tDBOutput_3 = 0;
-
-int deletedCount_tDBOutput_3=0;
-int updatedCount_tDBOutput_3=0;
-int insertedCount_tDBOutput_3=0;
-int rowsToCommitCount_tDBOutput_3=0;
-int rejectedCount_tDBOutput_3=0;
-
-boolean whetherReject_tDBOutput_3 = false;
-
-java.sql.Connection conn_tDBOutput_3 = null;
-String dbUser_tDBOutput_3 = null;
-
-	conn_tDBOutput_3 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
-	
-	
-
-
-   int batchSize_tDBOutput_3 = 10000;
-   int batchSizeCounter_tDBOutput_3=0;
-
-int count_tDBOutput_3=0;
-                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_3 = conn_tDBOutput_3.getMetaData();
-                                boolean whetherExist_tDBOutput_3 = false;
-                                try (java.sql.ResultSet rsTable_tDBOutput_3 = dbMetaData_tDBOutput_3.getTables(null, null, null, new String[]{"TABLE"})) {
-                                    String defaultSchema_tDBOutput_3 = "public";
-                                    if(dbschema_tDBOutput_3 == null || dbschema_tDBOutput_3.trim().length() == 0) {
-                                        try(java.sql.Statement stmtSchema_tDBOutput_3 = conn_tDBOutput_3.createStatement();
-                                            java.sql.ResultSet rsSchema_tDBOutput_3 = stmtSchema_tDBOutput_3.executeQuery("select current_schema() ")) {
-                                            while(rsSchema_tDBOutput_3.next()){
-                                                defaultSchema_tDBOutput_3 = rsSchema_tDBOutput_3.getString("current_schema");
-                                            }
-                                        }
-                                    }
-                                    while(rsTable_tDBOutput_3.next()) {
-                                        String table_tDBOutput_3 = rsTable_tDBOutput_3.getString("TABLE_NAME");
-                                        String schema_tDBOutput_3 = rsTable_tDBOutput_3.getString("TABLE_SCHEM");
-                                        if(table_tDBOutput_3.equals((context.postgresql_table_area))
-                                            && (schema_tDBOutput_3.equals(dbschema_tDBOutput_3) || ((dbschema_tDBOutput_3 ==null || dbschema_tDBOutput_3.trim().length() ==0) && defaultSchema_tDBOutput_3.equals(schema_tDBOutput_3)))) {
-                                            whetherExist_tDBOutput_3 = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if(whetherExist_tDBOutput_3) {
-                                    try (java.sql.Statement stmtDrop_tDBOutput_3 = conn_tDBOutput_3.createStatement()) {
-                                        stmtDrop_tDBOutput_3.execute("DROP TABLE \"" + tableName_tDBOutput_3 + "\"" );
-                                    }
-                                }
-                                try(java.sql.Statement stmtCreate_tDBOutput_3 = conn_tDBOutput_3.createStatement()) {
-                                    stmtCreate_tDBOutput_3.execute("CREATE TABLE \"" + tableName_tDBOutput_3 + "\"(\"area\" VARCHAR ,\"area_id\" VARCHAR ,primary key(\"area\"))");
-                                }
-	    String insert_tDBOutput_3 = "INSERT INTO \"" + tableName_tDBOutput_3 + "\" (\"area\",\"area_id\") VALUES (?,?)";
-	    
-	    java.sql.PreparedStatement pstmt_tDBOutput_3 = conn_tDBOutput_3.prepareStatement(insert_tDBOutput_3);
-	    resourceMap.put("pstmt_tDBOutput_3", pstmt_tDBOutput_3);
-	    
-
- 
-
-
-
-/**
- * [tDBOutput_3 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tUniqRow_2 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tUniqRow_2", false);
-		start_Hash.put("tUniqRow_2", System.currentTimeMillis());
-		
-	
-	currentComponent="tUniqRow_2";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"copyOfout1");
-					}
-				
-		int tos_count_tUniqRow_2 = 0;
-		
-
-	
-		class KeyStruct_tUniqRow_2 {
-	
-			private static final int DEFAULT_HASHCODE = 1;
-		    private static final int PRIME = 31;
-		    private int hashCode = DEFAULT_HASHCODE;
-		    public boolean hashCodeDirty = true;
-	
-	        
-					String area;        
-	        
-		    @Override
-			public int hashCode() {
-				if (this.hashCodeDirty) {
-					final int prime = PRIME;
-					int result = DEFAULT_HASHCODE;
-			
-								result = prime * result + ((this.area == null) ? 0 : this.area.hashCode());
-								
-		    		this.hashCode = result;
-		    		this.hashCodeDirty = false;		
-				}
-				return this.hashCode;
-			}
-			
-			@Override
-			public boolean equals(Object obj) {
-				if (this == obj) return true;
-				if (obj == null) return false;
-				if (getClass() != obj.getClass()) return false;
-				final KeyStruct_tUniqRow_2 other = (KeyStruct_tUniqRow_2) obj;
-				
-									if (this.area == null) {
-										if (other.area != null) 
-											return false;
-								
-									} else if (!this.area.equals(other.area))
-								 
-										return false;
-								
-				
-				return true;
-			}
-	  
-	        
-		}
-
-	
-int nb_uniques_tUniqRow_2 = 0;
-int nb_duplicates_tUniqRow_2 = 0;
-KeyStruct_tUniqRow_2 finder_tUniqRow_2 = new KeyStruct_tUniqRow_2();
-java.util.Set<KeyStruct_tUniqRow_2> keystUniqRow_2 = new java.util.HashSet<KeyStruct_tUniqRow_2>();
-java.util.Set<KeyStruct_tUniqRow_2> keysForDuplicatedtUniqRow_2 = new java.util.HashSet<KeyStruct_tUniqRow_2>(); 
-
- 
-
-
-
-/**
- * [tUniqRow_2 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tMap_3 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tMap_3", false);
-		start_Hash.put("tMap_3", System.currentTimeMillis());
-		
-	
-	currentComponent="tMap_3";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row10");
-					}
-				
-		int tos_count_tMap_3 = 0;
-		
-
-
-
-
-// ###############################
-// # Lookup's keys initialization
-// ###############################        
-
-// ###############################
-// # Vars initialization
-class  Var__tMap_3__Struct  {
-}
-Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
-// ###############################
-
-// ###############################
-// # Outputs initialization
-copyOfout1Struct copyOfout1_tmp = new copyOfout1Struct();
-// ###############################
-
-        
-        
-
-
-
-        
-
-
-
-
-
-
-
-
-
- 
-
-
-
-/**
- * [tMap_3 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tUniqRow_4 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tUniqRow_4", false);
-		start_Hash.put("tUniqRow_4", System.currentTimeMillis());
-		
-	
-	currentComponent="tUniqRow_4";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out4");
-					}
-				
-		int tos_count_tUniqRow_4 = 0;
-		
-
-	
-		class KeyStruct_tUniqRow_4 {
-	
-			private static final int DEFAULT_HASHCODE = 1;
-		    private static final int PRIME = 31;
-		    private int hashCode = DEFAULT_HASHCODE;
-		    public boolean hashCodeDirty = true;
-	
-	        
-					String strArea;        
-	        
-		    @Override
-			public int hashCode() {
-				if (this.hashCodeDirty) {
-					final int prime = PRIME;
-					int result = DEFAULT_HASHCODE;
-			
-								result = prime * result + ((this.strArea == null) ? 0 : this.strArea.hashCode());
-								
-		    		this.hashCode = result;
-		    		this.hashCodeDirty = false;		
-				}
-				return this.hashCode;
-			}
-			
-			@Override
-			public boolean equals(Object obj) {
-				if (this == obj) return true;
-				if (obj == null) return false;
-				if (getClass() != obj.getClass()) return false;
-				final KeyStruct_tUniqRow_4 other = (KeyStruct_tUniqRow_4) obj;
-				
-									if (this.strArea == null) {
-										if (other.strArea != null) 
-											return false;
-								
-									} else if (!this.strArea.equals(other.strArea))
-								 
-										return false;
-								
-				
-				return true;
-			}
-	  
-	        
-		}
-
-	
-int nb_uniques_tUniqRow_4 = 0;
-int nb_duplicates_tUniqRow_4 = 0;
-KeyStruct_tUniqRow_4 finder_tUniqRow_4 = new KeyStruct_tUniqRow_4();
-java.util.Set<KeyStruct_tUniqRow_4> keystUniqRow_4 = new java.util.HashSet<KeyStruct_tUniqRow_4>();
-java.util.Set<KeyStruct_tUniqRow_4> keysForDuplicatedtUniqRow_4 = new java.util.HashSet<KeyStruct_tUniqRow_4>(); 
-
- 
-
-
-
-/**
- * [tUniqRow_4 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tMap_5 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tMap_5", false);
-		start_Hash.put("tMap_5", System.currentTimeMillis());
-		
-	
-	currentComponent="tMap_5";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row6");
-					}
-				
-		int tos_count_tMap_5 = 0;
-		
-
-
-
-
-// ###############################
-// # Lookup's keys initialization
-// ###############################        
-
-// ###############################
-// # Vars initialization
-class  Var__tMap_5__Struct  {
-}
-Var__tMap_5__Struct Var__tMap_5 = new Var__tMap_5__Struct();
-// ###############################
-
-// ###############################
-// # Outputs initialization
-out4Struct out4_tmp = new out4Struct();
-// ###############################
-
-        
-        
-
-
-
-        
-
-
-
-
-
-
-
-
-
- 
-
-
-
-/**
- * [tMap_5 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tBufferInput_2 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tBufferInput_2", false);
-		start_Hash.put("tBufferInput_2", System.currentTimeMillis());
-		
-	
-	currentComponent="tBufferInput_2";
-
-	
-		int tos_count_tBufferInput_2 = 0;
-		
-
-int nb_line_tBufferInput_2 = 0;
-
-String[] row_tBufferInput_2 = new String[5];
-for (int n = 0; n < globalBuffer.size(); n++)
-{
-	row_tBufferInput_2 = (String[])globalBuffer.get(n);	
-	if(0 < row_tBufferInput_2.length){
-	
-		row6.strMeal = row_tBufferInput_2[0];	
-	
-	}
-	
-	else{
-		row6.strMeal = null;
-	}	
-	if(1 < row_tBufferInput_2.length){
-	
-		row6.strCategory = row_tBufferInput_2[1];	
-	
-	}
-	
-	else{
-		row6.strCategory = null;
-	}	
-	if(2 < row_tBufferInput_2.length){
-	
-		row6.strArea = row_tBufferInput_2[2];	
-	
-	}
-	
-	else{
-		row6.strArea = null;
-	}	
-	if(3 < row_tBufferInput_2.length){
-	
-		row6.strInstructions = row_tBufferInput_2[3];	
-	
-	}
-	
-	else{
-		row6.strInstructions = null;
-	}	
-	if(4 < row_tBufferInput_2.length){
-	
-		row6.ingredients = row_tBufferInput_2[4];	
-	
-	}
-	
-	else{
-		row6.ingredients = null;
-	}
- 
-
-
-
-/**
- * [tBufferInput_2 begin ] stop
- */
-	
-	/**
-	 * [tBufferInput_2 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferInput_2";
-
-	
-
- 
-
-
-	tos_count_tBufferInput_2++;
-
-/**
- * [tBufferInput_2 main ] stop
- */
-	
-	/**
-	 * [tBufferInput_2 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferInput_2";
-
-	
-
- 
-
-
-
-/**
- * [tBufferInput_2 process_data_begin ] stop
- */
-
-	
-	/**
-	 * [tMap_5 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_5";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row6"
-						
-						);
-					}
-					
-
-		
-		
-		boolean hasCasePrimitiveKeyWithNull_tMap_5 = false;
-		
-
-        // ###############################
-        // # Input tables (lookups)
-		  boolean rejectedInnerJoin_tMap_5 = false;
-		  boolean mainRowRejected_tMap_5 = false;
-            				    								  
-		// ###############################
-        { // start of Var scope
-        
-	        // ###############################
-        	// # Vars tables
-        
-Var__tMap_5__Struct Var = Var__tMap_5;// ###############################
-        // ###############################
-        // # Output tables
-
-out4 = null;
-
-
-// # Output table : 'out4'
-out4_tmp.strArea = row6.strArea ;
-out4 = out4_tmp;
-// ###############################
-
-} // end of Var scope
-
-rejectedInnerJoin_tMap_5 = false;
-
-
-
-
-
-
-
-
-
-
- 
-
-
-	tos_count_tMap_5++;
-
-/**
- * [tMap_5 main ] stop
- */
-	
-	/**
-	 * [tMap_5 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_5";
-
-	
-
- 
-
-
-
-/**
- * [tMap_5 process_data_begin ] stop
- */
-// Start of branch "out4"
-if(out4 != null) { 
-
-
-
-	
-	/**
-	 * [tUniqRow_4 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_4";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"out4"
-						
-						);
-					}
-					
-row10 = null;			
-if(out4.strArea == null){
-	finder_tUniqRow_4.strArea = null;
-}else{
-	finder_tUniqRow_4.strArea = out4.strArea.toLowerCase();
-}	
-finder_tUniqRow_4.hashCodeDirty = true;
-if (!keystUniqRow_4.contains(finder_tUniqRow_4)) {
-		KeyStruct_tUniqRow_4 new_tUniqRow_4 = new KeyStruct_tUniqRow_4();
-
-		
-if(out4.strArea == null){
-	new_tUniqRow_4.strArea = null;
-}else{
-	new_tUniqRow_4.strArea = out4.strArea.toLowerCase();
-}
-		
-		keystUniqRow_4.add(new_tUniqRow_4);if(row10 == null){ 
-	
-	row10 = new row10Struct();
-}row10.strArea = out4.strArea;					
-		nb_uniques_tUniqRow_4++;
-	} else {
-	  nb_duplicates_tUniqRow_4++;
-	}
-
- 
-
-
-	tos_count_tUniqRow_4++;
-
-/**
- * [tUniqRow_4 main ] stop
- */
-	
-	/**
-	 * [tUniqRow_4 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_4";
-
-	
-
- 
-
-
-
-/**
- * [tUniqRow_4 process_data_begin ] stop
- */
-// Start of branch "row10"
-if(row10 != null) { 
-
-
-
-	
-	/**
-	 * [tMap_3 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_3";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"row10"
-						
-						);
-					}
-					
-
-		
-		
-		boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
-		
-
-        // ###############################
-        // # Input tables (lookups)
-		  boolean rejectedInnerJoin_tMap_3 = false;
-		  boolean mainRowRejected_tMap_3 = false;
-            				    								  
-		// ###############################
-        { // start of Var scope
-        
-	        // ###############################
-        	// # Vars tables
-        
-Var__tMap_3__Struct Var = Var__tMap_3;// ###############################
-        // ###############################
-        // # Output tables
-
-copyOfout1 = null;
-
-
-// # Output table : 'copyOfout1'
-copyOfout1_tmp.area = row10.strArea ;
-copyOfout1_tmp.area_id = "A" + String.valueOf(Numeric.sequence("s2", 1, 1));
-copyOfout1 = copyOfout1_tmp;
-// ###############################
-
-} // end of Var scope
-
-rejectedInnerJoin_tMap_3 = false;
-
-
-
-
-
-
-
-
-
-
- 
-
-
-	tos_count_tMap_3++;
-
-/**
- * [tMap_3 main ] stop
- */
-	
-	/**
-	 * [tMap_3 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_3";
-
-	
-
- 
-
-
-
-/**
- * [tMap_3 process_data_begin ] stop
- */
-// Start of branch "copyOfout1"
-if(copyOfout1 != null) { 
-
-
-
-	
-	/**
-	 * [tUniqRow_2 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_2";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"copyOfout1"
-						
-						);
-					}
-					
-row7 = null;			
-if(copyOfout1.area == null){
-	finder_tUniqRow_2.area = null;
-}else{
-	finder_tUniqRow_2.area = copyOfout1.area.toLowerCase();
-}	
-finder_tUniqRow_2.hashCodeDirty = true;
-if (!keystUniqRow_2.contains(finder_tUniqRow_2)) {
-		KeyStruct_tUniqRow_2 new_tUniqRow_2 = new KeyStruct_tUniqRow_2();
-
-		
-if(copyOfout1.area == null){
-	new_tUniqRow_2.area = null;
-}else{
-	new_tUniqRow_2.area = copyOfout1.area.toLowerCase();
-}
-		
-		keystUniqRow_2.add(new_tUniqRow_2);if(row7 == null){ 
-	
-	row7 = new row7Struct();
-}row7.area = copyOfout1.area;			row7.area_id = copyOfout1.area_id;					
-		nb_uniques_tUniqRow_2++;
-	} else {
-	  nb_duplicates_tUniqRow_2++;
-	}
-
- 
-
-
-	tos_count_tUniqRow_2++;
-
-/**
- * [tUniqRow_2 main ] stop
- */
-	
-	/**
-	 * [tUniqRow_2 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_2";
-
-	
-
- 
-
-
-
-/**
- * [tUniqRow_2 process_data_begin ] stop
- */
-// Start of branch "row7"
-if(row7 != null) { 
-
-
-
-	
-	/**
 	 * [tDBOutput_3 main ] start
 	 */
 
@@ -4430,7 +2322,7 @@ if(row7 != null) {
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row7"
+							,"row1"
 						
 						);
 					}
@@ -4439,14 +2331,34 @@ if(row7 != null) {
 
 
         whetherReject_tDBOutput_3 = false;
-                    if(row7.area == null) {
-pstmt_tDBOutput_3.setNull(1, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_3.setString(1, row7.area);
+                    if(row1._id == null) {
+pstmt_tDBOutput_3.setNull(1, java.sql.Types.INTEGER);
+} else {pstmt_tDBOutput_3.setInt(1, row1._id);
 }
 
-                    if(row7.area_id == null) {
+                    if(row1.strMeal == null) {
 pstmt_tDBOutput_3.setNull(2, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_3.setString(2, row7.area_id);
+} else {pstmt_tDBOutput_3.setString(2, row1.strMeal);
+}
+
+                    if(row1.strCategory == null) {
+pstmt_tDBOutput_3.setNull(3, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_3.setString(3, row1.strCategory);
+}
+
+                    if(row1.strArea == null) {
+pstmt_tDBOutput_3.setNull(4, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_3.setString(4, row1.strArea);
+}
+
+                    if(row1.strInstructions == null) {
+pstmt_tDBOutput_3.setNull(5, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_3.setString(5, row1.strInstructions);
+}
+
+                    if(row1.ingredients == null) {
+pstmt_tDBOutput_3.setNull(6, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_3.setString(6, row1.ingredients);
 }
 
 			
@@ -4545,21 +2457,18 @@ globalMap.put("tDBOutput_3_ERROR_MESSAGE",e_tDBOutput_3.getMessage());
  * [tDBOutput_3 process_data_end ] stop
  */
 
-} // End of branch "row7"
-
-
 
 
 	
 	/**
-	 * [tUniqRow_2 process_data_end ] start
+	 * [tMongoDBInput_1 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tUniqRow_2";
+	currentComponent="tMongoDBInput_1";
 
 	
 
@@ -4568,275 +2477,33 @@ globalMap.put("tDBOutput_3_ERROR_MESSAGE",e_tDBOutput_3.getMessage());
 
 
 /**
- * [tUniqRow_2 process_data_end ] stop
- */
-
-} // End of branch "copyOfout1"
-
-
-
-
-	
-	/**
-	 * [tMap_3 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_3";
-
-	
-
- 
-
-
-
-/**
- * [tMap_3 process_data_end ] stop
- */
-
-} // End of branch "row10"
-
-
-
-
-	
-	/**
-	 * [tUniqRow_4 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_4";
-
-	
-
- 
-
-
-
-/**
- * [tUniqRow_4 process_data_end ] stop
- */
-
-} // End of branch "out4"
-
-
-
-
-	
-	/**
-	 * [tMap_5 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_5";
-
-	
-
- 
-
-
-
-/**
- * [tMap_5 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tBufferInput_2 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferInput_2";
-
-	
-
- 
-
-
-
-/**
- * [tBufferInput_2 process_data_end ] stop
+ * [tMongoDBInput_1 process_data_end ] stop
  */
 	
 	/**
-	 * [tBufferInput_2 end ] start
+	 * [tMongoDBInput_1 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tBufferInput_2";
+	currentComponent="tMongoDBInput_1";
 
 	
-	nb_line_tBufferInput_2++;
-}
-globalMap.put("tBufferInput_2_NB_LINE",nb_line_tBufferInput_2); 
 
+            }
+    globalMap.put("tMongoDBInput_1_NB_LINE", nb_line_tMongoDBInput_1);
  
 
-ok_Hash.put("tBufferInput_2", true);
-end_Hash.put("tBufferInput_2", System.currentTimeMillis());
+ok_Hash.put("tMongoDBInput_1", true);
+end_Hash.put("tMongoDBInput_1", System.currentTimeMillis());
 
 
 
 
 /**
- * [tBufferInput_2 end ] stop
- */
-
-	
-	/**
-	 * [tMap_5 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_5";
-
-	
-
-
-// ###############################
-// # Lookup hashes releasing
-// ###############################      
-
-
-
-
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row6");
-			  	}
-			  	
- 
-
-ok_Hash.put("tMap_5", true);
-end_Hash.put("tMap_5", System.currentTimeMillis());
-
-
-
-
-/**
- * [tMap_5 end ] stop
- */
-
-	
-	/**
-	 * [tUniqRow_4 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_4";
-
-	
-
-globalMap.put("tUniqRow_4_NB_UNIQUES",nb_uniques_tUniqRow_4);
-globalMap.put("tUniqRow_4_NB_DUPLICATES",nb_duplicates_tUniqRow_4);
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"out4");
-			  	}
-			  	
- 
-
-ok_Hash.put("tUniqRow_4", true);
-end_Hash.put("tUniqRow_4", System.currentTimeMillis());
-
-
-
-
-/**
- * [tUniqRow_4 end ] stop
- */
-
-	
-	/**
-	 * [tMap_3 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_3";
-
-	
-
-
-// ###############################
-// # Lookup hashes releasing
-// ###############################      
-
-
-
-
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row10");
-			  	}
-			  	
- 
-
-ok_Hash.put("tMap_3", true);
-end_Hash.put("tMap_3", System.currentTimeMillis());
-
-
-
-
-/**
- * [tMap_3 end ] stop
- */
-
-	
-	/**
-	 * [tUniqRow_2 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_2";
-
-	
-
-globalMap.put("tUniqRow_2_NB_UNIQUES",nb_uniques_tUniqRow_2);
-globalMap.put("tUniqRow_2_NB_DUPLICATES",nb_duplicates_tUniqRow_2);
-
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"copyOfout1");
-			  	}
-			  	
- 
-
-ok_Hash.put("tUniqRow_2", true);
-end_Hash.put("tUniqRow_2", System.currentTimeMillis());
-
-
-
-
-/**
- * [tUniqRow_2 end ] stop
+ * [tMongoDBInput_1 end ] stop
  */
 
 	
@@ -4914,7 +2581,7 @@ globalMap.put("tDBOutput_3_ERROR_MESSAGE",e_tDBOutput_3.getMessage());
 
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row7");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row1");
 			  	}
 			  	
  
@@ -4923,7 +2590,7 @@ ok_Hash.put("tDBOutput_3", true);
 end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk11", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk6", 0, "ok");
 				}
 				tDBCommit_3Process(globalMap);
 
@@ -4932,18 +2599,6 @@ end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 /**
  * [tDBOutput_3 end ] stop
  */
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4970,14 +2625,14 @@ end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 					
 	
 	/**
-	 * [tBufferInput_2 finally ] start
+	 * [tMongoDBInput_1 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tBufferInput_2";
+	currentComponent="tMongoDBInput_1";
 
 	
 
@@ -4986,91 +2641,7 @@ end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 
 
 /**
- * [tBufferInput_2 finally ] stop
- */
-
-	
-	/**
-	 * [tMap_5 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_5";
-
-	
-
- 
-
-
-
-/**
- * [tMap_5 finally ] stop
- */
-
-	
-	/**
-	 * [tUniqRow_4 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_4";
-
-	
-
- 
-
-
-
-/**
- * [tUniqRow_4 finally ] stop
- */
-
-	
-	/**
-	 * [tMap_3 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tMap_3";
-
-	
-
- 
-
-
-
-/**
- * [tMap_3 finally ] stop
- */
-
-	
-	/**
-	 * [tUniqRow_2 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tUniqRow_2";
-
-	
-
- 
-
-
-
-/**
- * [tUniqRow_2 finally ] stop
+ * [tMongoDBInput_1 finally ] stop
  */
 
 	
@@ -5104,18 +2675,6 @@ end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 				}catch(java.lang.Exception e){	
 					//ignore
 				}catch(java.lang.Error error){
@@ -5125,7 +2684,7 @@ end_Hash.put("tDBOutput_3", System.currentTimeMillis());
 			}
 		
 
-		globalMap.put("tBufferInput_2_SUBPROCESS_STATE", 1);
+		globalMap.put("tMongoDBInput_1_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -5270,6 +2829,10 @@ public void tDBCommit_3Process(final java.util.Map<String, Object> globalMap) th
 ok_Hash.put("tDBCommit_3", true);
 end_Hash.put("tDBCommit_3", System.currentTimeMillis());
 
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk8", 0, "ok");
+				}
+				tMongoDBInput_3Process(globalMap);
 
 
 
@@ -5279,16 +2842,6 @@ end_Hash.put("tDBCommit_3", System.currentTimeMillis());
 				}//end the resume
 
 				
-				    			if(resumeEntryMethodName == null || globalResumeTicket){
-				    				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tDBCommit_3:OnSubjobOk", "", Thread.currentThread().getId() + "", "", "", "", "", "");
-								}	    				    			
-					    	
-								if(execStat){    	
-									runStat.updateStatOnConnection("OnSubjobOk2", 0, "ok");
-								} 
-							
-							tBufferInput_3Process(globalMap); 
-						
 
 
 
@@ -5341,27 +2894,756 @@ end_Hash.put("tDBCommit_3", System.currentTimeMillis());
 	
 
 
-public static class out2Struct implements routines.system.IPersistableRow<out2Struct> {
+public static class row8Struct implements routines.system.IPersistableRow<row8Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
-			    public Integer _id;
+			    public String nom;
 
-				public Integer get_id () {
-					return this._id;
+				public String getNom () {
+					return this.nom;
 				}
 				
-			    public String meal;
+			    public String calories;
 
-				public String getMeal () {
-					return this.meal;
+				public String getCalories () {
+					return this.calories;
 				}
 				
-			    public String category;
 
-				public String getCategory () {
-					return this.category;
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.nom = readString(dis);
+					
+					this.calories = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.nom = readString(dis);
+					
+					this.calories = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.nom,dos);
+					
+					// String
+				
+						writeString(this.calories,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.nom,dos);
+					
+					// String
+				
+						writeString(this.calories,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("nom="+nom);
+		sb.append(",calories="+calories);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row8Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tMongoDBInput_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tMongoDBInput_3_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row8Struct row8 = new row8Struct();
+
+
+
+
+	
+	/**
+	 * [tBufferOutput_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tBufferOutput_1", false);
+		start_Hash.put("tBufferOutput_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tBufferOutput_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row8");
+					}
+				
+		int tos_count_tBufferOutput_1 = 0;
+		
+
+ 
+
+
+
+/**
+ * [tBufferOutput_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMongoDBInput_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMongoDBInput_3", false);
+		start_Hash.put("tMongoDBInput_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+		int tos_count_tMongoDBInput_3 = 0;
+		
+
+
+	
+
+final String applicationName_tMongoDBInput_3 = "Talend";
+
+	int nb_line_tMongoDBInput_3 = 0;
+	
+
+
+    // Declarations
+    com.mongodb.client.MongoClient mongo_tMongoDBInput_3=null;
+    com.mongodb.client.MongoDatabase db_tMongoDBInput_3=null;
+
+        mongo_tMongoDBInput_3=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
+        db_tMongoDBInput_3 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
+
+
+				
+					com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBInput_3 = db_tMongoDBInput_3.getCollection(context.mongodb_collection_silver_nutrition);
+				
+				
+				
+				try{
+					// Add warning if an index is not in the query.
+					boolean needIndexWarning = true;
+					String indexList = "";
+					java.lang.StringBuilder sb_tMongoDBInput_3 = new java.lang.StringBuilder();
+	                
+	                    for (com.mongodb.DBObject index: coll_tMongoDBInput_3.listIndexes(com.mongodb.DBObject.class)) {
+	                 
+	                        for (String key: ((com.mongodb.DBObject)index.get("key")).keySet()) {
+	                            // The regexp is:
+	                            // - contain the db DBcolumnName between two backslashed quotes
+	                            // - is followed at some point by a colon
+	                            // - there is no comma between the the DBcolumnName and the colon
+	                            if  (("{}").matches(".*" + key.replace("*","\\*") + "[^,]*:.*")) {
+	                                // We have an index, do not print error message
+	                                needIndexWarning = false;
+	                            } else {
+	                                // This index is not in the query, add it into the indexList
+	                                sb_tMongoDBInput_3.append(", ").append(key);
+	                            }
+	                        }
+	                        indexList = sb_tMongoDBInput_3.toString();
+	                    }
+	                if ((!"".equals(indexList)) && (needIndexWarning)) {
+	                    
+	                        System.err.println("tMongoDBInput_3 - The query does not contain any reference an index.  [" + indexList.substring(1) + " ]");
+	                        
+	                }
+	            }catch(com.mongodb.MongoException e){
+	            	// caught an exception after issuing the getIndexInfo()
+	            	// don't fail the whole job
+	            	// maybe due to authorization
+	            }
+
+						org.bson.Document myQuery_tMongoDBInput_3 = org.bson.Document.parse("{}");
+						
+							com.mongodb.client.FindIterable<org.bson.Document> findIterable_tMongoDBInput_3 = coll_tMongoDBInput_3.find(myQuery_tMongoDBInput_3).noCursorTimeout(false);
+							
+
+
+				
+				class DBObjectInputUtil_tMongoDBInput_3{
+					// Get the node value in embedded document, 
+					//If have no embedded document get root document node.
+					
+					public Object getValue(String parentNode,String currentName,org.bson.Document dbObject){
+						Object value=null;
+						if(dbObject==null){
+							return null;
+						}
+						if (parentNode == null || "".equals(parentNode)) {
+						    if ("*".equals(currentName)) {
+						        value = dbObject;
+						    } else if (dbObject.get(currentName)!=null){
+								value=dbObject.get(currentName);
+							}
+						}else{
+							String objNames[] = parentNode.split("\\.");
+							org.bson.Document currentObj=dbObject;
+							for(int i=0;i<objNames.length;i++){
+								currentObj=(org.bson.Document)currentObj.get(objNames[i]);
+								if(currentObj==null){
+									break;
+								}
+							}
+							if ("*".equals(currentName)) {
+                                value = currentObj;
+                            } else if(currentObj!=null){
+								value=currentObj.get(currentName);
+							}
+						}
+						
+						    if(value instanceof org.bson.Document){
+						        value = ((org.bson.Document)value).toJson();
+						    }else if (value instanceof java.util.List){
+
+						    java.util.List list = new java.util.ArrayList();
+						    ((java.util.List)value).stream().forEach(e -> {
+						    if(e instanceof org.bson.Document){
+						        list.add(((org.bson.Document)e).toJson());
+						    }else{
+						        list.add(e);
+						    }
+						    });
+						    value = list;
+						    }
+
+						
+						return value;
+					}
+				}
+				DBObjectInputUtil_tMongoDBInput_3 dbObjectInputUtil_tMongoDBInput_3=new DBObjectInputUtil_tMongoDBInput_3();
+				java.util.Map<String, String> pathMap_tMongoDBInput_3=new java.util.HashMap<>();
+				pathMap_tMongoDBInput_3.put("nom","");
+				pathMap_tMongoDBInput_3.put("calories","");
+
+						
+					com.mongodb.client.MongoCursor<org.bson.Document> cursor_tMongoDBInput_3 = findIterable_tMongoDBInput_3.iterator();
+						
+				while (cursor_tMongoDBInput_3.hasNext()){
+				org.bson.Document o_tMongoDBInput_3 = cursor_tMongoDBInput_3.next();
+				nb_line_tMongoDBInput_3++;
+				Object valueObj_tMongoDBInput_3=null;
+                    valueObj_tMongoDBInput_3=dbObjectInputUtil_tMongoDBInput_3.getValue(pathMap_tMongoDBInput_3.get("nom"),"nom",o_tMongoDBInput_3);
+					
+				row8.nom = valueObj_tMongoDBInput_3==null ? null : valueObj_tMongoDBInput_3.toString();
+				
+                    valueObj_tMongoDBInput_3=dbObjectInputUtil_tMongoDBInput_3.getValue(pathMap_tMongoDBInput_3.get("calories"),"calories",o_tMongoDBInput_3);
+					
+				row8.calories = valueObj_tMongoDBInput_3==null ? null : valueObj_tMongoDBInput_3.toString();
+				
+
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_3 begin ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+
+ 
+
+
+	tos_count_tMongoDBInput_3++;
+
+/**
+ * [tMongoDBInput_3 main ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_3 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tBufferOutput_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferOutput_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row8"
+						
+						);
+					}
+					
+
+
+
+String[] row_tBufferOutput_1=new String[]{"","",};		
+	    if(row8.nom != null){
+	        
+	            row_tBufferOutput_1[0] = row8.nom;
+	                        			    
+	    }else{
+	    	row_tBufferOutput_1[0] = null;
+	    }
+	    if(row8.calories != null){
+	        
+	            row_tBufferOutput_1[1] = row8.calories;
+	                        			    
+	    }else{
+	    	row_tBufferOutput_1[1] = null;
+	    }
+	globalBuffer.add(row_tBufferOutput_1);	
+	
+ 
+
+
+	tos_count_tBufferOutput_1++;
+
+/**
+ * [tBufferOutput_1 main ] stop
+ */
+	
+	/**
+	 * [tBufferOutput_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferOutput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferOutput_1 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tBufferOutput_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferOutput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferOutput_1 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMongoDBInput_3 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_3 process_data_end ] stop
+ */
+	
+	/**
+	 * [tMongoDBInput_3 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+
+            }
+    globalMap.put("tMongoDBInput_3_NB_LINE", nb_line_tMongoDBInput_3);
+ 
+
+ok_Hash.put("tMongoDBInput_3", true);
+end_Hash.put("tMongoDBInput_3", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMongoDBInput_3 end ] stop
+ */
+
+	
+	/**
+	 * [tBufferOutput_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferOutput_1";
+
+	
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row8");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tBufferOutput_1", true);
+end_Hash.put("tBufferOutput_1", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk16", 0, "ok");
+				}
+				tDBInput_2Process(globalMap);
+
+
+
+/**
+ * [tBufferOutput_1 end ] stop
+ */
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tMongoDBInput_3 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMongoDBInput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMongoDBInput_3 finally ] stop
+ */
+
+	
+	/**
+	 * [tBufferOutput_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferOutput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferOutput_1 finally ] stop
+ */
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tMongoDBInput_3_SUBPROCESS_STATE", 1);
+	}
+	
+
+
+public static class row7Struct implements routines.system.IPersistableRow<row7Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public String area_name;
+
+				public String getArea_name () {
+					return this.area_name;
 				}
 				
 			    public String area_id;
@@ -5370,10 +3652,3144 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 					return this.area_id;
 				}
 				
-			    public String instructions;
 
-				public String getInstructions () {
-					return this.instructions;
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this.area_name == null) ? 0 : this.area_name.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final row7Struct other = (row7Struct) obj;
+		
+						if (this.area_name == null) {
+							if (other.area_name != null)
+								return false;
+						
+						} else if (!this.area_name.equals(other.area_name))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(row7Struct other) {
+
+		other.area_name = this.area_name;
+	            other.area_id = this.area_id;
+	            
+	}
+
+	public void copyKeysDataTo(row7Struct other) {
+
+		other.area_name = this.area_name;
+	            	
+	}
+
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("area_name="+area_name);
+		sb.append(",area_id="+area_id);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row7Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this.area_name, other.area_name);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row5Struct implements routines.system.IPersistableRow<row5Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public String area_name;
+
+				public String getArea_name () {
+					return this.area_name;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this.area_name == null) ? 0 : this.area_name.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final row5Struct other = (row5Struct) obj;
+		
+						if (this.area_name == null) {
+							if (other.area_name != null)
+								return false;
+						
+						} else if (!this.area_name.equals(other.area_name))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(row5Struct other) {
+
+		other.area_name = this.area_name;
+	            other.area_id = this.area_id;
+	            
+	}
+
+	public void copyKeysDataTo(row5Struct other) {
+
+		other.area_name = this.area_name;
+	            	
+	}
+
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("area_name="+area_name);
+		sb.append(",area_id="+area_id);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row5Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this.area_name, other.area_name);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class copyOfout1Struct implements routines.system.IPersistableRow<copyOfout1Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public String area_name;
+
+				public String getArea_name () {
+					return this.area_name;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this.area_name == null) ? 0 : this.area_name.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final copyOfout1Struct other = (copyOfout1Struct) obj;
+		
+						if (this.area_name == null) {
+							if (other.area_name != null)
+								return false;
+						
+						} else if (!this.area_name.equals(other.area_name))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(copyOfout1Struct other) {
+
+		other.area_name = this.area_name;
+	            other.area_id = this.area_id;
+	            
+	}
+
+	public void copyKeysDataTo(copyOfout1Struct other) {
+
+		other.area_name = this.area_name;
+	            	
+	}
+
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.area_name = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.area_name,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("area_name="+area_name);
+		sb.append(",area_id="+area_id);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(copyOfout1Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this.area_name, other.area_name);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row6Struct implements routines.system.IPersistableRow<row6Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public String strArea;
+
+				public String getStrArea () {
+					return this.strArea;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strArea = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strArea = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strArea,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strArea,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("strArea="+strArea);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row6Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tDBInput_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBInput_2_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row6Struct row6 = new row6Struct();
+copyOfout1Struct copyOfout1 = new copyOfout1Struct();
+row5Struct row5 = new row5Struct();
+row7Struct row7 = new row7Struct();
+
+
+
+
+
+
+
+	
+	/**
+	 * [tDBOutput_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBOutput_1", false);
+		start_Hash.put("tDBOutput_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBOutput_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row7");
+					}
+				
+		int tos_count_tDBOutput_1 = 0;
+		
+
+
+
+
+
+String dbschema_tDBOutput_1 = null;
+	dbschema_tDBOutput_1 = (String)globalMap.get("schema_" + "tDBConnection_1");
+	
+
+String tableName_tDBOutput_1 = null;
+if(dbschema_tDBOutput_1 == null || dbschema_tDBOutput_1.trim().length() == 0) {
+	tableName_tDBOutput_1 = (context.postgresql_table_area);
+} else {
+	tableName_tDBOutput_1 = dbschema_tDBOutput_1 + "\".\"" + (context.postgresql_table_area);
+}
+
+
+int nb_line_tDBOutput_1 = 0;
+int nb_line_update_tDBOutput_1 = 0;
+int nb_line_inserted_tDBOutput_1 = 0;
+int nb_line_deleted_tDBOutput_1 = 0;
+int nb_line_rejected_tDBOutput_1 = 0;
+
+int deletedCount_tDBOutput_1=0;
+int updatedCount_tDBOutput_1=0;
+int insertedCount_tDBOutput_1=0;
+int rowsToCommitCount_tDBOutput_1=0;
+int rejectedCount_tDBOutput_1=0;
+
+boolean whetherReject_tDBOutput_1 = false;
+
+java.sql.Connection conn_tDBOutput_1 = null;
+String dbUser_tDBOutput_1 = null;
+
+	conn_tDBOutput_1 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	
+	
+
+
+   int batchSize_tDBOutput_1 = 10000;
+   int batchSizeCounter_tDBOutput_1=0;
+
+int count_tDBOutput_1=0;
+                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_1 = conn_tDBOutput_1.getMetaData();
+                                boolean whetherExist_tDBOutput_1 = false;
+                                try (java.sql.ResultSet rsTable_tDBOutput_1 = dbMetaData_tDBOutput_1.getTables(null, null, null, new String[]{"TABLE"})) {
+                                    String defaultSchema_tDBOutput_1 = "public";
+                                    if(dbschema_tDBOutput_1 == null || dbschema_tDBOutput_1.trim().length() == 0) {
+                                        try(java.sql.Statement stmtSchema_tDBOutput_1 = conn_tDBOutput_1.createStatement();
+                                            java.sql.ResultSet rsSchema_tDBOutput_1 = stmtSchema_tDBOutput_1.executeQuery("select current_schema() ")) {
+                                            while(rsSchema_tDBOutput_1.next()){
+                                                defaultSchema_tDBOutput_1 = rsSchema_tDBOutput_1.getString("current_schema");
+                                            }
+                                        }
+                                    }
+                                    while(rsTable_tDBOutput_1.next()) {
+                                        String table_tDBOutput_1 = rsTable_tDBOutput_1.getString("TABLE_NAME");
+                                        String schema_tDBOutput_1 = rsTable_tDBOutput_1.getString("TABLE_SCHEM");
+                                        if(table_tDBOutput_1.equals((context.postgresql_table_area))
+                                            && (schema_tDBOutput_1.equals(dbschema_tDBOutput_1) || ((dbschema_tDBOutput_1 ==null || dbschema_tDBOutput_1.trim().length() ==0) && defaultSchema_tDBOutput_1.equals(schema_tDBOutput_1)))) {
+                                            whetherExist_tDBOutput_1 = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(whetherExist_tDBOutput_1) {
+                                    try (java.sql.Statement stmtDrop_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
+                                        stmtDrop_tDBOutput_1.execute("DROP TABLE \"" + tableName_tDBOutput_1 + "\"" );
+                                    }
+                                }
+                                try(java.sql.Statement stmtCreate_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
+                                    stmtCreate_tDBOutput_1.execute("CREATE TABLE \"" + tableName_tDBOutput_1 + "\"(\"area_name\" VARCHAR  not null ,\"area_id\" VARCHAR  not null ,primary key(\"area_name\"))");
+                                }
+	    String insert_tDBOutput_1 = "INSERT INTO \"" + tableName_tDBOutput_1 + "\" (\"area_name\",\"area_id\") VALUES (?,?)";
+	    
+	    java.sql.PreparedStatement pstmt_tDBOutput_1 = conn_tDBOutput_1.prepareStatement(insert_tDBOutput_1);
+	    resourceMap.put("pstmt_tDBOutput_1", pstmt_tDBOutput_1);
+	    
+
+ 
+
+
+
+/**
+ * [tDBOutput_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tUniqRow_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tUniqRow_2", false);
+		start_Hash.put("tUniqRow_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tUniqRow_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row5");
+					}
+				
+		int tos_count_tUniqRow_2 = 0;
+		
+
+	
+		class KeyStruct_tUniqRow_2 {
+	
+			private static final int DEFAULT_HASHCODE = 1;
+		    private static final int PRIME = 31;
+		    private int hashCode = DEFAULT_HASHCODE;
+		    public boolean hashCodeDirty = true;
+	
+	        
+					String area_name;        
+	        
+		    @Override
+			public int hashCode() {
+				if (this.hashCodeDirty) {
+					final int prime = PRIME;
+					int result = DEFAULT_HASHCODE;
+			
+								result = prime * result + ((this.area_name == null) ? 0 : this.area_name.hashCode());
+								
+		    		this.hashCode = result;
+		    		this.hashCodeDirty = false;		
+				}
+				return this.hashCode;
+			}
+			
+			@Override
+			public boolean equals(Object obj) {
+				if (this == obj) return true;
+				if (obj == null) return false;
+				if (getClass() != obj.getClass()) return false;
+				final KeyStruct_tUniqRow_2 other = (KeyStruct_tUniqRow_2) obj;
+				
+									if (this.area_name == null) {
+										if (other.area_name != null) 
+											return false;
+								
+									} else if (!this.area_name.equals(other.area_name))
+								 
+										return false;
+								
+				
+				return true;
+			}
+	  
+	        
+		}
+
+	
+int nb_uniques_tUniqRow_2 = 0;
+int nb_duplicates_tUniqRow_2 = 0;
+KeyStruct_tUniqRow_2 finder_tUniqRow_2 = new KeyStruct_tUniqRow_2();
+java.util.Set<KeyStruct_tUniqRow_2> keystUniqRow_2 = new java.util.HashSet<KeyStruct_tUniqRow_2>();
+java.util.Set<KeyStruct_tUniqRow_2> keysForDuplicatedtUniqRow_2 = new java.util.HashSet<KeyStruct_tUniqRow_2>(); 
+
+ 
+
+
+
+/**
+ * [tUniqRow_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tJavaRow_3", false);
+		start_Hash.put("tJavaRow_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tJavaRow_3";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"copyOfout1");
+					}
+				
+		int tos_count_tJavaRow_3 = 0;
+		
+
+int nb_line_tJavaRow_3 = 0;
+
+ 
+
+
+
+/**
+ * [tJavaRow_3 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_2", false);
+		start_Hash.put("tMap_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row6");
+					}
+				
+		int tos_count_tMap_2 = 0;
+		
+
+
+
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+class  Var__tMap_2__Struct  {
+}
+Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+copyOfout1Struct copyOfout1_tmp = new copyOfout1Struct();
+// ###############################
+
+        
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+/**
+ * [tMap_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tDBInput_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBInput_2", false);
+		start_Hash.put("tDBInput_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBInput_2";
+
+	
+		int tos_count_tDBInput_2 = 0;
+		
+	
+    
+	
+		    int nb_line_tDBInput_2 = 0;
+		    java.sql.Connection conn_tDBInput_2 = null;
+				conn_tDBInput_2 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+				
+		    
+			java.sql.Statement stmt_tDBInput_2 = conn_tDBInput_2.createStatement();
+
+		    String dbquery_tDBInput_2 = "SELECT \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strArea\"\nFROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\"";
+		    
+
+            	globalMap.put("tDBInput_2_QUERY",dbquery_tDBInput_2);
+		    java.sql.ResultSet rs_tDBInput_2 = null;
+
+		    try {
+		    	rs_tDBInput_2 = stmt_tDBInput_2.executeQuery(dbquery_tDBInput_2);
+		    	java.sql.ResultSetMetaData rsmd_tDBInput_2 = rs_tDBInput_2.getMetaData();
+		    	int colQtyInRs_tDBInput_2 = rsmd_tDBInput_2.getColumnCount();
+
+		    String tmpContent_tDBInput_2 = null;
+		    
+		    
+		    while (rs_tDBInput_2.next()) {
+		        nb_line_tDBInput_2++;
+		        
+							if(colQtyInRs_tDBInput_2 < 1) {
+								row6.strArea = null;
+							} else {
+	                         		
+        	row6.strArea = routines.system.JDBCUtil.getString(rs_tDBInput_2, 1, false);
+		                    }
+					
+
+
+ 
+
+
+
+/**
+ * [tDBInput_2 begin ] stop
+ */
+	
+	/**
+	 * [tDBInput_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_2";
+
+	
+
+ 
+
+
+	tos_count_tDBInput_2++;
+
+/**
+ * [tDBInput_2 main ] stop
+ */
+	
+	/**
+	 * [tDBInput_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_2 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tMap_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row6"
+						
+						);
+					}
+					
+
+		
+		
+		boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
+		
+
+        // ###############################
+        // # Input tables (lookups)
+		  boolean rejectedInnerJoin_tMap_2 = false;
+		  boolean mainRowRejected_tMap_2 = false;
+            				    								  
+		// ###############################
+        { // start of Var scope
+        
+	        // ###############################
+        	// # Vars tables
+        
+Var__tMap_2__Struct Var = Var__tMap_2;// ###############################
+        // ###############################
+        // # Output tables
+
+copyOfout1 = null;
+
+
+// # Output table : 'copyOfout1'
+copyOfout1_tmp.area_name = row6.strArea ;
+copyOfout1_tmp.area_id = "A" + String.valueOf(Numeric.sequence("s2", 1, 1));
+copyOfout1 = copyOfout1_tmp;
+// ###############################
+
+} // end of Var scope
+
+rejectedInnerJoin_tMap_2 = false;
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	tos_count_tMap_2++;
+
+/**
+ * [tMap_2 main ] stop
+ */
+	
+	/**
+	 * [tMap_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_2 process_data_begin ] stop
+ */
+// Start of branch "copyOfout1"
+if(copyOfout1 != null) { 
+
+
+
+	
+	/**
+	 * [tJavaRow_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_3";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"copyOfout1"
+						
+						);
+					}
+					
+
+    if (copyOfout1.area_name != null && !copyOfout1.area_name.equals("")) {
+	row5.area_name = copyOfout1.area_name;
+	row5.area_id = copyOfout1.area_id;
+}
+    nb_line_tJavaRow_3++;   
+
+ 
+
+
+	tos_count_tJavaRow_3++;
+
+/**
+ * [tJavaRow_3 main ] stop
+ */
+	
+	/**
+	 * [tJavaRow_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_3 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tUniqRow_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tUniqRow_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row5"
+						
+						);
+					}
+					
+row7 = null;			
+if(row5.area_name == null){
+	finder_tUniqRow_2.area_name = null;
+}else{
+	finder_tUniqRow_2.area_name = row5.area_name.toLowerCase();
+}	
+finder_tUniqRow_2.hashCodeDirty = true;
+if (!keystUniqRow_2.contains(finder_tUniqRow_2)) {
+		KeyStruct_tUniqRow_2 new_tUniqRow_2 = new KeyStruct_tUniqRow_2();
+
+		
+if(row5.area_name == null){
+	new_tUniqRow_2.area_name = null;
+}else{
+	new_tUniqRow_2.area_name = row5.area_name.toLowerCase();
+}
+		
+		keystUniqRow_2.add(new_tUniqRow_2);if(row7 == null){ 
+	
+	row7 = new row7Struct();
+}row7.area_name = row5.area_name;			row7.area_id = row5.area_id;					
+		nb_uniques_tUniqRow_2++;
+	} else {
+	  nb_duplicates_tUniqRow_2++;
+	}
+
+ 
+
+
+	tos_count_tUniqRow_2++;
+
+/**
+ * [tUniqRow_2 main ] stop
+ */
+	
+	/**
+	 * [tUniqRow_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tUniqRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tUniqRow_2 process_data_begin ] stop
+ */
+// Start of branch "row7"
+if(row7 != null) { 
+
+
+
+	
+	/**
+	 * [tDBOutput_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row7"
+						
+						);
+					}
+					
+
+
+
+        whetherReject_tDBOutput_1 = false;
+                    if(row7.area_name == null) {
+pstmt_tDBOutput_1.setNull(1, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_1.setString(1, row7.area_name);
+}
+
+                    if(row7.area_id == null) {
+pstmt_tDBOutput_1.setNull(2, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_1.setString(2, row7.area_id);
+}
+
+			
+    		pstmt_tDBOutput_1.addBatch();
+    		nb_line_tDBOutput_1++;
+    		  
+    		  
+    		  batchSizeCounter_tDBOutput_1++;
+    		  
+            if(!whetherReject_tDBOutput_1) {
+            }
+    			if ((batchSize_tDBOutput_1 > 0) && (batchSize_tDBOutput_1 <= batchSizeCounter_tDBOutput_1)) {
+                try {
+						int countSum_tDBOutput_1 = 0;
+						    
+						for(int countEach_tDBOutput_1: pstmt_tDBOutput_1.executeBatch()) {
+							countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
+						}
+				    	rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
+				    	
+				    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
+				    	
+            	    	batchSizeCounter_tDBOutput_1 = 0;
+                }catch (java.sql.BatchUpdateException e_tDBOutput_1){
+globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
+				    	java.sql.SQLException ne_tDBOutput_1 = e_tDBOutput_1.getNextException(),sqle_tDBOutput_1=null;
+				    	String errormessage_tDBOutput_1;
+						if (ne_tDBOutput_1 != null) {
+							// build new exception to provide the original cause
+							sqle_tDBOutput_1 = new java.sql.SQLException(e_tDBOutput_1.getMessage() + "\ncaused by: " + ne_tDBOutput_1.getMessage(), ne_tDBOutput_1.getSQLState(), ne_tDBOutput_1.getErrorCode(), ne_tDBOutput_1);
+							errormessage_tDBOutput_1 = sqle_tDBOutput_1.getMessage();
+						}else{
+							errormessage_tDBOutput_1 = e_tDBOutput_1.getMessage();
+						}
+				    	
+				    	int countSum_tDBOutput_1 = 0;
+						for(int countEach_tDBOutput_1: e_tDBOutput_1.getUpdateCounts()) {
+							countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
+						}
+						rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
+						
+				    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
+				    	
+				    	System.err.println(errormessage_tDBOutput_1);
+				    	
+					}
+    			}
+    		
+
+ 
+
+
+	tos_count_tDBOutput_1++;
+
+/**
+ * [tDBOutput_1 main ] stop
+ */
+	
+	/**
+	 * [tDBOutput_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBOutput_1 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tDBOutput_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBOutput_1 process_data_end ] stop
+ */
+
+} // End of branch "row7"
+
+
+
+
+	
+	/**
+	 * [tUniqRow_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tUniqRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tUniqRow_2 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_3 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_3 process_data_end ] stop
+ */
+
+} // End of branch "copyOfout1"
+
+
+
+
+	
+	/**
+	 * [tMap_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_2 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tDBInput_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_2 process_data_end ] stop
+ */
+	
+	/**
+	 * [tDBInput_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_2";
+
+	
+
+	}
+}finally{
+	if (rs_tDBInput_2 != null) {
+		rs_tDBInput_2.close();
+	}
+	if (stmt_tDBInput_2 != null) {
+		stmt_tDBInput_2.close();
+	}
+}
+globalMap.put("tDBInput_2_NB_LINE",nb_line_tDBInput_2);
+ 
+
+ok_Hash.put("tDBInput_2", true);
+end_Hash.put("tDBInput_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tDBInput_2 end ] stop
+ */
+
+	
+	/**
+	 * [tMap_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row6");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_2", true);
+end_Hash.put("tMap_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_2 end ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_3 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_3";
+
+	
+
+globalMap.put("tJavaRow_3_NB_LINE",nb_line_tJavaRow_3);
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"copyOfout1");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tJavaRow_3", true);
+end_Hash.put("tJavaRow_3", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tJavaRow_3 end ] stop
+ */
+
+	
+	/**
+	 * [tUniqRow_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tUniqRow_2";
+
+	
+
+globalMap.put("tUniqRow_2_NB_UNIQUES",nb_uniques_tUniqRow_2);
+globalMap.put("tUniqRow_2_NB_DUPLICATES",nb_duplicates_tUniqRow_2);
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row5");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tUniqRow_2", true);
+end_Hash.put("tUniqRow_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tUniqRow_2 end ] stop
+ */
+
+	
+	/**
+	 * [tDBOutput_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_1";
+
+	
+
+
+
+	    try {
+				int countSum_tDBOutput_1 = 0;
+				if (pstmt_tDBOutput_1 != null && batchSizeCounter_tDBOutput_1 > 0) {
+						
+					for(int countEach_tDBOutput_1: pstmt_tDBOutput_1.executeBatch()) {
+						countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
+					}
+					rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
+						
+				}
+		    	
+		    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
+		    	
+	    }catch (java.sql.BatchUpdateException e_tDBOutput_1){
+globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
+	    	java.sql.SQLException ne_tDBOutput_1 = e_tDBOutput_1.getNextException(),sqle_tDBOutput_1=null;
+	    	String errormessage_tDBOutput_1;
+			if (ne_tDBOutput_1 != null) {
+				// build new exception to provide the original cause
+				sqle_tDBOutput_1 = new java.sql.SQLException(e_tDBOutput_1.getMessage() + "\ncaused by: " + ne_tDBOutput_1.getMessage(), ne_tDBOutput_1.getSQLState(), ne_tDBOutput_1.getErrorCode(), ne_tDBOutput_1);
+				errormessage_tDBOutput_1 = sqle_tDBOutput_1.getMessage();
+			}else{
+				errormessage_tDBOutput_1 = e_tDBOutput_1.getMessage();
+			}
+	    	
+	    	int countSum_tDBOutput_1 = 0;
+			for(int countEach_tDBOutput_1: e_tDBOutput_1.getUpdateCounts()) {
+				countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
+			}
+			rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
+			
+	    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
+	    	
+	    	System.err.println(errormessage_tDBOutput_1);
+	    	
+		}
+	    
+        if(pstmt_tDBOutput_1 != null) {
+        		
+            pstmt_tDBOutput_1.close();
+            resourceMap.remove("pstmt_tDBOutput_1");
+        }
+    resourceMap.put("statementClosed_tDBOutput_1", true);
+
+	nb_line_deleted_tDBOutput_1=nb_line_deleted_tDBOutput_1+ deletedCount_tDBOutput_1;
+	nb_line_update_tDBOutput_1=nb_line_update_tDBOutput_1 + updatedCount_tDBOutput_1;
+	nb_line_inserted_tDBOutput_1=nb_line_inserted_tDBOutput_1 + insertedCount_tDBOutput_1;
+	nb_line_rejected_tDBOutput_1=nb_line_rejected_tDBOutput_1 + rejectedCount_tDBOutput_1;
+	
+        globalMap.put("tDBOutput_1_NB_LINE",nb_line_tDBOutput_1);
+        globalMap.put("tDBOutput_1_NB_LINE_UPDATED",nb_line_update_tDBOutput_1);
+        globalMap.put("tDBOutput_1_NB_LINE_INSERTED",nb_line_inserted_tDBOutput_1);
+        globalMap.put("tDBOutput_1_NB_LINE_DELETED",nb_line_deleted_tDBOutput_1);
+        globalMap.put("tDBOutput_1_NB_LINE_REJECTED", nb_line_rejected_tDBOutput_1);
+    
+
+	
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row7");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tDBOutput_1", true);
+end_Hash.put("tDBOutput_1", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk5", 0, "ok");
+				}
+				tDBCommit_1Process(globalMap);
+
+
+
+/**
+ * [tDBOutput_1 end ] stop
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tDBInput_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tMap_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_3 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_3 finally ] stop
+ */
+
+	
+	/**
+	 * [tUniqRow_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tUniqRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tUniqRow_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tDBOutput_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_1";
+
+	
+
+
+
+    if (resourceMap.get("statementClosed_tDBOutput_1") == null) {
+                java.sql.PreparedStatement pstmtToClose_tDBOutput_1 = null;
+                if ((pstmtToClose_tDBOutput_1 = (java.sql.PreparedStatement) resourceMap.remove("pstmt_tDBOutput_1")) != null) {
+                    pstmtToClose_tDBOutput_1.close();
+                }
+    }
+ 
+
+
+
+/**
+ * [tDBOutput_1 finally ] stop
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tDBInput_2_SUBPROCESS_STATE", 1);
+	}
+	
+
+public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBCommit_1_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		
+
+
+	
+	/**
+	 * [tDBCommit_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBCommit_1", false);
+		start_Hash.put("tDBCommit_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBCommit_1";
+
+	
+		int tos_count_tDBCommit_1 = 0;
+		
+
+ 
+
+
+
+/**
+ * [tDBCommit_1 begin ] stop
+ */
+	
+	/**
+	 * [tDBCommit_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_1";
+
+	
+
+	java.sql.Connection conn_tDBCommit_1 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	if(conn_tDBCommit_1 != null && !conn_tDBCommit_1.isClosed())
+	{
+	
+			
+			conn_tDBCommit_1.commit();
+			
+	
+	}
+
+ 
+
+
+	tos_count_tDBCommit_1++;
+
+/**
+ * [tDBCommit_1 main ] stop
+ */
+	
+	/**
+	 * [tDBCommit_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_1 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tDBCommit_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tDBCommit_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_1";
+
+	
+
+ 
+
+ok_Hash.put("tDBCommit_1", true);
+end_Hash.put("tDBCommit_1", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk12", 0, "ok");
+				}
+				tDBInput_4Process(globalMap);
+
+
+
+/**
+ * [tDBCommit_1 end ] stop
+ */
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tDBCommit_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_1 finally ] stop
+ */
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tDBCommit_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+
+public static class row10Struct implements routines.system.IPersistableRow<row10Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer table_size;
+
+				public Integer getTable_size () {
+					return this.table_size;
+				}
+				
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.table_size = readInteger(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.table_size = readInteger(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.table_size,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.table_size,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("table_size="+String.valueOf(table_size));
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row10Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tDBInput_4Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBInput_4_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row10Struct row10 = new row10Struct();
+
+
+
+
+	
+	/**
+	 * [tJavaRow_4 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tJavaRow_4", false);
+		start_Hash.put("tJavaRow_4", System.currentTimeMillis());
+		
+	
+	currentComponent="tJavaRow_4";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row10");
+					}
+				
+		int tos_count_tJavaRow_4 = 0;
+		
+
+int nb_line_tJavaRow_4 = 0;
+
+ 
+
+
+
+/**
+ * [tJavaRow_4 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tDBInput_4 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBInput_4", false);
+		start_Hash.put("tDBInput_4", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBInput_4";
+
+	
+		int tos_count_tDBInput_4 = 0;
+		
+	
+    
+	
+		    int nb_line_tDBInput_4 = 0;
+		    java.sql.Connection conn_tDBInput_4 = null;
+				conn_tDBInput_4 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+				
+		    
+			java.sql.Statement stmt_tDBInput_4 = conn_tDBInput_4.createStatement();
+
+		    String dbquery_tDBInput_4 = "SELECT COUNT(*) AS table_size FROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\"";
+		    
+
+            	globalMap.put("tDBInput_4_QUERY",dbquery_tDBInput_4);
+		    java.sql.ResultSet rs_tDBInput_4 = null;
+
+		    try {
+		    	rs_tDBInput_4 = stmt_tDBInput_4.executeQuery(dbquery_tDBInput_4);
+		    	java.sql.ResultSetMetaData rsmd_tDBInput_4 = rs_tDBInput_4.getMetaData();
+		    	int colQtyInRs_tDBInput_4 = rsmd_tDBInput_4.getColumnCount();
+
+		    String tmpContent_tDBInput_4 = null;
+		    
+		    
+		    while (rs_tDBInput_4.next()) {
+		        nb_line_tDBInput_4++;
+		        
+							if(colQtyInRs_tDBInput_4 < 1) {
+								row10.table_size = null;
+							} else {
+		                          
+            row10.table_size = rs_tDBInput_4.getInt(1);
+            if(rs_tDBInput_4.wasNull()){
+                    row10.table_size = null;
+            }
+		                    }
+					
+
+
+ 
+
+
+
+/**
+ * [tDBInput_4 begin ] stop
+ */
+	
+	/**
+	 * [tDBInput_4 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_4";
+
+	
+
+ 
+
+
+	tos_count_tDBInput_4++;
+
+/**
+ * [tDBInput_4 main ] stop
+ */
+	
+	/**
+	 * [tDBInput_4 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_4 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_4 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_4";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row10"
+						
+						);
+					}
+					
+
+    globalMap.put("TABLE_SIZE", row10.table_size);
+    nb_line_tJavaRow_4++;   
+
+ 
+
+
+	tos_count_tJavaRow_4++;
+
+/**
+ * [tJavaRow_4 main ] stop
+ */
+	
+	/**
+	 * [tJavaRow_4 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_4 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tJavaRow_4 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_4 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tDBInput_4 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_4 process_data_end ] stop
+ */
+	
+	/**
+	 * [tDBInput_4 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_4";
+
+	
+
+	}
+}finally{
+	if (rs_tDBInput_4 != null) {
+		rs_tDBInput_4.close();
+	}
+	if (stmt_tDBInput_4 != null) {
+		stmt_tDBInput_4.close();
+	}
+}
+globalMap.put("tDBInput_4_NB_LINE",nb_line_tDBInput_4);
+ 
+
+ok_Hash.put("tDBInput_4", true);
+end_Hash.put("tDBInput_4", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tDBInput_4 end ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_4 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_4";
+
+	
+
+globalMap.put("tJavaRow_4_NB_LINE",nb_line_tJavaRow_4);
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row10");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tJavaRow_4", true);
+end_Hash.put("tJavaRow_4", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk17", 0, "ok");
+				}
+				tLoop_1Process(globalMap);
+
+
+
+/**
+ * [tJavaRow_4 end ] stop
+ */
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tDBInput_4 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_4 finally ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_4 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_4 finally ] stop
+ */
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tDBInput_4_SUBPROCESS_STATE", 1);
+	}
+	
+
+
+public static class row3Struct implements routines.system.IPersistableRow<row3Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer id;
+
+				public Integer getId () {
+					return this.id;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
 				}
 				
 			    public String ingredients;
@@ -5494,15 +6910,15 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 
         		int length = 0;
 		
-						this._id = readInteger(dis);
+						this.id = readInteger(dis);
 					
-					this.meal = readString(dis);
+					this.strMeal = readString(dis);
 					
-					this.category = readString(dis);
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
 					
 					this.area_id = readString(dis);
-					
-					this.instructions = readString(dis);
 					
 					this.ingredients = readString(dis);
 					
@@ -5528,15 +6944,15 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 
         		int length = 0;
 		
-						this._id = readInteger(dis);
+						this.id = readInteger(dis);
 					
-					this.meal = readString(dis);
+					this.strMeal = readString(dis);
 					
-					this.category = readString(dis);
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
 					
 					this.area_id = readString(dis);
-					
-					this.instructions = readString(dis);
 					
 					this.ingredients = readString(dis);
 					
@@ -5560,23 +6976,23 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 		
 					// Integer
 				
-						writeInteger(this._id,dos);
+						writeInteger(this.id,dos);
 					
 					// String
 				
-						writeString(this.meal,dos);
+						writeString(this.strMeal,dos);
 					
 					// String
 				
-						writeString(this.category,dos);
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
 					
 					// String
 				
 						writeString(this.area_id,dos);
-					
-					// String
-				
-						writeString(this.instructions,dos);
 					
 					// String
 				
@@ -5595,23 +7011,23 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 		
 					// Integer
 				
-						writeInteger(this._id,dos);
+						writeInteger(this.id,dos);
 					
 					// String
 				
-						writeString(this.meal,dos);
+						writeString(this.strMeal,dos);
 					
 					// String
 				
-						writeString(this.category,dos);
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
 					
 					// String
 				
 						writeString(this.area_id,dos);
-					
-					// String
-				
-						writeString(this.instructions,dos);
 					
 					// String
 				
@@ -5630,11 +7046,1939 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("_id="+String.valueOf(_id));
-		sb.append(",meal="+meal);
-		sb.append(",category="+category);
+		sb.append("id="+String.valueOf(id));
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
 		sb.append(",area_id="+area_id);
-		sb.append(",instructions="+instructions);
+		sb.append(",ingredients="+ingredients);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row3Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class OnRowsEndStructtAggregateRow_1 implements routines.system.IPersistableRow<OnRowsEndStructtAggregateRow_1> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer id;
+
+				public Integer getId () {
+					return this.id;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("id="+String.valueOf(id));
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
+		sb.append(",ingredients="+ingredients);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(OnRowsEndStructtAggregateRow_1 other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row12Struct implements routines.system.IPersistableRow<row12Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer id;
+
+				public Integer getId () {
+					return this.id;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("id="+String.valueOf(id));
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
+		sb.append(",ingredients="+ingredients);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row12Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class out6Struct implements routines.system.IPersistableRow<out6Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer id;
+
+				public Integer getId () {
+					return this.id;
+				}
+				
+			    public Integer qtt;
+
+				public Integer getQtt () {
+					return this.qtt;
+				}
+				
+			    public String name;
+
+				public String getName () {
+					return this.name;
+				}
+				
+			    public String calories;
+
+				public String getCalories () {
+					return this.calories;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+						this.qtt = readInteger(dis);
+					
+					this.name = readString(dis);
+					
+					this.calories = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.id = readInteger(dis);
+					
+						this.qtt = readInteger(dis);
+					
+					this.name = readString(dis);
+					
+					this.calories = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// Integer
+				
+						writeInteger(this.qtt,dos);
+					
+					// String
+				
+						writeString(this.name,dos);
+					
+					// String
+				
+						writeString(this.calories,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.id,dos);
+					
+					// Integer
+				
+						writeInteger(this.qtt,dos);
+					
+					// String
+				
+						writeString(this.name,dos);
+					
+					// String
+				
+						writeString(this.calories,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("id="+String.valueOf(id));
+		sb.append(",qtt="+String.valueOf(qtt));
+		sb.append(",name="+name);
+		sb.append(",calories="+calories);
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(out6Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row14Struct implements routines.system.IPersistableRow<row14Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public Integer qtt;
+
+				public Integer getQtt () {
+					return this.qtt;
+				}
+				
+			    public String name;
+
+				public String getName () {
+					return this.name;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.qtt = readInteger(dis);
+					
+					this.name = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+						this.qtt = readInteger(dis);
+					
+					this.name = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.qtt,dos);
+					
+					// String
+				
+						writeString(this.name,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this.qtt,dos);
+					
+					// String
+				
+						writeString(this.name,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("qtt="+String.valueOf(qtt));
+		sb.append(",name="+name);
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row14Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class row11Struct implements routines.system.IPersistableRow<row11Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
+		sb.append(",ingredients="+ingredients);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row11Struct other) {
+
+		int returnValue = -1;
+		
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+
+public static class out2Struct implements routines.system.IPersistableRow<out2Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+
+	
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String area_id;
+
+				public String getArea_id () {
+					return this.area_id;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
+				}
+				
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",area_id="+area_id);
 		sb.append(",ingredients="+ingredients);
 	    sb.append("]");
 
@@ -5951,103 +9295,13 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
 
 }
 
-public static class after_tBufferInput_3Struct implements routines.system.IPersistableRow<after_tBufferInput_3Struct> {
+public static class after_tLoop_1Struct implements routines.system.IPersistableRow<after_tLoop_1Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
-			    public String strMeal;
-
-				public String getStrMeal () {
-					return this.strMeal;
-				}
-				
-			    public String strCategory;
-
-				public String getStrCategory () {
-					return this.strCategory;
-				}
-				
-			    public String strArea;
-
-				public String getStrArea () {
-					return this.strArea;
-				}
-				
-			    public String strInstructions;
-
-				public String getStrInstructions () {
-					return this.strInstructions;
-				}
-				
-			    public String ingredients;
-
-				public String getIngredients () {
-					return this.ingredients;
-				}
-				
 
 
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadGold.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
-   					commonByteArray_PROJECT_LoadGold = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
 
     public void readData(ObjectInputStream dis) {
 
@@ -6057,23 +9311,13 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
 
         		int length = 0;
 		
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
 
 		
 
         }
 
+		
+			finally {}
 		
 
       }
@@ -6089,23 +9333,13 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
 
         		int length = 0;
 		
-					this.strMeal = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-					this.strArea = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
 
 		
 
         }
 
+		
+			finally {}
 		
 
       }
@@ -6117,30 +9351,10 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
         try {
 
 		
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
         }
 
+			finally {}
+		
 
     }
     
@@ -6148,30 +9362,10 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
         try {
 
 		
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-					// String
-				
-						writeString(this.strArea,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
         }
 
+			finally {}
+		
 
     }
 
@@ -6181,11 +9375,6 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("strMeal="+strMeal);
-		sb.append(",strCategory="+strCategory);
-		sb.append(",strArea="+strArea);
-		sb.append(",strInstructions="+strInstructions);
-		sb.append(",ingredients="+ingredients);
 	    sb.append("]");
 
 	    return sb.toString();
@@ -6194,7 +9383,7 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
     /**
      * Compare keys
      */
-    public int compareTo(after_tBufferInput_3Struct other) {
+    public int compareTo(after_tLoop_1Struct other) {
 
 		int returnValue = -1;
 		
@@ -6225,10 +9414,11 @@ public static class after_tBufferInput_3Struct implements routines.system.IPersi
 
 
 }
-public void tBufferInput_3Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tBufferInput_3_SUBPROCESS_STATE", 0);
+public void tLoop_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tLoop_1_SUBPROCESS_STATE", 0);
 
  final boolean execStat = this.execStat;
+		String currentVirtualComponent = null;
 	
 		String iterateId = "";
 	
@@ -6248,146 +9438,619 @@ public void tBufferInput_3Process(final java.util.Map<String, Object> globalMap)
 
 
 		tDBInput_1Process(globalMap);
+		tBufferInput_1Process(globalMap);
 
 		row2Struct row2 = new row2Struct();
 out2Struct out2 = new out2Struct();
-
-
+row11Struct row11 = new row11Struct();
+row14Struct row14 = new row14Struct();
+out6Struct out6 = new out6Struct();
+row12Struct row12 = new row12Struct();
+row3Struct row3 = new row3Struct();
 
 
 
 	
 	/**
-	 * [tDBOutput_1 begin ] start
+	 * [tLoop_1 begin ] start
 	 */
 
-	
-
-	
-		
-		ok_Hash.put("tDBOutput_1", false);
-		start_Hash.put("tDBOutput_1", System.currentTimeMillis());
-		
-	
-	currentComponent="tDBOutput_1";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out2");
-					}
 				
-		int tos_count_tDBOutput_1 = 0;
+			int NB_ITERATE_tDBInput_3 = 0; //for statistics
+			
+
+	
+		
+		ok_Hash.put("tLoop_1", false);
+		start_Hash.put("tLoop_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tLoop_1";
+
+	
+		int tos_count_tLoop_1 = 0;
 		
 
+int current_iteration_tLoop_1 = 0;
 
-
-
-
-String dbschema_tDBOutput_1 = null;
-	dbschema_tDBOutput_1 = (String)globalMap.get("schema_" + "tDBConnection_1");
+for(int looptLoop_1 =0; looptLoop_1<=(int) globalMap.get("TABLE_SIZE") -1; looptLoop_1=looptLoop_1+10000){
 	
+current_iteration_tLoop_1++;
+globalMap.put("tLoop_1_CURRENT_VALUE",looptLoop_1);
+globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 
-String tableName_tDBOutput_1 = null;
-if(dbschema_tDBOutput_1 == null || dbschema_tDBOutput_1.trim().length() == 0) {
-	tableName_tDBOutput_1 = (context.postgresql_table_meals);
-} else {
-	tableName_tDBOutput_1 = dbschema_tDBOutput_1 + "\".\"" + (context.postgresql_table_meals);
-}
-
-
-int nb_line_tDBOutput_1 = 0;
-int nb_line_update_tDBOutput_1 = 0;
-int nb_line_inserted_tDBOutput_1 = 0;
-int nb_line_deleted_tDBOutput_1 = 0;
-int nb_line_rejected_tDBOutput_1 = 0;
-
-int deletedCount_tDBOutput_1=0;
-int updatedCount_tDBOutput_1=0;
-int insertedCount_tDBOutput_1=0;
-int rowsToCommitCount_tDBOutput_1=0;
-int rejectedCount_tDBOutput_1=0;
-
-boolean whetherReject_tDBOutput_1 = false;
-
-java.sql.Connection conn_tDBOutput_1 = null;
-String dbUser_tDBOutput_1 = null;
-
-	conn_tDBOutput_1 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
-	
-	
-
-
-   int batchSize_tDBOutput_1 = 10000;
-   int batchSizeCounter_tDBOutput_1=0;
-
-int count_tDBOutput_1=0;
-                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_1 = conn_tDBOutput_1.getMetaData();
-                                boolean whetherExist_tDBOutput_1 = false;
-                                try (java.sql.ResultSet rsTable_tDBOutput_1 = dbMetaData_tDBOutput_1.getTables(null, null, null, new String[]{"TABLE"})) {
-                                    String defaultSchema_tDBOutput_1 = "public";
-                                    if(dbschema_tDBOutput_1 == null || dbschema_tDBOutput_1.trim().length() == 0) {
-                                        try(java.sql.Statement stmtSchema_tDBOutput_1 = conn_tDBOutput_1.createStatement();
-                                            java.sql.ResultSet rsSchema_tDBOutput_1 = stmtSchema_tDBOutput_1.executeQuery("select current_schema() ")) {
-                                            while(rsSchema_tDBOutput_1.next()){
-                                                defaultSchema_tDBOutput_1 = rsSchema_tDBOutput_1.getString("current_schema");
-                                            }
-                                        }
-                                    }
-                                    while(rsTable_tDBOutput_1.next()) {
-                                        String table_tDBOutput_1 = rsTable_tDBOutput_1.getString("TABLE_NAME");
-                                        String schema_tDBOutput_1 = rsTable_tDBOutput_1.getString("TABLE_SCHEM");
-                                        if(table_tDBOutput_1.equals((context.postgresql_table_meals))
-                                            && (schema_tDBOutput_1.equals(dbschema_tDBOutput_1) || ((dbschema_tDBOutput_1 ==null || dbschema_tDBOutput_1.trim().length() ==0) && defaultSchema_tDBOutput_1.equals(schema_tDBOutput_1)))) {
-                                            whetherExist_tDBOutput_1 = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if(whetherExist_tDBOutput_1) {
-                                    try (java.sql.Statement stmtDrop_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
-                                        stmtDrop_tDBOutput_1.execute("DROP TABLE \"" + tableName_tDBOutput_1 + "\"" );
-                                    }
-                                }
-                                try(java.sql.Statement stmtCreate_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
-                                    stmtCreate_tDBOutput_1.execute("CREATE TABLE \"" + tableName_tDBOutput_1 + "\"(\"_id\" INT4 ,\"meal\" VARCHAR ,\"category\" VARCHAR ,\"area_id\" VARCHAR ,\"instructions\" VARCHAR ,\"ingredients\" VARCHAR )");
-                                }
-	    String insert_tDBOutput_1 = "INSERT INTO \"" + tableName_tDBOutput_1 + "\" (\"_id\",\"meal\",\"category\",\"area_id\",\"instructions\",\"ingredients\") VALUES (?,?,?,?,?,?)";
-	    
-	    java.sql.PreparedStatement pstmt_tDBOutput_1 = conn_tDBOutput_1.prepareStatement(insert_tDBOutput_1);
-	    resourceMap.put("pstmt_tDBOutput_1", pstmt_tDBOutput_1);
-	    
 
  
 
 
 
 /**
- * [tDBOutput_1 begin ] stop
+ * [tLoop_1 begin ] stop
  */
+	
+	/**
+	 * [tLoop_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tLoop_1";
+
+	
+
+ 
+
+
+	tos_count_tLoop_1++;
+
+/**
+ * [tLoop_1 main ] stop
+ */
+	
+	/**
+	 * [tLoop_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tLoop_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tLoop_1 process_data_begin ] stop
+ */
+	NB_ITERATE_tDBInput_3++;
+	
+	
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row14", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row2", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row11", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("OnRowsEnd", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("out6", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row3", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("out2", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row12", 3, 0);
+					}           			
+				
+				if(execStat){
+					runStat.updateStatOnConnection("iterate1", 1, "exec" + NB_ITERATE_tDBInput_3);
+					//Thread.sleep(1000);
+				}				
+			
+
+
+
+
 
 
 
 	
 	/**
-	 * [tMap_2 begin ] start
+	 * [tAggregateRow_1_AGGOUT begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tMap_2", false);
-		start_Hash.put("tMap_2", System.currentTimeMillis());
+		ok_Hash.put("tAggregateRow_1_AGGOUT", false);
+		start_Hash.put("tAggregateRow_1_AGGOUT", System.currentTimeMillis());
 		
 	
-	currentComponent="tMap_2";
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row12");
+					}
+				
+		int tos_count_tAggregateRow_1_AGGOUT = 0;
+		
+
+// ------------ Seems it is not used
+
+java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap(); 
+
+// ------------
+
+	class UtilClass_tAggregateRow_1 { // G_OutBegin_AggR_144
+
+		public double sd(Double[] data) {
+	        final int n = data.length;
+        	if (n < 2) {
+	            return Double.NaN;
+        	}
+        	double d1 = 0d;
+        	double d2 =0d;
+	        
+	        for (int i = 0; i < data.length; i++) {
+            	d1 += (data[i]*data[i]);
+            	d2 += data[i];
+        	}
+        
+	        return Math.sqrt((n*d1 - d2*d2)/n/(n-1));
+	    }
+	    
+		public void checkedIADD(byte a, byte b, boolean checkTypeOverFlow, boolean checkUlp) {
+		    byte r = (byte) (a + b);
+		    if (checkTypeOverFlow && ((a ^ r) & (b ^ r)) < 0) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'short/Short'", "'byte/Byte'"));
+		    }
+		}
+		
+		public void checkedIADD(short a, short b, boolean checkTypeOverFlow, boolean checkUlp) {
+		    short r = (short) (a + b);
+		    if (checkTypeOverFlow && ((a ^ r) & (b ^ r)) < 0) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'int/Integer'", "'short/Short'"));
+		    }
+		}
+		
+		public void checkedIADD(int a, int b, boolean checkTypeOverFlow, boolean checkUlp) {
+		    int r = a + b;
+		    if (checkTypeOverFlow && ((a ^ r) & (b ^ r)) < 0) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'long/Long'", "'int/Integer'"));
+		    }
+		}
+		
+		public void checkedIADD(long a, long b, boolean checkTypeOverFlow, boolean checkUlp) {
+		    long r = a + b;
+		    if (checkTypeOverFlow && ((a ^ r) & (b ^ r)) < 0) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'long/Long'"));
+		    }
+		}
+		
+		public void checkedIADD(float a, float b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+			if(checkUlp) {
+			    float minAddedValue = Math.ulp(a);
+			    if (minAddedValue > Math.abs(b)) {
+			        throw new RuntimeException(buildPrecisionMessage(String.valueOf(a), String.valueOf(b), "'double' or 'BigDecimal'", "'float/Float'"));
+			    }
+			}
+			
+		    if (checkTypeOverFlow && ((double) a + (double) b > (double) Float.MAX_VALUE) || ((double) a + (double) b < (double) -Float.MAX_VALUE)) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'double' or 'BigDecimal'", "'float/Float'"));
+		    }
+		}
+		
+		public void checkedIADD(double a, double b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+			if(checkUlp) {
+			    double minAddedValue = Math.ulp(a);
+			    if (minAddedValue > Math.abs(b)) {
+			        throw new RuntimeException(buildPrecisionMessage(String.valueOf(a), String.valueOf(a), "'BigDecimal'", "'double/Double'"));
+			    }
+			}
+		
+		    if (checkTypeOverFlow && (a + b > (double) Double.MAX_VALUE) || (a + b < -Double.MAX_VALUE )) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'double/Double'"));
+		    }
+		}
+		
+		public void checkedIADD(double a, byte b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+		    if (checkTypeOverFlow && (a + b > (double) Double.MAX_VALUE) || (a + b < -Double.MAX_VALUE )) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'double/Double'"));
+		    }
+		}
+		
+		public void checkedIADD(double a, short b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+		    if (checkTypeOverFlow && (a + b > (double) Double.MAX_VALUE) || (a + b < -Double.MAX_VALUE )) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'double/Double'"));
+		    }
+		}
+		
+		public void checkedIADD(double a, int b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+		    if (checkTypeOverFlow && (a + b > (double) Double.MAX_VALUE) || (a + b < -Double.MAX_VALUE )) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'double/Double'"));
+		    }
+		}
+		
+		public void checkedIADD(double a, float b, boolean checkTypeOverFlow, boolean checkUlp) {
+		
+			if(checkUlp) {
+			    double minAddedValue = Math.ulp(a);
+			    if (minAddedValue > Math.abs(b)) {
+			        throw new RuntimeException(buildPrecisionMessage(String.valueOf(a), String.valueOf(a), "'BigDecimal'", "'double/Double'"));
+			    }
+			}
+		
+		    if (checkTypeOverFlow && (a + b > (double) Double.MAX_VALUE) || (a + b < -Double.MAX_VALUE )) {
+		        throw new RuntimeException(buildOverflowMessage(String.valueOf(a), String.valueOf(b), "'BigDecimal'", "'double/Double'"));
+		    }
+		}
+		
+		private String buildOverflowMessage(String a, String b, String advicedTypes, String originalType) {
+		    return "Type overflow when adding " + b + " to " + a
+		    + ", to resolve this problem, increase the precision by using "+ advicedTypes +" type in place of "+ originalType +".";
+		}
+		
+		private String buildPrecisionMessage(String a, String b, String advicedTypes, String originalType) {
+		    return "The double precision is unsufficient to add the value " + b + " to " + a
+		    + ", to resolve this problem, increase the precision by using "+ advicedTypes +" type in place of "+ originalType +".";
+		}
+
+	} // G_OutBegin_AggR_144
+
+	UtilClass_tAggregateRow_1 utilClass_tAggregateRow_1 = new UtilClass_tAggregateRow_1();
+
+	
+
+	class AggOperationStruct_tAggregateRow_1 { // G_OutBegin_AggR_100
+
+		private static final int DEFAULT_HASHCODE = 1;
+	    private static final int PRIME = 31;
+	    private int hashCode = DEFAULT_HASHCODE;
+	    public boolean hashCodeDirty = true;
+
+    				Integer id;
+    				String strMeal;
+    				String strCategory;
+    				String strInstructions;
+    				String area_id;StringBuilder ingredients_list = new StringBuilder();
+           			boolean ingredients_list_firstEmpty = false;
+           			
+        
+	    @Override
+		public int hashCode() {
+			if (this.hashCodeDirty) {
+				final int prime = PRIME;
+				int result = DEFAULT_HASHCODE;
+		
+							result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+							
+							result = prime * result + ((this.strMeal == null) ? 0 : this.strMeal.hashCode());
+							
+							result = prime * result + ((this.strCategory == null) ? 0 : this.strCategory.hashCode());
+							
+							result = prime * result + ((this.strInstructions == null) ? 0 : this.strInstructions.hashCode());
+							
+							result = prime * result + ((this.area_id == null) ? 0 : this.area_id.hashCode());
+							
+	    		this.hashCode = result;
+	    		this.hashCodeDirty = false;		
+			}
+			return this.hashCode;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj) return true;
+			if (obj == null) return false;
+			if (getClass() != obj.getClass()) return false;
+			final AggOperationStruct_tAggregateRow_1 other = (AggOperationStruct_tAggregateRow_1) obj;
+			
+							if (this.id == null) {
+								if (other.id != null) 
+									return false;
+							} else if (!this.id.equals(other.id)) 
+								return false;
+						
+							if (this.strMeal == null) {
+								if (other.strMeal != null) 
+									return false;
+							} else if (!this.strMeal.equals(other.strMeal)) 
+								return false;
+						
+							if (this.strCategory == null) {
+								if (other.strCategory != null) 
+									return false;
+							} else if (!this.strCategory.equals(other.strCategory)) 
+								return false;
+						
+							if (this.strInstructions == null) {
+								if (other.strInstructions != null) 
+									return false;
+							} else if (!this.strInstructions.equals(other.strInstructions)) 
+								return false;
+						
+							if (this.area_id == null) {
+								if (other.area_id != null) 
+									return false;
+							} else if (!this.area_id.equals(other.area_id)) 
+								return false;
+						
+			
+			return true;
+		}
+  
+        
+	} // G_OutBegin_AggR_100
+
+	AggOperationStruct_tAggregateRow_1 operation_result_tAggregateRow_1 = null;
+	AggOperationStruct_tAggregateRow_1 operation_finder_tAggregateRow_1 = new AggOperationStruct_tAggregateRow_1();
+	java.util.Map<AggOperationStruct_tAggregateRow_1,AggOperationStruct_tAggregateRow_1> hash_tAggregateRow_1 = new java.util.HashMap<AggOperationStruct_tAggregateRow_1,AggOperationStruct_tAggregateRow_1>();
+	
+	String delimiter_tAggregateRow_1 = ",";
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGOUT begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tJavaRow_2", false);
+		start_Hash.put("tJavaRow_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tJavaRow_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out6");
+					}
+				
+		int tos_count_tJavaRow_2 = 0;
+		
+
+int nb_line_tJavaRow_2 = 0;
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_4 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_4", false);
+		start_Hash.put("tMap_4", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_4";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row14");
+					}
+				
+		int tos_count_tMap_4 = 0;
+		
+
+
+
+
+// ###############################
+// # Lookup's keys initialization
+	
+		org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row9Struct> tHash_Lookup_row9 = (org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row9Struct>) 
+				((org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row9Struct>) 
+					globalMap.get( "tHash_Lookup_row9" ))
+					;					
+					
+	
+
+row9Struct row9HashKey = new row9Struct();
+row9Struct row9Default = new row9Struct();
+// ###############################        
+
+// ###############################
+// # Vars initialization
+class  Var__tMap_4__Struct  {
+}
+Var__tMap_4__Struct Var__tMap_4 = new Var__tMap_4__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+out6Struct out6_tmp = new out6Struct();
+// ###############################
+
+        
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+/**
+ * [tMap_4 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tJavaRow_1", false);
+		start_Hash.put("tJavaRow_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tJavaRow_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row11");
+					}
+				
+		int tos_count_tJavaRow_1 = 0;
+		
+
+int nb_line_tJavaRow_1 = 0;
+
+ 
+
+
+
+/**
+ * [tJavaRow_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tExtractJSONFields_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tExtractJSONFields_1", false);
+		start_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tExtractJSONFields_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out2");
+					}
+				
+		int tos_count_tExtractJSONFields_1 = 0;
+		
+
+int nb_line_tExtractJSONFields_1 = 0;
+String jsonStr_tExtractJSONFields_1 = "";
+
+	
+
+class JsonPathCache_tExtractJSONFields_1 {
+	final java.util.Map<String,com.jayway.jsonpath.JsonPath> jsonPathString2compiledJsonPath = new java.util.HashMap<String,com.jayway.jsonpath.JsonPath>();
+	
+	public com.jayway.jsonpath.JsonPath getCompiledJsonPath(String jsonPath) {
+		if(jsonPathString2compiledJsonPath.containsKey(jsonPath)) {
+			return jsonPathString2compiledJsonPath.get(jsonPath);
+		} else {
+			com.jayway.jsonpath.JsonPath compiledLoopPath = com.jayway.jsonpath.JsonPath.compile(jsonPath);
+			jsonPathString2compiledJsonPath.put(jsonPath,compiledLoopPath);
+			return compiledLoopPath;
+		}
+	}
+}
+
+JsonPathCache_tExtractJSONFields_1 jsonPathCache_tExtractJSONFields_1 = new JsonPathCache_tExtractJSONFields_1();
+
+ 
+
+
+
+/**
+ * [tExtractJSONFields_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_3 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_3", false);
+		start_Hash.put("tMap_3", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_3";
 
 	
 					if(execStat) {
 						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row2");
 					}
 				
-		int tos_count_tMap_2 = 0;
+		int tos_count_tMap_3 = 0;
 		
 
 
@@ -6409,9 +10072,9 @@ row4Struct row4Default = new row4Struct();
 
 // ###############################
 // # Vars initialization
-class  Var__tMap_2__Struct  {
+class  Var__tMap_3__Struct  {
 }
-Var__tMap_2__Struct Var__tMap_2 = new Var__tMap_2__Struct();
+Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
 // ###############################
 
 // ###############################
@@ -6439,140 +10102,148 @@ out2Struct out2_tmp = new out2Struct();
 
 
 /**
- * [tMap_2 begin ] stop
+ * [tMap_3 begin ] stop
  */
 
 
 
 	
 	/**
-	 * [tBufferInput_3 begin ] start
+	 * [tDBInput_3 begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tBufferInput_3", false);
-		start_Hash.put("tBufferInput_3", System.currentTimeMillis());
+		ok_Hash.put("tDBInput_3", false);
+		start_Hash.put("tDBInput_3", System.currentTimeMillis());
 		
 	
-	currentComponent="tBufferInput_3";
+	currentComponent="tDBInput_3";
 
 	
-		int tos_count_tBufferInput_3 = 0;
+		int tos_count_tDBInput_3 = 0;
 		
+	
+    
+	
+		    int nb_line_tDBInput_3 = 0;
+		    java.sql.Connection conn_tDBInput_3 = null;
+				conn_tDBInput_3 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+				
+		    
+			java.sql.Statement stmt_tDBInput_3 = conn_tDBInput_3.createStatement();
 
-int nb_line_tBufferInput_3 = 0;
+		    String dbquery_tDBInput_3 = "SELECT \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strMeal\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strCategory\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strArea\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strInstructions\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"ingredients\"\nFROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\" OFFSET " + ((Integer)globalMap.get("tLoop_1_CURRENT_VALUE")) + " LIMIT 1000";
+		    
 
-String[] row_tBufferInput_3 = new String[5];
-for (int n = 0; n < globalBuffer.size(); n++)
-{
-	row_tBufferInput_3 = (String[])globalBuffer.get(n);	
-	if(0 < row_tBufferInput_3.length){
-	
-		row2.strMeal = row_tBufferInput_3[0];	
-	
-	}
-	
-	else{
-		row2.strMeal = null;
-	}	
-	if(1 < row_tBufferInput_3.length){
-	
-		row2.strCategory = row_tBufferInput_3[1];	
-	
-	}
-	
-	else{
-		row2.strCategory = null;
-	}	
-	if(2 < row_tBufferInput_3.length){
-	
-		row2.strArea = row_tBufferInput_3[2];	
-	
-	}
-	
-	else{
-		row2.strArea = null;
-	}	
-	if(3 < row_tBufferInput_3.length){
-	
-		row2.strInstructions = row_tBufferInput_3[3];	
-	
-	}
-	
-	else{
-		row2.strInstructions = null;
-	}	
-	if(4 < row_tBufferInput_3.length){
-	
-		row2.ingredients = row_tBufferInput_3[4];	
-	
-	}
-	
-	else{
-		row2.ingredients = null;
-	}
- 
+            	globalMap.put("tDBInput_3_QUERY",dbquery_tDBInput_3);
+		    java.sql.ResultSet rs_tDBInput_3 = null;
 
+		    try {
+		    	rs_tDBInput_3 = stmt_tDBInput_3.executeQuery(dbquery_tDBInput_3);
+		    	java.sql.ResultSetMetaData rsmd_tDBInput_3 = rs_tDBInput_3.getMetaData();
+		    	int colQtyInRs_tDBInput_3 = rsmd_tDBInput_3.getColumnCount();
 
+		    String tmpContent_tDBInput_3 = null;
+		    
+		    
+		    while (rs_tDBInput_3.next()) {
+		        nb_line_tDBInput_3++;
+		        
+							if(colQtyInRs_tDBInput_3 < 1) {
+								row2.strMeal = null;
+							} else {
+	                         		
+        	row2.strMeal = routines.system.JDBCUtil.getString(rs_tDBInput_3, 1, false);
+		                    }
+							if(colQtyInRs_tDBInput_3 < 2) {
+								row2.strCategory = null;
+							} else {
+	                         		
+        	row2.strCategory = routines.system.JDBCUtil.getString(rs_tDBInput_3, 2, false);
+		                    }
+							if(colQtyInRs_tDBInput_3 < 3) {
+								row2.strArea = null;
+							} else {
+	                         		
+        	row2.strArea = routines.system.JDBCUtil.getString(rs_tDBInput_3, 3, false);
+		                    }
+							if(colQtyInRs_tDBInput_3 < 4) {
+								row2.strInstructions = null;
+							} else {
+	                         		
+        	row2.strInstructions = routines.system.JDBCUtil.getString(rs_tDBInput_3, 4, false);
+		                    }
+							if(colQtyInRs_tDBInput_3 < 5) {
+								row2.ingredients = null;
+							} else {
+	                         		
+        	row2.ingredients = routines.system.JDBCUtil.getString(rs_tDBInput_3, 5, false);
+		                    }
+					
 
-/**
- * [tBufferInput_3 begin ] stop
- */
-	
-	/**
-	 * [tBufferInput_3 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferInput_3";
-
-	
-
- 
-
-
-	tos_count_tBufferInput_3++;
-
-/**
- * [tBufferInput_3 main ] stop
- */
-	
-	/**
-	 * [tBufferInput_3 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tBufferInput_3";
-
-	
 
  
 
 
 
 /**
- * [tBufferInput_3 process_data_begin ] stop
+ * [tDBInput_3 begin ] stop
  */
-
 	
 	/**
-	 * [tMap_2 main ] start
+	 * [tDBInput_3 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+	currentComponent="tDBInput_3";
+
+	
+
+ 
+
+
+	tos_count_tDBInput_3++;
+
+/**
+ * [tDBInput_3 main ] stop
+ */
+	
+	/**
+	 * [tDBInput_3 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBInput_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBInput_3 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tMap_3 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_3";
 
 	
 					if(execStat){
@@ -6586,13 +10257,13 @@ for (int n = 0; n < globalBuffer.size(); n++)
 
 		
 		
-		boolean hasCasePrimitiveKeyWithNull_tMap_2 = false;
+		boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
 		
 
         // ###############################
         // # Input tables (lookups)
-		  boolean rejectedInnerJoin_tMap_2 = false;
-		  boolean mainRowRejected_tMap_2 = false;
+		  boolean rejectedInnerJoin_tMap_3 = false;
+		  boolean mainRowRejected_tMap_3 = false;
             				    								  
 		
 
@@ -6609,10 +10280,10 @@ for (int n = 0; n < globalBuffer.size(); n++)
        		  	    	
  							row4Struct row4ObjectFromLookup = null;
                           
-		           		  	if(!rejectedInnerJoin_tMap_2) { // G_TM_M_020
+		           		  	if(!rejectedInnerJoin_tMap_3) { // G_TM_M_020
 
 								
-								hasCasePrimitiveKeyWithNull_tMap_2 = false;
+								hasCasePrimitiveKeyWithNull_tMap_3 = false;
 								
                         		    		    row4HashKey.area = row2.strArea ;
                         		    		
@@ -6693,7 +10364,7 @@ for (int n = 0; n < globalBuffer.size(); n++)
 	        // ###############################
         	// # Vars tables
         
-Var__tMap_2__Struct Var = Var__tMap_2;// ###############################
+Var__tMap_3__Struct Var = Var__tMap_3;// ###############################
         // ###############################
         // # Output tables
 
@@ -6701,18 +10372,17 @@ out2 = null;
 
 
 // # Output table : 'out2'
-out2_tmp._id = Numeric.sequence("s3", 1, 1);
-out2_tmp.meal = row2.strMeal ;
-out2_tmp.category = row2.strCategory ;
+out2_tmp.strMeal = row2.strMeal ;
+out2_tmp.strCategory = row2.strCategory ;
+out2_tmp.strInstructions = row2.strInstructions ;
 out2_tmp.area_id = row4.area_id ;
-out2_tmp.instructions = row2.strInstructions ;
 out2_tmp.ingredients = row2.ingredients ;
 out2 = out2_tmp;
 // ###############################
 
 } // end of Var scope
 
-rejectedInnerJoin_tMap_2 = false;
+rejectedInnerJoin_tMap_3 = false;
 
 
 
@@ -6726,21 +10396,21 @@ rejectedInnerJoin_tMap_2 = false;
  
 
 
-	tos_count_tMap_2++;
+	tos_count_tMap_3++;
 
 /**
- * [tMap_2 main ] stop
+ * [tMap_3 main ] stop
  */
 	
 	/**
-	 * [tMap_2 process_data_begin ] start
+	 * [tMap_3 process_data_begin ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+	currentComponent="tMap_3";
 
 	
 
@@ -6749,7 +10419,7 @@ rejectedInnerJoin_tMap_2 = false;
 
 
 /**
- * [tMap_2 process_data_begin ] stop
+ * [tMap_3 process_data_begin ] stop
  */
 // Start of branch "out2"
 if(out2 != null) { 
@@ -6758,14 +10428,14 @@ if(out2 != null) {
 
 	
 	/**
-	 * [tDBOutput_1 main ] start
+	 * [tExtractJSONFields_1 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBOutput_1";
+	currentComponent="tExtractJSONFields_1";
 
 	
 					if(execStat){
@@ -6777,104 +10447,155 @@ if(out2 != null) {
 					}
 					
 
+            if(out2.ingredients!=null){// C_01
+                jsonStr_tExtractJSONFields_1 = out2.ingredients.toString();
+   
+row11 = null;
 
+	
 
-        whetherReject_tDBOutput_1 = false;
-                    if(out2._id == null) {
-pstmt_tDBOutput_1.setNull(1, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_1.setInt(1, out2._id);
+String loopPath_tExtractJSONFields_1 = "$[*]";
+java.util.List<Object> resultset_tExtractJSONFields_1 = new java.util.ArrayList<Object>();
+
+boolean isStructError_tExtractJSONFields_1 = true;
+com.jayway.jsonpath.ReadContext document_tExtractJSONFields_1 = null;
+try {
+	document_tExtractJSONFields_1 = com.jayway.jsonpath.JsonPath.parse(jsonStr_tExtractJSONFields_1);
+	com.jayway.jsonpath.JsonPath compiledLoopPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(loopPath_tExtractJSONFields_1);
+	Object result_tExtractJSONFields_1 = document_tExtractJSONFields_1.read(compiledLoopPath_tExtractJSONFields_1,net.minidev.json.JSONObject.class);
+	if (result_tExtractJSONFields_1 instanceof net.minidev.json.JSONArray) {
+		resultset_tExtractJSONFields_1 = (net.minidev.json.JSONArray) result_tExtractJSONFields_1;
+	} else {
+		resultset_tExtractJSONFields_1.add(result_tExtractJSONFields_1);
+	}
+	
+	isStructError_tExtractJSONFields_1 = false;
+} catch (java.lang.Exception ex_tExtractJSONFields_1) {
+globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",ex_tExtractJSONFields_1.getMessage());
+		System.err.println(ex_tExtractJSONFields_1.getMessage());
 }
 
-                    if(out2.meal == null) {
-pstmt_tDBOutput_1.setNull(2, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_1.setString(2, out2.meal);
-}
+String jsonPath_tExtractJSONFields_1 = null;
+com.jayway.jsonpath.JsonPath compiledJsonPath_tExtractJSONFields_1 = null;
 
-                    if(out2.category == null) {
-pstmt_tDBOutput_1.setNull(3, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_1.setString(3, out2.category);
-}
+Object value_tExtractJSONFields_1 = null;
 
-                    if(out2.area_id == null) {
-pstmt_tDBOutput_1.setNull(4, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_1.setString(4, out2.area_id);
-}
+Object root_tExtractJSONFields_1 = null;
+for(int i_tExtractJSONFields_1=0; isStructError_tExtractJSONFields_1 || (i_tExtractJSONFields_1 < resultset_tExtractJSONFields_1.size());i_tExtractJSONFields_1++){
+	if(!isStructError_tExtractJSONFields_1){
+		Object row_tExtractJSONFields_1 = resultset_tExtractJSONFields_1.get(i_tExtractJSONFields_1);
+            row11 = null;
+	row11 = new row11Struct();
+	nb_line_tExtractJSONFields_1++;
+	try {
+        		row11.strMeal = out2.strMeal;
+        		row11.strCategory = out2.strCategory;
+        		row11.strInstructions = out2.strInstructions;
+        		row11.area_id = out2.area_id;
+        		row11.ingredients = out2.ingredients;	
+	} catch (java.lang.Exception ex_tExtractJSONFields_1) {
+globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",ex_tExtractJSONFields_1.getMessage());
+		    System.err.println(ex_tExtractJSONFields_1.getMessage());
+		    row11 = null;	
+	}
+	
+	}
+    
+	isStructError_tExtractJSONFields_1 = false;
+	
+//}
 
-                    if(out2.instructions == null) {
-pstmt_tDBOutput_1.setNull(5, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_1.setString(5, out2.instructions);
-}
 
-                    if(out2.ingredients == null) {
-pstmt_tDBOutput_1.setNull(6, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_1.setString(6, out2.ingredients);
-}
+ 
 
-			
-    		pstmt_tDBOutput_1.addBatch();
-    		nb_line_tDBOutput_1++;
-    		  
-    		  
-    		  batchSizeCounter_tDBOutput_1++;
-    		  
-            if(!whetherReject_tDBOutput_1) {
-            }
-    			if ((batchSize_tDBOutput_1 > 0) && (batchSize_tDBOutput_1 <= batchSizeCounter_tDBOutput_1)) {
-                try {
-						int countSum_tDBOutput_1 = 0;
-						    
-						for(int countEach_tDBOutput_1: pstmt_tDBOutput_1.executeBatch()) {
-							countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
-						}
-				    	rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
-				    	
-				    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
-				    	
-            	    	batchSizeCounter_tDBOutput_1 = 0;
-                }catch (java.sql.BatchUpdateException e_tDBOutput_1){
-globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
-				    	java.sql.SQLException ne_tDBOutput_1 = e_tDBOutput_1.getNextException(),sqle_tDBOutput_1=null;
-				    	String errormessage_tDBOutput_1;
-						if (ne_tDBOutput_1 != null) {
-							// build new exception to provide the original cause
-							sqle_tDBOutput_1 = new java.sql.SQLException(e_tDBOutput_1.getMessage() + "\ncaused by: " + ne_tDBOutput_1.getMessage(), ne_tDBOutput_1.getSQLState(), ne_tDBOutput_1.getErrorCode(), ne_tDBOutput_1);
-							errormessage_tDBOutput_1 = sqle_tDBOutput_1.getMessage();
-						}else{
-							errormessage_tDBOutput_1 = e_tDBOutput_1.getMessage();
-						}
-				    	
-				    	int countSum_tDBOutput_1 = 0;
-						for(int countEach_tDBOutput_1: e_tDBOutput_1.getUpdateCounts()) {
-							countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
-						}
-						rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
+
+	tos_count_tExtractJSONFields_1++;
+
+/**
+ * [tExtractJSONFields_1 main ] stop
+ */
+	
+	/**
+	 * [tExtractJSONFields_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tExtractJSONFields_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tExtractJSONFields_1 process_data_begin ] stop
+ */
+// Start of branch "row11"
+if(row11 != null) { 
+
+
+
+	
+	/**
+	 * [tJavaRow_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
 						
-				    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
-				    	
-				    	System.err.println(errormessage_tDBOutput_1);
-				    	
+							,"row11"
+						
+						);
 					}
-    			}
-    		
+					
+
+    int qtt = row11.ingredients.matches("^[0-9]+.*") ? Integer.parseInt(row11.ingredients.replaceAll("^([0-9]+).*", "$1")) : 1;
+
+String ingredient_name = row11.ingredients.replaceAll("^[0-9]+\\s*", "");
+
+row14.qtt = qtt;
+row14.name = ingredient_name.replaceAll("\"","");
+row14.strMeal = row11.strMeal;
+row14.strCategory = row11.strCategory;
+row14.strInstructions = row11.strInstructions;
+row14.area_id = row11.area_id;
+
+
+
+
+
+
+    nb_line_tJavaRow_1++;   
 
  
 
 
-	tos_count_tDBOutput_1++;
+	tos_count_tJavaRow_1++;
 
 /**
- * [tDBOutput_1 main ] stop
+ * [tJavaRow_1 main ] stop
  */
 	
 	/**
-	 * [tDBOutput_1 process_data_begin ] start
+	 * [tJavaRow_1 process_data_begin ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBOutput_1";
+	currentComponent="tJavaRow_1";
 
 	
 
@@ -6883,18 +10604,189 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 
 
 /**
- * [tDBOutput_1 process_data_begin ] stop
+ * [tJavaRow_1 process_data_begin ] stop
  */
+
 	
 	/**
-	 * [tDBOutput_1 process_data_end ] start
+	 * [tMap_4 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBOutput_1";
+	currentComponent="tMap_4";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row14"
+						
+						);
+					}
+					
+
+		
+		
+		boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+		
+
+        // ###############################
+        // # Input tables (lookups)
+		  boolean rejectedInnerJoin_tMap_4 = false;
+		  boolean mainRowRejected_tMap_4 = false;
+            				    								  
+		
+
+				///////////////////////////////////////////////
+				// Starting Lookup Table "row9" 
+				///////////////////////////////////////////////
+
+
+				
+				
+                            
+ 					    boolean forceLooprow9 = false;
+       		  	    	
+       		  	    	
+ 							row9Struct row9ObjectFromLookup = null;
+                          
+		           		  	if(!rejectedInnerJoin_tMap_4) { // G_TM_M_020
+
+								
+								hasCasePrimitiveKeyWithNull_tMap_4 = false;
+								
+                        		    		    row9HashKey.nom = row14.name ;
+                        		    		
+
+								
+		                        	row9HashKey.hashCodeDirty = true;
+                        		
+	  					
+	  							
+			  					
+			  					
+	  					
+		  							tHash_Lookup_row9.lookup( row9HashKey );
+
+	  							
+
+	  							
+
+ 								
+		  				
+	  								
+						
+									
+  									  		
+ 								
+
+
+
+							} // G_TM_M_020
+			           		  	  
+							
+				           		if(tHash_Lookup_row9 != null && tHash_Lookup_row9.getCount(row9HashKey) > 1) { // G 071
+			  							
+			  						
+									 		
+									//System.out.println("WARNING: UNIQUE MATCH is configured for the lookup 'row9' and it contains more one result from keys :  row9.nom = '" + row9HashKey.nom + "'");
+								} // G 071
+							
+
+							row9Struct row9 = null;
+                    		  	 
+							   
+                    		  	 
+	       		  	    	row9Struct fromLookup_row9 = null;
+							row9 = row9Default;
+										 
+							
+								 
+							
+							
+								if (tHash_Lookup_row9 !=null && tHash_Lookup_row9.hasNext()) { // G 099
+								
+							
+								
+								fromLookup_row9 = tHash_Lookup_row9.next();
+
+							
+							
+								} // G 099
+							
+							
+
+							if(fromLookup_row9 != null) {
+								row9 = fromLookup_row9;
+							}
+							
+							
+							
+			  							
+								
+	                    		  	
+		                    
+	            	
+	            	
+	            // ###############################
+        { // start of Var scope
+        
+	        // ###############################
+        	// # Vars tables
+        
+Var__tMap_4__Struct Var = Var__tMap_4;// ###############################
+        // ###############################
+        // # Output tables
+
+out6 = null;
+
+
+// # Output table : 'out6'
+out6_tmp.id = Numeric.sequence("id_seq", 1, 1);
+out6_tmp.qtt = row14.qtt ;
+out6_tmp.name = row14.name ;
+out6_tmp.calories = row9.calories ;
+out6_tmp.strMeal = row14.strMeal ;
+out6_tmp.strCategory = row14.strCategory ;
+out6_tmp.strInstructions = row14.strInstructions ;
+out6_tmp.area_id = row14.area_id ;
+out6 = out6_tmp;
+// ###############################
+
+} // end of Var scope
+
+rejectedInnerJoin_tMap_4 = false;
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	tos_count_tMap_4++;
+
+/**
+ * [tMap_4 main ] stop
+ */
+	
+	/**
+	 * [tMap_4 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_4";
 
 	
 
@@ -6903,7 +10795,295 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 
 
 /**
- * [tDBOutput_1 process_data_end ] stop
+ * [tMap_4 process_data_begin ] stop
+ */
+// Start of branch "out6"
+if(out6 != null) { 
+
+
+
+	
+	/**
+	 * [tJavaRow_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"out6"
+						
+						);
+					}
+					
+
+    row12.id = out6.id;
+row12.strMeal = out6.strMeal;
+row12.strCategory = out6.strCategory;
+row12.strInstructions = out6.strInstructions;
+row12.area_id = out6.area_id;
+row12.ingredients = "(" + out6.qtt + "," + out6.name + "," + out6.calories + ")";
+
+    nb_line_tJavaRow_2++;   
+
+ 
+
+
+	tos_count_tJavaRow_2++;
+
+/**
+ * [tJavaRow_2 main ] stop
+ */
+	
+	/**
+	 * [tJavaRow_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tAggregateRow_1_AGGOUT main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row12"
+						
+						);
+					}
+					
+	
+operation_finder_tAggregateRow_1.id = row12.id;
+			operation_finder_tAggregateRow_1.strMeal = row12.strMeal;
+			operation_finder_tAggregateRow_1.strCategory = row12.strCategory;
+			operation_finder_tAggregateRow_1.strInstructions = row12.strInstructions;
+			operation_finder_tAggregateRow_1.area_id = row12.area_id;
+			
+
+	operation_finder_tAggregateRow_1.hashCodeDirty = true;
+	
+	operation_result_tAggregateRow_1 = hash_tAggregateRow_1.get(operation_finder_tAggregateRow_1);
+
+	
+
+	if(operation_result_tAggregateRow_1 == null) { // G_OutMain_AggR_001
+
+		operation_result_tAggregateRow_1 = new AggOperationStruct_tAggregateRow_1();
+
+		operation_result_tAggregateRow_1.id = operation_finder_tAggregateRow_1.id;
+				operation_result_tAggregateRow_1.strMeal = operation_finder_tAggregateRow_1.strMeal;
+				operation_result_tAggregateRow_1.strCategory = operation_finder_tAggregateRow_1.strCategory;
+				operation_result_tAggregateRow_1.strInstructions = operation_finder_tAggregateRow_1.strInstructions;
+				operation_result_tAggregateRow_1.area_id = operation_finder_tAggregateRow_1.area_id;
+				
+		
+		
+
+		hash_tAggregateRow_1.put(operation_result_tAggregateRow_1, operation_result_tAggregateRow_1);
+	
+	} // G_OutMain_AggR_001
+
+
+	
+				if(operation_result_tAggregateRow_1.ingredients_list.length() > 0) {
+					operation_result_tAggregateRow_1.ingredients_list.append(",");
+				} 
+				else if(operation_result_tAggregateRow_1.ingredients_list_firstEmpty){
+					operation_result_tAggregateRow_1.ingredients_list.append(",");
+				}
+					if(operation_result_tAggregateRow_1.ingredients_list != null) {
+						if(operation_result_tAggregateRow_1.ingredients_list_firstEmpty==false && ("").equals(String.valueOf(row12.ingredients))){
+							operation_result_tAggregateRow_1.ingredients_list_firstEmpty = true;
+						}
+						operation_result_tAggregateRow_1.ingredients_list = operation_result_tAggregateRow_1.ingredients_list.append(String.valueOf(row12.ingredients));
+					}
+				
+
+
+ 
+
+
+	tos_count_tAggregateRow_1_AGGOUT++;
+
+/**
+ * [tAggregateRow_1_AGGOUT main ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGOUT process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGOUT process_data_begin ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGOUT process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGOUT process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 process_data_end ] stop
+ */
+
+} // End of branch "out6"
+
+
+
+
+	
+	/**
+	 * [tMap_4 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_4 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tJavaRow_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_1 process_data_end ] stop
+ */
+
+} // End of branch "row11"
+
+		// end for
+	}
+
+
+	
+		} // C_01
+	
+	
+	/**
+	 * [tExtractJSONFields_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tExtractJSONFields_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tExtractJSONFields_1 process_data_end ] stop
  */
 
 } // End of branch "out2"
@@ -6913,14 +11093,14 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 
 	
 	/**
-	 * [tMap_2 process_data_end ] start
+	 * [tMap_3 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+	currentComponent="tMap_3";
 
 	
 
@@ -6929,21 +11109,21 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 
 
 /**
- * [tMap_2 process_data_end ] stop
+ * [tMap_3 process_data_end ] stop
  */
 
 
 
 	
 	/**
-	 * [tBufferInput_3 process_data_end ] start
+	 * [tDBInput_3 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tBufferInput_3";
+	currentComponent="tDBInput_3";
 
 	
 
@@ -6952,60 +11132,59 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 
 
 /**
- * [tBufferInput_3 process_data_end ] stop
+ * [tDBInput_3 process_data_end ] stop
  */
 	
 	/**
-	 * [tBufferInput_3 end ] start
+	 * [tDBInput_3 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tBufferInput_3";
+	currentComponent="tDBInput_3";
 
 	
-	nb_line_tBufferInput_3++;
+
+	}
+}finally{
+	if (rs_tDBInput_3 != null) {
+		rs_tDBInput_3.close();
+	}
+	if (stmt_tDBInput_3 != null) {
+		stmt_tDBInput_3.close();
+	}
 }
-globalMap.put("tBufferInput_3_NB_LINE",nb_line_tBufferInput_3); 
-
+globalMap.put("tDBInput_3_NB_LINE",nb_line_tDBInput_3);
  
 
-ok_Hash.put("tBufferInput_3", true);
-end_Hash.put("tBufferInput_3", System.currentTimeMillis());
+ok_Hash.put("tDBInput_3", true);
+end_Hash.put("tDBInput_3", System.currentTimeMillis());
 
 
 
 
 /**
- * [tBufferInput_3 end ] stop
+ * [tDBInput_3 end ] stop
  */
 
 	
 	/**
-	 * [tMap_2 end ] start
+	 * [tMap_3 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+	currentComponent="tMap_3";
 
 	
 
 
 // ###############################
 // # Lookup hashes releasing
-					if(tHash_Lookup_row4 != null) {
-						tHash_Lookup_row4.endGet();
-					}
-					globalMap.remove( "tHash_Lookup_row4" );
-
-					
-					
-				
 // ###############################      
 
 
@@ -7018,88 +11197,29 @@ end_Hash.put("tBufferInput_3", System.currentTimeMillis());
 			  	
  
 
-ok_Hash.put("tMap_2", true);
-end_Hash.put("tMap_2", System.currentTimeMillis());
+ok_Hash.put("tMap_3", true);
+end_Hash.put("tMap_3", System.currentTimeMillis());
 
 
 
 
 /**
- * [tMap_2 end ] stop
+ * [tMap_3 end ] stop
  */
 
 	
 	/**
-	 * [tDBOutput_1 end ] start
+	 * [tExtractJSONFields_1 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBOutput_1";
+	currentComponent="tExtractJSONFields_1";
 
 	
-
-
-
-	    try {
-				int countSum_tDBOutput_1 = 0;
-				if (pstmt_tDBOutput_1 != null && batchSizeCounter_tDBOutput_1 > 0) {
-						
-					for(int countEach_tDBOutput_1: pstmt_tDBOutput_1.executeBatch()) {
-						countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
-					}
-					rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
-						
-				}
-		    	
-		    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
-		    	
-	    }catch (java.sql.BatchUpdateException e_tDBOutput_1){
-globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
-	    	java.sql.SQLException ne_tDBOutput_1 = e_tDBOutput_1.getNextException(),sqle_tDBOutput_1=null;
-	    	String errormessage_tDBOutput_1;
-			if (ne_tDBOutput_1 != null) {
-				// build new exception to provide the original cause
-				sqle_tDBOutput_1 = new java.sql.SQLException(e_tDBOutput_1.getMessage() + "\ncaused by: " + ne_tDBOutput_1.getMessage(), ne_tDBOutput_1.getSQLState(), ne_tDBOutput_1.getErrorCode(), ne_tDBOutput_1);
-				errormessage_tDBOutput_1 = sqle_tDBOutput_1.getMessage();
-			}else{
-				errormessage_tDBOutput_1 = e_tDBOutput_1.getMessage();
-			}
-	    	
-	    	int countSum_tDBOutput_1 = 0;
-			for(int countEach_tDBOutput_1: e_tDBOutput_1.getUpdateCounts()) {
-				countSum_tDBOutput_1 += (countEach_tDBOutput_1 < 0 ? 0 : countEach_tDBOutput_1);
-			}
-			rowsToCommitCount_tDBOutput_1 += countSum_tDBOutput_1;
-			
-	    		insertedCount_tDBOutput_1 += countSum_tDBOutput_1;
-	    	
-	    	System.err.println(errormessage_tDBOutput_1);
-	    	
-		}
-	    
-        if(pstmt_tDBOutput_1 != null) {
-        		
-            pstmt_tDBOutput_1.close();
-            resourceMap.remove("pstmt_tDBOutput_1");
-        }
-    resourceMap.put("statementClosed_tDBOutput_1", true);
-
-	nb_line_deleted_tDBOutput_1=nb_line_deleted_tDBOutput_1+ deletedCount_tDBOutput_1;
-	nb_line_update_tDBOutput_1=nb_line_update_tDBOutput_1 + updatedCount_tDBOutput_1;
-	nb_line_inserted_tDBOutput_1=nb_line_inserted_tDBOutput_1 + insertedCount_tDBOutput_1;
-	nb_line_rejected_tDBOutput_1=nb_line_rejected_tDBOutput_1 + rejectedCount_tDBOutput_1;
-	
-        globalMap.put("tDBOutput_1_NB_LINE",nb_line_tDBOutput_1);
-        globalMap.put("tDBOutput_1_NB_LINE_UPDATED",nb_line_update_tDBOutput_1);
-        globalMap.put("tDBOutput_1_NB_LINE_INSERTED",nb_line_inserted_tDBOutput_1);
-        globalMap.put("tDBOutput_1_NB_LINE_DELETED",nb_line_deleted_tDBOutput_1);
-        globalMap.put("tDBOutput_1_NB_LINE_REJECTED", nb_line_rejected_tDBOutput_1);
-    
-
-	
+   globalMap.put("tExtractJSONFields_1_NB_LINE", nb_line_tExtractJSONFields_1);
 
 
 				if(execStat){
@@ -7108,18 +11228,641 @@ globalMap.put("tDBOutput_1_ERROR_MESSAGE",e_tDBOutput_1.getMessage());
 			  	
  
 
-ok_Hash.put("tDBOutput_1", true);
-end_Hash.put("tDBOutput_1", System.currentTimeMillis());
+ok_Hash.put("tExtractJSONFields_1", true);
+end_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
 
-				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk4", 0, "ok");
-				}
-				tDBCommit_1Process(globalMap);
 
 
 
 /**
- * [tDBOutput_1 end ] stop
+ * [tExtractJSONFields_1 end ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_1";
+
+	
+
+globalMap.put("tJavaRow_1_NB_LINE",nb_line_tJavaRow_1);
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row11");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tJavaRow_1", true);
+end_Hash.put("tJavaRow_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tJavaRow_1 end ] stop
+ */
+
+	
+	/**
+	 * [tMap_4 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_4";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row14");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_4", true);
+end_Hash.put("tMap_4", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_4 end ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+globalMap.put("tJavaRow_2_NB_LINE",nb_line_tJavaRow_2);
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"out6");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tJavaRow_2", true);
+end_Hash.put("tJavaRow_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tJavaRow_2 end ] stop
+ */
+
+	
+	/**
+	 * [tAggregateRow_1_AGGOUT end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row12");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tAggregateRow_1_AGGOUT", true);
+end_Hash.put("tAggregateRow_1_AGGOUT", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tAggregateRow_1_AGGOUT end ] stop
+ */
+
+
+	
+	/**
+	 * [tDBOutput_2 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBOutput_2", false);
+		start_Hash.put("tDBOutput_2", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBOutput_2";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row3");
+					}
+				
+		int tos_count_tDBOutput_2 = 0;
+		
+
+
+
+
+
+String dbschema_tDBOutput_2 = null;
+	dbschema_tDBOutput_2 = (String)globalMap.get("schema_" + "tDBConnection_1");
+	
+
+String tableName_tDBOutput_2 = null;
+if(dbschema_tDBOutput_2 == null || dbschema_tDBOutput_2.trim().length() == 0) {
+	tableName_tDBOutput_2 = (context.postgresql_table_meals);
+} else {
+	tableName_tDBOutput_2 = dbschema_tDBOutput_2 + "\".\"" + (context.postgresql_table_meals);
+}
+
+
+int nb_line_tDBOutput_2 = 0;
+int nb_line_update_tDBOutput_2 = 0;
+int nb_line_inserted_tDBOutput_2 = 0;
+int nb_line_deleted_tDBOutput_2 = 0;
+int nb_line_rejected_tDBOutput_2 = 0;
+
+int deletedCount_tDBOutput_2=0;
+int updatedCount_tDBOutput_2=0;
+int insertedCount_tDBOutput_2=0;
+int rowsToCommitCount_tDBOutput_2=0;
+int rejectedCount_tDBOutput_2=0;
+
+boolean whetherReject_tDBOutput_2 = false;
+
+java.sql.Connection conn_tDBOutput_2 = null;
+String dbUser_tDBOutput_2 = null;
+
+	conn_tDBOutput_2 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	
+	
+
+
+   int batchSize_tDBOutput_2 = 10000;
+   int batchSizeCounter_tDBOutput_2=0;
+
+int count_tDBOutput_2=0;
+                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_2 = conn_tDBOutput_2.getMetaData();
+                                boolean whetherExist_tDBOutput_2 = false;
+                                try (java.sql.ResultSet rsTable_tDBOutput_2 = dbMetaData_tDBOutput_2.getTables(null, null, null, new String[]{"TABLE"})) {
+                                    String defaultSchema_tDBOutput_2 = "public";
+                                    if(dbschema_tDBOutput_2 == null || dbschema_tDBOutput_2.trim().length() == 0) {
+                                        try(java.sql.Statement stmtSchema_tDBOutput_2 = conn_tDBOutput_2.createStatement();
+                                            java.sql.ResultSet rsSchema_tDBOutput_2 = stmtSchema_tDBOutput_2.executeQuery("select current_schema() ")) {
+                                            while(rsSchema_tDBOutput_2.next()){
+                                                defaultSchema_tDBOutput_2 = rsSchema_tDBOutput_2.getString("current_schema");
+                                            }
+                                        }
+                                    }
+                                    while(rsTable_tDBOutput_2.next()) {
+                                        String table_tDBOutput_2 = rsTable_tDBOutput_2.getString("TABLE_NAME");
+                                        String schema_tDBOutput_2 = rsTable_tDBOutput_2.getString("TABLE_SCHEM");
+                                        if(table_tDBOutput_2.equals((context.postgresql_table_meals))
+                                            && (schema_tDBOutput_2.equals(dbschema_tDBOutput_2) || ((dbschema_tDBOutput_2 ==null || dbschema_tDBOutput_2.trim().length() ==0) && defaultSchema_tDBOutput_2.equals(schema_tDBOutput_2)))) {
+                                            whetherExist_tDBOutput_2 = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                                if(whetherExist_tDBOutput_2) {
+                                    try (java.sql.Statement stmtDrop_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
+                                        stmtDrop_tDBOutput_2.execute("DROP TABLE \"" + tableName_tDBOutput_2 + "\"" );
+                                    }
+                                }
+                                try(java.sql.Statement stmtCreate_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
+                                    stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"id\" SERIAL ,\"strMeal\" VARCHAR ,\"strCategory\" VARCHAR ,\"strInstructions\" VARCHAR ,\"area_id\" VARCHAR ,\"ingredients\" VARCHAR )");
+                                }
+	    String insert_tDBOutput_2 = "INSERT INTO \"" + tableName_tDBOutput_2 + "\" (\"id\",\"strMeal\",\"strCategory\",\"strInstructions\",\"area_id\",\"ingredients\") VALUES (?,?,?,?,?,?)";
+	    
+	    java.sql.PreparedStatement pstmt_tDBOutput_2 = conn_tDBOutput_2.prepareStatement(insert_tDBOutput_2);
+	    resourceMap.put("pstmt_tDBOutput_2", pstmt_tDBOutput_2);
+	    
+
+ 
+
+
+
+/**
+ * [tDBOutput_2 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tAggregateRow_1_AGGIN begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tAggregateRow_1_AGGIN", false);
+		start_Hash.put("tAggregateRow_1_AGGIN", System.currentTimeMillis());
+		
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+		int tos_count_tAggregateRow_1_AGGIN = 0;
+		
+
+java.util.Collection<AggOperationStruct_tAggregateRow_1> values_tAggregateRow_1 = hash_tAggregateRow_1.values();
+
+globalMap.put("tAggregateRow_1_NB_LINE", values_tAggregateRow_1.size());
+
+for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_tAggregateRow_1) { // G_AggR_600
+
+
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN begin ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGIN main ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+            				    row3.id = aggregated_row_tAggregateRow_1.id;
+            				    
+            				    row3.strMeal = aggregated_row_tAggregateRow_1.strMeal;
+            				    
+            				    row3.strCategory = aggregated_row_tAggregateRow_1.strCategory;
+            				    
+            				    row3.strInstructions = aggregated_row_tAggregateRow_1.strInstructions;
+            				    
+            				    row3.area_id = aggregated_row_tAggregateRow_1.area_id;
+            				    
+    								row3.ingredients = aggregated_row_tAggregateRow_1.ingredients_list.toString();
+	    						
+
+ 
+
+
+	tos_count_tAggregateRow_1_AGGIN++;
+
+/**
+ * [tAggregateRow_1_AGGIN main ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGIN process_data_begin ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tDBOutput_2 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_2";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row3"
+						
+						);
+					}
+					
+
+
+
+        whetherReject_tDBOutput_2 = false;
+                    if(row3.id == null) {
+pstmt_tDBOutput_2.setNull(1, java.sql.Types.INTEGER);
+} else {pstmt_tDBOutput_2.setInt(1, row3.id);
+}
+
+                    if(row3.strMeal == null) {
+pstmt_tDBOutput_2.setNull(2, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(2, row3.strMeal);
+}
+
+                    if(row3.strCategory == null) {
+pstmt_tDBOutput_2.setNull(3, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(3, row3.strCategory);
+}
+
+                    if(row3.strInstructions == null) {
+pstmt_tDBOutput_2.setNull(4, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(4, row3.strInstructions);
+}
+
+                    if(row3.area_id == null) {
+pstmt_tDBOutput_2.setNull(5, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(5, row3.area_id);
+}
+
+                    if(row3.ingredients == null) {
+pstmt_tDBOutput_2.setNull(6, java.sql.Types.VARCHAR);
+} else {pstmt_tDBOutput_2.setString(6, row3.ingredients);
+}
+
+			
+    		pstmt_tDBOutput_2.addBatch();
+    		nb_line_tDBOutput_2++;
+    		  
+    		  
+    		  batchSizeCounter_tDBOutput_2++;
+    		  
+    			if ((batchSize_tDBOutput_2 > 0) && (batchSize_tDBOutput_2 <= batchSizeCounter_tDBOutput_2)) {
+                try {
+						int countSum_tDBOutput_2 = 0;
+						    
+						for(int countEach_tDBOutput_2: pstmt_tDBOutput_2.executeBatch()) {
+							countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+						}
+				    	rowsToCommitCount_tDBOutput_2 += countSum_tDBOutput_2;
+				    	
+				    		insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+				    	
+            	    	batchSizeCounter_tDBOutput_2 = 0;
+                }catch (java.sql.BatchUpdateException e_tDBOutput_2){
+globalMap.put("tDBOutput_2_ERROR_MESSAGE",e_tDBOutput_2.getMessage());
+				    	java.sql.SQLException ne_tDBOutput_2 = e_tDBOutput_2.getNextException(),sqle_tDBOutput_2=null;
+				    	String errormessage_tDBOutput_2;
+						if (ne_tDBOutput_2 != null) {
+							// build new exception to provide the original cause
+							sqle_tDBOutput_2 = new java.sql.SQLException(e_tDBOutput_2.getMessage() + "\ncaused by: " + ne_tDBOutput_2.getMessage(), ne_tDBOutput_2.getSQLState(), ne_tDBOutput_2.getErrorCode(), ne_tDBOutput_2);
+							errormessage_tDBOutput_2 = sqle_tDBOutput_2.getMessage();
+						}else{
+							errormessage_tDBOutput_2 = e_tDBOutput_2.getMessage();
+						}
+				    	
+				    	int countSum_tDBOutput_2 = 0;
+						for(int countEach_tDBOutput_2: e_tDBOutput_2.getUpdateCounts()) {
+							countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+						}
+						rowsToCommitCount_tDBOutput_2 += countSum_tDBOutput_2;
+						
+				    		insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+				    	
+				    	System.err.println(errormessage_tDBOutput_2);
+				    	
+					}
+    			}
+    		
+
+ 
+
+
+	tos_count_tDBOutput_2++;
+
+/**
+ * [tDBOutput_2 main ] stop
+ */
+	
+	/**
+	 * [tDBOutput_2 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBOutput_2 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tDBOutput_2 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBOutput_2 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tAggregateRow_1_AGGIN process_data_end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN process_data_end ] stop
+ */
+	
+	/**
+	 * [tAggregateRow_1_AGGIN end ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+} // G_AggR_600
+
+ 
+
+ok_Hash.put("tAggregateRow_1_AGGIN", true);
+end_Hash.put("tAggregateRow_1_AGGIN", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN end ] stop
+ */
+
+	
+	/**
+	 * [tDBOutput_2 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_2";
+
+	
+
+
+
+	    try {
+				int countSum_tDBOutput_2 = 0;
+				if (pstmt_tDBOutput_2 != null && batchSizeCounter_tDBOutput_2 > 0) {
+						
+					for(int countEach_tDBOutput_2: pstmt_tDBOutput_2.executeBatch()) {
+						countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+					}
+					rowsToCommitCount_tDBOutput_2 += countSum_tDBOutput_2;
+						
+				}
+		    	
+		    		insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+		    	
+	    }catch (java.sql.BatchUpdateException e_tDBOutput_2){
+globalMap.put("tDBOutput_2_ERROR_MESSAGE",e_tDBOutput_2.getMessage());
+	    	java.sql.SQLException ne_tDBOutput_2 = e_tDBOutput_2.getNextException(),sqle_tDBOutput_2=null;
+	    	String errormessage_tDBOutput_2;
+			if (ne_tDBOutput_2 != null) {
+				// build new exception to provide the original cause
+				sqle_tDBOutput_2 = new java.sql.SQLException(e_tDBOutput_2.getMessage() + "\ncaused by: " + ne_tDBOutput_2.getMessage(), ne_tDBOutput_2.getSQLState(), ne_tDBOutput_2.getErrorCode(), ne_tDBOutput_2);
+				errormessage_tDBOutput_2 = sqle_tDBOutput_2.getMessage();
+			}else{
+				errormessage_tDBOutput_2 = e_tDBOutput_2.getMessage();
+			}
+	    	
+	    	int countSum_tDBOutput_2 = 0;
+			for(int countEach_tDBOutput_2: e_tDBOutput_2.getUpdateCounts()) {
+				countSum_tDBOutput_2 += (countEach_tDBOutput_2 < 0 ? 0 : countEach_tDBOutput_2);
+			}
+			rowsToCommitCount_tDBOutput_2 += countSum_tDBOutput_2;
+			
+	    		insertedCount_tDBOutput_2 += countSum_tDBOutput_2;
+	    	
+	    	System.err.println(errormessage_tDBOutput_2);
+	    	
+		}
+	    
+        if(pstmt_tDBOutput_2 != null) {
+        		
+            pstmt_tDBOutput_2.close();
+            resourceMap.remove("pstmt_tDBOutput_2");
+        }
+    resourceMap.put("statementClosed_tDBOutput_2", true);
+
+	nb_line_deleted_tDBOutput_2=nb_line_deleted_tDBOutput_2+ deletedCount_tDBOutput_2;
+	nb_line_update_tDBOutput_2=nb_line_update_tDBOutput_2 + updatedCount_tDBOutput_2;
+	nb_line_inserted_tDBOutput_2=nb_line_inserted_tDBOutput_2 + insertedCount_tDBOutput_2;
+	nb_line_rejected_tDBOutput_2=nb_line_rejected_tDBOutput_2 + rejectedCount_tDBOutput_2;
+	
+        globalMap.put("tDBOutput_2_NB_LINE",nb_line_tDBOutput_2);
+        globalMap.put("tDBOutput_2_NB_LINE_UPDATED",nb_line_update_tDBOutput_2);
+        globalMap.put("tDBOutput_2_NB_LINE_INSERTED",nb_line_inserted_tDBOutput_2);
+        globalMap.put("tDBOutput_2_NB_LINE_DELETED",nb_line_deleted_tDBOutput_2);
+        globalMap.put("tDBOutput_2_NB_LINE_REJECTED", nb_line_rejected_tDBOutput_2);
+    
+
+	
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tDBOutput_2", true);
+end_Hash.put("tDBOutput_2", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tDBOutput_2 end ] stop
  */
 
 
@@ -7127,9 +11870,93 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						if(execStat){
+							runStat.updateStatOnConnection("iterate1", 2, "exec" + NB_ITERATE_tDBInput_3);
+						}				
+					
+
+
+
+
+	
+	/**
+	 * [tLoop_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tLoop_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tLoop_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tLoop_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tLoop_1";
+
+	
+
+
+	}
+
+
+ 
+
+ok_Hash.put("tLoop_1", true);
+end_Hash.put("tLoop_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tLoop_1 end ] stop
+ */
 				}//end the resume
 
 				
+				    			if(resumeEntryMethodName == null || globalResumeTicket){
+				    				resumeUtil.addLog("CHECKPOINT", "CONNECTION:SUBJOB_OK:tLoop_1:OnSubjobOk", "", Thread.currentThread().getId() + "", "", "", "", "", "");
+								}	    				    			
+					    	
+								if(execStat){    	
+									runStat.updateStatOnConnection("OnSubjobOk1", 0, "ok");
+								} 
+							
+							tDBCommit_2Process(globalMap); 
+						
 
 
 
@@ -7137,6 +11964,8 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 			}catch(java.lang.Exception e){	
 				
 				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+					te.setVirtualComponentName(currentVirtualComponent);
 				
 				throw te;
 			}catch(java.lang.Error error){	
@@ -7146,21 +11975,27 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 				throw error;
 			}finally{
 				
-					     			//free memory for "tMap_2"
+							//free memory for "tAggregateRow_1_AGGIN"
+							globalMap.remove("tAggregateRow_1");
+						
+					     			//free memory for "tMap_4"
+					     			globalMap.remove("tHash_Lookup_row9"); 
+				     			
+					     			//free memory for "tMap_3"
 					     			globalMap.remove("tHash_Lookup_row4"); 
 				     			
 				try{
 					
 	
 	/**
-	 * [tBufferInput_3 finally ] start
+	 * [tLoop_1 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tBufferInput_3";
+	currentComponent="tLoop_1";
 
 	
 
@@ -7169,19 +12004,19 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 
 
 /**
- * [tBufferInput_3 finally ] stop
+ * [tLoop_1 finally ] stop
  */
 
 	
 	/**
-	 * [tMap_2 finally ] start
+	 * [tDBInput_3 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMap_2";
+	currentComponent="tDBInput_3";
 
 	
 
@@ -7190,28 +12025,179 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 
 
 /**
- * [tMap_2 finally ] stop
+ * [tDBInput_3 finally ] stop
  */
 
 	
 	/**
-	 * [tDBOutput_1 finally ] start
+	 * [tMap_3 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBOutput_1";
+	currentComponent="tMap_3";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_3 finally ] stop
+ */
+
+	
+	/**
+	 * [tExtractJSONFields_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tExtractJSONFields_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tExtractJSONFields_1 finally ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_1 finally ] stop
+ */
+
+	
+	/**
+	 * [tMap_4 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_4";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_4 finally ] stop
+ */
+
+	
+	/**
+	 * [tJavaRow_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tJavaRow_2";
+
+	
+
+ 
+
+
+
+/**
+ * [tJavaRow_2 finally ] stop
+ */
+
+	
+	/**
+	 * [tAggregateRow_1_AGGOUT finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGOUT";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGOUT finally ] stop
+ */
+
+	
+	/**
+	 * [tAggregateRow_1_AGGIN finally ] start
+	 */
+
+	
+
+	
+	
+		currentVirtualComponent = "tAggregateRow_1";
+	
+	currentComponent="tAggregateRow_1_AGGIN";
+
+	
+
+ 
+
+
+
+/**
+ * [tAggregateRow_1_AGGIN finally ] stop
+ */
+
+	
+	/**
+	 * [tDBOutput_2 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBOutput_2";
 
 	
 
 
 
-    if (resourceMap.get("statementClosed_tDBOutput_1") == null) {
-                java.sql.PreparedStatement pstmtToClose_tDBOutput_1 = null;
-                if ((pstmtToClose_tDBOutput_1 = (java.sql.PreparedStatement) resourceMap.remove("pstmt_tDBOutput_1")) != null) {
-                    pstmtToClose_tDBOutput_1.close();
+    if (resourceMap.get("statementClosed_tDBOutput_2") == null) {
+                java.sql.PreparedStatement pstmtToClose_tDBOutput_2 = null;
+                if ((pstmtToClose_tDBOutput_2 = (java.sql.PreparedStatement) resourceMap.remove("pstmt_tDBOutput_2")) != null) {
+                    pstmtToClose_tDBOutput_2.close();
                 }
     }
  
@@ -7219,8 +12205,29 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 
 
 /**
- * [tDBOutput_1 finally ] stop
+ * [tDBOutput_2 finally ] stop
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7236,12 +12243,12 @@ end_Hash.put("tDBOutput_1", System.currentTimeMillis());
 			}
 		
 
-		globalMap.put("tBufferInput_3_SUBPROCESS_STATE", 1);
+		globalMap.put("tLoop_1_SUBPROCESS_STATE", 1);
 	}
 	
 
-public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tDBCommit_1_SUBPROCESS_STATE", 0);
+public void tDBCommit_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBCommit_2_SUBPROCESS_STATE", 0);
 
  final boolean execStat = this.execStat;
 	
@@ -7268,21 +12275,21 @@ public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) th
 
 	
 	/**
-	 * [tDBCommit_1 begin ] start
+	 * [tDBCommit_2 begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tDBCommit_1", false);
-		start_Hash.put("tDBCommit_1", System.currentTimeMillis());
+		ok_Hash.put("tDBCommit_2", false);
+		start_Hash.put("tDBCommit_2", System.currentTimeMillis());
 		
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
-		int tos_count_tDBCommit_1 = 0;
+		int tos_count_tDBCommit_2 = 0;
 		
 
  
@@ -7290,27 +12297,27 @@ public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) th
 
 
 /**
- * [tDBCommit_1 begin ] stop
+ * [tDBCommit_2 begin ] stop
  */
 	
 	/**
-	 * [tDBCommit_1 main ] start
+	 * [tDBCommit_2 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
 
-	java.sql.Connection conn_tDBCommit_1 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
-	if(conn_tDBCommit_1 != null && !conn_tDBCommit_1.isClosed())
+	java.sql.Connection conn_tDBCommit_2 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	if(conn_tDBCommit_2 != null && !conn_tDBCommit_2.isClosed())
 	{
 	
 			
-			conn_tDBCommit_1.commit();
+			conn_tDBCommit_2.commit();
 			
 	
 	}
@@ -7318,21 +12325,21 @@ public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) th
  
 
 
-	tos_count_tDBCommit_1++;
+	tos_count_tDBCommit_2++;
 
 /**
- * [tDBCommit_1 main ] stop
+ * [tDBCommit_2 main ] stop
  */
 	
 	/**
-	 * [tDBCommit_1 process_data_begin ] start
+	 * [tDBCommit_2 process_data_begin ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
 
@@ -7341,18 +12348,18 @@ public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) th
 
 
 /**
- * [tDBCommit_1 process_data_begin ] stop
+ * [tDBCommit_2 process_data_begin ] stop
  */
 	
 	/**
-	 * [tDBCommit_1 process_data_end ] start
+	 * [tDBCommit_2 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
 
@@ -7361,35 +12368,35 @@ public void tDBCommit_1Process(final java.util.Map<String, Object> globalMap) th
 
 
 /**
- * [tDBCommit_1 process_data_end ] stop
+ * [tDBCommit_2 process_data_end ] stop
  */
 	
 	/**
-	 * [tDBCommit_1 end ] start
+	 * [tDBCommit_2 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
 
  
 
-ok_Hash.put("tDBCommit_1", true);
-end_Hash.put("tDBCommit_1", System.currentTimeMillis());
+ok_Hash.put("tDBCommit_2", true);
+end_Hash.put("tDBCommit_2", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk5", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk10", 0, "ok");
 				}
-				tMongoDBClose_1Process(globalMap);
+				tMongoDBClose_2Process(globalMap);
 
 
 
 /**
- * [tDBCommit_1 end ] stop
+ * [tDBCommit_2 end ] stop
  */
 				}//end the resume
 
@@ -7414,14 +12421,14 @@ end_Hash.put("tDBCommit_1", System.currentTimeMillis());
 					
 	
 	/**
-	 * [tDBCommit_1 finally ] start
+	 * [tDBCommit_2 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tDBCommit_1";
+	currentComponent="tDBCommit_2";
 
 	
 
@@ -7430,7 +12437,7 @@ end_Hash.put("tDBCommit_1", System.currentTimeMillis());
 
 
 /**
- * [tDBCommit_1 finally ] stop
+ * [tDBCommit_2 finally ] stop
  */
 				}catch(java.lang.Exception e){	
 					//ignore
@@ -7441,12 +12448,12 @@ end_Hash.put("tDBCommit_1", System.currentTimeMillis());
 			}
 		
 
-		globalMap.put("tDBCommit_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tDBCommit_2_SUBPROCESS_STATE", 1);
 	}
 	
 
-public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
-	globalMap.put("tMongoDBClose_1_SUBPROCESS_STATE", 0);
+public void tMongoDBClose_2Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tMongoDBClose_2_SUBPROCESS_STATE", 0);
 
  final boolean execStat = this.execStat;
 	
@@ -7473,21 +12480,21 @@ public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap
 
 	
 	/**
-	 * [tMongoDBClose_1 begin ] start
+	 * [tMongoDBClose_2 begin ] start
 	 */
 
 	
 
 	
 		
-		ok_Hash.put("tMongoDBClose_1", false);
-		start_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
+		ok_Hash.put("tMongoDBClose_2", false);
+		start_Hash.put("tMongoDBClose_2", System.currentTimeMillis());
 		
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
-		int tos_count_tMongoDBClose_1 = 0;
+		int tos_count_tMongoDBClose_2 = 0;
 		
 
  
@@ -7495,23 +12502,23 @@ public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap
 
 
 /**
- * [tMongoDBClose_1 begin ] stop
+ * [tMongoDBClose_2 begin ] stop
  */
 	
 	/**
-	 * [tMongoDBClose_1 main ] start
+	 * [tMongoDBClose_2 main ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
-        com.mongodb.client.MongoClient mongo_tMongoDBClose_1=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
-        if(mongo_tMongoDBClose_1 != null ) {
-            mongo_tMongoDBClose_1.close();
+        com.mongodb.client.MongoClient mongo_tMongoDBClose_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
+        if(mongo_tMongoDBClose_2 != null ) {
+            mongo_tMongoDBClose_2.close();
         }
 
 
@@ -7519,21 +12526,21 @@ public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap
  
 
 
-	tos_count_tMongoDBClose_1++;
+	tos_count_tMongoDBClose_2++;
 
 /**
- * [tMongoDBClose_1 main ] stop
+ * [tMongoDBClose_2 main ] stop
  */
 	
 	/**
-	 * [tMongoDBClose_1 process_data_begin ] start
+	 * [tMongoDBClose_2 process_data_begin ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
 
@@ -7542,18 +12549,18 @@ public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap
 
 
 /**
- * [tMongoDBClose_1 process_data_begin ] stop
+ * [tMongoDBClose_2 process_data_begin ] stop
  */
 	
 	/**
-	 * [tMongoDBClose_1 process_data_end ] start
+	 * [tMongoDBClose_2 process_data_end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
 
@@ -7562,35 +12569,35 @@ public void tMongoDBClose_1Process(final java.util.Map<String, Object> globalMap
 
 
 /**
- * [tMongoDBClose_1 process_data_end ] stop
+ * [tMongoDBClose_2 process_data_end ] stop
  */
 	
 	/**
-	 * [tMongoDBClose_1 end ] start
+	 * [tMongoDBClose_2 end ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
 
  
 
-ok_Hash.put("tMongoDBClose_1", true);
-end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
+ok_Hash.put("tMongoDBClose_2", true);
+end_Hash.put("tMongoDBClose_2", System.currentTimeMillis());
 
 				if(execStat){   
-   	 				runStat.updateStatOnConnection("OnComponentOk6", 0, "ok");
+   	 				runStat.updateStatOnConnection("OnComponentOk11", 0, "ok");
 				}
 				tWarn_2Process(globalMap);
 
 
 
 /**
- * [tMongoDBClose_1 end ] stop
+ * [tMongoDBClose_2 end ] stop
  */
 				}//end the resume
 
@@ -7615,14 +12622,14 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 					
 	
 	/**
-	 * [tMongoDBClose_1 finally ] start
+	 * [tMongoDBClose_2 finally ] start
 	 */
 
 	
 
 	
 	
-	currentComponent="tMongoDBClose_1";
+	currentComponent="tMongoDBClose_2";
 
 	
 
@@ -7631,7 +12638,7 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 
 
 /**
- * [tMongoDBClose_1 finally ] stop
+ * [tMongoDBClose_2 finally ] stop
  */
 				}catch(java.lang.Exception e){	
 					//ignore
@@ -7642,7 +12649,7 @@ end_Hash.put("tMongoDBClose_1", System.currentTimeMillis());
 			}
 		
 
-		globalMap.put("tMongoDBClose_1_SUBPROCESS_STATE", 1);
+		globalMap.put("tMongoDBClose_2_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -8290,8 +13297,8 @@ public void tDBInput_1Process(final java.util.Map<String, Object> globalMap) thr
 		
 
 			   		// connection name:row4
-			   		// source node:tDBInput_1 - inputs:(after_tBufferInput_3) outputs:(row4,row4) | target node:tAdvancedHash_row4 - inputs:(row4) outputs:()
-			   		// linked node: tMap_2 - inputs:(row2,row4) outputs:(out2)
+			   		// source node:tDBInput_1 - inputs:(after_tLoop_1) outputs:(row4,row4) | target node:tAdvancedHash_row4 - inputs:(row4) outputs:()
+			   		// linked node: tMap_3 - inputs:(row2,row4) outputs:(out2)
 			   
 			   		org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row4 = 
 			   			org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
@@ -8343,7 +13350,7 @@ public void tDBInput_1Process(final java.util.Map<String, Object> globalMap) thr
 		    
 			java.sql.Statement stmt_tDBInput_1 = conn_tDBInput_1.createStatement();
 
-		    String dbquery_tDBInput_1 = "SELECT \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\".\"area_id\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\".\"area\"\nFROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\"";
+		    String dbquery_tDBInput_1 = "SELECT \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\".\"area_id\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\".\"area_name\"\nFROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_area+"\"";
 		    
 
             	globalMap.put("tDBInput_1_QUERY",dbquery_tDBInput_1);
@@ -8679,6 +13686,812 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
 		globalMap.put("tDBInput_1_SUBPROCESS_STATE", 1);
 	}
 	
+
+
+public static class row9Struct implements routines.system.IPersistableComparableLookupRow<row9Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public String nom;
+
+				public String getNom () {
+					return this.nom;
+				}
+				
+			    public String calories;
+
+				public String getCalories () {
+					return this.calories;
+				}
+				
+
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this.nom == null) ? 0 : this.nom.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final row9Struct other = (row9Struct) obj;
+		
+						if (this.nom == null) {
+							if (other.nom != null)
+								return false;
+						
+						} else if (!this.nom.equals(other.nom))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(row9Struct other) {
+
+		other.nom = this.nom;
+	            other.calories = this.calories;
+	            
+	}
+
+	public void copyKeysDataTo(row9Struct other) {
+
+		other.nom = this.nom;
+	            	
+	}
+
+
+
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadGold.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadGold.length == 0) {
+   					commonByteArray_PROJECT_LoadGold = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadGold = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadGold, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadGold, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+	
+	private String readString(DataInputStream dis, ObjectInputStream ois) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			byte[] byteArray = new byte[length];
+			dis.read(byteArray);
+			strReturn = new String(byteArray, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(DataInputStream dis, org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			byte[] byteArray = new byte[length];
+			unmarshaller.read(byteArray);
+			strReturn = new String(byteArray, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private void writeString(String str, DataOutputStream dos, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+	}
+
+	private void writeString(String str, DataOutputStream dos, ObjectOutputStream oos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+	}
+
+    public void readKeysData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.nom = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readKeysData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadGold) {
+
+        	try {
+
+        		int length = 0;
+		
+					this.nom = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeKeysData(ObjectOutputStream dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.nom,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeKeysData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// String
+				
+						writeString(this.nom,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+
+    /**
+     * Fill Values data by reading ObjectInputStream.
+     */
+    public void readValuesData(DataInputStream dis, ObjectInputStream ois) {
+        try {
+
+			int length = 0;
+		
+						this.calories = readString(dis,ois);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+    }
+    
+    public void readValuesData(DataInputStream dis, org.jboss.marshalling.Unmarshaller objectIn) {
+        try {
+			int length = 0;
+		
+						this.calories = readString(dis,objectIn);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+    }
+
+    /**
+     * Return a byte array which represents Values data.
+     */
+    public void writeValuesData(DataOutputStream dos, ObjectOutputStream oos) {
+        try {
+
+		
+						writeString(this.calories, dos, oos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        	}
+
+    }
+    
+    public void writeValuesData(DataOutputStream dos, org.jboss.marshalling.Marshaller objectOut){
+                try {
+
+		
+						writeString(this.calories, dos, objectOut);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        	}
+    }
+
+
+    
+    public boolean supportMarshaller(){
+        return true;
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("nom="+nom);
+		sb.append(",calories="+calories);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(row9Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this.nom, other.nom);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
+public void tBufferInput_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tBufferInput_1_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		row9Struct row9 = new row9Struct();
+
+
+
+
+	
+	/**
+	 * [tAdvancedHash_row9 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tAdvancedHash_row9", false);
+		start_Hash.put("tAdvancedHash_row9", System.currentTimeMillis());
+		
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row9");
+					}
+				
+		int tos_count_tAdvancedHash_row9 = 0;
+		
+
+			   		// connection name:row9
+			   		// source node:tBufferInput_1 - inputs:(after_tLoop_1) outputs:(row9,row9) | target node:tAdvancedHash_row9 - inputs:(row9) outputs:()
+			   		// linked node: tMap_4 - inputs:(row14,row9) outputs:(out6)
+			   
+			   		org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_row9 = 
+			   			org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+			   			
+			   
+	   			org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<row9Struct> tHash_Lookup_row9 =org.talend.designer.components.lookup.memory.AdvancedMemoryLookup.
+	   						<row9Struct>getLookup(matchingModeEnum_row9);
+	   						   
+		   	   	   globalMap.put("tHash_Lookup_row9", tHash_Lookup_row9);
+		   	   	   
+				
+           
+
+ 
+
+
+
+/**
+ * [tAdvancedHash_row9 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tBufferInput_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tBufferInput_1", false);
+		start_Hash.put("tBufferInput_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tBufferInput_1";
+
+	
+		int tos_count_tBufferInput_1 = 0;
+		
+
+int nb_line_tBufferInput_1 = 0;
+
+String[] row_tBufferInput_1 = new String[2];
+for (int n = 0; n < globalBuffer.size(); n++)
+{
+	row_tBufferInput_1 = (String[])globalBuffer.get(n);	
+	if(0 < row_tBufferInput_1.length){
+	
+		row9.nom = row_tBufferInput_1[0];	
+	
+	}
+	
+	else{
+		row9.nom = null;
+	}	
+	if(1 < row_tBufferInput_1.length){
+	
+		row9.calories = row_tBufferInput_1[1];	
+	
+	}
+	
+	else{
+		row9.calories = null;
+	}
+ 
+
+
+
+/**
+ * [tBufferInput_1 begin ] stop
+ */
+	
+	/**
+	 * [tBufferInput_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferInput_1";
+
+	
+
+ 
+
+
+	tos_count_tBufferInput_1++;
+
+/**
+ * [tBufferInput_1 main ] stop
+ */
+	
+	/**
+	 * [tBufferInput_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferInput_1 process_data_begin ] stop
+ */
+
+	
+	/**
+	 * [tAdvancedHash_row9 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row9"
+						
+						);
+					}
+					
+
+
+			   
+			   
+
+					row9Struct row9_HashRow = new row9Struct();
+		   	   	   
+				
+				row9_HashRow.nom = row9.nom;
+				
+				row9_HashRow.calories = row9.calories;
+				
+			tHash_Lookup_row9.put(row9_HashRow);
+			
+            
+
+
+
+
+ 
+
+
+	tos_count_tAdvancedHash_row9++;
+
+/**
+ * [tAdvancedHash_row9 main ] stop
+ */
+	
+	/**
+	 * [tAdvancedHash_row9 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+
+ 
+
+
+
+/**
+ * [tAdvancedHash_row9 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tAdvancedHash_row9 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+
+ 
+
+
+
+/**
+ * [tAdvancedHash_row9 process_data_end ] stop
+ */
+
+
+
+	
+	/**
+	 * [tBufferInput_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferInput_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tBufferInput_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferInput_1";
+
+	
+	nb_line_tBufferInput_1++;
+}
+globalMap.put("tBufferInput_1_NB_LINE",nb_line_tBufferInput_1); 
+
+ 
+
+ok_Hash.put("tBufferInput_1", true);
+end_Hash.put("tBufferInput_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tBufferInput_1 end ] stop
+ */
+
+	
+	/**
+	 * [tAdvancedHash_row9 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+
+tHash_Lookup_row9.endPut();
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row9");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tAdvancedHash_row9", true);
+end_Hash.put("tAdvancedHash_row9", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tAdvancedHash_row9 end ] stop
+ */
+
+
+
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tBufferInput_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tBufferInput_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tBufferInput_1 finally ] stop
+ */
+
+	
+	/**
+	 * [tAdvancedHash_row9 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tAdvancedHash_row9";
+
+	
+
+ 
+
+
+
+/**
+ * [tAdvancedHash_row9 finally ] stop
+ */
+
+
+
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tBufferInput_1_SUBPROCESS_STATE", 1);
+	}
+	
     public String resuming_logs_dir_path = null;
     public String resuming_checkpoint_path = null;
     public String parent_part_launcher = null;
@@ -8836,12 +14649,6 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
             }
             class ContextProcessing {
                 private void processContext_0() {
-                        context.setContextType("mongodb_collection_silver_tmdb", "id_String");
-                        if(context.getStringValue("mongodb_collection_silver_tmdb") == null) {
-                            context.mongodb_collection_silver_tmdb = null;
-                        } else {
-                            context.mongodb_collection_silver_tmdb=(String) context.getProperty("mongodb_collection_silver_tmdb");
-                        }
                         context.setContextType("kaggle_dataset", "id_String");
                         if(context.getStringValue("kaggle_dataset") == null) {
                             context.kaggle_dataset = null;
@@ -8866,6 +14673,12 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                         } else {
                             context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
                         }
+                        context.setContextType("mongodb_collection_bronze_nutritional", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_nutritional") == null) {
+                            context.mongodb_collection_bronze_nutritional = null;
+                        } else {
+                            context.mongodb_collection_bronze_nutritional=(String) context.getProperty("mongodb_collection_bronze_nutritional");
+                        }
                         context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
                         if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
                             context.mongodb_collection_bronze_tmdb = null;
@@ -8877,6 +14690,12 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                             context.mongodb_collection_silver = null;
                         } else {
                             context.mongodb_collection_silver=(String) context.getProperty("mongodb_collection_silver");
+                        }
+                        context.setContextType("mongodb_collection_silver_nutrition", "id_String");
+                        if(context.getStringValue("mongodb_collection_silver_nutrition") == null) {
+                            context.mongodb_collection_silver_nutrition = null;
+                        } else {
+                            context.mongodb_collection_silver_nutrition=(String) context.getProperty("mongodb_collection_silver_nutrition");
                         }
                         context.setContextType("mongodb_database", "id_String");
                         if(context.getStringValue("mongodb_database") == null) {
@@ -8907,6 +14726,12 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                             context.mongodb_user = null;
                         } else {
                             context.mongodb_user=(String) context.getProperty("mongodb_user");
+                        }
+                        context.setContextType("nutrition_dataset", "id_String");
+                        if(context.getStringValue("nutrition_dataset") == null) {
+                            context.nutrition_dataset = null;
+                        } else {
+                            context.nutrition_dataset=(String) context.getProperty("nutrition_dataset");
                         }
                         context.setContextType("postgresql_database", "id_String");
                         if(context.getStringValue("postgresql_database") == null) {
@@ -8956,6 +14781,12 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                         } else {
                             context.postgresql_table_meals=(String) context.getProperty("postgresql_table_meals");
                         }
+                        context.setContextType("postgresql_table_meals_temp", "id_String");
+                        if(context.getStringValue("postgresql_table_meals_temp") == null) {
+                            context.postgresql_table_meals_temp = null;
+                        } else {
+                            context.postgresql_table_meals_temp=(String) context.getProperty("postgresql_table_meals_temp");
+                        }
                         context.setContextType("postgresql_user", "id_String");
                         if(context.getStringValue("postgresql_user") == null) {
                             context.postgresql_user = null;
@@ -8981,9 +14812,7 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
         }
 
         // get context value from parent directly
-        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("mongodb_collection_silver_tmdb")) {
-                context.mongodb_collection_silver_tmdb = (String) parentContextMap.get("mongodb_collection_silver_tmdb");
-            }if (parentContextMap.containsKey("kaggle_dataset")) {
+        if (parentContextMap != null && !parentContextMap.isEmpty()) {if (parentContextMap.containsKey("kaggle_dataset")) {
                 context.kaggle_dataset = (String) parentContextMap.get("kaggle_dataset");
             }if (parentContextMap.containsKey("letter")) {
                 context.letter = (String) parentContextMap.get("letter");
@@ -8991,10 +14820,14 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_nutritional")) {
+                context.mongodb_collection_bronze_nutritional = (String) parentContextMap.get("mongodb_collection_bronze_nutritional");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
                 context.mongodb_collection_silver = (String) parentContextMap.get("mongodb_collection_silver");
+            }if (parentContextMap.containsKey("mongodb_collection_silver_nutrition")) {
+                context.mongodb_collection_silver_nutrition = (String) parentContextMap.get("mongodb_collection_silver_nutrition");
             }if (parentContextMap.containsKey("mongodb_database")) {
                 context.mongodb_database = (String) parentContextMap.get("mongodb_database");
             }if (parentContextMap.containsKey("mongodb_password")) {
@@ -9005,6 +14838,8 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                 context.mongodb_server = (String) parentContextMap.get("mongodb_server");
             }if (parentContextMap.containsKey("mongodb_user")) {
                 context.mongodb_user = (String) parentContextMap.get("mongodb_user");
+            }if (parentContextMap.containsKey("nutrition_dataset")) {
+                context.nutrition_dataset = (String) parentContextMap.get("nutrition_dataset");
             }if (parentContextMap.containsKey("postgresql_database")) {
                 context.postgresql_database = (String) parentContextMap.get("postgresql_database");
             }if (parentContextMap.containsKey("postgresql_password")) {
@@ -9021,6 +14856,8 @@ end_Hash.put("tAdvancedHash_row4", System.currentTimeMillis());
                 context.postgresql_table_category = (String) parentContextMap.get("postgresql_table_category");
             }if (parentContextMap.containsKey("postgresql_table_meals")) {
                 context.postgresql_table_meals = (String) parentContextMap.get("postgresql_table_meals");
+            }if (parentContextMap.containsKey("postgresql_table_meals_temp")) {
+                context.postgresql_table_meals_temp = (String) parentContextMap.get("postgresql_table_meals_temp");
             }if (parentContextMap.containsKey("postgresql_user")) {
                 context.postgresql_user = (String) parentContextMap.get("postgresql_user");
             }if (parentContextMap.containsKey("source")) {
@@ -9266,6 +15103,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     212831 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 16:27:10 CET
+ *     342653 characters generated by Talend Open Studio for Big Data 
+ *     on the 10 février 2026, 10:02:21 CET
  ************************************************************************************************/

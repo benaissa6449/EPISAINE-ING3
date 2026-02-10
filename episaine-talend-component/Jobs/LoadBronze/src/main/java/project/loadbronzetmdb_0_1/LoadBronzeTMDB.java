@@ -148,6 +148,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 				
 			}
 			
+			if(mongodb_collection_bronze_nutritional != null){
+				
+					this.setProperty("mongodb_collection_bronze_nutritional", mongodb_collection_bronze_nutritional.toString());
+				
+			}
+			
 			if(mongodb_collection_bronze_tmdb != null){
 				
 					this.setProperty("mongodb_collection_bronze_tmdb", mongodb_collection_bronze_tmdb.toString());
@@ -187,6 +193,12 @@ protected static void logIgnoredError(String message, Throwable cause) {
 			if(mongodb_user != null){
 				
 					this.setProperty("mongodb_user", mongodb_user.toString());
+				
+			}
+			
+			if(nutrition_dataset != null){
+				
+					this.setProperty("nutrition_dataset", nutrition_dataset.toString());
 				
 			}
 			
@@ -277,6 +289,10 @@ public String mongodb_collection_bronze_k;
 public String getMongodb_collection_bronze_k(){
 	return this.mongodb_collection_bronze_k;
 }
+public String mongodb_collection_bronze_nutritional;
+public String getMongodb_collection_bronze_nutritional(){
+	return this.mongodb_collection_bronze_nutritional;
+}
 public String mongodb_collection_bronze_tmdb;
 public String getMongodb_collection_bronze_tmdb(){
 	return this.mongodb_collection_bronze_tmdb;
@@ -304,6 +320,10 @@ public String getMongodb_server(){
 public String mongodb_user;
 public String getMongodb_user(){
 	return this.mongodb_user;
+}
+public String nutrition_dataset;
+public String getNutrition_dataset(){
+	return this.nutrition_dataset;
 }
 public String postgresql_database;
 public String getPostgresql_database(){
@@ -562,6 +582,15 @@ private class TalendException extends Exception {
 			}
 			
 			public void tExtractJSONFields_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tREST_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
@@ -1390,6 +1419,7 @@ final String applicationName_tMongoDBOutput_2 = "Talend";
         mongo_tMongoDBOutput_2=(com.mongodb.client.MongoClient)globalMap.get("mongo_tMongoDBConnection_1");
         db_tMongoDBOutput_2 = (com.mongodb.client.MongoDatabase)globalMap.get("db_tMongoDBConnection_1");
 
+        db_tMongoDBOutput_2.getCollection(context.mongodb_collection_bronze_tmdb).drop();
     com.mongodb.client.MongoCollection<org.bson.Document> coll_tMongoDBOutput_2 = db_tMongoDBOutput_2.getCollection(context.mongodb_collection_bronze_tmdb);
 
 
@@ -1852,7 +1882,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row2", 3, 0);
+	       				runStat.updateStatOnConnection("OnComponentOk3", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -1860,7 +1890,11 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("OnComponentOk3", 3, 0);
+	       				runStat.updateStatOnConnection("row2", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("out1", 3, 0);
 					}           			
 				
 				if(execStat){
@@ -2130,6 +2164,1367 @@ end_Hash.put("tLoop_1", System.currentTimeMillis());
 	}
 	
 
+
+public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
+    final static byte[] commonByteArrayLock_PROJECT_LoadBronzeTMDB = new byte[0];
+    static byte[] commonByteArray_PROJECT_LoadBronzeTMDB = new byte[0];
+	protected static final int DEFAULT_HASHCODE = 1;
+    protected static final int PRIME = 31;
+    protected int hashCode = DEFAULT_HASHCODE;
+    public boolean hashCodeDirty = true;
+
+    public String loopKey;
+
+
+
+	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
+			    public String idMeal;
+
+				public String getIdMeal () {
+					return this.idMeal;
+				}
+				
+			    public String strMeal;
+
+				public String getStrMeal () {
+					return this.strMeal;
+				}
+				
+			    public String strCategory;
+
+				public String getStrCategory () {
+					return this.strCategory;
+				}
+				
+			    public String strArea;
+
+				public String getStrArea () {
+					return this.strArea;
+				}
+				
+			    public String strInstructions;
+
+				public String getStrInstructions () {
+					return this.strInstructions;
+				}
+				
+			    public String strIngredient1;
+
+				public String getStrIngredient1 () {
+					return this.strIngredient1;
+				}
+				
+			    public String strIngredient2;
+
+				public String getStrIngredient2 () {
+					return this.strIngredient2;
+				}
+				
+			    public String strIngredient3;
+
+				public String getStrIngredient3 () {
+					return this.strIngredient3;
+				}
+				
+			    public String strIngredient4;
+
+				public String getStrIngredient4 () {
+					return this.strIngredient4;
+				}
+				
+			    public String strIngredient5;
+
+				public String getStrIngredient5 () {
+					return this.strIngredient5;
+				}
+				
+			    public String strIngredient6;
+
+				public String getStrIngredient6 () {
+					return this.strIngredient6;
+				}
+				
+			    public String strIngredient7;
+
+				public String getStrIngredient7 () {
+					return this.strIngredient7;
+				}
+				
+			    public String strIngredient8;
+
+				public String getStrIngredient8 () {
+					return this.strIngredient8;
+				}
+				
+			    public String strIngredient9;
+
+				public String getStrIngredient9 () {
+					return this.strIngredient9;
+				}
+				
+			    public String strIngredient10;
+
+				public String getStrIngredient10 () {
+					return this.strIngredient10;
+				}
+				
+			    public String strIngredient11;
+
+				public String getStrIngredient11 () {
+					return this.strIngredient11;
+				}
+				
+			    public String strIngredient12;
+
+				public String getStrIngredient12 () {
+					return this.strIngredient12;
+				}
+				
+			    public String strIngredient13;
+
+				public String getStrIngredient13 () {
+					return this.strIngredient13;
+				}
+				
+			    public String strIngredient14;
+
+				public String getStrIngredient14 () {
+					return this.strIngredient14;
+				}
+				
+			    public String strIngredient15;
+
+				public String getStrIngredient15 () {
+					return this.strIngredient15;
+				}
+				
+			    public String strIngredient16;
+
+				public String getStrIngredient16 () {
+					return this.strIngredient16;
+				}
+				
+			    public String strIngredient17;
+
+				public String getStrIngredient17 () {
+					return this.strIngredient17;
+				}
+				
+			    public String strIngredient18;
+
+				public String getStrIngredient18 () {
+					return this.strIngredient18;
+				}
+				
+			    public String strIngredient19;
+
+				public String getStrIngredient19 () {
+					return this.strIngredient19;
+				}
+				
+			    public String strIngredient20;
+
+				public String getStrIngredient20 () {
+					return this.strIngredient20;
+				}
+				
+			    public String strMeasure1;
+
+				public String getStrMeasure1 () {
+					return this.strMeasure1;
+				}
+				
+			    public String strMeasure2;
+
+				public String getStrMeasure2 () {
+					return this.strMeasure2;
+				}
+				
+			    public String strMeasure3;
+
+				public String getStrMeasure3 () {
+					return this.strMeasure3;
+				}
+				
+			    public String strMeasure4;
+
+				public String getStrMeasure4 () {
+					return this.strMeasure4;
+				}
+				
+			    public String strMeasure5;
+
+				public String getStrMeasure5 () {
+					return this.strMeasure5;
+				}
+				
+			    public String strMeasure6;
+
+				public String getStrMeasure6 () {
+					return this.strMeasure6;
+				}
+				
+			    public String strMeasure7;
+
+				public String getStrMeasure7 () {
+					return this.strMeasure7;
+				}
+				
+			    public String strMeasure8;
+
+				public String getStrMeasure8 () {
+					return this.strMeasure8;
+				}
+				
+			    public String strMeasure9;
+
+				public String getStrMeasure9 () {
+					return this.strMeasure9;
+				}
+				
+			    public String strMeasure10;
+
+				public String getStrMeasure10 () {
+					return this.strMeasure10;
+				}
+				
+			    public String strMeasure11;
+
+				public String getStrMeasure11 () {
+					return this.strMeasure11;
+				}
+				
+			    public String strMeasure12;
+
+				public String getStrMeasure12 () {
+					return this.strMeasure12;
+				}
+				
+			    public String strMeasure13;
+
+				public String getStrMeasure13 () {
+					return this.strMeasure13;
+				}
+				
+			    public String strMeasure14;
+
+				public String getStrMeasure14 () {
+					return this.strMeasure14;
+				}
+				
+			    public String strMeasure15;
+
+				public String getStrMeasure15 () {
+					return this.strMeasure15;
+				}
+				
+			    public String strMeasure16;
+
+				public String getStrMeasure16 () {
+					return this.strMeasure16;
+				}
+				
+			    public String strMeasure17;
+
+				public String getStrMeasure17 () {
+					return this.strMeasure17;
+				}
+				
+			    public String strMeasure18;
+
+				public String getStrMeasure18 () {
+					return this.strMeasure18;
+				}
+				
+			    public String strMeasure19;
+
+				public String getStrMeasure19 () {
+					return this.strMeasure19;
+				}
+				
+			    public String strMeasure20;
+
+				public String getStrMeasure20 () {
+					return this.strMeasure20;
+				}
+				
+			    public String strMealAlternate;
+
+				public String getStrMealAlternate () {
+					return this.strMealAlternate;
+				}
+				
+			    public String strMealThumb;
+
+				public String getStrMealThumb () {
+					return this.strMealThumb;
+				}
+				
+			    public String strTags;
+
+				public String getStrTags () {
+					return this.strTags;
+				}
+				
+			    public String strYoutube;
+
+				public String getStrYoutube () {
+					return this.strYoutube;
+				}
+				
+			    public String strSource;
+
+				public String getStrSource () {
+					return this.strSource;
+				}
+				
+			    public String strImageSource;
+
+				public String getStrImageSource () {
+					return this.strImageSource;
+				}
+				
+			    public String strCreativeCommonsConfirmed;
+
+				public String getStrCreativeCommonsConfirmed () {
+					return this.strCreativeCommonsConfirmed;
+				}
+				
+			    public String dateModified;
+
+				public String getDateModified () {
+					return this.dateModified;
+				}
+				
+
+
+	@Override
+	public int hashCode() {
+		if (this.hashCodeDirty) {
+			final int prime = PRIME;
+			int result = DEFAULT_HASHCODE;
+	
+						result = prime * result + ((this._id == null) ? 0 : this._id.hashCode());
+					
+    		this.hashCode = result;
+    		this.hashCodeDirty = false;
+		}
+		return this.hashCode;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
+		final out1Struct other = (out1Struct) obj;
+		
+						if (this._id == null) {
+							if (other._id != null)
+								return false;
+						
+						} else if (!this._id.equals(other._id))
+						
+							return false;
+					
+
+		return true;
+    }
+
+	public void copyDataTo(out1Struct other) {
+
+		other._id = this._id;
+	            other.idMeal = this.idMeal;
+	            other.strMeal = this.strMeal;
+	            other.strCategory = this.strCategory;
+	            other.strArea = this.strArea;
+	            other.strInstructions = this.strInstructions;
+	            other.strIngredient1 = this.strIngredient1;
+	            other.strIngredient2 = this.strIngredient2;
+	            other.strIngredient3 = this.strIngredient3;
+	            other.strIngredient4 = this.strIngredient4;
+	            other.strIngredient5 = this.strIngredient5;
+	            other.strIngredient6 = this.strIngredient6;
+	            other.strIngredient7 = this.strIngredient7;
+	            other.strIngredient8 = this.strIngredient8;
+	            other.strIngredient9 = this.strIngredient9;
+	            other.strIngredient10 = this.strIngredient10;
+	            other.strIngredient11 = this.strIngredient11;
+	            other.strIngredient12 = this.strIngredient12;
+	            other.strIngredient13 = this.strIngredient13;
+	            other.strIngredient14 = this.strIngredient14;
+	            other.strIngredient15 = this.strIngredient15;
+	            other.strIngredient16 = this.strIngredient16;
+	            other.strIngredient17 = this.strIngredient17;
+	            other.strIngredient18 = this.strIngredient18;
+	            other.strIngredient19 = this.strIngredient19;
+	            other.strIngredient20 = this.strIngredient20;
+	            other.strMeasure1 = this.strMeasure1;
+	            other.strMeasure2 = this.strMeasure2;
+	            other.strMeasure3 = this.strMeasure3;
+	            other.strMeasure4 = this.strMeasure4;
+	            other.strMeasure5 = this.strMeasure5;
+	            other.strMeasure6 = this.strMeasure6;
+	            other.strMeasure7 = this.strMeasure7;
+	            other.strMeasure8 = this.strMeasure8;
+	            other.strMeasure9 = this.strMeasure9;
+	            other.strMeasure10 = this.strMeasure10;
+	            other.strMeasure11 = this.strMeasure11;
+	            other.strMeasure12 = this.strMeasure12;
+	            other.strMeasure13 = this.strMeasure13;
+	            other.strMeasure14 = this.strMeasure14;
+	            other.strMeasure15 = this.strMeasure15;
+	            other.strMeasure16 = this.strMeasure16;
+	            other.strMeasure17 = this.strMeasure17;
+	            other.strMeasure18 = this.strMeasure18;
+	            other.strMeasure19 = this.strMeasure19;
+	            other.strMeasure20 = this.strMeasure20;
+	            other.strMealAlternate = this.strMealAlternate;
+	            other.strMealThumb = this.strMealThumb;
+	            other.strTags = this.strTags;
+	            other.strYoutube = this.strYoutube;
+	            other.strSource = this.strSource;
+	            other.strImageSource = this.strImageSource;
+	            other.strCreativeCommonsConfirmed = this.strCreativeCommonsConfirmed;
+	            other.dateModified = this.dateModified;
+	            
+	}
+
+	public void copyKeysDataTo(out1Struct other) {
+
+		other._id = this._id;
+	            	
+	}
+
+
+
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
+
+	private String readString(ObjectInputStream dis) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = dis.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadBronzeTMDB.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadBronzeTMDB.length == 0) {
+   					commonByteArray_PROJECT_LoadBronzeTMDB = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadBronzeTMDB = new byte[2 * length];
+   				}
+			}
+			dis.readFully(commonByteArray_PROJECT_LoadBronzeTMDB, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadBronzeTMDB, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+	
+	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
+		String strReturn = null;
+		int length = 0;
+        length = unmarshaller.readInt();
+		if (length == -1) {
+			strReturn = null;
+		} else {
+			if(length > commonByteArray_PROJECT_LoadBronzeTMDB.length) {
+				if(length < 1024 && commonByteArray_PROJECT_LoadBronzeTMDB.length == 0) {
+   					commonByteArray_PROJECT_LoadBronzeTMDB = new byte[1024];
+				} else {
+   					commonByteArray_PROJECT_LoadBronzeTMDB = new byte[2 * length];
+   				}
+			}
+			unmarshaller.readFully(commonByteArray_PROJECT_LoadBronzeTMDB, 0, length);
+			strReturn = new String(commonByteArray_PROJECT_LoadBronzeTMDB, 0, length, utf8Charset);
+		}
+		return strReturn;
+	}
+
+    private void writeString(String str, ObjectOutputStream dos) throws IOException{
+		if(str == null) {
+            dos.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+	    	dos.writeInt(byteArray.length);
+			dos.write(byteArray);
+    	}
+    }
+    
+    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(str == null) {
+			marshaller.writeInt(-1);
+		} else {
+            byte[] byteArray = str.getBytes(utf8Charset);
+            marshaller.writeInt(byteArray.length);
+            marshaller.write(byteArray);
+    	}
+    }
+
+    public void readData(ObjectInputStream dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadBronzeTMDB) {
+
+        	try {
+
+        		int length = 0;
+		
+						this._id = readInteger(dis);
+					
+					this.idMeal = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strArea = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strIngredient1 = readString(dis);
+					
+					this.strIngredient2 = readString(dis);
+					
+					this.strIngredient3 = readString(dis);
+					
+					this.strIngredient4 = readString(dis);
+					
+					this.strIngredient5 = readString(dis);
+					
+					this.strIngredient6 = readString(dis);
+					
+					this.strIngredient7 = readString(dis);
+					
+					this.strIngredient8 = readString(dis);
+					
+					this.strIngredient9 = readString(dis);
+					
+					this.strIngredient10 = readString(dis);
+					
+					this.strIngredient11 = readString(dis);
+					
+					this.strIngredient12 = readString(dis);
+					
+					this.strIngredient13 = readString(dis);
+					
+					this.strIngredient14 = readString(dis);
+					
+					this.strIngredient15 = readString(dis);
+					
+					this.strIngredient16 = readString(dis);
+					
+					this.strIngredient17 = readString(dis);
+					
+					this.strIngredient18 = readString(dis);
+					
+					this.strIngredient19 = readString(dis);
+					
+					this.strIngredient20 = readString(dis);
+					
+					this.strMeasure1 = readString(dis);
+					
+					this.strMeasure2 = readString(dis);
+					
+					this.strMeasure3 = readString(dis);
+					
+					this.strMeasure4 = readString(dis);
+					
+					this.strMeasure5 = readString(dis);
+					
+					this.strMeasure6 = readString(dis);
+					
+					this.strMeasure7 = readString(dis);
+					
+					this.strMeasure8 = readString(dis);
+					
+					this.strMeasure9 = readString(dis);
+					
+					this.strMeasure10 = readString(dis);
+					
+					this.strMeasure11 = readString(dis);
+					
+					this.strMeasure12 = readString(dis);
+					
+					this.strMeasure13 = readString(dis);
+					
+					this.strMeasure14 = readString(dis);
+					
+					this.strMeasure15 = readString(dis);
+					
+					this.strMeasure16 = readString(dis);
+					
+					this.strMeasure17 = readString(dis);
+					
+					this.strMeasure18 = readString(dis);
+					
+					this.strMeasure19 = readString(dis);
+					
+					this.strMeasure20 = readString(dis);
+					
+					this.strMealAlternate = readString(dis);
+					
+					this.strMealThumb = readString(dis);
+					
+					this.strTags = readString(dis);
+					
+					this.strYoutube = readString(dis);
+					
+					this.strSource = readString(dis);
+					
+					this.strImageSource = readString(dis);
+					
+					this.strCreativeCommonsConfirmed = readString(dis);
+					
+					this.dateModified = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+    
+    public void readData(org.jboss.marshalling.Unmarshaller dis) {
+
+		synchronized(commonByteArrayLock_PROJECT_LoadBronzeTMDB) {
+
+        	try {
+
+        		int length = 0;
+		
+						this._id = readInteger(dis);
+					
+					this.idMeal = readString(dis);
+					
+					this.strMeal = readString(dis);
+					
+					this.strCategory = readString(dis);
+					
+					this.strArea = readString(dis);
+					
+					this.strInstructions = readString(dis);
+					
+					this.strIngredient1 = readString(dis);
+					
+					this.strIngredient2 = readString(dis);
+					
+					this.strIngredient3 = readString(dis);
+					
+					this.strIngredient4 = readString(dis);
+					
+					this.strIngredient5 = readString(dis);
+					
+					this.strIngredient6 = readString(dis);
+					
+					this.strIngredient7 = readString(dis);
+					
+					this.strIngredient8 = readString(dis);
+					
+					this.strIngredient9 = readString(dis);
+					
+					this.strIngredient10 = readString(dis);
+					
+					this.strIngredient11 = readString(dis);
+					
+					this.strIngredient12 = readString(dis);
+					
+					this.strIngredient13 = readString(dis);
+					
+					this.strIngredient14 = readString(dis);
+					
+					this.strIngredient15 = readString(dis);
+					
+					this.strIngredient16 = readString(dis);
+					
+					this.strIngredient17 = readString(dis);
+					
+					this.strIngredient18 = readString(dis);
+					
+					this.strIngredient19 = readString(dis);
+					
+					this.strIngredient20 = readString(dis);
+					
+					this.strMeasure1 = readString(dis);
+					
+					this.strMeasure2 = readString(dis);
+					
+					this.strMeasure3 = readString(dis);
+					
+					this.strMeasure4 = readString(dis);
+					
+					this.strMeasure5 = readString(dis);
+					
+					this.strMeasure6 = readString(dis);
+					
+					this.strMeasure7 = readString(dis);
+					
+					this.strMeasure8 = readString(dis);
+					
+					this.strMeasure9 = readString(dis);
+					
+					this.strMeasure10 = readString(dis);
+					
+					this.strMeasure11 = readString(dis);
+					
+					this.strMeasure12 = readString(dis);
+					
+					this.strMeasure13 = readString(dis);
+					
+					this.strMeasure14 = readString(dis);
+					
+					this.strMeasure15 = readString(dis);
+					
+					this.strMeasure16 = readString(dis);
+					
+					this.strMeasure17 = readString(dis);
+					
+					this.strMeasure18 = readString(dis);
+					
+					this.strMeasure19 = readString(dis);
+					
+					this.strMeasure20 = readString(dis);
+					
+					this.strMealAlternate = readString(dis);
+					
+					this.strMealThumb = readString(dis);
+					
+					this.strTags = readString(dis);
+					
+					this.strYoutube = readString(dis);
+					
+					this.strSource = readString(dis);
+					
+					this.strImageSource = readString(dis);
+					
+					this.strCreativeCommonsConfirmed = readString(dis);
+					
+					this.dateModified = readString(dis);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+
+		
+
+        }
+
+		
+
+      }
+
+
+    }
+
+    public void writeData(ObjectOutputStream dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
+					// String
+				
+						writeString(this.idMeal,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strArea,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strIngredient1,dos);
+					
+					// String
+				
+						writeString(this.strIngredient2,dos);
+					
+					// String
+				
+						writeString(this.strIngredient3,dos);
+					
+					// String
+				
+						writeString(this.strIngredient4,dos);
+					
+					// String
+				
+						writeString(this.strIngredient5,dos);
+					
+					// String
+				
+						writeString(this.strIngredient6,dos);
+					
+					// String
+				
+						writeString(this.strIngredient7,dos);
+					
+					// String
+				
+						writeString(this.strIngredient8,dos);
+					
+					// String
+				
+						writeString(this.strIngredient9,dos);
+					
+					// String
+				
+						writeString(this.strIngredient10,dos);
+					
+					// String
+				
+						writeString(this.strIngredient11,dos);
+					
+					// String
+				
+						writeString(this.strIngredient12,dos);
+					
+					// String
+				
+						writeString(this.strIngredient13,dos);
+					
+					// String
+				
+						writeString(this.strIngredient14,dos);
+					
+					// String
+				
+						writeString(this.strIngredient15,dos);
+					
+					// String
+				
+						writeString(this.strIngredient16,dos);
+					
+					// String
+				
+						writeString(this.strIngredient17,dos);
+					
+					// String
+				
+						writeString(this.strIngredient18,dos);
+					
+					// String
+				
+						writeString(this.strIngredient19,dos);
+					
+					// String
+				
+						writeString(this.strIngredient20,dos);
+					
+					// String
+				
+						writeString(this.strMeasure1,dos);
+					
+					// String
+				
+						writeString(this.strMeasure2,dos);
+					
+					// String
+				
+						writeString(this.strMeasure3,dos);
+					
+					// String
+				
+						writeString(this.strMeasure4,dos);
+					
+					// String
+				
+						writeString(this.strMeasure5,dos);
+					
+					// String
+				
+						writeString(this.strMeasure6,dos);
+					
+					// String
+				
+						writeString(this.strMeasure7,dos);
+					
+					// String
+				
+						writeString(this.strMeasure8,dos);
+					
+					// String
+				
+						writeString(this.strMeasure9,dos);
+					
+					// String
+				
+						writeString(this.strMeasure10,dos);
+					
+					// String
+				
+						writeString(this.strMeasure11,dos);
+					
+					// String
+				
+						writeString(this.strMeasure12,dos);
+					
+					// String
+				
+						writeString(this.strMeasure13,dos);
+					
+					// String
+				
+						writeString(this.strMeasure14,dos);
+					
+					// String
+				
+						writeString(this.strMeasure15,dos);
+					
+					// String
+				
+						writeString(this.strMeasure16,dos);
+					
+					// String
+				
+						writeString(this.strMeasure17,dos);
+					
+					// String
+				
+						writeString(this.strMeasure18,dos);
+					
+					// String
+				
+						writeString(this.strMeasure19,dos);
+					
+					// String
+				
+						writeString(this.strMeasure20,dos);
+					
+					// String
+				
+						writeString(this.strMealAlternate,dos);
+					
+					// String
+				
+						writeString(this.strMealThumb,dos);
+					
+					// String
+				
+						writeString(this.strTags,dos);
+					
+					// String
+				
+						writeString(this.strYoutube,dos);
+					
+					// String
+				
+						writeString(this.strSource,dos);
+					
+					// String
+				
+						writeString(this.strImageSource,dos);
+					
+					// String
+				
+						writeString(this.strCreativeCommonsConfirmed,dos);
+					
+					// String
+				
+						writeString(this.dateModified,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+    
+    public void writeData(org.jboss.marshalling.Marshaller dos) {
+        try {
+
+		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
+					// String
+				
+						writeString(this.idMeal,dos);
+					
+					// String
+				
+						writeString(this.strMeal,dos);
+					
+					// String
+				
+						writeString(this.strCategory,dos);
+					
+					// String
+				
+						writeString(this.strArea,dos);
+					
+					// String
+				
+						writeString(this.strInstructions,dos);
+					
+					// String
+				
+						writeString(this.strIngredient1,dos);
+					
+					// String
+				
+						writeString(this.strIngredient2,dos);
+					
+					// String
+				
+						writeString(this.strIngredient3,dos);
+					
+					// String
+				
+						writeString(this.strIngredient4,dos);
+					
+					// String
+				
+						writeString(this.strIngredient5,dos);
+					
+					// String
+				
+						writeString(this.strIngredient6,dos);
+					
+					// String
+				
+						writeString(this.strIngredient7,dos);
+					
+					// String
+				
+						writeString(this.strIngredient8,dos);
+					
+					// String
+				
+						writeString(this.strIngredient9,dos);
+					
+					// String
+				
+						writeString(this.strIngredient10,dos);
+					
+					// String
+				
+						writeString(this.strIngredient11,dos);
+					
+					// String
+				
+						writeString(this.strIngredient12,dos);
+					
+					// String
+				
+						writeString(this.strIngredient13,dos);
+					
+					// String
+				
+						writeString(this.strIngredient14,dos);
+					
+					// String
+				
+						writeString(this.strIngredient15,dos);
+					
+					// String
+				
+						writeString(this.strIngredient16,dos);
+					
+					// String
+				
+						writeString(this.strIngredient17,dos);
+					
+					// String
+				
+						writeString(this.strIngredient18,dos);
+					
+					// String
+				
+						writeString(this.strIngredient19,dos);
+					
+					// String
+				
+						writeString(this.strIngredient20,dos);
+					
+					// String
+				
+						writeString(this.strMeasure1,dos);
+					
+					// String
+				
+						writeString(this.strMeasure2,dos);
+					
+					// String
+				
+						writeString(this.strMeasure3,dos);
+					
+					// String
+				
+						writeString(this.strMeasure4,dos);
+					
+					// String
+				
+						writeString(this.strMeasure5,dos);
+					
+					// String
+				
+						writeString(this.strMeasure6,dos);
+					
+					// String
+				
+						writeString(this.strMeasure7,dos);
+					
+					// String
+				
+						writeString(this.strMeasure8,dos);
+					
+					// String
+				
+						writeString(this.strMeasure9,dos);
+					
+					// String
+				
+						writeString(this.strMeasure10,dos);
+					
+					// String
+				
+						writeString(this.strMeasure11,dos);
+					
+					// String
+				
+						writeString(this.strMeasure12,dos);
+					
+					// String
+				
+						writeString(this.strMeasure13,dos);
+					
+					// String
+				
+						writeString(this.strMeasure14,dos);
+					
+					// String
+				
+						writeString(this.strMeasure15,dos);
+					
+					// String
+				
+						writeString(this.strMeasure16,dos);
+					
+					// String
+				
+						writeString(this.strMeasure17,dos);
+					
+					// String
+				
+						writeString(this.strMeasure18,dos);
+					
+					// String
+				
+						writeString(this.strMeasure19,dos);
+					
+					// String
+				
+						writeString(this.strMeasure20,dos);
+					
+					// String
+				
+						writeString(this.strMealAlternate,dos);
+					
+					// String
+				
+						writeString(this.strMealThumb,dos);
+					
+					// String
+				
+						writeString(this.strTags,dos);
+					
+					// String
+				
+						writeString(this.strYoutube,dos);
+					
+					// String
+				
+						writeString(this.strSource,dos);
+					
+					// String
+				
+						writeString(this.strImageSource,dos);
+					
+					// String
+				
+						writeString(this.strCreativeCommonsConfirmed,dos);
+					
+					// String
+				
+						writeString(this.dateModified,dos);
+					
+        	} catch (IOException e) {
+	            throw new RuntimeException(e);
+        }
+
+
+    }
+
+
+    public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append(super.toString());
+		sb.append("[");
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",idMeal="+idMeal);
+		sb.append(",strMeal="+strMeal);
+		sb.append(",strCategory="+strCategory);
+		sb.append(",strArea="+strArea);
+		sb.append(",strInstructions="+strInstructions);
+		sb.append(",strIngredient1="+strIngredient1);
+		sb.append(",strIngredient2="+strIngredient2);
+		sb.append(",strIngredient3="+strIngredient3);
+		sb.append(",strIngredient4="+strIngredient4);
+		sb.append(",strIngredient5="+strIngredient5);
+		sb.append(",strIngredient6="+strIngredient6);
+		sb.append(",strIngredient7="+strIngredient7);
+		sb.append(",strIngredient8="+strIngredient8);
+		sb.append(",strIngredient9="+strIngredient9);
+		sb.append(",strIngredient10="+strIngredient10);
+		sb.append(",strIngredient11="+strIngredient11);
+		sb.append(",strIngredient12="+strIngredient12);
+		sb.append(",strIngredient13="+strIngredient13);
+		sb.append(",strIngredient14="+strIngredient14);
+		sb.append(",strIngredient15="+strIngredient15);
+		sb.append(",strIngredient16="+strIngredient16);
+		sb.append(",strIngredient17="+strIngredient17);
+		sb.append(",strIngredient18="+strIngredient18);
+		sb.append(",strIngredient19="+strIngredient19);
+		sb.append(",strIngredient20="+strIngredient20);
+		sb.append(",strMeasure1="+strMeasure1);
+		sb.append(",strMeasure2="+strMeasure2);
+		sb.append(",strMeasure3="+strMeasure3);
+		sb.append(",strMeasure4="+strMeasure4);
+		sb.append(",strMeasure5="+strMeasure5);
+		sb.append(",strMeasure6="+strMeasure6);
+		sb.append(",strMeasure7="+strMeasure7);
+		sb.append(",strMeasure8="+strMeasure8);
+		sb.append(",strMeasure9="+strMeasure9);
+		sb.append(",strMeasure10="+strMeasure10);
+		sb.append(",strMeasure11="+strMeasure11);
+		sb.append(",strMeasure12="+strMeasure12);
+		sb.append(",strMeasure13="+strMeasure13);
+		sb.append(",strMeasure14="+strMeasure14);
+		sb.append(",strMeasure15="+strMeasure15);
+		sb.append(",strMeasure16="+strMeasure16);
+		sb.append(",strMeasure17="+strMeasure17);
+		sb.append(",strMeasure18="+strMeasure18);
+		sb.append(",strMeasure19="+strMeasure19);
+		sb.append(",strMeasure20="+strMeasure20);
+		sb.append(",strMealAlternate="+strMealAlternate);
+		sb.append(",strMealThumb="+strMealThumb);
+		sb.append(",strTags="+strTags);
+		sb.append(",strYoutube="+strYoutube);
+		sb.append(",strSource="+strSource);
+		sb.append(",strImageSource="+strImageSource);
+		sb.append(",strCreativeCommonsConfirmed="+strCreativeCommonsConfirmed);
+		sb.append(",dateModified="+dateModified);
+	    sb.append("]");
+
+	    return sb.toString();
+    }
+
+    /**
+     * Compare keys
+     */
+    public int compareTo(out1Struct other) {
+
+		int returnValue = -1;
+		
+						returnValue = checkNullsAndCompare(this._id, other._id);
+						if(returnValue != 0) {
+							return returnValue;
+						}
+
+					
+	    return returnValue;
+    }
+
+
+    private int checkNullsAndCompare(Object object1, Object object2) {
+        int returnValue = 0;
+		if (object1 instanceof Comparable && object2 instanceof Comparable) {
+            returnValue = ((Comparable) object1).compareTo(object2);
+        } else if (object1 != null && object2 != null) {
+            returnValue = compareStrings(object1.toString(), object2.toString());
+        } else if (object1 == null && object2 != null) {
+            returnValue = 1;
+        } else if (object1 != null && object2 == null) {
+            returnValue = -1;
+        } else {
+            returnValue = 0;
+        }
+
+        return returnValue;
+    }
+
+    private int compareStrings(String string1, String string2) {
+        return string1.compareTo(string2);
+    }
+
+
+}
 
 public static class row2Struct implements routines.system.IPersistableRow<row2Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadBronzeTMDB = new byte[0];
@@ -3601,6 +4996,8 @@ public void tREST_1Process(final java.util.Map<String, Object> globalMap) throws
 
 		row1Struct row1 = new row1Struct();
 row2Struct row2 = new row2Struct();
+out1Struct out1 = new out1Struct();
+
 
 
 
@@ -3623,7 +5020,7 @@ row2Struct row2 = new row2Struct();
 
 	
 					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row2");
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out1");
 					}
 				
 		int tos_count_tMongoDBOutput_1 = 0;
@@ -3710,6 +5107,7 @@ final String applicationName_tMongoDBOutput_1 = "Talend";
             DBObjectUtil_tMongoDBOutput_1 queryObjectUtil_tMongoDBOutput_1=new DBObjectUtil_tMongoDBOutput_1();
             java.util.Map<String, String> pathMap_tMongoDBOutput_1=new java.util.HashMap<>();
 
+                pathMap_tMongoDBOutput_1.put("_id","");
                 pathMap_tMongoDBOutput_1.put("idMeal","");
                 pathMap_tMongoDBOutput_1.put("strMeal","");
                 pathMap_tMongoDBOutput_1.put("strCategory","");
@@ -3783,6 +5181,73 @@ final String applicationName_tMongoDBOutput_1 = "Talend";
 
 /**
  * [tMongoDBOutput_1 begin ] stop
+ */
+
+
+
+	
+	/**
+	 * [tMap_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tMap_1", false);
+		start_Hash.put("tMap_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat) {
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row2");
+					}
+				
+		int tos_count_tMap_1 = 0;
+		
+
+
+
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+class  Var__tMap_1__Struct  {
+}
+Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+out1Struct out1_tmp = new out1Struct();
+// ###############################
+
+        
+        
+
+
+
+        
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+/**
+ * [tMap_1 begin ] stop
  */
 
 
@@ -5185,6 +6650,154 @@ if(row2 != null) {
 
 	
 	/**
+	 * [tMap_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+					if(execStat){
+						runStat.updateStatOnConnection(iterateId,1,1
+						
+							,"row2"
+						
+						);
+					}
+					
+
+		
+		
+		boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
+		
+
+        // ###############################
+        // # Input tables (lookups)
+		  boolean rejectedInnerJoin_tMap_1 = false;
+		  boolean mainRowRejected_tMap_1 = false;
+            				    								  
+		// ###############################
+        { // start of Var scope
+        
+	        // ###############################
+        	// # Vars tables
+        
+Var__tMap_1__Struct Var = Var__tMap_1;// ###############################
+        // ###############################
+        // # Output tables
+
+out1 = null;
+
+
+// # Output table : 'out1'
+out1_tmp._id = Numeric.sequence("s1", 1, 1);
+out1_tmp.idMeal = row2.idMeal ;
+out1_tmp.strMeal = row2.strMeal ;
+out1_tmp.strCategory = row2.strCategory ;
+out1_tmp.strArea = row2.strArea ;
+out1_tmp.strInstructions = row2.strInstructions ;
+out1_tmp.strIngredient1 = row2.strIngredient1 ;
+out1_tmp.strIngredient2 = row2.strIngredient2 ;
+out1_tmp.strIngredient3 = row2.strIngredient3 ;
+out1_tmp.strIngredient4 = row2.strIngredient4 ;
+out1_tmp.strIngredient5 = row2.strIngredient5 ;
+out1_tmp.strIngredient6 = row2.strIngredient6 ;
+out1_tmp.strIngredient7 = row2.strIngredient7 ;
+out1_tmp.strIngredient8 = row2.strIngredient8 ;
+out1_tmp.strIngredient9 = row2.strIngredient9 ;
+out1_tmp.strIngredient10 = row2.strIngredient10 ;
+out1_tmp.strIngredient11 = row2.strIngredient11 ;
+out1_tmp.strIngredient12 = row2.strIngredient12 ;
+out1_tmp.strIngredient13 = row2.strIngredient13 ;
+out1_tmp.strIngredient14 = row2.strIngredient14 ;
+out1_tmp.strIngredient15 = row2.strIngredient15 ;
+out1_tmp.strIngredient16 = row2.strIngredient16 ;
+out1_tmp.strIngredient17 = row2.strIngredient17 ;
+out1_tmp.strIngredient18 = row2.strIngredient18 ;
+out1_tmp.strIngredient19 = row2.strIngredient19 ;
+out1_tmp.strIngredient20 = row2.strIngredient20 ;
+out1_tmp.strMeasure1 = row2.strMeasure1 ;
+out1_tmp.strMeasure2 = row2.strMeasure2 ;
+out1_tmp.strMeasure3 = row2.strMeasure3 ;
+out1_tmp.strMeasure4 = row2.strMeasure4 ;
+out1_tmp.strMeasure5 = row2.strMeasure5 ;
+out1_tmp.strMeasure6 = row2.strMeasure6 ;
+out1_tmp.strMeasure7 = row2.strMeasure7 ;
+out1_tmp.strMeasure8 = row2.strMeasure8 ;
+out1_tmp.strMeasure9 = row2.strMeasure9 ;
+out1_tmp.strMeasure10 = row2.strMeasure10 ;
+out1_tmp.strMeasure11 = row2.strMeasure11 ;
+out1_tmp.strMeasure12 = row2.strMeasure12 ;
+out1_tmp.strMeasure13 = row2.strMeasure13 ;
+out1_tmp.strMeasure14 = row2.strMeasure14 ;
+out1_tmp.strMeasure15 = row2.strMeasure15 ;
+out1_tmp.strMeasure16 = row2.strMeasure16 ;
+out1_tmp.strMeasure17 = row2.strMeasure17 ;
+out1_tmp.strMeasure18 = row2.strMeasure18 ;
+out1_tmp.strMeasure19 = row2.strMeasure19 ;
+out1_tmp.strMeasure20 = row2.strMeasure20 ;
+out1_tmp.strMealAlternate = row2.strMealAlternate ;
+out1_tmp.strMealThumb = row2.strMealThumb ;
+out1_tmp.strTags = row2.strTags ;
+out1_tmp.strYoutube = row2.strYoutube ;
+out1_tmp.strSource = row2.strSource ;
+out1_tmp.strImageSource = row2.strImageSource ;
+out1_tmp.strCreativeCommonsConfirmed = row2.strCreativeCommonsConfirmed ;
+out1_tmp.dateModified = row2.dateModified ;
+out1 = out1_tmp;
+// ###############################
+
+} // end of Var scope
+
+rejectedInnerJoin_tMap_1 = false;
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+	tos_count_tMap_1++;
+
+/**
+ * [tMap_1 main ] stop
+ */
+	
+	/**
+	 * [tMap_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_begin ] stop
+ */
+// Start of branch "out1"
+if(out1 != null) { 
+
+
+
+	
+	/**
 	 * [tMongoDBOutput_1 main ] start
 	 */
 
@@ -5198,7 +6811,7 @@ if(row2 != null) {
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row2"
+							,"out1"
 						
 						);
 					}
@@ -5211,59 +6824,60 @@ try{
 				
 
 				
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("idMeal"),"idMeal", row2.idMeal);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeal"),"strMeal", row2.strMeal);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCategory"),"strCategory", row2.strCategory);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strArea"),"strArea", row2.strArea);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strInstructions"),"strInstructions", row2.strInstructions);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient1"),"strIngredient1", row2.strIngredient1);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient2"),"strIngredient2", row2.strIngredient2);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient3"),"strIngredient3", row2.strIngredient3);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient4"),"strIngredient4", row2.strIngredient4);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient5"),"strIngredient5", row2.strIngredient5);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient6"),"strIngredient6", row2.strIngredient6);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient7"),"strIngredient7", row2.strIngredient7);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient8"),"strIngredient8", row2.strIngredient8);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient9"),"strIngredient9", row2.strIngredient9);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient10"),"strIngredient10", row2.strIngredient10);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient11"),"strIngredient11", row2.strIngredient11);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient12"),"strIngredient12", row2.strIngredient12);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient13"),"strIngredient13", row2.strIngredient13);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient14"),"strIngredient14", row2.strIngredient14);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient15"),"strIngredient15", row2.strIngredient15);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient16"),"strIngredient16", row2.strIngredient16);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient17"),"strIngredient17", row2.strIngredient17);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient18"),"strIngredient18", row2.strIngredient18);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient19"),"strIngredient19", row2.strIngredient19);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient20"),"strIngredient20", row2.strIngredient20);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure1"),"strMeasure1", row2.strMeasure1);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure2"),"strMeasure2", row2.strMeasure2);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure3"),"strMeasure3", row2.strMeasure3);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure4"),"strMeasure4", row2.strMeasure4);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure5"),"strMeasure5", row2.strMeasure5);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure6"),"strMeasure6", row2.strMeasure6);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure7"),"strMeasure7", row2.strMeasure7);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure8"),"strMeasure8", row2.strMeasure8);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure9"),"strMeasure9", row2.strMeasure9);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure10"),"strMeasure10", row2.strMeasure10);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure11"),"strMeasure11", row2.strMeasure11);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure12"),"strMeasure12", row2.strMeasure12);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure13"),"strMeasure13", row2.strMeasure13);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure14"),"strMeasure14", row2.strMeasure14);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure15"),"strMeasure15", row2.strMeasure15);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure16"),"strMeasure16", row2.strMeasure16);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure17"),"strMeasure17", row2.strMeasure17);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure18"),"strMeasure18", row2.strMeasure18);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure19"),"strMeasure19", row2.strMeasure19);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure20"),"strMeasure20", row2.strMeasure20);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealAlternate"),"strMealAlternate", row2.strMealAlternate);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealThumb"),"strMealThumb", row2.strMealThumb);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strTags"),"strTags", row2.strTags);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strYoutube"),"strYoutube", row2.strYoutube);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strSource"),"strSource", row2.strSource);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strImageSource"),"strImageSource", row2.strImageSource);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCreativeCommonsConfirmed"),"strCreativeCommonsConfirmed", row2.strCreativeCommonsConfirmed);
-                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("dateModified"),"dateModified", row2.dateModified);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("_id"),"_id", out1._id);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("idMeal"),"idMeal", out1.idMeal);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeal"),"strMeal", out1.strMeal);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCategory"),"strCategory", out1.strCategory);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strArea"),"strArea", out1.strArea);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strInstructions"),"strInstructions", out1.strInstructions);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient1"),"strIngredient1", out1.strIngredient1);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient2"),"strIngredient2", out1.strIngredient2);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient3"),"strIngredient3", out1.strIngredient3);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient4"),"strIngredient4", out1.strIngredient4);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient5"),"strIngredient5", out1.strIngredient5);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient6"),"strIngredient6", out1.strIngredient6);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient7"),"strIngredient7", out1.strIngredient7);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient8"),"strIngredient8", out1.strIngredient8);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient9"),"strIngredient9", out1.strIngredient9);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient10"),"strIngredient10", out1.strIngredient10);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient11"),"strIngredient11", out1.strIngredient11);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient12"),"strIngredient12", out1.strIngredient12);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient13"),"strIngredient13", out1.strIngredient13);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient14"),"strIngredient14", out1.strIngredient14);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient15"),"strIngredient15", out1.strIngredient15);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient16"),"strIngredient16", out1.strIngredient16);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient17"),"strIngredient17", out1.strIngredient17);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient18"),"strIngredient18", out1.strIngredient18);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient19"),"strIngredient19", out1.strIngredient19);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strIngredient20"),"strIngredient20", out1.strIngredient20);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure1"),"strMeasure1", out1.strMeasure1);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure2"),"strMeasure2", out1.strMeasure2);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure3"),"strMeasure3", out1.strMeasure3);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure4"),"strMeasure4", out1.strMeasure4);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure5"),"strMeasure5", out1.strMeasure5);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure6"),"strMeasure6", out1.strMeasure6);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure7"),"strMeasure7", out1.strMeasure7);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure8"),"strMeasure8", out1.strMeasure8);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure9"),"strMeasure9", out1.strMeasure9);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure10"),"strMeasure10", out1.strMeasure10);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure11"),"strMeasure11", out1.strMeasure11);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure12"),"strMeasure12", out1.strMeasure12);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure13"),"strMeasure13", out1.strMeasure13);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure14"),"strMeasure14", out1.strMeasure14);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure15"),"strMeasure15", out1.strMeasure15);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure16"),"strMeasure16", out1.strMeasure16);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure17"),"strMeasure17", out1.strMeasure17);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure18"),"strMeasure18", out1.strMeasure18);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure19"),"strMeasure19", out1.strMeasure19);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMeasure20"),"strMeasure20", out1.strMeasure20);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealAlternate"),"strMealAlternate", out1.strMealAlternate);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strMealThumb"),"strMealThumb", out1.strMealThumb);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strTags"),"strTags", out1.strTags);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strYoutube"),"strYoutube", out1.strYoutube);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strSource"),"strSource", out1.strSource);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strImageSource"),"strImageSource", out1.strImageSource);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("strCreativeCommonsConfirmed"),"strCreativeCommonsConfirmed", out1.strCreativeCommonsConfirmed);
+                                        updateObjectUtil_tMongoDBOutput_1.put(pathMap_tMongoDBOutput_1.get("dateModified"),"dateModified", out1.dateModified);
 				org.bson.Document updateObj_tMongoDBOutput_1 = updateObjectUtil_tMongoDBOutput_1.getObject();
 				
 						coll_tMongoDBOutput_1.insertOne(updateObj_tMongoDBOutput_1);
@@ -5323,6 +6937,32 @@ try{
 
 /**
  * [tMongoDBOutput_1 process_data_end ] stop
+ */
+
+} // End of branch "out1"
+
+
+
+
+	
+	/**
+	 * [tMap_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 process_data_end ] stop
  */
 
 } // End of branch "row2"
@@ -5435,6 +7075,44 @@ end_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
 
 	
 	/**
+	 * [tMap_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+
+
+
+
+				if(execStat){
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row2");
+			  	}
+			  	
+ 
+
+ok_Hash.put("tMap_1", true);
+end_Hash.put("tMap_1", System.currentTimeMillis());
+
+
+
+
+/**
+ * [tMap_1 end ] stop
+ */
+
+	
+	/**
 	 * [tMongoDBOutput_1 end ] start
 	 */
 
@@ -5449,7 +7127,7 @@ end_Hash.put("tExtractJSONFields_1", System.currentTimeMillis());
 	globalMap.put("tMongoDBOutput_1_NB_LINE", nb_line_tMongoDBOutput_1);
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row2");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"out1");
 			  	}
 			  	
  
@@ -5463,6 +7141,9 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_1 end ] stop
  */
+
+
+
 
 
 
@@ -5534,6 +7215,27 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 
 	
 	/**
+	 * [tMap_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tMap_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tMap_1 finally ] stop
+ */
+
+	
+	/**
 	 * [tMongoDBOutput_1 finally ] start
 	 */
 
@@ -5553,6 +7255,9 @@ end_Hash.put("tMongoDBOutput_1", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_1 finally ] stop
  */
+
+
+
 
 
 
@@ -6155,6 +7860,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                         } else {
                             context.mongodb_collection_bronze_k=(String) context.getProperty("mongodb_collection_bronze_k");
                         }
+                        context.setContextType("mongodb_collection_bronze_nutritional", "id_String");
+                        if(context.getStringValue("mongodb_collection_bronze_nutritional") == null) {
+                            context.mongodb_collection_bronze_nutritional = null;
+                        } else {
+                            context.mongodb_collection_bronze_nutritional=(String) context.getProperty("mongodb_collection_bronze_nutritional");
+                        }
                         context.setContextType("mongodb_collection_bronze_tmdb", "id_String");
                         if(context.getStringValue("mongodb_collection_bronze_tmdb") == null) {
                             context.mongodb_collection_bronze_tmdb = null;
@@ -6196,6 +7907,12 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                             context.mongodb_user = null;
                         } else {
                             context.mongodb_user=(String) context.getProperty("mongodb_user");
+                        }
+                        context.setContextType("nutrition_dataset", "id_String");
+                        if(context.getStringValue("nutrition_dataset") == null) {
+                            context.nutrition_dataset = null;
+                        } else {
+                            context.nutrition_dataset=(String) context.getProperty("nutrition_dataset");
                         }
                         context.setContextType("postgresql_database", "id_String");
                         if(context.getStringValue("postgresql_database") == null) {
@@ -6278,6 +7995,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_authentificationDatabase = (String) parentContextMap.get("mongodb_authentificationDatabase");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_k")) {
                 context.mongodb_collection_bronze_k = (String) parentContextMap.get("mongodb_collection_bronze_k");
+            }if (parentContextMap.containsKey("mongodb_collection_bronze_nutritional")) {
+                context.mongodb_collection_bronze_nutritional = (String) parentContextMap.get("mongodb_collection_bronze_nutritional");
             }if (parentContextMap.containsKey("mongodb_collection_bronze_tmdb")) {
                 context.mongodb_collection_bronze_tmdb = (String) parentContextMap.get("mongodb_collection_bronze_tmdb");
             }if (parentContextMap.containsKey("mongodb_collection_silver")) {
@@ -6292,6 +8011,8 @@ end_Hash.put("tWarn_2", System.currentTimeMillis());
                 context.mongodb_server = (String) parentContextMap.get("mongodb_server");
             }if (parentContextMap.containsKey("mongodb_user")) {
                 context.mongodb_user = (String) parentContextMap.get("mongodb_user");
+            }if (parentContextMap.containsKey("nutrition_dataset")) {
+                context.nutrition_dataset = (String) parentContextMap.get("nutrition_dataset");
             }if (parentContextMap.containsKey("postgresql_database")) {
                 context.postgresql_database = (String) parentContextMap.get("postgresql_database");
             }if (parentContextMap.containsKey("postgresql_password")) {
@@ -6541,6 +8262,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     177138 characters generated by Talend Open Studio for Big Data 
- *     on the 16 janvier 2026, 16:26:49 CET
+ *     217490 characters generated by Talend Open Studio for Big Data 
+ *     on the 10 février 2026, 10:01:23 CET
  ************************************************************************************************/

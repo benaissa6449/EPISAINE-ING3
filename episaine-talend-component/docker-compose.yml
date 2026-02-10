@@ -10,6 +10,7 @@ services:
       - ./Jobs/LoadSilver/project/loadsilver_0_1/contexts:/opt/talend/LoadSilver/project/loadsilver_0_1/contexts
       - ./Jobs/LoadGold/project/loadgold_0_1/contexts:/opt/talend/LoadGold/project/loadgold_0_1/contexts
       - ./recipes_data.csv:/opt/data/recipes_data.csv:ro
+      - ./USDA.csv:/opt/data/USDA.csv:ro
     networks:
       - episaine-network
 
