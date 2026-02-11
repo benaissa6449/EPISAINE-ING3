@@ -1,0 +1,250 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8">
+  <diagram name="Page-1" id="Ke596lIW_xO7_RM40txF">
+    <mxGraphModel dx="946" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-1" value="Scheduler&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;div&gt;Cache-loading-service&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-2" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="1120" as="sourcePoint" />
+            <mxPoint x="119.70999999999998" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-3" value="PostgreSQL" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-4" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="1120" as="sourcePoint" />
+            <mxPoint x="499.58000000000004" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-5" value="Redis" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-6" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="1120" as="sourcePoint" />
+            <mxPoint x="659.5" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-7" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="120" as="sourcePoint" />
+            <mxPoint x="500" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-8" value="SELECT * FROM customers WHERE wantsToBeNotified = true;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="100" width="380" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-9" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="130" as="sourcePoint" />
+            <mxPoint x="120" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-10" value="Sends customers to notify" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="130" width="380" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-11" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="120" y="190" as="sourcePoint" />
+            <mxPoint x="660" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-12" value="Update customers notification state : id | last_notification" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="170" width="540" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-13" value="&lt;div&gt;Scheduler +&lt;/div&gt;Generate-Notification-service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-14" value="Kafka&lt;div&gt;notifications-sent (30days)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="961" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-15" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="1120" as="sourcePoint" />
+            <mxPoint x="839.5" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-16" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="1120" as="sourcePoint" />
+            <mxPoint x="1040.66" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-18" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="320" as="sourcePoint" />
+            <mxPoint x="660" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-18" value="Gets customers notification state" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="660" y="300" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-19" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" target="aQeHy-J9TbHO-dpn5A31-20" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="340" as="sourcePoint" />
+            <mxPoint x="820" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-20" value="Returns customers list" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="660" y="340" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-21" value="Consume all events&amp;nbsp;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="840" y="220" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-22" value="Stream all events" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="840" y="260" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-23" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="1" target="aQeHy-J9TbHO-dpn5A31-21" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="240" as="sourcePoint" />
+            <mxPoint x="870" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0;exitDx=0;exitDy=0;dashed=1;" parent="1" source="aQeHy-J9TbHO-dpn5A31-22" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="770" y="310" as="sourcePoint" />
+            <mxPoint x="840" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-26" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="570" as="sourcePoint" />
+            <mxPoint x="500" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-26" value="Requests recipes tailored to the customer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="550" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-29" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" target="aQeHy-J9TbHO-dpn5A31-30" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="590" as="sourcePoint" />
+            <mxPoint x="1000" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-30" value="Returns recipes" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="590" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-34" value="For each user" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="370" width="740" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-35" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-36" target="aQeHy-J9TbHO-dpn5A31-36" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="649" as="sourcePoint" />
+            <mxPoint x="1200" y="649" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-36" value="Produces recipes for the number_of_days tailored to each customer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="840" y="619" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-37" value="Kafka&lt;div&gt;notifications-to send&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1161" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-38" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1240" y="1120" as="sourcePoint" />
+            <mxPoint x="1241" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-39" value="Send-notifications-service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1361" y="40" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-40" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="1120" as="sourcePoint" />
+            <mxPoint x="1441" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-42" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1400" y="690" as="sourcePoint" />
+            <mxPoint x="1240" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-42" value="Consumes all notifications pending" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="660" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-43" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" target="aQeHy-J9TbHO-dpn5A31-44" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1240" y="710" as="sourcePoint" />
+            <mxPoint x="1400" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-44" value="Stream all notifications" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1240" y="710" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-49" value="Customer" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1560" y="40" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-50" value="" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1620" y="1120" as="sourcePoint" />
+            <mxPoint x="1619.58" y="80" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-52" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1460" y="770" as="sourcePoint" />
+            <mxPoint x="1620" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-52" value="Sends notifications" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1440" y="750" width="180" height="19" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-53" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="810" as="sourcePoint" />
+            <mxPoint x="1040" y="810" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-54" value="Produces sent notification" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="790" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-56" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" target="aQeHy-J9TbHO-dpn5A31-57" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="830" as="sourcePoint" />
+            <mxPoint x="500" y="830" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-57" value="Update last_notification" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="660" y="810" width="780" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-59" value="&lt;div&gt;Verification:&lt;/div&gt;&lt;div&gt;- The customer hasn&#39;t been notified today&lt;/div&gt;&lt;div&gt;- The customer doesn&#39;t get send a recipe he already had in the last 30 days&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="657.5" y="380" width="425" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-1" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="840" y="480" as="sourcePoint" />
+            <mxPoint x="500" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-2" value="SELECT * FROM customers WHERE id = ?" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="460" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.004;exitY=0.363;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="aQeHy-J9TbHO-dpn5A31-34" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="530" as="sourcePoint" />
+            <mxPoint x="840" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-4" value="Returns customer informations" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="500" width="340" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-5" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" target="YSSq4gq5HwifcNTbnXZr-6" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1440" y="880" as="sourcePoint" />
+            <mxPoint x="500" y="880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YSSq4gq5HwifcNTbnXZr-6" value="Update last_notification" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="500" y="860" width="940" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
