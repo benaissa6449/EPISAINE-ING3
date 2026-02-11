@@ -68,14 +68,14 @@
     <contextParameter comment="" name="mongodb_user" prompt="mongodb_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_ofiRPP3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/episaine-talend-component/USDA.csv&quot;" internalId="_ofiRPf3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_database" prompt="postgresql_database?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_ofiRPv3CEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_ofiRP_3CEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5432" internalId="_ofiRQP3CEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="postgresql_password" prompt="postgresql_password?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_ofiRP_3CEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="postgresql_port" prompt="postgresql_port?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="5433" internalId="_ofiRQP3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_schema" prompt="postgresql_schema?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="gold" internalId="_ofiRQf3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_server" prompt="postgresql_server?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="localhost" internalId="_ofiRQv3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_table_area" prompt="postgresql_table_area?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="area" internalId="_ofiRQ_3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_table_category" prompt="postgresql_table_category?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="category" internalId="_ofiRRP3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_ofiRRf3CEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_ofiRRv3CEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="postgresql_user" prompt="postgresql_user?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="postgres" internalId="_ofiRRv3CEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="source" prompt="source?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;https://www.themealdb.com/api/json/v1/1/search.php?f=&quot;" internalId="_ofiRR_3CEfCZb_I4jnsinA"/>
   </context>
   <context confirmationNeeded="false" name="local_docker">
@@ -146,7 +146,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:aQipCxkukQ9P5s7NDuvMduL8bRBDht9SSEN/M39o" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:9dMtwGnig3TLNC4GBfV/2zwe9jc302B68FAxTqGS" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -181,7 +181,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:z0TYSm6c6Yd6bRvfOIfSX6Uy/xmRNo0euBeoKHAg" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:gUh45v2s+aVejEPL0XuBKgG9GbhUEsAXXTwTJXhf" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -232,7 +232,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="true"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="context.mongodb_authentificationDatabase"/>
     <elementParameter field="TEXT" name="USERNAME" value="context.mongodb_user"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:GZk5oHqtfdRZRK0uBpemjn2gf9cL+9St4jxDPRWX1/3WAtZtFq6De8M7L+ucmKmjMFHViw=="/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:1mCYUP4n0XXSoKb01KfJQzP2RYBMw9r+TiyVxqQXAj6+Ur2KL2fYtQvvbIgjK3ZwCN+0Vg=="/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -272,7 +272,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:LZP7EGWOVIdhglxplx4o0ygEcwLZNDzTIJhU5Kr3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:JfGkn0lvoZsrSqWYxaE0pPYUsrldEyOVlQ+FXBz4" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -455,7 +455,7 @@
   </node>
   <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="320" posY="352">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_1" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="List&lt;String> pairs = new ArrayList&lt;>();&#xA;&#xA;for (int i = 1; i &lt;= 20; i++) {&#xA;    String ingredient = null;&#xA;    String measure = null;&#xA;&#xA;    switch(i) {&#xA;        case 1: ingredient = row1.strIngredient1; measure = row1.strMeasure1; break;&#xA;        case 2: ingredient = row1.strIngredient2; measure = row1.strMeasure2; break;&#xA;        case 3: ingredient = row1.strIngredient3; measure = row1.strMeasure3; break;&#xA;        case 4: ingredient = row1.strIngredient4; measure = row1.strMeasure4; break;&#xA;        case 5: ingredient = row1.strIngredient5; measure = row1.strMeasure5; break;&#xA;        case 6: ingredient = row1.strIngredient6; measure = row1.strMeasure6; break;&#xA;        case 7: ingredient = row1.strIngredient7; measure = row1.strMeasure7; break;&#xA;        case 8: ingredient = row1.strIngredient8; measure = row1.strMeasure8; break;&#xA;        case 9: ingredient = row1.strIngredient9; measure = row1.strMeasure9; break;&#xA;        case 10: ingredient = row1.strIngredient10; measure = row1.strMeasure10; break;&#xA;        case 11: ingredient = row1.strIngredient11; measure = row1.strMeasure11; break;&#xA;        case 12: ingredient = row1.strIngredient12; measure = row1.strMeasure12; break;&#xA;        case 13: ingredient = row1.strIngredient13; measure = row1.strMeasure13; break;&#xA;        case 14: ingredient = row1.strIngredient14; measure = row1.strMeasure14; break;&#xA;        case 15: ingredient = row1.strIngredient15; measure = row1.strMeasure15; break;&#xA;        case 16: ingredient = row1.strIngredient16; measure = row1.strMeasure16; break;&#xA;        case 17: ingredient = row1.strIngredient17; measure = row1.strMeasure17; break;&#xA;        case 18: ingredient = row1.strIngredient18; measure = row1.strMeasure18; break;&#xA;        case 19: ingredient = row1.strIngredient19; measure = row1.strMeasure19; break;&#xA;        case 20: ingredient = row1.strIngredient20; measure = row1.strMeasure20; break;&#xA;    }&#xA;&#xA;    if (ingredient != null) ingredient = ingredient.trim();&#xA;    if (measure != null) measure = measure.trim();&#xA;&#xA;    if (ingredient != null &amp;&amp; !ingredient.isEmpty()&#xA;        &amp;&amp; measure != null &amp;&amp; !measure.isEmpty()) {&#xA;&#xA;        String value = (measure + &quot; &quot; + ingredient)&#xA;                        .replace(&quot;\&quot;&quot;, &quot;\\\&quot;&quot;);&#xA;&#xA;        pairs.add(&quot;\&quot;&quot; + value + &quot;\&quot;&quot;);&#xA;    }&#xA;}&#xA;&#xA;row2.ingredients = &quot;[&quot; + String.join(&quot;,&quot;, pairs) + &quot;]&quot;;&#xA;row2.strMeal = row1.strMeal;&#xA;row2.strCategory = row1.strCategory;&#xA;row2.strArea = row1.strArea;&#xA;row2.strInstructions = row1.strInstructions;"/>
+    <elementParameter field="MEMO_JAVA" name="CODE" value="List&lt;String> pairs = new ArrayList&lt;>();&#xA;&#xA;for (int i = 1; i &lt;= 20; i++) {&#xA;    String ingredient = null;&#xA;&#xA;    switch(i) {&#xA;        case 1: ingredient = row1.strIngredient1; break;&#xA;        case 2: ingredient = row1.strIngredient2; break;&#xA;        case 3: ingredient = row1.strIngredient3; break;&#xA;        case 4: ingredient = row1.strIngredient4; break;&#xA;        case 5: ingredient = row1.strIngredient5; break;&#xA;        case 6: ingredient = row1.strIngredient6; break;&#xA;        case 7: ingredient = row1.strIngredient7; break;&#xA;        case 8: ingredient = row1.strIngredient8; break;&#xA;        case 9: ingredient = row1.strIngredient9; break;&#xA;        case 10: ingredient = row1.strIngredient10; break;&#xA;        case 11: ingredient = row1.strIngredient11; break;&#xA;        case 12: ingredient = row1.strIngredient12; break;&#xA;        case 13: ingredient = row1.strIngredient13; break;&#xA;        case 14: ingredient = row1.strIngredient14; break;&#xA;        case 15: ingredient = row1.strIngredient15; break;&#xA;        case 16: ingredient = row1.strIngredient16; break;&#xA;        case 17: ingredient = row1.strIngredient17; break;&#xA;        case 18: ingredient = row1.strIngredient18; break;&#xA;        case 19: ingredient = row1.strIngredient19; break;&#xA;        case 20: ingredient = row1.strIngredient20; break;&#xA;    }&#xA;&#xA;    if (ingredient != null) {&#xA;        ingredient = ingredient.trim();&#xA;    }&#xA;&#xA;    if (ingredient != null &amp;&amp; !ingredient.isEmpty()) {&#xA;        String value = ingredient.replace(&quot;\&quot;&quot;, &quot;\\\&quot;&quot;);&#xA;        pairs.add(&quot;\&quot;&quot; + value + &quot;\&quot;&quot;);&#xA;    }&#xA;}&#xA;&#xA;row2.ingredients = &quot;[&quot; + String.join(&quot;,&quot;, pairs) + &quot;]&quot;;&#xA;row2.strMeal = row1.strMeal;&#xA;row2.strCategory = row1.strCategory;&#xA;row2.strArea = row1.strArea;&#xA;row2.strInstructions = row1.strInstructions;&#xA;"/>
     <elementParameter field="MEMO_IMPORT" name="IMPORT" value="import java.util.List;&#xA;import java.util.ArrayList;&#xA;"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tJavaRow_1">
@@ -489,7 +489,7 @@
       <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out2">
         <mapperTableEntries name="_id" expression="Numeric.sequence(&quot;s3&quot;, 1, 1)" type="id_Integer" nullable="true"/>
@@ -530,7 +530,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:J/TnUoI9Q4guRK0NjZsWKvSRxqITJMCUEMXesyYV" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:4cwoD0qf59z2srWbDPkoz7y+mgvnGUuS1sDRiUai" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -641,7 +641,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:GThahP6hq5g8wInzkuwOiTRA10wdAZNZSNKv8Me6" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:rUQaYg94mjyZ/xxUZpCjEEwG+nbdueCLUcI7MDh7" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -695,7 +695,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:1rhO+plaAELfm9QNZtwHVtxolA7rs032X7rYFTRr" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:bIIklmFKcKV0XIqC8T/dri39rMmwrYfTYZ5e4pDt" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -819,7 +819,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:kkupOt46FcavHTpfV2gmsM0XJcmZcAQ3/r+Db058" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:q5xAlYrD1r2WntHe9K5yvFsC3Z419UqoEeu4ZhVK" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -901,7 +901,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:tw0A0sGiHBv50URmn337odfdSXU7kxj9bcQPHsbN" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:Dt/D9F4EOYKzIhLVZveoxKJTDsiFBZ9IKqhbIJ3j" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -968,7 +968,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:hauWNHlI66kyps8yMx1hIyP0nya05zESLKjTrtwS" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:6NbMvcXyzTL3UahhgQHpYr/GPykg9U89ZnCvMUC6" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -1031,19 +1031,17 @@
     <metadata connector="FLOW" name="out1">
       <column comment="" key="true" length="-1" name="_id" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="strMeal" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="strInstructions" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="strCategory" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
-      <uiProperties shellMaximized="true"/>
+      <uiProperties/>
       <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
       <outputTables sizeState="INTERMEDIATE" name="out1">
         <mapperTableEntries name="_id" expression="Numeric.sequence(&quot;s3&quot;, 1, 1)" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="strMeal" expression="row3.title " type="id_String" nullable="true"/>
-        <mapperTableEntries name="ingredients" expression="row3.ingredients " type="id_String" nullable="true"/>
         <mapperTableEntries name="strInstructions" expression="row3.directions " type="id_String" nullable="true"/>
-        <mapperTableEntries name="strCategory" expression="row3.NER " type="id_String" nullable="true"/>
+        <mapperTableEntries name="ingredients" expression="row3.NER " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row3" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="_id" type="id_Integer" nullable="true"/>
@@ -1056,19 +1054,6 @@
         <mapperTableEntries name="site" type="id_String" nullable="true"/>
       </inputTables>
     </nodeData>
-  </node>
-  <node componentName="tJavaRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="448" posY="736">
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJavaRow_2" show="false"/>
-    <elementParameter field="MEMO_JAVA" name="CODE" value="String[] tab = out1.strCategory.split(&quot;,&quot;);&#xA;List&lt;String> ingredients = new ArrayList&lt;>();&#xA;&#xA;for (String t : tab) {&#xA;&#xA;    String ner = t.trim()&#xA;        .replace(&quot;\&quot;&quot;,&quot;&quot;)&#xA;        .replace(&quot;[&quot;,&quot;&quot;)&#xA;        .replace(&quot;]&quot;,&quot;&quot;)&#xA;        .trim();&#xA;&#xA;    if (ner.isEmpty()) {&#xA;        continue;&#xA;    }&#xA;&#xA;    String formatted =&#xA;        ner.substring(0, 1).toUpperCase() +&#xA;        ner.substring(1).toLowerCase();&#xA;&#xA;    formatted = formatted.replace(&quot;\&quot;&quot;, &quot;\\\&quot;&quot;);&#xA;&#xA;    ingredients.add(&quot;\&quot;&quot; + formatted + &quot;\&quot;&quot;);&#xA;}&#xA;&#xA;row4._id = out1._id;&#xA;row4.ingredients = &quot;[&quot; + String.join(&quot;,&quot;, ingredients) + &quot;]&quot;;&#xA;row4.strMeal = out1.strMeal;&#xA;row4.strInstructions = out1.strInstructions;&#xA;row4.strCategory = out1.strCategory;&#xA;"/>
-    <elementParameter field="MEMO_IMPORT" name="IMPORT" value="import java.util.List;&#xA;import java.util.ArrayList;&#xA;"/>
-    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
-    <metadata connector="FLOW" name="tJavaRow_2">
-      <column comment="" key="true" length="-1" name="_id" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="strMeal" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="strInstructions" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="strCategory" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-    </metadata>
   </node>
   <node componentName="tMongoDBOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="608" posY="736">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMongoDBOutput_2" show="false"/>
@@ -1092,7 +1077,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:nZDvHj75fkhrcrMX7PlU49uSuMzIcTUz+x9k/57L" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:SGYXzp53fPLiSb926qz4PCvRMzKOm5CB4IzSCC+r" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -1112,17 +1097,12 @@
       <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="ingredients"/>
-      <elementValue elementRef="PARENT_NODE_PATH" value=""/>
-      <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
-      <elementValue elementRef="UPDATABLE" value="true"/>
-      <elementValue elementRef="INSERTABLE" value="true"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="strInstructions"/>
       <elementValue elementRef="PARENT_NODE_PATH" value=""/>
       <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="strCategory"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ingredients"/>
       <elementValue elementRef="PARENT_NODE_PATH" value=""/>
       <elementValue elementRef="REMOVE_NULL_FIELD" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
@@ -1146,9 +1126,8 @@
     <metadata connector="FLOW" name="tMongoDBOutput_2">
       <column comment="" key="true" length="-1" name="_id" nullable="true" pattern="" precision="-1" sourceType="" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="strMeal" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="-1" name="strInstructions" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="-1" name="strCategory" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="ingredients" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tMongoDBInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="608">
@@ -1170,7 +1149,7 @@
     <elementParameter field="CHECK" name="SET_AUTHENTICATION_DATABASE" value="false" show="false"/>
     <elementParameter field="TEXT" name="AUTHENTICATION_DATABASE" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:TARU2ngbILn92yAri2sWUorm9d/EeA7sOm7586j6" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:0+v+RDBpCChILH8LR4mTSMbb95GlUL9sZzqwxENY" show="false"/>
     <elementParameter field="TEXT" name="KRB_USER_PRINCIPAL" value="&quot;mongouser@EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_REALM" value="&quot;EXAMPLE.COM&quot;" show="false"/>
     <elementParameter field="TEXT" name="KRB_KDC" value="&quot;kdc.example.com&quot;" show="false"/>
@@ -1371,23 +1350,9 @@
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row3" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tJavaRow_2">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="_id"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-    </elementParameter>
+  <connection connectorName="FLOW" label="out1" lineStyle="0" metaname="out1" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tMongoDBOutput_2">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="out1" show="false"/>
-  </connection>
-  <connection connectorName="FLOW" label="row4" lineStyle="0" metaname="tJavaRow_2" offsetLabelX="0" offsetLabelY="0" source="tJavaRow_2" target="tMongoDBOutput_2">
-    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
-      <elementValue elementRef="TRACE_COLUMN" value="_id"/>
-      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
-      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
-    </elementParameter>
-    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
-    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row4" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row10" lineStyle="0" metaname="tMongoDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tMongoDBInput_4" target="tJavaRow_3">
     <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">

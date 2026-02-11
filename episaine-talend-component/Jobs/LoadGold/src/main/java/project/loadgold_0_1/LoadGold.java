@@ -1408,7 +1408,7 @@ public void tDBConnection_1Process(final java.util.Map<String, Object> globalMap
 
 
 	
-            String dbProperties_tDBConnection_1 = "";
+            String dbProperties_tDBConnection_1 = "client_encoding=UTF8";
             String url_tDBConnection_1 = "jdbc:postgresql://"+context.postgresql_server+":"+context.postgresql_port+"/"+context.postgresql_database;
             
             if(dbProperties_tDBConnection_1 != null && !"".equals(dbProperties_tDBConnection_1.trim())) {
@@ -6757,7 +6757,7 @@ end_Hash.put("tJavaRow_4", System.currentTimeMillis());
 	
 
 
-public static class row3Struct implements routines.system.IPersistableRow<row3Struct> {
+public static class row12Struct implements routines.system.IPersistableRow<row12Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
@@ -7060,7 +7060,7 @@ public static class row3Struct implements routines.system.IPersistableRow<row3St
     /**
      * Compare keys
      */
-    public int compareTo(row3Struct other) {
+    public int compareTo(row12Struct other) {
 
 		int returnValue = -1;
 		
@@ -7427,7 +7427,7 @@ public static class OnRowsEndStructtAggregateRow_1 implements routines.system.IP
 
 }
 
-public static class row12Struct implements routines.system.IPersistableRow<row12Struct> {
+public static class row3Struct implements routines.system.IPersistableRow<row3Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadGold = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
@@ -7730,7 +7730,7 @@ public static class row12Struct implements routines.system.IPersistableRow<row12
     /**
      * Compare keys
      */
-    public int compareTo(row12Struct other) {
+    public int compareTo(row3Struct other) {
 
 		int returnValue = -1;
 		
@@ -7773,16 +7773,10 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 					return this.id;
 				}
 				
-			    public Integer qtt;
+			    public String ingredients;
 
-				public Integer getQtt () {
-					return this.qtt;
-				}
-				
-			    public String name;
-
-				public String getName () {
-					return this.name;
+				public String getIngredients () {
+					return this.ingredients;
 				}
 				
 			    public String calories;
@@ -7929,9 +7923,7 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 		
 						this.id = readInteger(dis);
 					
-						this.qtt = readInteger(dis);
-					
-					this.name = readString(dis);
+					this.ingredients = readString(dis);
 					
 					this.calories = readString(dis);
 					
@@ -7967,9 +7959,7 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 		
 						this.id = readInteger(dis);
 					
-						this.qtt = readInteger(dis);
-					
-					this.name = readString(dis);
+					this.ingredients = readString(dis);
 					
 					this.calories = readString(dis);
 					
@@ -8003,13 +7993,9 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 				
 						writeInteger(this.id,dos);
 					
-					// Integer
-				
-						writeInteger(this.qtt,dos);
-					
 					// String
 				
-						writeString(this.name,dos);
+						writeString(this.ingredients,dos);
 					
 					// String
 				
@@ -8046,13 +8032,9 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 				
 						writeInteger(this.id,dos);
 					
-					// Integer
-				
-						writeInteger(this.qtt,dos);
-					
 					// String
 				
-						writeString(this.name,dos);
+						writeString(this.ingredients,dos);
 					
 					// String
 				
@@ -8088,8 +8070,7 @@ public static class out6Struct implements routines.system.IPersistableRow<out6St
 		sb.append(super.toString());
 		sb.append("[");
 		sb.append("id="+String.valueOf(id));
-		sb.append(",qtt="+String.valueOf(qtt));
-		sb.append(",name="+name);
+		sb.append(",ingredients="+ingredients);
 		sb.append(",calories="+calories);
 		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
@@ -8140,16 +8121,10 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
-			    public Integer qtt;
+			    public Integer _id;
 
-				public Integer getQtt () {
-					return this.qtt;
-				}
-				
-			    public String name;
-
-				public String getName () {
-					return this.name;
+				public Integer get_id () {
+					return this._id;
 				}
 				
 			    public String strMeal;
@@ -8174,6 +8149,12 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 
 				public String getArea_id () {
 					return this.area_id;
+				}
+				
+			    public String ingredients;
+
+				public String getIngredients () {
+					return this.ingredients;
 				}
 				
 
@@ -8288,9 +8269,7 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 
         		int length = 0;
 		
-						this.qtt = readInteger(dis);
-					
-					this.name = readString(dis);
+						this._id = readInteger(dis);
 					
 					this.strMeal = readString(dis);
 					
@@ -8299,6 +8278,8 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 					this.strInstructions = readString(dis);
 					
 					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -8322,9 +8303,7 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 
         		int length = 0;
 		
-						this.qtt = readInteger(dis);
-					
-					this.name = readString(dis);
+						this._id = readInteger(dis);
 					
 					this.strMeal = readString(dis);
 					
@@ -8333,6 +8312,8 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 					this.strInstructions = readString(dis);
 					
 					this.area_id = readString(dis);
+					
+					this.ingredients = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -8354,11 +8335,7 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 		
 					// Integer
 				
-						writeInteger(this.qtt,dos);
-					
-					// String
-				
-						writeString(this.name,dos);
+						writeInteger(this._id,dos);
 					
 					// String
 				
@@ -8375,6 +8352,10 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 					// String
 				
 						writeString(this.area_id,dos);
+					
+					// String
+				
+						writeString(this.ingredients,dos);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -8389,11 +8370,7 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 		
 					// Integer
 				
-						writeInteger(this.qtt,dos);
-					
-					// String
-				
-						writeString(this.name,dos);
+						writeInteger(this._id,dos);
 					
 					// String
 				
@@ -8411,6 +8388,10 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 				
 						writeString(this.area_id,dos);
 					
+					// String
+				
+						writeString(this.ingredients,dos);
+					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
         }
@@ -8424,12 +8405,12 @@ public static class row14Struct implements routines.system.IPersistableRow<row14
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("qtt="+String.valueOf(qtt));
-		sb.append(",name="+name);
+		sb.append("_id="+String.valueOf(_id));
 		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
 		sb.append(",strInstructions="+strInstructions);
 		sb.append(",area_id="+area_id);
+		sb.append(",ingredients="+ingredients);
 	    sb.append("]");
 
 	    return sb.toString();
@@ -8475,6 +8456,12 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
 			    public String strMeal;
 
 				public String getStrMeal () {
@@ -8507,6 +8494,47 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
 				
 
 
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
 
 	private String readString(ObjectInputStream dis) throws IOException{
 		String strReturn = null;
@@ -8576,6 +8604,8 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -8608,6 +8638,8 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -8636,6 +8668,10 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -8667,6 +8703,10 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -8700,7 +8740,8 @@ public static class row11Struct implements routines.system.IPersistableRow<row11
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("strMeal="+strMeal);
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
 		sb.append(",strInstructions="+strInstructions);
 		sb.append(",area_id="+area_id);
@@ -8750,6 +8791,12 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
 			    public String strMeal;
 
 				public String getStrMeal () {
@@ -8782,6 +8829,47 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 				
 
 
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
 
 	private String readString(ObjectInputStream dis) throws IOException{
 		String strReturn = null;
@@ -8851,6 +8939,8 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -8883,6 +8973,8 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -8911,6 +9003,10 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -8942,6 +9038,10 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -8975,7 +9075,8 @@ public static class out2Struct implements routines.system.IPersistableRow<out2St
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("strMeal="+strMeal);
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
 		sb.append(",strInstructions="+strInstructions);
 		sb.append(",area_id="+area_id);
@@ -9025,6 +9126,12 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
     static byte[] commonByteArray_PROJECT_LoadGold = new byte[0];
 
 	
+			    public Integer _id;
+
+				public Integer get_id () {
+					return this._id;
+				}
+				
 			    public String strMeal;
 
 				public String getStrMeal () {
@@ -9057,6 +9164,47 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
 				
 
 
+	private Integer readInteger(ObjectInputStream dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+	
+	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
+		Integer intReturn;
+        int length = 0;
+        length = dis.readByte();
+		if (length == -1) {
+			intReturn = null;
+		} else {
+	    	intReturn = dis.readInt();
+		}
+		return intReturn;
+	}
+
+	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
+		if(intNum == null) {
+            dos.writeByte(-1);
+		} else {
+			dos.writeByte(0);
+	    	dos.writeInt(intNum);
+    	}
+	}
+	
+	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
+		if(intNum == null) {
+			marshaller.writeByte(-1);
+		} else {
+			marshaller.writeByte(0);
+			marshaller.writeInt(intNum);
+    	}
+	}
 
 	private String readString(ObjectInputStream dis) throws IOException{
 		String strReturn = null;
@@ -9126,6 +9274,8 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -9158,6 +9308,8 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
 
         		int length = 0;
 		
+						this._id = readInteger(dis);
+					
 					this.strMeal = readString(dis);
 					
 					this.strCategory = readString(dis);
@@ -9186,6 +9338,10 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -9217,6 +9373,10 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
         try {
 
 		
+					// Integer
+				
+						writeInteger(this._id,dos);
+					
 					// String
 				
 						writeString(this.strMeal,dos);
@@ -9250,7 +9410,8 @@ public static class row2Struct implements routines.system.IPersistableRow<row2St
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append("[");
-		sb.append("strMeal="+strMeal);
+		sb.append("_id="+String.valueOf(_id));
+		sb.append(",strMeal="+strMeal);
 		sb.append(",strCategory="+strCategory);
 		sb.append(",strArea="+strArea);
 		sb.append(",strInstructions="+strInstructions);
@@ -9445,8 +9606,8 @@ out2Struct out2 = new out2Struct();
 row11Struct row11 = new row11Struct();
 row14Struct row14 = new row14Struct();
 out6Struct out6 = new out6Struct();
-row12Struct row12 = new row12Struct();
 row3Struct row3 = new row3Struct();
+row12Struct row12 = new row12Struct();
 
 
 
@@ -9473,7 +9634,7 @@ row3Struct row3 = new row3Struct();
 
 int current_iteration_tLoop_1 = 0;
 
-for(int looptLoop_1 =0; looptLoop_1<=(int) globalMap.get("TABLE_SIZE") -1; looptLoop_1=looptLoop_1+10000){
+for(int looptLoop_1 =1; looptLoop_1<=(int) globalMap.get("TABLE_SIZE") / 10000; looptLoop_1=looptLoop_1+1){
 	
 current_iteration_tLoop_1++;
 globalMap.put("tLoop_1_CURRENT_VALUE",looptLoop_1);
@@ -9532,15 +9693,11 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row14", 3, 0);
+	       				runStat.updateStatOnConnection("out2", 3, 0);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row2", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row11", 3, 0);
+	       				runStat.updateStatOnConnection("row3", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -9552,15 +9709,19 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row3", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("out2", 3, 0);
-					}           			
-				
-					if(execStat){				
 	       				runStat.updateStatOnConnection("row12", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row14", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row2", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row11", 3, 0);
 					}           			
 				
 				if(execStat){
@@ -9594,7 +9755,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 
 	
 					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row12");
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row3");
 					}
 				
 		int tos_count_tAggregateRow_1_AGGOUT = 0;
@@ -9738,11 +9899,7 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 	    private int hashCode = DEFAULT_HASHCODE;
 	    public boolean hashCodeDirty = true;
 
-    				Integer id;
-    				String strMeal;
-    				String strCategory;
-    				String strInstructions;
-    				String area_id;StringBuilder ingredients_list = new StringBuilder();
+    				Integer id;StringBuilder ingredients_list = new StringBuilder();
            			boolean ingredients_list_firstEmpty = false;
            			
         
@@ -9753,14 +9910,6 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 				int result = DEFAULT_HASHCODE;
 		
 							result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
-							
-							result = prime * result + ((this.strMeal == null) ? 0 : this.strMeal.hashCode());
-							
-							result = prime * result + ((this.strCategory == null) ? 0 : this.strCategory.hashCode());
-							
-							result = prime * result + ((this.strInstructions == null) ? 0 : this.strInstructions.hashCode());
-							
-							result = prime * result + ((this.area_id == null) ? 0 : this.area_id.hashCode());
 							
 	    		this.hashCode = result;
 	    		this.hashCodeDirty = false;		
@@ -9779,30 +9928,6 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 								if (other.id != null) 
 									return false;
 							} else if (!this.id.equals(other.id)) 
-								return false;
-						
-							if (this.strMeal == null) {
-								if (other.strMeal != null) 
-									return false;
-							} else if (!this.strMeal.equals(other.strMeal)) 
-								return false;
-						
-							if (this.strCategory == null) {
-								if (other.strCategory != null) 
-									return false;
-							} else if (!this.strCategory.equals(other.strCategory)) 
-								return false;
-						
-							if (this.strInstructions == null) {
-								if (other.strInstructions != null) 
-									return false;
-							} else if (!this.strInstructions.equals(other.strInstructions)) 
-								return false;
-						
-							if (this.area_id == null) {
-								if (other.area_id != null) 
-									return false;
-							} else if (!this.area_id.equals(other.area_id)) 
 								return false;
 						
 			
@@ -10135,7 +10260,20 @@ out2Struct out2_tmp = new out2Struct();
 		    
 			java.sql.Statement stmt_tDBInput_3 = conn_tDBInput_3.createStatement();
 
-		    String dbquery_tDBInput_3 = "SELECT \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strMeal\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strCategory\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strArea\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"strInstructions\", \n  \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\".\"ingredients\"\nFROM \""+context.postgresql_schema+"\".\""+context.postgresql_table_meals_temp+"\" OFFSET " + ((Integer)globalMap.get("tLoop_1_CURRENT_VALUE")) + " LIMIT 1000";
+		    String dbquery_tDBInput_3 = "SELECT " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"_id\", " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"strMeal\", " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"strCategory\", " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"strArea\", " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"strInstructions\", " +
+"\"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\".\"ingredients\" " +
+"FROM \"" + context.postgresql_schema + "\".\"" + context.postgresql_table_meals_temp + "\" " +
+"LIMIT 10000 OFFSET " +
+Math.max(
+    0,
+    (((Integer)globalMap.getOrDefault("tLoop_1_CURRENT_VALUE", 1)) - 1) * 10000
+)
+;
 		    
 
             	globalMap.put("tDBInput_3_QUERY",dbquery_tDBInput_3);
@@ -10153,34 +10291,43 @@ out2Struct out2_tmp = new out2Struct();
 		        nb_line_tDBInput_3++;
 		        
 							if(colQtyInRs_tDBInput_3 < 1) {
+								row2._id = null;
+							} else {
+		                          
+            row2._id = rs_tDBInput_3.getInt(1);
+            if(rs_tDBInput_3.wasNull()){
+                    row2._id = null;
+            }
+		                    }
+							if(colQtyInRs_tDBInput_3 < 2) {
 								row2.strMeal = null;
 							} else {
 	                         		
-        	row2.strMeal = routines.system.JDBCUtil.getString(rs_tDBInput_3, 1, false);
+        	row2.strMeal = routines.system.JDBCUtil.getString(rs_tDBInput_3, 2, false);
 		                    }
-							if(colQtyInRs_tDBInput_3 < 2) {
+							if(colQtyInRs_tDBInput_3 < 3) {
 								row2.strCategory = null;
 							} else {
 	                         		
-        	row2.strCategory = routines.system.JDBCUtil.getString(rs_tDBInput_3, 2, false);
+        	row2.strCategory = routines.system.JDBCUtil.getString(rs_tDBInput_3, 3, false);
 		                    }
-							if(colQtyInRs_tDBInput_3 < 3) {
+							if(colQtyInRs_tDBInput_3 < 4) {
 								row2.strArea = null;
 							} else {
 	                         		
-        	row2.strArea = routines.system.JDBCUtil.getString(rs_tDBInput_3, 3, false);
+        	row2.strArea = routines.system.JDBCUtil.getString(rs_tDBInput_3, 4, false);
 		                    }
-							if(colQtyInRs_tDBInput_3 < 4) {
+							if(colQtyInRs_tDBInput_3 < 5) {
 								row2.strInstructions = null;
 							} else {
 	                         		
-        	row2.strInstructions = routines.system.JDBCUtil.getString(rs_tDBInput_3, 4, false);
+        	row2.strInstructions = routines.system.JDBCUtil.getString(rs_tDBInput_3, 5, false);
 		                    }
-							if(colQtyInRs_tDBInput_3 < 5) {
+							if(colQtyInRs_tDBInput_3 < 6) {
 								row2.ingredients = null;
 							} else {
 	                         		
-        	row2.ingredients = routines.system.JDBCUtil.getString(rs_tDBInput_3, 5, false);
+        	row2.ingredients = routines.system.JDBCUtil.getString(rs_tDBInput_3, 6, false);
 		                    }
 					
 
@@ -10372,6 +10519,7 @@ out2 = null;
 
 
 // # Output table : 'out2'
+out2_tmp._id = row2._id ;
 out2_tmp.strMeal = row2.strMeal ;
 out2_tmp.strCategory = row2.strCategory ;
 out2_tmp.strInstructions = row2.strInstructions ;
@@ -10488,11 +10636,31 @@ for(int i_tExtractJSONFields_1=0; isStructError_tExtractJSONFields_1 || (i_tExtr
 	row11 = new row11Struct();
 	nb_line_tExtractJSONFields_1++;
 	try {
+        		row11._id = out2._id;
         		row11.strMeal = out2.strMeal;
         		row11.strCategory = out2.strCategory;
         		row11.strInstructions = out2.strInstructions;
         		row11.area_id = out2.area_id;
-        		row11.ingredients = out2.ingredients;	
+		jsonPath_tExtractJSONFields_1 = "$";
+		compiledJsonPath_tExtractJSONFields_1 = jsonPathCache_tExtractJSONFields_1.getCompiledJsonPath(jsonPath_tExtractJSONFields_1);
+		
+		try {
+		    
+		        value_tExtractJSONFields_1 = compiledJsonPath_tExtractJSONFields_1.read(row_tExtractJSONFields_1);
+		    
+				row11.ingredients = value_tExtractJSONFields_1 == null ? 
+
+		null
+
+ : value_tExtractJSONFields_1.toString();
+		} catch (com.jayway.jsonpath.PathNotFoundException e_tExtractJSONFields_1) {
+globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",e_tExtractJSONFields_1.getMessage());
+			row11.ingredients = 
+
+		null
+
+;
+		}	
 	} catch (java.lang.Exception ex_tExtractJSONFields_1) {
 globalMap.put("tExtractJSONFields_1_ERROR_MESSAGE",ex_tExtractJSONFields_1.getMessage());
 		    System.err.println(ex_tExtractJSONFields_1.getMessage());
@@ -10560,12 +10728,10 @@ if(row11 != null) {
 					}
 					
 
-    int qtt = row11.ingredients.matches("^[0-9]+.*") ? Integer.parseInt(row11.ingredients.replaceAll("^([0-9]+).*", "$1")) : 1;
+    String ingredient_name = row11.ingredients.replaceAll("^[0-9]+\\s*", "");
 
-String ingredient_name = row11.ingredients.replaceAll("^[0-9]+\\s*", "");
-
-row14.qtt = qtt;
-row14.name = ingredient_name.replaceAll("\"","");
+row14._id = row11._id;
+row14.ingredients = ingredient_name.replaceAll("\"","").toLowerCase();
 row14.strMeal = row11.strMeal;
 row14.strCategory = row11.strCategory;
 row14.strInstructions = row11.strInstructions;
@@ -10658,7 +10824,7 @@ row14.area_id = row11.area_id;
 								
 								hasCasePrimitiveKeyWithNull_tMap_4 = false;
 								
-                        		    		    row9HashKey.nom = row14.name ;
+                        		    		    row9HashKey.nom = row14.ingredients ;
                         		    		
 
 								
@@ -10745,9 +10911,8 @@ out6 = null;
 
 
 // # Output table : 'out6'
-out6_tmp.id = Numeric.sequence("id_seq", 1, 1);
-out6_tmp.qtt = row14.qtt ;
-out6_tmp.name = row14.name ;
+out6_tmp.id = row14._id ;
+out6_tmp.ingredients = row14.ingredients ;
 out6_tmp.calories = row9.calories ;
 out6_tmp.strMeal = row14.strMeal ;
 out6_tmp.strCategory = row14.strCategory ;
@@ -10823,12 +10988,19 @@ if(out6 != null) {
 					}
 					
 
-    row12.id = out6.id;
-row12.strMeal = out6.strMeal;
-row12.strCategory = out6.strCategory;
-row12.strInstructions = out6.strInstructions;
-row12.area_id = out6.area_id;
-row12.ingredients = "(" + out6.qtt + "," + out6.name + "," + out6.calories + ")";
+    row3.id = out6.id;
+row3.strMeal = out6.strMeal;
+row3.strCategory = out6.strCategory;
+row3.strInstructions = out6.strInstructions;
+row3.area_id = out6.area_id;
+
+if (out6.ingredients != null && !out6.ingredients.isEmpty()) {
+    String ingredientsCapitalized = out6.ingredients.substring(0, 1).toUpperCase() + out6.ingredients.substring(1);
+    
+    String calories = (out6.calories != null) ? out6.calories : "100";
+    
+    row3.ingredients = "\"(" + ingredientsCapitalized + "," + calories + ")\"";
+}
 
     nb_line_tJavaRow_2++;   
 
@@ -10878,17 +11050,13 @@ row12.ingredients = "(" + out6.qtt + "," + out6.name + "," + out6.calories + ")"
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row12"
+							,"row3"
 						
 						);
 					}
 					
 	
-operation_finder_tAggregateRow_1.id = row12.id;
-			operation_finder_tAggregateRow_1.strMeal = row12.strMeal;
-			operation_finder_tAggregateRow_1.strCategory = row12.strCategory;
-			operation_finder_tAggregateRow_1.strInstructions = row12.strInstructions;
-			operation_finder_tAggregateRow_1.area_id = row12.area_id;
+operation_finder_tAggregateRow_1.id = row3.id;
 			
 
 	operation_finder_tAggregateRow_1.hashCodeDirty = true;
@@ -10902,10 +11070,6 @@ operation_finder_tAggregateRow_1.id = row12.id;
 		operation_result_tAggregateRow_1 = new AggOperationStruct_tAggregateRow_1();
 
 		operation_result_tAggregateRow_1.id = operation_finder_tAggregateRow_1.id;
-				operation_result_tAggregateRow_1.strMeal = operation_finder_tAggregateRow_1.strMeal;
-				operation_result_tAggregateRow_1.strCategory = operation_finder_tAggregateRow_1.strCategory;
-				operation_result_tAggregateRow_1.strInstructions = operation_finder_tAggregateRow_1.strInstructions;
-				operation_result_tAggregateRow_1.area_id = operation_finder_tAggregateRow_1.area_id;
 				
 		
 		
@@ -10923,10 +11087,10 @@ operation_finder_tAggregateRow_1.id = row12.id;
 					operation_result_tAggregateRow_1.ingredients_list.append(",");
 				}
 					if(operation_result_tAggregateRow_1.ingredients_list != null) {
-						if(operation_result_tAggregateRow_1.ingredients_list_firstEmpty==false && ("").equals(String.valueOf(row12.ingredients))){
+						if(operation_result_tAggregateRow_1.ingredients_list_firstEmpty==false && ("").equals(String.valueOf(row3.ingredients))){
 							operation_result_tAggregateRow_1.ingredients_list_firstEmpty = true;
 						}
-						operation_result_tAggregateRow_1.ingredients_list = operation_result_tAggregateRow_1.ingredients_list.append(String.valueOf(row12.ingredients));
+						operation_result_tAggregateRow_1.ingredients_list = operation_result_tAggregateRow_1.ingredients_list.append(String.valueOf(row3.ingredients));
 					}
 				
 
@@ -11352,7 +11516,7 @@ end_Hash.put("tJavaRow_2", System.currentTimeMillis());
 	
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row12");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
 			  	}
 			  	
  
@@ -11385,7 +11549,7 @@ end_Hash.put("tAggregateRow_1_AGGOUT", System.currentTimeMillis());
 
 	
 					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row3");
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row12");
 					}
 				
 		int tos_count_tDBOutput_2 = 0;
@@ -11461,7 +11625,7 @@ int count_tDBOutput_2=0;
                                     }
                                 }
                                 try(java.sql.Statement stmtCreate_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
-                                    stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"id\" SERIAL ,\"strMeal\" VARCHAR ,\"strCategory\" VARCHAR ,\"strInstructions\" VARCHAR ,\"area_id\" VARCHAR ,\"ingredients\" VARCHAR )");
+                                    stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"id\" INT4 ,\"strMeal\" VARCHAR ,\"strCategory\" VARCHAR ,\"strInstructions\" VARCHAR ,\"area_id\" VARCHAR ,\"ingredients\" VARCHAR )");
                                 }
 	    String insert_tDBOutput_2 = "INSERT INTO \"" + tableName_tDBOutput_2 + "\" (\"id\",\"strMeal\",\"strCategory\",\"strInstructions\",\"area_id\",\"ingredients\") VALUES (?,?,?,?,?,?)";
 	    
@@ -11530,17 +11694,9 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 
 	
 
-            				    row3.id = aggregated_row_tAggregateRow_1.id;
+            				    row12.id = aggregated_row_tAggregateRow_1.id;
             				    
-            				    row3.strMeal = aggregated_row_tAggregateRow_1.strMeal;
-            				    
-            				    row3.strCategory = aggregated_row_tAggregateRow_1.strCategory;
-            				    
-            				    row3.strInstructions = aggregated_row_tAggregateRow_1.strInstructions;
-            				    
-            				    row3.area_id = aggregated_row_tAggregateRow_1.area_id;
-            				    
-    								row3.ingredients = aggregated_row_tAggregateRow_1.ingredients_list.toString();
+    								row12.ingredients = aggregated_row_tAggregateRow_1.ingredients_list.toString();
 	    						
 
  
@@ -11589,7 +11745,7 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row3"
+							,"row12"
 						
 						);
 					}
@@ -11598,34 +11754,34 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 
 
         whetherReject_tDBOutput_2 = false;
-                    if(row3.id == null) {
+                    if(row12.id == null) {
 pstmt_tDBOutput_2.setNull(1, java.sql.Types.INTEGER);
-} else {pstmt_tDBOutput_2.setInt(1, row3.id);
+} else {pstmt_tDBOutput_2.setInt(1, row12.id);
 }
 
-                    if(row3.strMeal == null) {
+                    if(row12.strMeal == null) {
 pstmt_tDBOutput_2.setNull(2, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_2.setString(2, row3.strMeal);
+} else {pstmt_tDBOutput_2.setString(2, row12.strMeal);
 }
 
-                    if(row3.strCategory == null) {
+                    if(row12.strCategory == null) {
 pstmt_tDBOutput_2.setNull(3, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_2.setString(3, row3.strCategory);
+} else {pstmt_tDBOutput_2.setString(3, row12.strCategory);
 }
 
-                    if(row3.strInstructions == null) {
+                    if(row12.strInstructions == null) {
 pstmt_tDBOutput_2.setNull(4, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_2.setString(4, row3.strInstructions);
+} else {pstmt_tDBOutput_2.setString(4, row12.strInstructions);
 }
 
-                    if(row3.area_id == null) {
+                    if(row12.area_id == null) {
 pstmt_tDBOutput_2.setNull(5, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_2.setString(5, row3.area_id);
+} else {pstmt_tDBOutput_2.setString(5, row12.area_id);
 }
 
-                    if(row3.ingredients == null) {
+                    if(row12.ingredients == null) {
 pstmt_tDBOutput_2.setNull(6, java.sql.Types.VARCHAR);
-} else {pstmt_tDBOutput_2.setString(6, row3.ingredients);
+} else {pstmt_tDBOutput_2.setString(6, row12.ingredients);
 }
 
 			
@@ -11850,7 +12006,7 @@ globalMap.put("tDBOutput_2_ERROR_MESSAGE",e_tDBOutput_2.getMessage());
 
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row3");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"row12");
 			  	}
 			  	
  
@@ -15103,6 +15259,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     342653 characters generated by Talend Open Studio for Big Data 
- *     on the 10 février 2026, 10:02:21 CET
+ *     345545 characters generated by Talend Open Studio for Big Data 
+ *     on the 11 février 2026, 19:35:44 CET
  ************************************************************************************************/

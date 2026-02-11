@@ -60,11 +60,6 @@ import java.util.ArrayList;
 	//the import part of tJavaRow_3
 	//import java.util.List;
 
-	//the import part of tJavaRow_2
-	import java.util.List;
-import java.util.ArrayList;
-
-
 
 @SuppressWarnings("unused")
 
@@ -725,15 +720,6 @@ private class TalendException extends Exception {
 			}
 			
 			public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
-				
-				end_Hash.put(errorComponent, System.currentTimeMillis());
-				
-				status = "failure";
-				
-					tLoop_1_onSubJobError(exception, errorComponent, globalMap);
-			}
-			
-			public void tJavaRow_2_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
 				
@@ -5320,40 +5306,36 @@ final String applicationName_tMongoDBInput_1 = "Talend";
 
 for (int i = 1; i <= 20; i++) {
     String ingredient = null;
-    String measure = null;
 
     switch(i) {
-        case 1: ingredient = row1.strIngredient1; measure = row1.strMeasure1; break;
-        case 2: ingredient = row1.strIngredient2; measure = row1.strMeasure2; break;
-        case 3: ingredient = row1.strIngredient3; measure = row1.strMeasure3; break;
-        case 4: ingredient = row1.strIngredient4; measure = row1.strMeasure4; break;
-        case 5: ingredient = row1.strIngredient5; measure = row1.strMeasure5; break;
-        case 6: ingredient = row1.strIngredient6; measure = row1.strMeasure6; break;
-        case 7: ingredient = row1.strIngredient7; measure = row1.strMeasure7; break;
-        case 8: ingredient = row1.strIngredient8; measure = row1.strMeasure8; break;
-        case 9: ingredient = row1.strIngredient9; measure = row1.strMeasure9; break;
-        case 10: ingredient = row1.strIngredient10; measure = row1.strMeasure10; break;
-        case 11: ingredient = row1.strIngredient11; measure = row1.strMeasure11; break;
-        case 12: ingredient = row1.strIngredient12; measure = row1.strMeasure12; break;
-        case 13: ingredient = row1.strIngredient13; measure = row1.strMeasure13; break;
-        case 14: ingredient = row1.strIngredient14; measure = row1.strMeasure14; break;
-        case 15: ingredient = row1.strIngredient15; measure = row1.strMeasure15; break;
-        case 16: ingredient = row1.strIngredient16; measure = row1.strMeasure16; break;
-        case 17: ingredient = row1.strIngredient17; measure = row1.strMeasure17; break;
-        case 18: ingredient = row1.strIngredient18; measure = row1.strMeasure18; break;
-        case 19: ingredient = row1.strIngredient19; measure = row1.strMeasure19; break;
-        case 20: ingredient = row1.strIngredient20; measure = row1.strMeasure20; break;
+        case 1: ingredient = row1.strIngredient1; break;
+        case 2: ingredient = row1.strIngredient2; break;
+        case 3: ingredient = row1.strIngredient3; break;
+        case 4: ingredient = row1.strIngredient4; break;
+        case 5: ingredient = row1.strIngredient5; break;
+        case 6: ingredient = row1.strIngredient6; break;
+        case 7: ingredient = row1.strIngredient7; break;
+        case 8: ingredient = row1.strIngredient8; break;
+        case 9: ingredient = row1.strIngredient9; break;
+        case 10: ingredient = row1.strIngredient10; break;
+        case 11: ingredient = row1.strIngredient11; break;
+        case 12: ingredient = row1.strIngredient12; break;
+        case 13: ingredient = row1.strIngredient13; break;
+        case 14: ingredient = row1.strIngredient14; break;
+        case 15: ingredient = row1.strIngredient15; break;
+        case 16: ingredient = row1.strIngredient16; break;
+        case 17: ingredient = row1.strIngredient17; break;
+        case 18: ingredient = row1.strIngredient18; break;
+        case 19: ingredient = row1.strIngredient19; break;
+        case 20: ingredient = row1.strIngredient20; break;
     }
 
-    if (ingredient != null) ingredient = ingredient.trim();
-    if (measure != null) measure = measure.trim();
+    if (ingredient != null) {
+        ingredient = ingredient.trim();
+    }
 
-    if (ingredient != null && !ingredient.isEmpty()
-        && measure != null && !measure.isEmpty()) {
-
-        String value = (measure + " " + ingredient)
-                        .replace("\"", "\\\"");
-
+    if (ingredient != null && !ingredient.isEmpty()) {
+        String value = ingredient.replace("\"", "\\\"");
         pairs.add("\"" + value + "\"");
     }
 }
@@ -5363,6 +5345,7 @@ row2.strMeal = row1.strMeal;
 row2.strCategory = row1.strCategory;
 row2.strArea = row1.strArea;
 row2.strInstructions = row1.strInstructions;
+
     nb_line_tJavaRow_1++;   
 
  
@@ -9514,387 +9497,6 @@ end_Hash.put("tJavaRow_3", System.currentTimeMillis());
 	
 
 
-public static class row4Struct implements routines.system.IPersistableRow<row4Struct> {
-    final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
-    static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
-	protected static final int DEFAULT_HASHCODE = 1;
-    protected static final int PRIME = 31;
-    protected int hashCode = DEFAULT_HASHCODE;
-    public boolean hashCodeDirty = true;
-
-    public String loopKey;
-
-
-
-	
-			    public Integer _id;
-
-				public Integer get_id () {
-					return this._id;
-				}
-				
-			    public String strMeal;
-
-				public String getStrMeal () {
-					return this.strMeal;
-				}
-				
-			    public String ingredients;
-
-				public String getIngredients () {
-					return this.ingredients;
-				}
-				
-			    public String strInstructions;
-
-				public String getStrInstructions () {
-					return this.strInstructions;
-				}
-				
-			    public String strCategory;
-
-				public String getStrCategory () {
-					return this.strCategory;
-				}
-				
-
-
-	@Override
-	public int hashCode() {
-		if (this.hashCodeDirty) {
-			final int prime = PRIME;
-			int result = DEFAULT_HASHCODE;
-	
-						result = prime * result + ((this._id == null) ? 0 : this._id.hashCode());
-					
-    		this.hashCode = result;
-    		this.hashCodeDirty = false;
-		}
-		return this.hashCode;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) return true;
-		if (obj == null) return false;
-		if (getClass() != obj.getClass()) return false;
-		final row4Struct other = (row4Struct) obj;
-		
-						if (this._id == null) {
-							if (other._id != null)
-								return false;
-						
-						} else if (!this._id.equals(other._id))
-						
-							return false;
-					
-
-		return true;
-    }
-
-	public void copyDataTo(row4Struct other) {
-
-		other._id = this._id;
-	            other.strMeal = this.strMeal;
-	            other.ingredients = this.ingredients;
-	            other.strInstructions = this.strInstructions;
-	            other.strCategory = this.strCategory;
-	            
-	}
-
-	public void copyKeysDataTo(row4Struct other) {
-
-		other._id = this._id;
-	            	
-	}
-
-
-
-	private Integer readInteger(ObjectInputStream dis) throws IOException{
-		Integer intReturn;
-        int length = 0;
-        length = dis.readByte();
-		if (length == -1) {
-			intReturn = null;
-		} else {
-	    	intReturn = dis.readInt();
-		}
-		return intReturn;
-	}
-	
-	private Integer readInteger(org.jboss.marshalling.Unmarshaller dis) throws IOException{
-		Integer intReturn;
-        int length = 0;
-        length = dis.readByte();
-		if (length == -1) {
-			intReturn = null;
-		} else {
-	    	intReturn = dis.readInt();
-		}
-		return intReturn;
-	}
-
-	private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException{
-		if(intNum == null) {
-            dos.writeByte(-1);
-		} else {
-			dos.writeByte(0);
-	    	dos.writeInt(intNum);
-    	}
-	}
-	
-	private void writeInteger(Integer intNum, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(intNum == null) {
-			marshaller.writeByte(-1);
-		} else {
-			marshaller.writeByte(0);
-			marshaller.writeInt(intNum);
-    	}
-	}
-
-	private String readString(ObjectInputStream dis) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = dis.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadSilver.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
-   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
-   				}
-			}
-			dis.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-	
-	private String readString(org.jboss.marshalling.Unmarshaller unmarshaller) throws IOException{
-		String strReturn = null;
-		int length = 0;
-        length = unmarshaller.readInt();
-		if (length == -1) {
-			strReturn = null;
-		} else {
-			if(length > commonByteArray_PROJECT_LoadSilver.length) {
-				if(length < 1024 && commonByteArray_PROJECT_LoadSilver.length == 0) {
-   					commonByteArray_PROJECT_LoadSilver = new byte[1024];
-				} else {
-   					commonByteArray_PROJECT_LoadSilver = new byte[2 * length];
-   				}
-			}
-			unmarshaller.readFully(commonByteArray_PROJECT_LoadSilver, 0, length);
-			strReturn = new String(commonByteArray_PROJECT_LoadSilver, 0, length, utf8Charset);
-		}
-		return strReturn;
-	}
-
-    private void writeString(String str, ObjectOutputStream dos) throws IOException{
-		if(str == null) {
-            dos.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-	    	dos.writeInt(byteArray.length);
-			dos.write(byteArray);
-    	}
-    }
-    
-    private void writeString(String str, org.jboss.marshalling.Marshaller marshaller) throws IOException{
-		if(str == null) {
-			marshaller.writeInt(-1);
-		} else {
-            byte[] byteArray = str.getBytes(utf8Charset);
-            marshaller.writeInt(byteArray.length);
-            marshaller.write(byteArray);
-    	}
-    }
-
-    public void readData(ObjectInputStream dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
-
-        	try {
-
-        		int length = 0;
-		
-						this._id = readInteger(dis);
-					
-					this.strMeal = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-    
-    public void readData(org.jboss.marshalling.Unmarshaller dis) {
-
-		synchronized(commonByteArrayLock_PROJECT_LoadSilver) {
-
-        	try {
-
-        		int length = 0;
-		
-						this._id = readInteger(dis);
-					
-					this.strMeal = readString(dis);
-					
-					this.ingredients = readString(dis);
-					
-					this.strInstructions = readString(dis);
-					
-					this.strCategory = readString(dis);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-
-		
-
-        }
-
-		
-
-      }
-
-
-    }
-
-    public void writeData(ObjectOutputStream dos) {
-        try {
-
-		
-					// Integer
-				
-						writeInteger(this._id,dos);
-					
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-    
-    public void writeData(org.jboss.marshalling.Marshaller dos) {
-        try {
-
-		
-					// Integer
-				
-						writeInteger(this._id,dos);
-					
-					// String
-				
-						writeString(this.strMeal,dos);
-					
-					// String
-				
-						writeString(this.ingredients,dos);
-					
-					// String
-				
-						writeString(this.strInstructions,dos);
-					
-					// String
-				
-						writeString(this.strCategory,dos);
-					
-        	} catch (IOException e) {
-	            throw new RuntimeException(e);
-        }
-
-
-    }
-
-
-    public String toString() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString());
-		sb.append("[");
-		sb.append("_id="+String.valueOf(_id));
-		sb.append(",strMeal="+strMeal);
-		sb.append(",ingredients="+ingredients);
-		sb.append(",strInstructions="+strInstructions);
-		sb.append(",strCategory="+strCategory);
-	    sb.append("]");
-
-	    return sb.toString();
-    }
-
-    /**
-     * Compare keys
-     */
-    public int compareTo(row4Struct other) {
-
-		int returnValue = -1;
-		
-						returnValue = checkNullsAndCompare(this._id, other._id);
-						if(returnValue != 0) {
-							return returnValue;
-						}
-
-					
-	    return returnValue;
-    }
-
-
-    private int checkNullsAndCompare(Object object1, Object object2) {
-        int returnValue = 0;
-		if (object1 instanceof Comparable && object2 instanceof Comparable) {
-            returnValue = ((Comparable) object1).compareTo(object2);
-        } else if (object1 != null && object2 != null) {
-            returnValue = compareStrings(object1.toString(), object2.toString());
-        } else if (object1 == null && object2 != null) {
-            returnValue = 1;
-        } else if (object1 != null && object2 == null) {
-            returnValue = -1;
-        } else {
-            returnValue = 0;
-        }
-
-        return returnValue;
-    }
-
-    private int compareStrings(String string1, String string2) {
-        return string1.compareTo(string2);
-    }
-
-
-}
-
 public static class out1Struct implements routines.system.IPersistableRow<out1Struct> {
     final static byte[] commonByteArrayLock_PROJECT_LoadSilver = new byte[0];
     static byte[] commonByteArray_PROJECT_LoadSilver = new byte[0];
@@ -9920,22 +9522,16 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 					return this.strMeal;
 				}
 				
-			    public String ingredients;
-
-				public String getIngredients () {
-					return this.ingredients;
-				}
-				
 			    public String strInstructions;
 
 				public String getStrInstructions () {
 					return this.strInstructions;
 				}
 				
-			    public String strCategory;
+			    public String ingredients;
 
-				public String getStrCategory () {
-					return this.strCategory;
+				public String getIngredients () {
+					return this.ingredients;
 				}
 				
 
@@ -9977,9 +9573,8 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 
 		other._id = this._id;
 	            other.strMeal = this.strMeal;
-	            other.ingredients = this.ingredients;
 	            other.strInstructions = this.strInstructions;
-	            other.strCategory = this.strCategory;
+	            other.ingredients = this.ingredients;
 	            
 	}
 
@@ -10105,11 +9700,9 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 					
 					this.strMeal = readString(dis);
 					
-					this.ingredients = readString(dis);
-					
 					this.strInstructions = readString(dis);
 					
-					this.strCategory = readString(dis);
+					this.ingredients = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -10137,11 +9730,9 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 					
 					this.strMeal = readString(dis);
 					
-					this.ingredients = readString(dis);
-					
 					this.strInstructions = readString(dis);
 					
-					this.strCategory = readString(dis);
+					this.ingredients = readString(dis);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -10171,15 +9762,11 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 					
 					// String
 				
-						writeString(this.ingredients,dos);
-					
-					// String
-				
 						writeString(this.strInstructions,dos);
 					
 					// String
 				
-						writeString(this.strCategory,dos);
+						writeString(this.ingredients,dos);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -10202,15 +9789,11 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 					
 					// String
 				
-						writeString(this.ingredients,dos);
-					
-					// String
-				
 						writeString(this.strInstructions,dos);
 					
 					// String
 				
-						writeString(this.strCategory,dos);
+						writeString(this.ingredients,dos);
 					
         	} catch (IOException e) {
 	            throw new RuntimeException(e);
@@ -10227,9 +9810,8 @@ public static class out1Struct implements routines.system.IPersistableRow<out1St
 		sb.append("[");
 		sb.append("_id="+String.valueOf(_id));
 		sb.append(",strMeal="+strMeal);
-		sb.append(",ingredients="+ingredients);
 		sb.append(",strInstructions="+strInstructions);
-		sb.append(",strCategory="+strCategory);
+		sb.append(",ingredients="+ingredients);
 	    sb.append("]");
 
 	    return sb.toString();
@@ -10673,7 +10255,6 @@ public void tLoop_1Process(final java.util.Map<String, Object> globalMap) throws
 
 		row3Struct row3 = new row3Struct();
 out1Struct out1 = new out1Struct();
-row4Struct row4 = new row4Struct();
 
 
 
@@ -10759,15 +10340,11 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("out1", 3, 0);
-					}           			
-				
-					if(execStat){				
 	       				runStat.updateStatOnConnection("row3", 3, 0);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row4", 3, 0);
+	       				runStat.updateStatOnConnection("out1", 3, 0);
 					}           			
 				
 				if(execStat){
@@ -10775,7 +10352,6 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					//Thread.sleep(1000);
 				}				
 			
-
 
 
 
@@ -10796,7 +10372,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 
 	
 					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"row4");
+						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out1");
 					}
 				
 		int tos_count_tMongoDBOutput_2 = 0;
@@ -10885,9 +10461,8 @@ final String applicationName_tMongoDBOutput_2 = "Talend";
 
                 pathMap_tMongoDBOutput_2.put("_id","");
                 pathMap_tMongoDBOutput_2.put("strMeal","");
-                pathMap_tMongoDBOutput_2.put("ingredients","");
                 pathMap_tMongoDBOutput_2.put("strInstructions","");
-                pathMap_tMongoDBOutput_2.put("strCategory","");
+                pathMap_tMongoDBOutput_2.put("ingredients","");
 
 
 
@@ -10908,41 +10483,6 @@ final String applicationName_tMongoDBOutput_2 = "Talend";
 
 /**
  * [tMongoDBOutput_2 begin ] stop
- */
-
-
-
-	
-	/**
-	 * [tJavaRow_2 begin ] start
-	 */
-
-	
-
-	
-		
-		ok_Hash.put("tJavaRow_2", false);
-		start_Hash.put("tJavaRow_2", System.currentTimeMillis());
-		
-	
-	currentComponent="tJavaRow_2";
-
-	
-					if(execStat) {
-						runStat.updateStatOnConnection(resourceMap,iterateId,0,0,"out1");
-					}
-				
-		int tos_count_tJavaRow_2 = 0;
-		
-
-int nb_line_tJavaRow_2 = 0;
-
- 
-
-
-
-/**
- * [tJavaRow_2 begin ] stop
  */
 
 
@@ -11300,9 +10840,8 @@ out1 = null;
 // # Output table : 'out1'
 out1_tmp._id = Numeric.sequence("s3", 1, 1);
 out1_tmp.strMeal = row3.title ;
-out1_tmp.ingredients = row3.ingredients ;
 out1_tmp.strInstructions = row3.directions ;
-out1_tmp.strCategory = row3.NER ;
+out1_tmp.ingredients = row3.NER ;
 out1 = out1_tmp;
 // ###############################
 
@@ -11354,88 +10893,6 @@ if(out1 != null) {
 
 	
 	/**
-	 * [tJavaRow_2 main ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJavaRow_2";
-
-	
-					if(execStat){
-						runStat.updateStatOnConnection(iterateId,1,1
-						
-							,"out1"
-						
-						);
-					}
-					
-
-    String[] tab = out1.strCategory.split(",");
-List<String> ingredients = new ArrayList<>();
-
-for (String t : tab) {
-
-    String ner = t.trim()
-        .replace("\"","")
-        .replace("[","")
-        .replace("]","")
-        .trim();
-
-    if (ner.isEmpty()) {
-        continue;
-    }
-
-    String formatted =
-        ner.substring(0, 1).toUpperCase() +
-        ner.substring(1).toLowerCase();
-
-    formatted = formatted.replace("\"", "\\\"");
-
-    ingredients.add("\"" + formatted + "\"");
-}
-
-row4._id = out1._id;
-row4.ingredients = "[" + String.join(",", ingredients) + "]";
-row4.strMeal = out1.strMeal;
-row4.strInstructions = out1.strInstructions;
-row4.strCategory = out1.strCategory;
-
-    nb_line_tJavaRow_2++;   
-
- 
-
-
-	tos_count_tJavaRow_2++;
-
-/**
- * [tJavaRow_2 main ] stop
- */
-	
-	/**
-	 * [tJavaRow_2 process_data_begin ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJavaRow_2";
-
-	
-
- 
-
-
-
-/**
- * [tJavaRow_2 process_data_begin ] stop
- */
-
-	
-	/**
 	 * [tMongoDBOutput_2 main ] start
 	 */
 
@@ -11449,7 +10906,7 @@ row4.strCategory = out1.strCategory;
 					if(execStat){
 						runStat.updateStatOnConnection(iterateId,1,1
 						
-							,"row4"
+							,"out1"
 						
 						);
 					}
@@ -11462,11 +10919,10 @@ try{
 				
 
 				
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("_id"),"_id", row4._id);
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strMeal"),"strMeal", row4.strMeal);
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("ingredients"),"ingredients", row4.ingredients);
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strInstructions"),"strInstructions", row4.strInstructions);
-                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strCategory"),"strCategory", row4.strCategory);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("_id"),"_id", out1._id);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strMeal"),"strMeal", out1.strMeal);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("strInstructions"),"strInstructions", out1.strInstructions);
+                                        updateObjectUtil_tMongoDBOutput_2.put(pathMap_tMongoDBOutput_2.get("ingredients"),"ingredients", out1.ingredients);
 				org.bson.Document updateObj_tMongoDBOutput_2 = updateObjectUtil_tMongoDBOutput_2.getObject();
 				
 						coll_tMongoDBOutput_2.insertOne(updateObj_tMongoDBOutput_2);
@@ -11526,29 +10982,6 @@ try{
 
 /**
  * [tMongoDBOutput_2 process_data_end ] stop
- */
-
-
-
-	
-	/**
-	 * [tJavaRow_2 process_data_end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJavaRow_2";
-
-	
-
- 
-
-
-
-/**
- * [tJavaRow_2 process_data_end ] stop
  */
 
 } // End of branch "out1"
@@ -11666,36 +11099,6 @@ end_Hash.put("tMap_1", System.currentTimeMillis());
 
 	
 	/**
-	 * [tJavaRow_2 end ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJavaRow_2";
-
-	
-
-globalMap.put("tJavaRow_2_NB_LINE",nb_line_tJavaRow_2);
-				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"out1");
-			  	}
-			  	
- 
-
-ok_Hash.put("tJavaRow_2", true);
-end_Hash.put("tJavaRow_2", System.currentTimeMillis());
-
-
-
-
-/**
- * [tJavaRow_2 end ] stop
- */
-
-	
-	/**
 	 * [tMongoDBOutput_2 end ] start
 	 */
 
@@ -11710,7 +11113,7 @@ end_Hash.put("tJavaRow_2", System.currentTimeMillis());
 	globalMap.put("tMongoDBOutput_2_NB_LINE", nb_line_tMongoDBOutput_2);
 
 				if(execStat){
-			  		runStat.updateStat(resourceMap,iterateId,2,0,"row4");
+			  		runStat.updateStat(resourceMap,iterateId,2,0,"out1");
 			  	}
 			  	
  
@@ -11724,9 +11127,6 @@ end_Hash.put("tMongoDBOutput_2", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_2 end ] stop
  */
-
-
-
 
 
 
@@ -11885,27 +11285,6 @@ end_Hash.put("tLoop_1", System.currentTimeMillis());
 
 	
 	/**
-	 * [tJavaRow_2 finally ] start
-	 */
-
-	
-
-	
-	
-	currentComponent="tJavaRow_2";
-
-	
-
- 
-
-
-
-/**
- * [tJavaRow_2 finally ] stop
- */
-
-	
-	/**
 	 * [tMongoDBOutput_2 finally ] start
 	 */
 
@@ -11925,9 +11304,6 @@ end_Hash.put("tLoop_1", System.currentTimeMillis());
 /**
  * [tMongoDBOutput_2 finally ] stop
  */
-
-
-
 
 
 
@@ -12943,6 +12319,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     315420 characters generated by Talend Open Studio for Big Data 
- *     on the 10 février 2026, 10:02:33 CET
+ *     302095 characters generated by Talend Open Studio for Big Data 
+ *     on the 11 février 2026, 19:35:49 CET
  ************************************************************************************************/
