@@ -20,9 +20,8 @@ public class CustomerService {
 
     public void saveCustomerNotificationStatusToCache(CustomerNotificationDTO customer) {
         long epochSeconds = customer.getLastNotification().toInstant().getEpochSecond();
-
-        String value = "customer:" + customer.getCustomer_id() + ":" + epochSeconds;
-        redisTemplate.opsForList().rightPush(ACTIVE_CUSTOMERS_KEY, value);
+        String cacheKey = ACTIVE_CUSTOMERS_KEY + ":" + customer.getCustomer_id();
+        redisTemplate.opsForValue().set(cacheKey, customer.getLastNotification() + ":" + epochSeconds);
     }
 
     public void clearCache() {
