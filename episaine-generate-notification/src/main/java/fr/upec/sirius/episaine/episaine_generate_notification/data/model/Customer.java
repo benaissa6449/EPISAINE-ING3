@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "customers")
+@Table(name = "customers", schema = "gold")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
@@ -65,9 +65,6 @@ public class Customer {
 
     @Column(name = "meals_per_day")
     private int mealsPerDay;
-
-    @Column(name = "number_of_days")
-    private int numberOfDays;
 
     @Column(name = "activity_level")
     private int activityLevel;

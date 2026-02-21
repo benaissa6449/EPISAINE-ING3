@@ -1,6 +1,7 @@
 package fr.upec.sirius.episaine.episaine_generate_notification.data.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +29,7 @@ public class Recipe {
     private String instructions;
 
     @Column(name = "calories")
-    private int calories;
+    private Integer calories;
 
     @Column(name = "strMeal")
     private String mealName;
@@ -36,5 +38,5 @@ public class Recipe {
     private String category;
 
     @Column(name = "area_id")
-    private int area_id;
+    private Integer area_id;
 }
