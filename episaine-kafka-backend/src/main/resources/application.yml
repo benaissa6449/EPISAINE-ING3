@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: episaine-kafka-backend
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:192.168.248.110:9092}
+    consumer:
+      group-id: ${KAFKA_GROUP_ID:frontend-stream-group}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    root: INFO
+    fr.upec.sirius.episaine.kafka_backend: INFO
+    org.apache.kafka: WARN
+    org.springframework.kafka: WARN
+
+app:
+  kafka:
+    topic: ${KAFKA_TOPIC:customer-profile}
+  cors:
+    allowed-origin: ${CORS_ALLOWED_ORIGIN:*}
