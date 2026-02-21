@@ -1,39 +1,23 @@
 #!/bin/bash
+cp server.properties /opt
+cd /opt
+wget https://dlcdn.apache.org/kafka/4.1.0/kafka_2.13-4.1.0.tgz
+tar -xvf kafka_2.13-4.1.0.tgz
+mv kafka_2.13-4.1.0 kafka
+rm kafka_2.13-4.1.0.tgz
 
-# Script d'installation complet de Kafka sur Ubuntu Linux
+cp server.properties /opt/kafka/config
+rm server.properties
 
-echo "===== Installation de Kafka sur Ubuntu ====="
-echo ""
+rm -rf /opt/kafka/data
+mkdir -p /opt/kafka/data
 
-# Mettre à jour le système
-echo "Mise à jour du système..."
-sudo apt update
-sudo apt upgrade -y
+UUID=$(/opt/kafka/bin/kafka-storage.sh random-uuid)
+echo "Nouvel UUID: $UUID"
 
-# Installer Java
-echo "Installation de Java..."
-sudo apt install default-jdk -y
-java --version
+/opt/kafka/bin/kafka-storage.sh format -t $UUID -c /opt/kafka/config/server.properties --standalone
 
-# Créer l'utilisateur kafka
-echo "Création de l'utilisateur Kafka..."
-sudo useradd -r -m -U -d /opt/kafka -s /bin/bash kafka
+echo "Vérification de la création de meta.properties:"
+ls -la /opt/kafka/data/meta.properties
 
-# Télécharger et installer Kafka
-
-echo "Téléchargement et installation de Kafka..."
-cd /tmp
-wget https://dlcdn.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
-tar -xzf kafka_2.13-3.6.1.tgz
-sudo mkdir -p /opt/kafka
-sudo mv kafka_2.13-3.6.1/* /opt/kafka/
-sudo chown -R kafka:kafka /opt/kafka
-
-echo ""
-echo "===== Installation terminée ====="
-echo ""
-echo "Prochaines étapes :"
-echo "1. Exécutez : ./start-zookeeper.sh (dans un premier terminal)"
-echo "2. Exécutez : ./start-kafka.sh (dans un deuxième terminal)"
-echo "3. Exécutez : ./create-topics.sh (dans un troisième terminal)"
-echo ""
+echo "Installation et configuration de Kafka terminées!"
