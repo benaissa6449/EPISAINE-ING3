@@ -12,7 +12,7 @@ public class NotificationScheduler {
     private final NotificationsProducer notificationsProducer;
 
 
-    @Scheduled(initialDelay = 0, fixedRate = 24 * 60 * 60 * 1000)
+    @Scheduled(initialDelay = 0, fixedRate = 12 * 60 * 60 * 1000)
     public void loadCustomersToCache() {
         System.out.println("Loading customers to cache...");
         notificationsProducer.generateNotifications();
