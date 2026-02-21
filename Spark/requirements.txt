@@ -1,0 +1,4 @@
+psycopg2
+pyspark
+pyspark==3.5.1
+pymongo==4.3.3
