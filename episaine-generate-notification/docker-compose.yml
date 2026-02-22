@@ -1,0 +1,34 @@
+services:
+  episaine-generate-notification:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: episaine-generate-notification
+    restart: unless-stopped
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: master
+      SPRING_DATASOURCE_URL: jdbc:postgresql://192.168.248.170:5433/episaine
+      SPRING_DATASOURCE_USERNAME: episaine
+      SPRING_DATASOURCE_PASSWORD: episaine
+      SPRING_DATA_REDIS_HOST: episaine-redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: 192.168.248.110:9092
+    depends_on:
+      - episaine-redis
+    networks:
+      - episaine-network
+
+  episaine-redis:
+    image: redis:latest
+    container_name: episaine-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - episaine-network
+
+networks:
+  episaine-network:
+    external: true

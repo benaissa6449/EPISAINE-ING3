@@ -1,0 +1,16 @@
+services:
+  episaine-cache-loader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: episaine-cache-loader
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: master
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5433/episaine
+      SPRING_DATASOURCE_USERNAME: episaine
+      SPRING_DATASOURCE_PASSWORD: episaine
+      SPRING_DATA_REDIS_HOST: 192.168.138.106
+      SPRING_DATA_REDIS_PORT: 6379
