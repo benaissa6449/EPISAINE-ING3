@@ -108,6 +108,11 @@ h2 {
   padding: 1rem 1.2rem;
 }
 
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .panel-meta {
   display: flex;
   gap: 0.8rem;
@@ -121,6 +126,84 @@ h2 {
   border-radius: 999px;
   padding: 0.35rem 0.7rem;
   font-size: 0.85rem;
+}
+
+.kpi-weekly {
+  margin: 0.6rem 0 1rem;
+  background: #fffef8;
+  border: 1px solid #eadfbf;
+  border-radius: 14px;
+  padding: 0.8rem 1rem;
+}
+
+.kpi-weekly h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  color: #7d5a1c;
+}
+
+.kpi-grid {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.kpi-grid span {
+  background: #fff;
+  border: 1px solid #ecd9aa;
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+.kpi-chart {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.kpi-chart-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 42px;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.kpi-chart-label {
+  font-size: 0.88rem;
+  color: #455b60;
+}
+
+.kpi-chart-track {
+  height: 12px;
+  background: #f2f3f3;
+  border: 1px solid #dde3e3;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.kpi-chart-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.kpi-chart-fill.connexions {
+  background: linear-gradient(90deg, #2fa66a, #4ec787);
+}
+
+.kpi-chart-fill.deconnexions {
+  background: linear-gradient(90deg, #d05c58, #e37f7b);
+}
+
+.kpi-chart-fill.navigations {
+  background: linear-gradient(90deg, #4377d8, #6498ef);
+}
+
+.kpi-chart-value {
+  font-size: 0.88rem;
+  color: #24363b;
+  font-weight: 700;
+  text-align: right;
 }
 
 .events-grid {
@@ -141,6 +224,44 @@ h2 {
   justify-content: space-between;
   gap: 1rem;
   font-size: 0.92rem;
+  align-items: center;
+}
+
+.event-badge {
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.event-badge.connexion {
+  background: #e7f7ef;
+  color: #12653b;
+  border-color: #bfe6d0;
+}
+
+.event-badge.deconnexion {
+  background: #fdeceb;
+  color: #8f2d2a;
+  border-color: #f3c1be;
+}
+
+.event-badge.navigation {
+  background: #eaf2ff;
+  color: #2f4d8a;
+  border-color: #c7d8f6;
+}
+
+.event-badge.profile {
+  background: #fff2df;
+  color: #9a5a00;
+  border-color: #f1d3a6;
+}
+
+.event-summary {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .event-card p {
