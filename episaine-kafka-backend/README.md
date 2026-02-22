@@ -3,7 +3,7 @@
 Service backend Spring Boot (Maven) qui consomme Kafka et pousse les events vers le front en SSE (Server-Sent Events).
 
 Configuration par defaut:
-- Broker Kafka: `192.168.248.110:9092`
+- Broker Kafka: `172.31.249.144:9092`
 - Topic: `customer-profile`
 
 ## API
