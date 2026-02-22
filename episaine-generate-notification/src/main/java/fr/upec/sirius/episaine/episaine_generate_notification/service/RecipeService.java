@@ -23,6 +23,12 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final CustomerRepository customerRepository;
 
+    /**
+     * Get a list of recipes suitable for the given customer, based on their profile and the recipes already sent to them.
+     * @param customerId the ID of the customer for whom to get recipes
+     * @param kafkaEvents the list of Kafka events representing previously sent recipes to customers
+     * @return a list of recipes that match the customer's profile and have not been sent to them before
+     */
     public List<Recipe> getRecipesForCustomer(int customerId, List<KafkaEventResponse> kafkaEvents) {
         List<Integer> alreadySentRecipeIds = kafkaEvents.stream()
                 .filter(event -> event.getCustomer_id() == customerId)
@@ -44,17 +50,13 @@ public class RecipeService {
         int minCal = (int) (caloriesPerMeal * 0.8);
         int maxCal = (int) (caloriesPerMeal * 1.2);
 
-        // Éviter une liste vide pour la clause NOT IN (problème SQL)
         List<Integer> excludedIds = alreadySentRecipeIds.isEmpty()
                 ? List.of(-1)
                 : alreadySentRecipeIds;
 
-        // Filtrage côté BD : calories, recettes déjà envoyées
         List<Recipe> dbRecipes = recipeRepository.findFilteredRecipes(
                 minCal, maxCal, excludedIds);
 
-        // Filtrage côté serveur : allergies et ingrédients non aimés (champ texte libre)
-        // Limiter au nombre de repas par jour (meals_per_day)
         int mealsPerDay = Math.max(customer.getMealsPerDay(), 1);
         List<Recipe> filteredRecipes = dbRecipes.stream()
                 .filter(recipe -> matchesIngredients(recipe, customer))
@@ -68,9 +70,10 @@ public class RecipeService {
     }
 
     /**
-     * Vérifie que les ingrédients de la recette ne contiennent pas d'allergènes
-     * ni d'ingrédients non aimés du customer.
-     * Ce filtrage reste côté serveur car le champ ingredients est du texte libre.
+     * Check if the recipe's ingredients match the customer's allergies and disliked ingredients.
+     * @param recipe the recipe to check
+     * @param customer the customer whose preferences to consider
+     * @return true if the recipe is suitable for the customer, false otherwise
      */
     private boolean matchesIngredients(Recipe recipe, Customer customer) {
         if (recipe.getIngredients() == null) {
@@ -103,7 +106,7 @@ public class RecipeService {
      * @return the target calories per meal
      */
     private int calculateCaloriesPerMeal(Customer customer) {
-        // 1. BMR (Mifflin-St Jeor)
+        // BMR (Mifflin-St Jeor)
         double bmr;
         if (customer.getGender() == CustomerGender.MALE) {
             bmr = 10 * customer.getWeight() + 6.25 * customer.getHeight() - 5 * customer.getAge() + 5;
