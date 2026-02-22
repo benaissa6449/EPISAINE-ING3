@@ -2,21 +2,96 @@ stages:
   - build
   - deploy
 
-build-job:
+build-cache-loader:
   stage: build
   tags: [episaine-cicd]
   only:
-    - dev
+    - main
   script:
-    - echo "Hello, $GITLAB_USER_LOGIN!"
-    - echo "Dummy job for now since nothing to build."
+    - echo "Building episaine-cache-loader..."
+    - docker build -t episaine-cache-loader:latest ./episaine-cache-loader
+    - echo "Build episaine-cache-loader done."
 
-deploy-job:
-  stage: deploy
+build-generate-notification:
+  stage: build
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Building episaine-generate-notification..."
+    - docker build -t episaine-generate-notification:latest ./episaine-generate-notification
+    - echo "Build episaine-generate-notification done."
+
+build-kafka-backend:
+  stage: main
   tags: [episaine-cicd]
   only:
     - dev
   script:
-    - echo "Deployment started..."
+    - echo "Building episaine-kafka-backend..."
+    - docker build -t episaine-kafka-backend:latest ./episaine-kafka-backend
+    - echo "Build episaine-kafka-backend done."
+
+build-static-front:
+  stage: build
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Building episaine-static-front..."
+    - docker build -t episaine-static-front:latest ./episaine-static-front
+    - echo "Build episaine-static-front done."
+
+deploy-etl:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Deploying ETL..."
     - bash scripts/deployment/deploy_etl.sh "$USER" "$Host_ETL"
-    - echo "Deployment finished."
+    - echo "ETL deployment finished."
+
+deploy-cache-loader:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  needs: [build-cache-loader]
+  script:
+    - echo "Deploying episaine-cache-loader..."
+    - bash scripts/deployment/deploy_cache_loader.sh "$USER" "$Host_CACHE_LOADER"
+    - echo "Cache loader deployment finished."
+
+deploy-generate-notification:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  needs: [build-generate-notification]
+  script:
+    - echo "Deploying episaine-generate-notification..."
+    - bash scripts/deployment/deploy_generate_notification.sh "$USER" "$Host_NOTIFICATION"
+    - echo "Notification deployment finished."
+
+deploy-kafka-backend:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  needs: [build-kafka-backend]
+  script:
+    - echo "Deploying episaine-kafka-backend..."
+    - bash scripts/deployment/deploy_kafka_backend.sh "$USER" "$Host_KAFKA_BACKEND"
+    - echo "Kafka backend deployment finished."
+
+deploy-static-front:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  needs: [build-static-front]
+  script:
+    - echo "Deploying episaine-static-front..."
+    - bash scripts/deployment/deploy_static_front.sh "$USER" "$Host_STATIC_FRONT"
+    - echo "Static front deployment finished."
