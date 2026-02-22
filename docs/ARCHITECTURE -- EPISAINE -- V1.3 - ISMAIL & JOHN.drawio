@@ -87,7 +87,7 @@
           <mxGeometry x="1293" y="-41.5" width="940" height="200" as="geometry" />
         </mxCell>
         <mxCell id="Im6sucGYlW9e4QdxW39l-334" value="VMs IPs" parent="0" />
-        <mxCell id="Im6sucGYlW9e4QdxW39l-335" value="&lt;b&gt;IP: TBD&lt;/b&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=#FF0000;" parent="Im6sucGYlW9e4QdxW39l-334" vertex="1">
+        <mxCell id="Im6sucGYlW9e4QdxW39l-335" value="&lt;b&gt;IP: 192.168.248.170&lt;/b&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=light-dark(#78fb4c, #089d00);" parent="Im6sucGYlW9e4QdxW39l-334" vertex="1">
           <mxGeometry x="80" y="880" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Im6sucGYlW9e4QdxW39l-338" value="&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;IP:&amp;nbsp;&lt;i style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&lt;font style=&quot;&quot;&gt;192.168.248.110&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=#1DFF00;" parent="Im6sucGYlW9e4QdxW39l-334" vertex="1">
