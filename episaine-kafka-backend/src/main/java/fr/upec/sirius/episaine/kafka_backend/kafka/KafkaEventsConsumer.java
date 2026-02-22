@@ -34,6 +34,13 @@ public class KafkaEventsConsumer {
     )
     public void onMessage(ConsumerRecord<String, String> record) {
         KafkaEventPayload payload = parsePayload(record.value());
+        String eventType = resolveEventType(payload);
+        String userId = resolveUserId(payload);
+        String route = resolveRoute(payload, record.topic());
+        String eventAt = payload != null && payload.event_at() != null ? payload.event_at() : Instant.now().toString();
+        String sessionStartedAt = payload != null ? payload.session_started_at() : null;
+        Integer sessionDurationSeconds = payload != null ? payload.session_duration_seconds() : null;
+
         KafkaEventEnvelope event = new KafkaEventEnvelope(
                 record.topic(),
                 record.partition(),
@@ -42,6 +49,12 @@ public class KafkaEventsConsumer {
                 record.value(),
                 payload != null ? payload.customer_id() : null,
                 payload != null ? payload.recipes_id() : null,
+                eventType,
+                userId,
+                route,
+                eventAt,
+                sessionStartedAt,
+                sessionDurationSeconds,
                 Instant.now()
         );
 
@@ -56,5 +69,29 @@ public class KafkaEventsConsumer {
             log.warn("Payload is not matching KafkaEventPayload schema, sending raw data only");
             return null;
         }
+    }
+
+    private String resolveEventType(KafkaEventPayload payload) {
+        if (payload != null && payload.event_type() != null && !payload.event_type().isBlank()) {
+            return payload.event_type();
+        }
+        return "profile";
+    }
+
+    private String resolveUserId(KafkaEventPayload payload) {
+        if (payload != null && payload.user_id() != null && !payload.user_id().isBlank()) {
+            return payload.user_id();
+        }
+        return null;
+    }
+
+    private String resolveRoute(KafkaEventPayload payload, String topic) {
+        if (payload != null && payload.route() != null && !payload.route().isBlank()) {
+            return payload.route();
+        }
+        if ("customer-profile".equals(topic)) {
+            return "/customer-profile";
+        }
+        return "/activity";
     }
 }
