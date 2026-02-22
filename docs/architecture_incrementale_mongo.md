@@ -54,3 +54,41 @@ Source:
 - Pas de perte d'historique.
 - Pas de reecriture complete des collections.
 - Pipeline robuste pour ajouts incrementaux.
+
+---
+
+## Ajout Architecture Front VM (Apache + Node)
+
+Pour le deploiement du front sur VM, la couche Web peut etre geree ainsi:
+
+```text
+Utilisateur navigateur
+        |
+        v
+   Apache2 (VM Front)
+        |
+        +--> sert le build React statique depuis /var/www/episaine-front
+        |
+        +--> (option) Node.js disponible sur la VM pour build/maintenance
+```
+
+### Dossier scripts ajoute
+
+```text
+scripts/
+  configuration/
+    front/
+      install_apache_node_front.sh
+      deploy_front_apache.sh
+      apache/
+        episaine-front.conf
+      node/
+        run_front_node.sh
+```
+
+### Usage rapide sur VM Front
+
+1. Installer Apache + Node:
+   `sudo ./scripts/configuration/front/install_apache_node_front.sh`
+2. Deployer le front via Apache:
+   `sudo ./scripts/configuration/front/deploy_front_apache.sh /chemin/vers/EPISAINE-ING3`
