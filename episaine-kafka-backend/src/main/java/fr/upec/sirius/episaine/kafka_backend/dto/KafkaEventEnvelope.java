@@ -11,6 +11,12 @@ public record KafkaEventEnvelope(
         String rawPayload,
         Integer customer_id,
         List<Integer> recipes_id,
+        String event_type,
+        String user_id,
+        String route,
+        String event_at,
+        String session_started_at,
+        Integer session_duration_seconds,
         Instant receivedAt
 ) {
 }
