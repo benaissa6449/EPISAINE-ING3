@@ -18,3 +18,19 @@ services:
       options:
         max-size: "20m"
         max-file: "5"
+
+  episaine-front:
+    build:
+      context: ../episaine-static-front
+      dockerfile: Dockerfile
+    container_name: episaine-static-front
+    restart: unless-stopped
+    depends_on:
+      - kafka-backend
+    ports:
+      - "3000:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "5"

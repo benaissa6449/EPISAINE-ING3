@@ -12,6 +12,8 @@ Configuration par defaut:
   Flux SSE temps reel.
 - `GET /api/events/latest?limit=20`  
   Derniers events en memoire.
+- `GET /api/events/page?page=0&size=12`  
+  Pagination des events (taille maximale 12).
 - `POST /api/events/publish`  
   Endpoint de test pour publier un message dans Kafka.
 
@@ -53,6 +55,7 @@ docker compose down
 
 ```bash
 curl -N http://localhost:8080/api/events/stream
+curl "http://localhost:8080/api/events/page?page=0&size=12"
 ```
 
 2. Publier un event:

@@ -1,6 +1,7 @@
 package fr.upec.sirius.episaine.kafka_backend.controller;
 
 import fr.upec.sirius.episaine.kafka_backend.dto.KafkaEventEnvelope;
+import fr.upec.sirius.episaine.kafka_backend.dto.KafkaEventPageResponse;
 import fr.upec.sirius.episaine.kafka_backend.dto.KafkaEventPayload;
 import fr.upec.sirius.episaine.kafka_backend.kafka.KafkaEventsProducer;
 import fr.upec.sirius.episaine.kafka_backend.service.KafkaEventStreamService;
@@ -37,9 +38,17 @@ public class KafkaEventsController {
 
     @GetMapping("/latest")
     public List<KafkaEventEnvelope> latest(
-            @RequestParam(defaultValue = "20") int limit
+            @RequestParam(defaultValue = "12") int limit
     ) {
         return kafkaEventStreamService.latest(limit);
+    }
+
+    @GetMapping("/page")
+    public KafkaEventPageResponse page(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "12") int size
+    ) {
+        return kafkaEventStreamService.pageFromLatest(page, size);
     }
 
     @PostMapping("/publish")
