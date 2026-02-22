@@ -60,7 +60,7 @@ deploy-cache-loader:
   needs: [build-cache-loader]
   script:
     - echo "Deploying episaine-cache-loader..."
-    - bash scripts/deployment/deploy_cache_loader.sh "$USER" "$Host_CACHE_LOADER"
+    - bash scripts/deployment/deploy_cache_loader.sh "$USER" "$Host_PSQL"
     - echo "Cache loader deployment finished."
 
 deploy-generate-notification:
@@ -82,7 +82,7 @@ deploy-kafka-backend:
   needs: [build-kafka-backend]
   script:
     - echo "Deploying episaine-kafka-backend..."
-    - bash scripts/deployment/deploy_kafka_backend.sh "$USER" "$Host_KAFKA_BACKEND"
+    - bash scripts/deployment/deploy_kafka_backend.sh "$USER" "$Host_NOTIFICATION"
     - echo "Kafka backend deployment finished."
 
 deploy-static-front:
