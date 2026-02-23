@@ -23,10 +23,10 @@ build-generate-notification:
     - echo "Build episaine-generate-notification done."
 
 build-kafka-backend:
-  stage: main
+  stage: build
   tags: [episaine-cicd]
   only:
-    - dev
+    - main
   script:
     - echo "Building episaine-kafka-backend..."
     - docker build -t episaine-kafka-backend:latest ./episaine-kafka-backend
