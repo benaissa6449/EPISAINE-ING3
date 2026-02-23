@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8">
   <diagram name="Page-1" id="jxDqqcnKOeUalNgkL89x">
-    <mxGraphModel dx="1426" dy="2010" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1678" dy="2158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="Im6sucGYlW9e4QdxW39l-134" value="Background" parent="0" />
@@ -31,7 +31,7 @@
         <mxCell id="5" value="&lt;b&gt;IP: 192.168.248.160&lt;/b&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=#1DFF00;" parent="Im6sucGYlW9e4QdxW39l-134" vertex="1">
           <mxGeometry x="1460" y="575" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="7" value="&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;IP:&amp;nbsp;&lt;i style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&lt;font style=&quot;&quot;&gt;192.168.248.105&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=#1DFF00;" parent="Im6sucGYlW9e4QdxW39l-134" vertex="1">
+        <mxCell id="7" value="&lt;font face=&quot;Helvetica&quot;&gt;&lt;b&gt;IP:&amp;nbsp;&lt;i style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;&lt;font style=&quot;&quot;&gt;192.168.248.106&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;&lt;/font&gt;" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;direction=west;fillColor=#1DFF00;" parent="Im6sucGYlW9e4QdxW39l-134" vertex="1">
           <mxGeometry x="430" y="880" width="340" height="30" as="geometry" />
         </mxCell>
         <mxCell id="1" value="VMs" parent="0" />
