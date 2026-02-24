@@ -20,14 +20,6 @@ type KafkaEventEnvelope = {
   receivedAt: string;
 };
 
-type KafkaEventPageResponse = {
-  page: number;
-  size: number;
-  totalItems: number;
-  totalPages: number;
-  items: KafkaEventEnvelope[];
-};
-
 type WeeklyKpiResponse = {
   week_start: string;
   week_end: string;
@@ -36,6 +28,8 @@ type WeeklyKpiResponse = {
   navigations: number;
   total_events: number;
 };
+
+type EventCategory = "connexion" | "deconnexion" | "navigation" | "profile";
 
 const PAGE_SIZE = 12;
 const POLL_INTERVAL_MS = 5000;
@@ -87,30 +81,30 @@ function LoggingView({ onBack }: { onBack: () => void }) {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(0);
-  const [payload, setPayload] = useState<KafkaEventPageResponse | null>(null);
+  const [allEvents, setAllEvents] = useState<KafkaEventEnvelope[]>([]);
   const [showTechnical, setShowTechnical] = useState<boolean>(false);
   const [weeklyKpi, setWeeklyKpi] = useState<WeeklyKpiResponse | null>(null);
   const [weeklyKpiLoading, setWeeklyKpiLoading] = useState<boolean>(false);
   const [weeklyKpiError, setWeeklyKpiError] = useState<string | null>(null);
+  const [searchText, setSearchText] = useState<string>("");
+  const [typeFilter, setTypeFilter] = useState<"all" | EventCategory>("all");
 
-  const fetchPage = useCallback(async () => {
+  const fetchAllEvents = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
-      const response = await fetch(
-        `${backendBaseUrl}/api/events/page?page=${page}&size=${PAGE_SIZE}`
-      );
+      const response = await fetch(`${backendBaseUrl}/api/events/latest?limit=5000`);
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
-      const data = (await response.json()) as KafkaEventPageResponse;
-      setPayload(data);
+      const data = (await response.json()) as KafkaEventEnvelope[];
+      setAllEvents([...data].reverse());
     } catch {
       setError("Impossible de recuperer les events Kafka.");
     } finally {
       setLoading(false);
     }
-  }, [backendBaseUrl, page]);
+  }, [backendBaseUrl]);
 
   const fetchWeeklyKpi = useCallback(async () => {
     try {
@@ -130,15 +124,15 @@ function LoggingView({ onBack }: { onBack: () => void }) {
   }, [backendBaseUrl]);
 
   useEffect(() => {
-    void fetchPage();
-  }, [fetchPage]);
+    void fetchAllEvents();
+  }, [fetchAllEvents]);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      void fetchPage();
+      void fetchAllEvents();
     }, POLL_INTERVAL_MS);
     return () => window.clearInterval(intervalId);
-  }, [fetchPage]);
+  }, [fetchAllEvents]);
 
   useEffect(() => {
     void fetchWeeklyKpi();
@@ -151,13 +145,42 @@ function LoggingView({ onBack }: { onBack: () => void }) {
     return () => window.clearInterval(intervalId);
   }, [fetchWeeklyKpi]);
 
-  const totalPages = payload?.totalPages ?? 0;
+  const totalItemsBeforeFilter = allEvents.length;
+  const items = useMemo(() => allEvents, [allEvents]);
+  const normalizedQuery = useMemo(() => normalizeText(searchText), [searchText]);
+  const filteredItems = useMemo(() => {
+    return items.filter((event) => {
+      const category = getEventCategory(event);
+      const typeMatches = typeFilter === "all" || category === typeFilter;
+      const userMatches =
+        normalizedQuery.length === 0 ||
+        normalizeText(formatUser(event.user_id)).includes(normalizedQuery);
+      return typeMatches && userMatches;
+    });
+  }, [items, normalizedQuery, typeFilter]);
+  const totalItems = filteredItems.length;
+  const totalPages = totalItems === 0 ? 0 : Math.ceil(totalItems / PAGE_SIZE);
+  const pageStart = page * PAGE_SIZE;
+  const pagedItems = useMemo(
+    () => filteredItems.slice(pageStart, pageStart + PAGE_SIZE),
+    [filteredItems, pageStart]
+  );
+
+  useEffect(() => {
+    setPage(0);
+  }, [searchText, typeFilter]);
+
+  useEffect(() => {
+    if (totalPages > 0 && page >= totalPages) {
+      setPage(totalPages - 1);
+    }
+  }, [page, totalPages]);
+
   const canPrev = page > 0;
   const canNext = totalPages > 0 && page < totalPages - 1;
-  const items = useMemo(() => payload?.items ?? [], [payload]);
 
   const stats = useMemo(() => {
-    return items.reduce(
+    return pagedItems.reduce(
       (acc, event) => {
         const category = getEventCategory(event);
         if (category === "connexion") acc.connexion += 1;
@@ -168,7 +191,7 @@ function LoggingView({ onBack }: { onBack: () => void }) {
       },
       { connexion: 0, deconnexion: 0, navigation: 0, profile: 0 }
     );
-  }, [items]);
+  }, [pagedItems]);
 
   return (
     <main className="panel">
@@ -181,7 +204,7 @@ function LoggingView({ onBack }: { onBack: () => void }) {
           <h2>Logging Monitoring</h2>
         </div>
         <div className="header-actions">
-          <button className="btn ghost" onClick={() => setPage(0)}>
+          <button className="btn ghost" onClick={() => { setPage(0); void fetchAllEvents(); }}>
             Rafraichir
           </button>
           <button className="btn ghost" onClick={() => void fetchWeeklyKpi()}>
@@ -198,11 +221,34 @@ function LoggingView({ onBack }: { onBack: () => void }) {
         <span>Refresh: {POLL_INTERVAL_MS / 1000}s</span>
         <span>Page: {page + 1}</span>
         <span>Total pages: {totalPages}</span>
-        <span>Total items: {payload?.totalItems ?? 0}</span>
+        <span>Total items filtres: {totalItems}</span>
+        <span>Total source: {totalItemsBeforeFilter}</span>
         <span>Connexions: {stats.connexion}</span>
         <span>Deconnexions: {stats.deconnexion}</span>
         <span>Navigations: {stats.navigation}</span>
         <span>Profils: {stats.profile}</span>
+      </section>
+
+      <section className="filters-panel">
+        <input
+          className="filters-input"
+          type="text"
+          placeholder="Rechercher par nom ou prenom (Qui)"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <select
+          className="filters-select"
+          value={typeFilter}
+          onChange={(e) => setTypeFilter(e.target.value as "all" | EventCategory)}
+        >
+          <option value="all">Tous les types</option>
+          <option value="connexion">Connexion</option>
+          <option value="deconnexion">Deconnexion</option>
+          <option value="navigation">Navigation</option>
+          <option value="profile">Profil client</option>
+        </select>
+        <span className="filters-count">Resultats: {filteredItems.length}</span>
       </section>
 
       {(weeklyKpiLoading || weeklyKpiError || weeklyKpi) && (
@@ -229,12 +275,12 @@ function LoggingView({ onBack }: { onBack: () => void }) {
       {loading && <p className="state">Chargement...</p>}
       {error && <p className="state error">{error}</p>}
 
-      {!loading && !error && (payload?.items.length ?? 0) === 0 && (
+      {!loading && !error && filteredItems.length === 0 && (
         <p className="state">Aucun event disponible pour cette page.</p>
       )}
 
       <section className="events-grid">
-        {items.map((event) => {
+        {pagedItems.map((event) => {
           const category = getEventCategory(event);
           const label = getEventLabel(category);
           return (
@@ -302,7 +348,7 @@ function RecipesView({ onBack }: { onBack: () => void }) {
   );
 }
 
-function getEventCategory(event: KafkaEventEnvelope): "connexion" | "deconnexion" | "navigation" | "profile" {
+function getEventCategory(event: KafkaEventEnvelope): EventCategory {
   if (event.event_type === "connexion") return "connexion";
   if (event.event_type === "deconnexion") return "deconnexion";
   if (event.event_type === "navigation") return "navigation";
@@ -355,6 +401,14 @@ function formatDuration(durationSeconds: number): string {
     return `${remainingSeconds}s`;
   }
   return `${minutes}m ${remainingSeconds}s`;
+}
+
+function normalizeText(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
 }
 
 function KpiBarChart({

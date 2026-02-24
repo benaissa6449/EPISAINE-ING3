@@ -94,8 +94,8 @@ def _validate(df):
         [
             F.col("BMI").between(12, 98),
             F.col("GenHlth").between(1, 5),
-            F.col("MentHlth").between(1, 30),
-            F.col("PhysHlth").between(1, 30),
+            F.col("MentHlth").between(0, 30),
+            F.col("PhysHlth").between(0, 30),
             F.col("Age").between(1, 13),
             F.col("Education").between(1, 6),
             F.col("Income").between(1, 8),

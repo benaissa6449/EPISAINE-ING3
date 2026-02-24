@@ -128,6 +128,41 @@ h2 {
   font-size: 0.85rem;
 }
 
+.filters-panel {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.6rem 0 1rem;
+}
+
+.filters-input,
+.filters-select {
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 0.7rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: #fff;
+}
+
+.filters-input:focus,
+.filters-select:focus {
+  outline: 2px solid #c5ded9;
+  border-color: #95bdb5;
+}
+
+.filters-count {
+  background: #eef3f2;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
 .kpi-weekly {
   margin: 0.6rem 0 1rem;
   background: #fffef8;
@@ -313,6 +348,10 @@ pre {
 
 @media (max-width: 768px) {
   .panel-header {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-panel {
     grid-template-columns: 1fr;
   }
 }
