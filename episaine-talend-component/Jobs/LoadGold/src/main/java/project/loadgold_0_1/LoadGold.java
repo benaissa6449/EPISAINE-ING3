@@ -577,6 +577,24 @@ private class TalendException extends Exception {
 					tDBConnection_1_onSubJobError(exception, errorComponent, globalMap);
 			}
 			
+			public void tDBRow_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBRow_1_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
+			public void tDBCommit_5_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+				
+				end_Hash.put(errorComponent, System.currentTimeMillis());
+				
+				status = "failure";
+				
+					tDBCommit_5_onSubJobError(exception, errorComponent, globalMap);
+			}
+			
 			public void tMongoDBInput_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 				
 				end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -873,6 +891,16 @@ resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThrea
 
 			}
 			public void tDBConnection_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tDBRow_1_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
+
+resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
+
+			}
+			public void tDBCommit_5_onSubJobError(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap) throws TalendException {
 
 resumeUtil.addLog("SYSTEM_LOG", "NODE:"+ errorComponent, "", Thread.currentThread().getId()+ "", "FATAL", "", exception.getMessage(), ResumeUtil.getExceptionStackTrace(exception),"");
 
@@ -1568,7 +1596,7 @@ end_Hash.put("tDBConnection_1", System.currentTimeMillis());
 				if(execStat){   
    	 				runStat.updateStatOnConnection("OnComponentOk4", 0, "ok");
 				}
-				tMongoDBInput_1Process(globalMap);
+				tDBRow_1Process(globalMap);
 
 
 
@@ -1626,6 +1654,446 @@ end_Hash.put("tDBConnection_1", System.currentTimeMillis());
 		
 
 		globalMap.put("tDBConnection_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+public void tDBRow_1Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBRow_1_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		
+
+
+	
+	/**
+	 * [tDBRow_1 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBRow_1", false);
+		start_Hash.put("tDBRow_1", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBRow_1";
+
+	
+		int tos_count_tDBRow_1 = 0;
+		
+
+	java.sql.Connection conn_tDBRow_1 = null;
+	String query_tDBRow_1 = "";
+	boolean whetherReject_tDBRow_1 = false;
+				conn_tDBRow_1 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+			
+        resourceMap.put("conn_tDBRow_1", conn_tDBRow_1);
+        java.sql.Statement stmt_tDBRow_1 = conn_tDBRow_1.createStatement();
+        resourceMap.put("stmt_tDBRow_1", stmt_tDBRow_1);
+
+
+ 
+
+
+
+/**
+ * [tDBRow_1 begin ] stop
+ */
+	
+	/**
+	 * [tDBRow_1 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBRow_1";
+
+	
+
+query_tDBRow_1 = "TRUNCATE TABLE " + context.postgresql_schema + "." + context.postgresql_table_meals + " RESTART IDENTITY CASCADE";;
+whetherReject_tDBRow_1 = false;
+globalMap.put("tDBRow_1_QUERY",query_tDBRow_1);
+try {
+		stmt_tDBRow_1.execute(query_tDBRow_1);
+		
+	} catch (java.lang.Exception e) {
+		whetherReject_tDBRow_1 = true;
+		
+				System.err.print(e.getMessage());
+				globalMap.put("tDBRow_1_ERROR_MESSAGE", e.getMessage());
+				
+	}
+	
+	if(!whetherReject_tDBRow_1) {
+		
+	}
+	
+
+ 
+
+
+	tos_count_tDBRow_1++;
+
+/**
+ * [tDBRow_1 main ] stop
+ */
+	
+	/**
+	 * [tDBRow_1 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBRow_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBRow_1 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tDBRow_1 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBRow_1";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBRow_1 process_data_end ] stop
+ */
+	
+	/**
+	 * [tDBRow_1 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBRow_1";
+
+	
+
+	
+        stmt_tDBRow_1.close();
+        resourceMap.remove("stmt_tDBRow_1");
+    resourceMap.put("statementClosed_tDBRow_1", true);
+    resourceMap.put("finish_tDBRow_1", true);
+ 
+
+ok_Hash.put("tDBRow_1", true);
+end_Hash.put("tDBRow_1", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk19", 0, "ok");
+				}
+				tDBCommit_5Process(globalMap);
+
+
+
+/**
+ * [tDBRow_1 end ] stop
+ */
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tDBRow_1 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBRow_1";
+
+	
+
+    if (resourceMap.get("statementClosed_tDBRow_1") == null) {
+            java.sql.Statement stmtToClose_tDBRow_1 = null;
+            if ((stmtToClose_tDBRow_1 = (java.sql.Statement) resourceMap.remove("stmt_tDBRow_1")) != null) {
+                stmtToClose_tDBRow_1.close();
+            }
+    }
+ 
+
+
+
+/**
+ * [tDBRow_1 finally ] stop
+ */
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tDBRow_1_SUBPROCESS_STATE", 1);
+	}
+	
+
+public void tDBCommit_5Process(final java.util.Map<String, Object> globalMap) throws TalendException {
+	globalMap.put("tDBCommit_5_SUBPROCESS_STATE", 0);
+
+ final boolean execStat = this.execStat;
+	
+		String iterateId = "";
+	
+	
+	String currentComponent = "";
+	java.util.Map<String, Object> resourceMap = new java.util.HashMap<String, Object>();
+
+	try {
+			// TDI-39566 avoid throwing an useless Exception
+			boolean resumeIt = true;
+			if (globalResumeTicket == false && resumeEntryMethodName != null) {
+				String currentMethodName = new java.lang.Exception().getStackTrace()[0].getMethodName();
+				resumeIt = resumeEntryMethodName.equals(currentMethodName);
+			}
+			if (resumeIt || globalResumeTicket) { //start the resume
+				globalResumeTicket = true;
+
+
+
+		
+
+
+	
+	/**
+	 * [tDBCommit_5 begin ] start
+	 */
+
+	
+
+	
+		
+		ok_Hash.put("tDBCommit_5", false);
+		start_Hash.put("tDBCommit_5", System.currentTimeMillis());
+		
+	
+	currentComponent="tDBCommit_5";
+
+	
+		int tos_count_tDBCommit_5 = 0;
+		
+
+ 
+
+
+
+/**
+ * [tDBCommit_5 begin ] stop
+ */
+	
+	/**
+	 * [tDBCommit_5 main ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_5";
+
+	
+
+	java.sql.Connection conn_tDBCommit_5 = (java.sql.Connection)globalMap.get("conn_tDBConnection_1");
+	if(conn_tDBCommit_5 != null && !conn_tDBCommit_5.isClosed())
+	{
+	
+			
+			conn_tDBCommit_5.commit();
+			
+	
+	}
+
+ 
+
+
+	tos_count_tDBCommit_5++;
+
+/**
+ * [tDBCommit_5 main ] stop
+ */
+	
+	/**
+	 * [tDBCommit_5 process_data_begin ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_5";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_5 process_data_begin ] stop
+ */
+	
+	/**
+	 * [tDBCommit_5 process_data_end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_5";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_5 process_data_end ] stop
+ */
+	
+	/**
+	 * [tDBCommit_5 end ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_5";
+
+	
+
+ 
+
+ok_Hash.put("tDBCommit_5", true);
+end_Hash.put("tDBCommit_5", System.currentTimeMillis());
+
+				if(execStat){   
+   	 				runStat.updateStatOnConnection("OnComponentOk20", 0, "ok");
+				}
+				tMongoDBInput_1Process(globalMap);
+
+
+
+/**
+ * [tDBCommit_5 end ] stop
+ */
+				}//end the resume
+
+				
+
+
+
+	
+			}catch(java.lang.Exception e){	
+				
+				TalendException te = new TalendException(e, currentComponent, globalMap);
+				
+				throw te;
+			}catch(java.lang.Error error){	
+				
+					runStat.stopThreadStat();
+				
+				throw error;
+			}finally{
+				
+				try{
+					
+	
+	/**
+	 * [tDBCommit_5 finally ] start
+	 */
+
+	
+
+	
+	
+	currentComponent="tDBCommit_5";
+
+	
+
+ 
+
+
+
+/**
+ * [tDBCommit_5 finally ] stop
+ */
+				}catch(java.lang.Exception e){	
+					//ignore
+				}catch(java.lang.Error error){
+					//ignore
+				}
+				resourceMap = null;
+			}
+		
+
+		globalMap.put("tDBCommit_5_SUBPROCESS_STATE", 1);
 	}
 	
 
@@ -10074,15 +10542,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row13", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row11", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("OnRowsEnd", 3, 0);
+	       				runStat.updateStatOnConnection("row14", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -10090,7 +10550,23 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row14", 3, 0);
+	       				runStat.updateStatOnConnection("out6", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("OnRowsEnd", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("OnComponentOk18", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row12", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row13", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -10102,15 +10578,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row12", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("OnComponentOk18", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("out6", 3, 0);
+	       				runStat.updateStatOnConnection("row11", 3, 0);
 					}           			
 				
 				if(execStat){
@@ -10288,11 +10756,7 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 	    private int hashCode = DEFAULT_HASHCODE;
 	    public boolean hashCodeDirty = true;
 
-    				Integer id;
-    				String strMeal;
-    				String strCategory;
-    				String strInstructions;
-    				String area_id;StringBuilder ingredients_list = new StringBuilder();
+    				Integer id;StringBuilder ingredients_list = new StringBuilder();
            			boolean ingredients_list_firstEmpty = false;
            			
         
@@ -10303,14 +10767,6 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 				int result = DEFAULT_HASHCODE;
 		
 							result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
-							
-							result = prime * result + ((this.strMeal == null) ? 0 : this.strMeal.hashCode());
-							
-							result = prime * result + ((this.strCategory == null) ? 0 : this.strCategory.hashCode());
-							
-							result = prime * result + ((this.strInstructions == null) ? 0 : this.strInstructions.hashCode());
-							
-							result = prime * result + ((this.area_id == null) ? 0 : this.area_id.hashCode());
 							
 	    		this.hashCode = result;
 	    		this.hashCodeDirty = false;		
@@ -10329,30 +10785,6 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 								if (other.id != null) 
 									return false;
 							} else if (!this.id.equals(other.id)) 
-								return false;
-						
-							if (this.strMeal == null) {
-								if (other.strMeal != null) 
-									return false;
-							} else if (!this.strMeal.equals(other.strMeal)) 
-								return false;
-						
-							if (this.strCategory == null) {
-								if (other.strCategory != null) 
-									return false;
-							} else if (!this.strCategory.equals(other.strCategory)) 
-								return false;
-						
-							if (this.strInstructions == null) {
-								if (other.strInstructions != null) 
-									return false;
-							} else if (!this.strInstructions.equals(other.strInstructions)) 
-								return false;
-						
-							if (this.area_id == null) {
-								if (other.area_id != null) 
-									return false;
-							} else if (!this.area_id.equals(other.area_id)) 
 								return false;
 						
 			
@@ -11482,10 +11914,6 @@ if (out6.ingredients != null && !out6.ingredients.isEmpty()) {
 					
 	
 operation_finder_tAggregateRow_1.id = row3.id;
-			operation_finder_tAggregateRow_1.strMeal = row3.strMeal;
-			operation_finder_tAggregateRow_1.strCategory = row3.strCategory;
-			operation_finder_tAggregateRow_1.strInstructions = row3.strInstructions;
-			operation_finder_tAggregateRow_1.area_id = row3.area_id;
 			
 
 	operation_finder_tAggregateRow_1.hashCodeDirty = true;
@@ -11499,10 +11927,6 @@ operation_finder_tAggregateRow_1.id = row3.id;
 		operation_result_tAggregateRow_1 = new AggOperationStruct_tAggregateRow_1();
 
 		operation_result_tAggregateRow_1.id = operation_finder_tAggregateRow_1.id;
-				operation_result_tAggregateRow_1.strMeal = operation_finder_tAggregateRow_1.strMeal;
-				operation_result_tAggregateRow_1.strCategory = operation_finder_tAggregateRow_1.strCategory;
-				operation_result_tAggregateRow_1.strInstructions = operation_finder_tAggregateRow_1.strInstructions;
-				operation_result_tAggregateRow_1.area_id = operation_finder_tAggregateRow_1.area_id;
 				
 		
 		
@@ -12031,36 +12455,6 @@ String dbUser_tDBOutput_2 = null;
    int batchSizeCounter_tDBOutput_2=0;
 
 int count_tDBOutput_2=0;
-                                java.sql.DatabaseMetaData dbMetaData_tDBOutput_2 = conn_tDBOutput_2.getMetaData();
-                                boolean whetherExist_tDBOutput_2 = false;
-                                try (java.sql.ResultSet rsTable_tDBOutput_2 = dbMetaData_tDBOutput_2.getTables(null, null, null, new String[]{"TABLE"})) {
-                                    String defaultSchema_tDBOutput_2 = "public";
-                                    if(dbschema_tDBOutput_2 == null || dbschema_tDBOutput_2.trim().length() == 0) {
-                                        try(java.sql.Statement stmtSchema_tDBOutput_2 = conn_tDBOutput_2.createStatement();
-                                            java.sql.ResultSet rsSchema_tDBOutput_2 = stmtSchema_tDBOutput_2.executeQuery("select current_schema() ")) {
-                                            while(rsSchema_tDBOutput_2.next()){
-                                                defaultSchema_tDBOutput_2 = rsSchema_tDBOutput_2.getString("current_schema");
-                                            }
-                                        }
-                                    }
-                                    while(rsTable_tDBOutput_2.next()) {
-                                        String table_tDBOutput_2 = rsTable_tDBOutput_2.getString("TABLE_NAME");
-                                        String schema_tDBOutput_2 = rsTable_tDBOutput_2.getString("TABLE_SCHEM");
-                                        if(table_tDBOutput_2.equals((context.postgresql_table_meals))
-                                            && (schema_tDBOutput_2.equals(dbschema_tDBOutput_2) || ((dbschema_tDBOutput_2 ==null || dbschema_tDBOutput_2.trim().length() ==0) && defaultSchema_tDBOutput_2.equals(schema_tDBOutput_2)))) {
-                                            whetherExist_tDBOutput_2 = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if(whetherExist_tDBOutput_2) {
-                                    try (java.sql.Statement stmtDrop_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
-                                        stmtDrop_tDBOutput_2.execute("DROP TABLE \"" + tableName_tDBOutput_2 + "\"" );
-                                    }
-                                }
-                                try(java.sql.Statement stmtCreate_tDBOutput_2 = conn_tDBOutput_2.createStatement()) {
-                                    stmtCreate_tDBOutput_2.execute("CREATE TABLE \"" + tableName_tDBOutput_2 + "\"(\"id\" INT4 ,\"strMeal\" VARCHAR ,\"strCategory\" VARCHAR ,\"strInstructions\" VARCHAR ,\"area_id\" VARCHAR ,\"ingredients\" VARCHAR ,\"calories\" INT4 )");
-                                }
 	    String insert_tDBOutput_2 = "INSERT INTO \"" + tableName_tDBOutput_2 + "\" (\"id\",\"strMeal\",\"strCategory\",\"strInstructions\",\"area_id\",\"ingredients\",\"calories\") VALUES (?,?,?,?,?,?,?)";
 	    
 	    java.sql.PreparedStatement pstmt_tDBOutput_2 = conn_tDBOutput_2.prepareStatement(insert_tDBOutput_2);
@@ -12164,14 +12558,6 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 	
 
             				    row12.id = aggregated_row_tAggregateRow_1.id;
-            				    
-            				    row12.strMeal = aggregated_row_tAggregateRow_1.strMeal;
-            				    
-            				    row12.strCategory = aggregated_row_tAggregateRow_1.strCategory;
-            				    
-            				    row12.strInstructions = aggregated_row_tAggregateRow_1.strInstructions;
-            				    
-            				    row12.area_id = aggregated_row_tAggregateRow_1.area_id;
             				    
     								row12.ingredients = aggregated_row_tAggregateRow_1.ingredients_list.toString();
 	    						
@@ -16105,6 +16491,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     363080 characters generated by Talend Open Studio for Big Data 
- *     on the 24 février 2026, 17:35:44 CET
+ *     366066 characters generated by Talend Open Studio for Big Data 
+ *     on the 24 février 2026, 20:12:34 CET
  ************************************************************************************************/
