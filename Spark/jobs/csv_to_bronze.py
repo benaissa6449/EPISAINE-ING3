@@ -17,6 +17,7 @@ from pyspark.sql import functions as F
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from common.config import APP_NAME, BRONZE_COLLECTION, CSV_INPUT_PATH, MONGO_URI
+from common.schemas import DIABETES_COLUMNS
 from common.utils import build_spark
 
 
@@ -67,8 +68,27 @@ def main():
             spark.read.option("header", True)
             .option("inferSchema", True)
             .csv(csv_path)
-            .withColumn("ID", F.monotonically_increasing_id() + F.lit(1))
         )
+
+        # Normalize column names (trim + drop BOM on first header).
+        normalized_names = []
+        for c in df.columns:
+            normalized = c.strip().replace("\ufeff", "")
+            normalized_names.append((c, normalized))
+        for old_name, new_name in normalized_names:
+            if old_name != new_name:
+                df = df.withColumnRenamed(old_name, new_name)
+
+        required_input_columns = [c for c in DIABETES_COLUMNS if c != "ID"]
+        missing_columns = [c for c in required_input_columns if c not in df.columns]
+        if missing_columns:
+            raise ValueError(
+                f"CSV schema invalid. Missing required columns: {missing_columns}. "
+                f"Detected columns: {df.columns}"
+            )
+
+        # Rebuild technical ID to keep a stable pipeline contract.
+        df = df.withColumn("ID", F.monotonically_increasing_id() + F.lit(1))
 
         # Write DataFrame to MongoDB Bronze collection
         (
