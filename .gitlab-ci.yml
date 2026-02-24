@@ -52,6 +52,16 @@ deploy-etl:
     - bash scripts/deployment/deploy_etl.sh "$USER" "$Host_ETL"
     - echo "ETL deployment finished."
 
+deploy-spark:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Deploying Spark..."
+    - bash scripts/deployment/deploy_spark.sh "$USER" "$Host_ETL"
+    - echo "Spark deployment finished."
+
 deploy-cache-loader:
   stage: deploy
   tags: [episaine-cicd]
