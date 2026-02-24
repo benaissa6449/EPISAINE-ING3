@@ -105,3 +105,13 @@ deploy-static-front:
     - echo "Deploying episaine-static-front..."
     - bash scripts/deployment/deploy_static_front.sh "$USER" "$Host_STATIC_FRONT"
     - echo "Static front deployment finished."
+
+deploy-kafka-mock:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Deploying kafka-mock..."
+    - bash scripts/deployment/deploy_kafka_mock.sh "$USER" "$Host_KAFKA"
+    - echo "Kafka mock deployment finished."
