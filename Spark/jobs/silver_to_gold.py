@@ -1,111 +1,139 @@
 """
 silver_to_gold.py
 
-ETL job for aggregating Silver data and storing results in PostgreSQL.
-This script reads the Silver collection from MongoDB, performs group-by aggregations,
-and writes the results to the gold.clients table in PostgreSQL.
-
-Author: Ismail Benaissa
-Date: 2026-02-21
+ETL job for copying Silver data into PostgreSQL Gold table.
+This script reads the Silver collection from MongoDB and writes the same
+records into gold.silver_snapshot in PostgreSQL for BI consumption.
 """
 
 import os
 import sys
-from pyspark.sql import functions as F
+from urllib.parse import urlparse
 
-# Add project root to sys.path for imports
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-# Import project configuration and utilities
-from common.config import APP_NAME, GOLD_COLLECTION, MONGO_URI, SILVER_COLLECTION
+from common.config import APP_NAME, MONGO_URI, SILVER_COLLECTION
+from common.schemas import DIABETES_COLUMNS
 from common.utils import build_spark
 
-def main():
-    """
-    Main ETL function:
-    - Reads Silver data from MongoDB
-    - Aggregates by Sex and Diabetes_binary
-    - Stores results in PostgreSQL gold.clients table
-    """
-    import psycopg2
-    from pyspark.sql import DataFrame
 
-    # Initialize Spark session
+def _pg_conn_params():
+    postgres_uri = os.getenv("POSTGRES_URI")
+    if postgres_uri:
+        parsed = urlparse(postgres_uri)
+        return {
+            "host": parsed.hostname,
+            "port": parsed.port or 5432,
+            "dbname": parsed.path.lstrip("/") or "episaine",
+            "user": parsed.username,
+            "password": parsed.password,
+        }
+
+    # Fallback compatible with previous project setup.
+    return {
+        "host": "192.168.248.170",
+        "port": 5432,
+        "dbname": "episaine",
+        "user": "episaine",
+        "password": "episaine",
+    }
+
+
+def main():
+    import psycopg2
+    from psycopg2.extras import execute_values
+
     spark = build_spark(f"{APP_NAME}-silver-to-gold", MONGO_URI)
     try:
-        # Read Silver collection from MongoDB
         silver = spark.read.format("mongodb").option("collection", SILVER_COLLECTION).load()
+        silver = silver.select(*[c for c in DIABETES_COLUMNS if c in silver.columns])
 
-        # Group and aggregate data by Sex and Diabetes_binary
-        # Calculate population count and averages for BMI, MentHlth, PhysHlth
-        gold = (
-            silver.groupBy("Sex", "Diabetes_binary")
-            .agg(
-                F.count("*").alias("population"),
-                F.avg("BMI").alias("avg_bmi"),
-                F.avg("MentHlth").alias("avg_mental_days"),
-                F.avg("PhysHlth").alias("avg_physical_days"),
-            )
-            .withColumn("avg_bmi", F.round("avg_bmi", 2))
-            .withColumn("avg_mental_days", F.round("avg_mental_days", 2))
-            .withColumn("avg_physical_days", F.round("avg_physical_days", 2))
-        )
-
-        # Connect to PostgreSQL database
-        conn = psycopg2.connect(
-            host="192.168.248.170",
-            port=5432,
-            dbname="episaine",
-            user="episaine",
-            password="episaine"
-        )
+        conn = psycopg2.connect(**_pg_conn_params())
         cur = conn.cursor()
+        try:
+            cur.execute("CREATE SCHEMA IF NOT EXISTS gold;")
+            cur.execute(
+                """
+                CREATE TABLE IF NOT EXISTS gold.silver_snapshot (
+                    id INTEGER PRIMARY KEY,
+                    diabetes_binary TEXT,
+                    highbp TEXT,
+                    highchol TEXT,
+                    cholcheck TEXT,
+                    bmi INTEGER,
+                    smoker TEXT,
+                    stroke TEXT,
+                    heartdiseaseorattack TEXT,
+                    physactivity TEXT,
+                    fruits TEXT,
+                    veggies TEXT,
+                    hvyalcoholconsump TEXT,
+                    anyhealthcare TEXT,
+                    nodocbccost TEXT,
+                    genhlth TEXT,
+                    menthlth INTEGER,
+                    physhlth INTEGER,
+                    diffwalk TEXT,
+                    sex TEXT,
+                    age TEXT,
+                    education TEXT,
+                    income TEXT
+                );
+                """
+            )
+            cur.execute("TRUNCATE TABLE gold.silver_snapshot;")
 
-        # Create gold.clients table with aggregation columns if it does not exist
-        cur.execute("""
-            CREATE TABLE IF NOT EXISTS gold.clients (
-                id SERIAL PRIMARY KEY,
-                nom TEXT,
-                email TEXT,
-                date_inscription DATE,
-                population INTEGER,
-                avg_bmi FLOAT,
-                avg_mental_days FLOAT,
-                avg_physical_days FLOAT
-            );
-        """)
-        conn.commit()
-
-        def insert_clients(df: DataFrame):
-            """
-            Insert aggregated data into gold.clients table.
-            Args:
-                df (DataFrame): Aggregated Spark DataFrame
-            """
-            # Iterate over each row in the DataFrame and insert into PostgreSQL
-            for row in df.collect():
-                cur.execute(
-                    "INSERT INTO gold.clients (nom, email, date_inscription, population, avg_bmi, avg_mental_days, avg_physical_days) VALUES (%s, %s, %s, %s, %s, %s, %s)",
-                    (
-                        str(row.Sex),
-                        str(row.Diabetes_binary),
-                        None,
-                        int(row.population),
-                        float(row.avg_bmi),
-                        float(row.avg_mental_days),
-                        float(row.avg_physical_days)
-                    )
+            rows = (
+                (
+                    int(r["ID"]) if r["ID"] is not None else None,
+                    r["Diabetes_binary"],
+                    r["HighBP"],
+                    r["HighChol"],
+                    r["CholCheck"],
+                    int(r["BMI"]) if r["BMI"] is not None else None,
+                    r["Smoker"],
+                    r["Stroke"],
+                    r["HeartDiseaseorAttack"],
+                    r["PhysActivity"],
+                    r["Fruits"],
+                    r["Veggies"],
+                    r["HvyAlcoholConsump"],
+                    r["AnyHealthcare"],
+                    r["NoDocbcCost"],
+                    r["GenHlth"],
+                    int(r["MentHlth"]) if r["MentHlth"] is not None else None,
+                    int(r["PhysHlth"]) if r["PhysHlth"] is not None else None,
+                    r["DiffWalk"],
+                    r["Sex"],
+                    r["Age"],
+                    r["Education"],
+                    r["Income"],
                 )
-            conn.commit()
+                for r in silver.toLocalIterator()
+            )
 
-        # Insert data into PostgreSQL
-        insert_clients(gold)
-        cur.close()
-        conn.close()
-        print("Silver -> Gold finished. Target table: gold.clients (PostgreSQL)")
+            execute_values(
+                cur,
+                """
+                INSERT INTO gold.silver_snapshot (
+                    id, diabetes_binary, highbp, highchol, cholcheck, bmi, smoker, stroke,
+                    heartdiseaseorattack, physactivity, fruits, veggies, hvyalcoholconsump,
+                    anyhealthcare, nodocbccost, genhlth, menthlth, physhlth, diffwalk,
+                    sex, age, education, income
+                ) VALUES %s
+                """,
+                rows,
+                page_size=5000,
+            )
+            conn.commit()
+        finally:
+            cur.close()
+            conn.close()
+
+        print("Silver -> Gold termine. Table cible: gold.silver_snapshot (PostgreSQL)")
     finally:
-        # Stop Spark session
         spark.stop()
+
 
 if __name__ == "__main__":
     main()

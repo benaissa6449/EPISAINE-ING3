@@ -4,7 +4,7 @@
     <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;" internalId="_aorhAP3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_aorhAf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_aorhAv3AEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_aorhA_3AEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_client" internalId="_aorhA_3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_nutrition" internalId="_aorhBP3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_aorhBf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_aosvIP3AEfCZb_I4jnsinA"/>
@@ -29,7 +29,7 @@
     <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;" internalId="_aosvMf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_aosvMv3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="admin" internalId="_aosvM_3AEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_aosvNP3AEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_client" internalId="_aosvNP3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_nutrition" internalId="_aosvNf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_aosvNv3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_aosvN_3AEfCZb_I4jnsinA"/>
@@ -54,7 +54,7 @@
     <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;C:/Users/john-/Desktop/SIRIUS/SIRIUS-ING3/episaine-talend-component/recipes_data.csv&quot;" internalId="_aosvSP3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_aosvSf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_authentificationDatabase" prompt="mongodb_authentificationDatabase?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine" internalId="_aosvSv3AEfCZb_I4jnsinA"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_aosvS_3AEfCZb_I4jnsinA"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_client" internalId="_aosvS_3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_nutrition" internalId="_aosvTP3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_bronze_tmdb" prompt="mongodb_collection_bronze_tmdb?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_tmdb" internalId="_aosvTf3AEfCZb_I4jnsinA"/>
     <contextParameter comment="" name="mongodb_collection_silver" prompt="mongodb_collection_silver?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_silver" internalId="_aosvTv3AEfCZb_I4jnsinA"/>
@@ -96,7 +96,7 @@
     <contextParameter comment="" name="letter" prompt="letter?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="a" internalId="_giM00QT1EfGFupJI3svJTw"/>
     <contextParameter comment="" name="postgresql_table_meals" prompt="postgresql_table_meals?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="meals" internalId="_giM00gT1EfGFupJI3svJTw"/>
     <contextParameter comment="" name="kaggle_dataset" prompt="kaggle_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/recipes_data.csv&quot;" internalId="_giM00wT1EfGFupJI3svJTw"/>
-    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_k" internalId="_giM01AT1EfGFupJI3svJTw"/>
+    <contextParameter comment="" name="mongodb_collection_bronze_k" prompt="mongodb_collection_bronze_k?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_client" internalId="_giM01AT1EfGFupJI3svJTw"/>
     <contextParameter comment="" name="mongodb_collection_bronze_nutritional" prompt="mongodb_collection_bronze_nutritional?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="episaine_bronze_nutrition" internalId="_giM01QT1EfGFupJI3svJTw"/>
     <contextParameter comment="" name="nutrition_dataset" prompt="nutrition_dataset?" promptNeeded="false" repositoryContextId="_RT7SIM-fEfCT24E9_qvxLA" type="id_String" value="&quot;/opt/data/USDA.csv&quot;" internalId="_giM01gT1EfGFupJI3svJTw"/>
   </context>
@@ -707,3 +707,4 @@
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>
   </subjob>
 </talendfile:ProcessType>
+
