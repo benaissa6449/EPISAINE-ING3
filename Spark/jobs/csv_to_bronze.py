@@ -16,7 +16,7 @@ from pyspark.sql import functions as F
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from common.config import APP_NAME, BRONZE_COLLECTION, CSV_INPUT_PATH, MONGO_URI
+from common.config import APP_NAME, BATCH_ID, BRONZE_COLLECTION, CSV_INPUT_PATH, DELTA_MODE, MONGO_URI
 from common.schemas import DIABETES_COLUMNS
 from common.utils import build_spark
 
@@ -87,17 +87,34 @@ def main():
                 f"Detected columns: {df.columns}"
             )
 
-        # Rebuild technical ID to keep a stable pipeline contract.
-        df = df.withColumn("ID", F.monotonically_increasing_id() + F.lit(1))
+        if DELTA_MODE:
+            # Keep only the business payload to build deterministic technical metadata.
+            df = df.select(*required_input_columns)
+            hash_input = [F.coalesce(F.col(c).cast("string"), F.lit("")) for c in required_input_columns]
+            payload_hash = F.sha2(F.concat_ws("||", *hash_input), 256)
+
+            df = df.withColumn("source_key", payload_hash)
+            df = df.withColumn("row_hash", payload_hash)
+            df = df.withColumn("batch_id", F.lit(BATCH_ID if BATCH_ID else None).cast("string"))
+            df = df.withColumn("ingestion_ts", F.current_timestamp())
+            df = df.withColumn("ID", F.abs(F.xxhash64(F.col("source_key"))) + F.lit(1))
+            write_mode = "append"
+        else:
+            # Backward-compatible behavior.
+            df = df.withColumn("ID", F.monotonically_increasing_id() + F.lit(1))
+            write_mode = "overwrite"
 
         # Write DataFrame to MongoDB Bronze collection
         (
             df.write.format("mongodb")
-            .mode("overwrite")
+            .mode(write_mode)
             .option("collection", BRONZE_COLLECTION)
             .save()
         )
-        print(f"CSV -> Bronze finished. Target collection: {BRONZE_COLLECTION}")
+        print(
+            f"CSV -> Bronze finished. Target collection: {BRONZE_COLLECTION}. "
+            f"Mode: {'delta' if DELTA_MODE else 'full-refresh'}"
+        )
     finally:
         # Stop Spark session
         spark.stop()

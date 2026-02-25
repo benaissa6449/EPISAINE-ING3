@@ -12,3 +12,7 @@ SILVER_COLLECTION = os.getenv("SILVER_COLLECTION", "episaine_silver_client")
 GOLD_COLLECTION = os.getenv("GOLD_COLLECTION", "episaine_gold_client")
 
 CSV_INPUT_PATH = os.getenv("CSV_INPUT_PATH", "/home/episaine/data/uci/cdc_diabetes_253k.csv")
+
+# Delta mode is opt-in to avoid breaking current full-refresh behavior.
+DELTA_MODE = os.getenv("DELTA_MODE", "false").strip().lower() in {"1", "true", "yes", "on"}
+BATCH_ID = os.getenv("BATCH_ID", "")
