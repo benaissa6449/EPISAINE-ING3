@@ -115,3 +115,13 @@ deploy-kafka-mock:
     - echo "Deploying kafka-mock..."
     - bash scripts/deployment/deploy_kafka_mock.sh "$USER" "$Host_KAFKA"
     - echo "Kafka mock deployment finished."
+
+deploy-customers-mock:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Deploying customers-mock..."
+    - bash scripts/deployment/deploy_customers_mock.sh "$USER" "$Host_PSQL"
+    - echo "Customers mock deployment finished."
