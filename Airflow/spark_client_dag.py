@@ -1,6 +1,6 @@
 ﻿"""
 EPISAINE - DAG Spark Jobs Orchestration
-Pipeline : CSV -> Bronze -> Silver -> Gold
+Pipeline: CSV -> Bronze -> Silver -> Gold
 """
 
 from datetime import datetime, timedelta
@@ -9,36 +9,51 @@ from airflow import DAG
 from airflow.providers.ssh.hooks.ssh import SSHHook
 from airflow.providers.ssh.operators.ssh import SSHOperator
 
-
 SSH_CONN_ID = "ssh_spark_vm"
 SPARK_HOME = "/opt/spark/bin/spark-submit"
 SPARK_PACKAGES = "org.mongodb.spark:mongo-spark-connector_2.12:10.6.0"
 MONGO_URI = "mongodb://root:root@192.168.248.165:27017/episaine?authSource=admin"
+POSTGRES_URI = "postgresql://episaine:episaine@192.168.248.170:5432/episaine"
+
 SPARK_PROJECT_DIR = "~/Spark"
 CSV_TARGET = "/home/episaine/data/uci/cdc_diabetes_253k.csv"
 CSV_FALLBACK = "~/Spark/data/cdc_diabetes_253k.csv"
 
-# Ajout de la variable PostgreSQL
-POSTGRES_URI = "postgresql://episaine:episaine@192.168.248.170:5432/episaine"
+# Keep true for delta runs; set to "false" for legacy full-refresh mode
+DELTA_MODE = "true"
+JOB_HEARTBEAT_SECONDS = 60
 
 
 def spark_submit_command(job_script: str) -> str:
-    # Toutes les tâches reçoivent MONGO_URI/POSTGRES_URI + conf Spark réseau
+    """
+    Run spark-submit in background and print heartbeat every 60s
+    so SSHOperator does not look silent for too long.
+    """
     return (
         "bash -lc '"
-        "set -uo pipefail && "
-        f"cd {SPARK_PROJECT_DIR} && "
-        f"test -f jobs/{job_script} && "
+        "set -u -o pipefail; "
+        f"cd {SPARK_PROJECT_DIR}; "
+        f"test -f jobs/{job_script}; "
+        f"LOG_FILE=/tmp/{job_script}.log; "
+        "rm -f \"$LOG_FILE\"; "
         "SPARK_MASTER=\"local[*]\" "
         "SPARK_NETWORK_TIMEOUT=\"600s\" "
         "SPARK_HEARTBEAT_INTERVAL=\"60s\" "
         "SPARK_LOG_LEVEL=\"ERROR\" "
-        f"MONGO_URI=\"{MONGO_URI}\" POSTGRES_URI=\"{POSTGRES_URI}\" "
+        f"DELTA_MODE=\"{DELTA_MODE}\" "
+        "BATCH_ID=\"{{ dag_run.run_id }}\" "
+        f"MONGO_URI=\"{MONGO_URI}\" "
+        f"POSTGRES_URI=\"{POSTGRES_URI}\" "
         f"{SPARK_HOME} --packages {SPARK_PACKAGES} jobs/{job_script} "
-        f"> /tmp/{job_script}.log 2>&1; "
-        "rc=$?; "
-        f"tail -n 200 /tmp/{job_script}.log; "
-        "exit $rc"
+        "> \"$LOG_FILE\" 2>&1 & "
+        "PID=$!; "
+        "while kill -0 \"$PID\" 2>/dev/null; do "
+        "echo \"[heartbeat] $(date -u +%FT%TZ) spark job running (pid=$PID)\"; "
+        f"sleep {JOB_HEARTBEAT_SECONDS}; "
+        "done; "
+        "wait \"$PID\"; RC=$?; "
+        "tail -n 200 \"$LOG_FILE\"; "
+        "exit \"$RC\""
         "'"
     )
 
@@ -54,7 +69,6 @@ ssh_hook = SSHHook(
     conn_timeout=30,
     keepalive_interval=30,
 )
-
 
 with DAG(
     dag_id="spark_client",
@@ -88,7 +102,7 @@ with DAG(
         task_id="csv_to_bronze",
         ssh_hook=ssh_hook,
         command=spark_submit_command("csv_to_bronze.py"),
-        cmd_timeout=3600,
+        cmd_timeout=10800,
         get_pty=True,
     )
 
@@ -96,7 +110,7 @@ with DAG(
         task_id="bronze_to_silver",
         ssh_hook=ssh_hook,
         command=spark_submit_command("bronze_to_silver.py"),
-        cmd_timeout=3600,
+        cmd_timeout=10800,
         get_pty=True,
     )
 
@@ -104,8 +118,9 @@ with DAG(
         task_id="silver_to_gold",
         ssh_hook=ssh_hook,
         command=spark_submit_command("silver_to_gold.py"),
-        cmd_timeout=3600,
+        cmd_timeout=10800,
         get_pty=True,
     )
 
     extract_and_copy_csv >> csv_to_bronze >> bronze_to_silver >> silver_to_gold
+    
