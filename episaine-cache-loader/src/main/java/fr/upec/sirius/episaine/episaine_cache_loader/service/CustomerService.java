@@ -1,5 +1,7 @@
 package fr.upec.sirius.episaine.episaine_cache_loader.service;
 
+import java.util.Set;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +29,11 @@ public class CustomerService {
     }
 
     public void clearCache() {
-        redisTemplate.delete(ACTIVE_CUSTOMERS_KEY);
+        Set<String> keys = redisTemplate.keys(ACTIVE_CUSTOMERS_KEY + ":*");
+        if (keys != null && !keys.isEmpty()) {
+            redisTemplate.delete(keys);
+            System.out.println("Cleared " + keys.size() + " keys from Redis cache.");
+        }
     }
 
     public void loadCustomersToCache() {
