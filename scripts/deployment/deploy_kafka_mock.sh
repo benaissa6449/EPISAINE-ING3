@@ -19,6 +19,6 @@ ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   . .venv/bin/activate
   pip install -r requirements.txt
   echo "Starting kafka mock..."
-  KAFKA_BOOTSTRAP_SERVERS=localhost:9092 KAFKA_TOPIC=customer-profile RATE_PER_SEC=30 nohup python app.py > kafka-mock.log 2>&1 &
+  KAFKA_BOOTSTRAP_SERVERS=localhost:9092 KAFKA_TOPIC=customer-profile RATE_PER_SEC=0.0333 nohup python app.py > kafka-mock.log 2>&1 &
   echo "Kafka mock started (PID: \$!)"
 EOF
