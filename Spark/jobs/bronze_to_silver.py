@@ -7,7 +7,7 @@ from pyspark.sql.window import Window
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from common.config import APP_NAME, BRONZE_COLLECTION, MONGO_URI, SILVER_COLLECTION
+from common.config import APP_NAME, BATCH_ID, BRONZE_COLLECTION, DELTA_MODE, MONGO_URI, SILVER_COLLECTION
 from common.schemas import BINARY_COLUMNS, DIABETES_COLUMN_TYPES, DIABETES_COLUMNS
 from common.utils import build_spark
 
@@ -119,6 +119,36 @@ def _map_coded_columns_to_labels(df):
     return df
 
 
+def _ensure_delta_metadata(df):
+    payload_columns = [c for c in DIABETES_COLUMNS if c != "ID" and c in df.columns]
+    payload_expr = F.concat_ws(
+        "||",
+        *[F.coalesce(F.col(c).cast("string"), F.lit("")) for c in payload_columns],
+    )
+
+    if "source_key" in df.columns:
+        df = df.withColumn("source_key", F.coalesce(F.col("source_key").cast("string"), F.sha2(payload_expr, 256)))
+    else:
+        df = df.withColumn("source_key", F.sha2(payload_expr, 256))
+
+    if "row_hash" in df.columns:
+        df = df.withColumn("row_hash", F.coalesce(F.col("row_hash").cast("string"), F.sha2(payload_expr, 256)))
+    else:
+        df = df.withColumn("row_hash", F.sha2(payload_expr, 256))
+
+    if "batch_id" in df.columns:
+        df = df.withColumn("batch_id", F.coalesce(F.col("batch_id").cast("string"), F.lit(BATCH_ID if BATCH_ID else None)))
+    else:
+        df = df.withColumn("batch_id", F.lit(BATCH_ID if BATCH_ID else None).cast("string"))
+
+    if "ingestion_ts" in df.columns:
+        df = df.withColumn("ingestion_ts", F.coalesce(F.col("ingestion_ts"), F.current_timestamp()))
+    else:
+        df = df.withColumn("ingestion_ts", F.current_timestamp())
+
+    return df
+
+
 def main():
     spark = build_spark(APP_NAME, MONGO_URI)
     try:
@@ -131,20 +161,68 @@ def main():
         if missing_columns:
             raise ValueError(f"Missing required columns in bronze data: {missing_columns}")
 
-        silver = silver.select(*DIABETES_COLUMNS)
-        silver = silver.dropna(subset=DIABETES_COLUMNS)
-        silver = _validate(silver)
-        silver = _map_coded_columns_to_labels(silver)
-        silver = silver.dropDuplicates(["ID"])
+        if DELTA_MODE:
+            technical_columns = [c for c in ["source_key", "row_hash", "batch_id", "ingestion_ts"] if c in silver.columns]
+            silver = silver.select(*(DIABETES_COLUMNS + technical_columns))
+            silver = silver.dropna(subset=DIABETES_COLUMNS)
+            silver = _validate(silver)
+            silver = _map_coded_columns_to_labels(silver)
+            incoming = _ensure_delta_metadata(silver).dropDuplicates(["source_key"])
+
+            target_columns = DIABETES_COLUMNS + ["source_key", "row_hash", "batch_id", "ingestion_ts"]
+            incoming = incoming.select(*target_columns)
+
+            try:
+                existing = spark.read.format("mongodb").option("collection", SILVER_COLLECTION).load()
+                existing = _ensure_delta_metadata(existing)
+                for col_name in target_columns:
+                    if col_name not in existing.columns:
+                        existing = existing.withColumn(col_name, F.lit(None))
+                existing = existing.select(*target_columns).dropDuplicates(["source_key"])
+
+                unchanged_keys = (
+                    existing.alias("e")
+                    .join(
+                        incoming.alias("i"),
+                        (F.col("e.source_key") == F.col("i.source_key"))
+                        & (F.col("e.row_hash") == F.col("i.row_hash")),
+                        "inner",
+                    )
+                    .select(F.col("e.source_key").alias("source_key"))
+                    .distinct()
+                )
+
+                existing_untouched = existing.join(incoming.select("source_key").distinct(), "source_key", "left_anti")
+                existing_unchanged = existing.join(unchanged_keys, "source_key", "inner")
+                incoming_changed_or_new = incoming.join(unchanged_keys, "source_key", "left_anti")
+
+                silver_out = (
+                    existing_untouched
+                    .unionByName(existing_unchanged)
+                    .unionByName(incoming_changed_or_new)
+                    .dropDuplicates(["source_key"])
+                )
+            except Exception:
+                # First run or legacy collection state: bootstrap from incoming dataset.
+                silver_out = incoming
+        else:
+            silver = silver.select(*DIABETES_COLUMNS)
+            silver = silver.dropna(subset=DIABETES_COLUMNS)
+            silver = _validate(silver)
+            silver = _map_coded_columns_to_labels(silver)
+            silver_out = silver.dropDuplicates(["ID"])
 
         (
-            silver.write.format("mongodb")
+            silver_out.write.format("mongodb")
             .mode("overwrite")
             .option("collection", SILVER_COLLECTION)
             .save()
         )
 
-        print(f"Bronze -> Silver termine. Collection cible: {SILVER_COLLECTION}")
+        print(
+            f"Bronze -> Silver termine. Collection cible: {SILVER_COLLECTION}. "
+            f"Mode: {'delta' if DELTA_MODE else 'full-refresh'}"
+        )
     finally:
         spark.stop()
 
