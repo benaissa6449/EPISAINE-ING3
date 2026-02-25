@@ -2,8 +2,8 @@ package fr.upec.sirius.episaine.episaine_cache_loader.mapper;
 
 import java.util.List;
 
+import fr.upec.sirius.episaine.episaine_cache_loader.data.model.Customer;
 import fr.upec.sirius.episaine.episaine_cache_loader.dto.CustomerNotificationDTO;
-import fr.upec.sirius.episaine.episaine_cache_loader.model.Customer;
 
 public class DatabaseToCacheMapper {
 
