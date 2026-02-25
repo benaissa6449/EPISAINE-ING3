@@ -14,6 +14,7 @@ rsync -av episaine-generate-notification/pom.xml ${DEPLOY_USER}@${DEPLOY_HOST}:$
 
 ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   cd ${DEPLOY_PATH}
-  docker compose down
+  docker compose down --rmi local
   docker compose up -d --build
+  docker image prune -f
 EOF

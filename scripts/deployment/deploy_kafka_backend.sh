@@ -16,6 +16,7 @@ rsync -av episaine-static-front/ ${DEPLOY_USER}@${DEPLOY_HOST}:/home/episaine/ep
 
 ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   cd ${DEPLOY_PATH}
-  docker compose down
+  docker compose down --rmi local
   docker compose up -d --build
+  docker image prune -f
 EOF

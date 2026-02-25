@@ -19,6 +19,7 @@ ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   chmod +x Jobs/LoadBronzeTMDB/LoadBronzeTMDB_run.sh
   chmod +x Jobs/LoadSilver/LoadSilver_run.sh
   chmod +x Jobs/LoadGold/LoadGold_run.sh
-  docker compose down
-  docker compose up -d
+  docker compose down --rmi local
+  docker compose up -d --build
+  docker image prune -f
 EOF
