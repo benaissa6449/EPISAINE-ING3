@@ -1,0 +1,12 @@
+services:
+  app:
+    build: ./app
+    container_name: episaine_mock_loader
+    network_mode: host
+    environment:
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_NAME: episaine
+      DB_USER: episaine
+      DB_PASSWORD: episaine
+    command: python customers_mock.py
