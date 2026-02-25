@@ -29,6 +29,10 @@ def main():
     conn = psycopg2.connect(**DB_CONFIG)
     cur = conn.cursor()
 
+    print("Truncating gold.customers...")
+    cur.execute("TRUNCATE TABLE gold.customers RESTART IDENTITY CASCADE")
+    conn.commit()
+
     cur.execute("""
         SELECT id, bmi, sex, age, smoker, diabetes_binary
         FROM gold.silver_snapshot
