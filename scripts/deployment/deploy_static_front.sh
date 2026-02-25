@@ -16,5 +16,9 @@ rsync -av episaine-static-front/src ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}
 
 ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   cd ${DEPLOY_PATH}
+  docker stop episaine-static-front || true
+  docker rm episaine-static-front || true
+  docker rmi episaine-static-front:latest || true
   docker build -t episaine-static-front:latest .
+  docker image prune -f
 EOF

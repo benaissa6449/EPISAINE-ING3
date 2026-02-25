@@ -1,6 +1,6 @@
 package fr.upec.sirius.episaine.episaine_cache_loader.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +13,9 @@ import lombok.AllArgsConstructor;
 public class CustomerController {
     private final CustomerService customerService;
 
-    @GetMapping
-    public void getCustomersToNotify() {
+    @PostMapping("/load-cache")
+    public String loadCustomersToCache() {
         customerService.loadCustomersToCache();
+        return "Cache loaded successfully";
     }
 }

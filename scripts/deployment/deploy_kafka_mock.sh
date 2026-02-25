@@ -14,6 +14,8 @@ rsync -av Mock/kafka-mock/Dockerfile ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH
 
 ssh ${DEPLOY_USER}@${DEPLOY_HOST} <<EOF
   cd ${DEPLOY_PATH}
+  echo "Stopping existing kafka-mock process..."
+  pkill -f "python.*app.py" || true
   chmod +x reset_topic_and_run_mock.sh
   python3 -m venv .venv
   . .venv/bin/activate
