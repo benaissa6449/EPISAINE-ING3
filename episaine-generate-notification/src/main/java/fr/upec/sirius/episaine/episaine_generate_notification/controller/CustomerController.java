@@ -3,6 +3,7 @@ package fr.upec.sirius.episaine.episaine_generate_notification.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,14 @@ public class CustomerController {
     public String generateNotifications() {
         notificationsProducer.generateNotifications();
         return "Notifications generated successfully";
+    }
+
+    @PostMapping("/generate/{customerId}")
+    public String forceNotification(@PathVariable int customerId) {
+        boolean sent = notificationsProducer.forceNotificationForCustomer(customerId);
+        return sent
+                ? "Notification forced for customer " + customerId
+                : "No matching recipes for customer " + customerId;
     }
     
 }

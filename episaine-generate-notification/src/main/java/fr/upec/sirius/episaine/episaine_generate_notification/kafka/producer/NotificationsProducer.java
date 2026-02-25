@@ -35,7 +35,6 @@ public class NotificationsProducer {
         List<Notification> cachedCustomers = redisNotificationRead.getNotificationStateFromCache();
         log.info("{} active customers retrieved from Redis", cachedCustomers.size());
 
-        // Consommer Kafka une seule fois pour tous les customers
         List<KafkaEventResponse> kafkaEvents = notificationsConsumer.consumeAll();
         log.info("{} kafka events retrieved", kafkaEvents.size());
 
@@ -62,6 +61,23 @@ public class NotificationsProducer {
         }
 
         log.info("Notifications generated: {}/{} customers", notified, cachedCustomers.size());
+    }
+
+    public boolean forceNotificationForCustomer(int customerId) {
+        List<KafkaEventResponse> kafkaEvents = notificationsConsumer.consumeAll();
+
+        List<Recipe> recipes = recipeService.getRecipesForCustomer(customerId, kafkaEvents);
+        if (recipes.isEmpty()) {
+            log.info("No matching recipes for customer {}, nothing to send", customerId);
+            return false;
+        }
+
+        KafkaEventResponse event = new KafkaEventResponse();
+        event.setCustomer_id(customerId);
+        event.setRecipes_id(recipes.stream().map(Recipe::getRecipe_id).toList());
+        sendNotification(event);
+        log.info("Forced notification for customer {} with {} recipes", customerId, recipes.size());
+        return true;
     }
 
     private void sendNotification(KafkaEventResponse event) {
