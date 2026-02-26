@@ -1,0 +1,15 @@
+services:
+  episaine-send-notification:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: episaine-send-notification
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: master
+      SPRING_DATASOURCE_URL: jdbc:postgresql://192.168.248.170:5432/episaine
+      SPRING_DATASOURCE_USERNAME: episaine
+      SPRING_DATASOURCE_PASSWORD: episaine
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: 192.168.248.110:9092
