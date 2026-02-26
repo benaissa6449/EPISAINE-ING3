@@ -1,0 +1,9 @@
+services:
+  episaine-static-front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: episaine-static-front
+    restart: unless-stopped
+    ports:
+      - "3000:80"
