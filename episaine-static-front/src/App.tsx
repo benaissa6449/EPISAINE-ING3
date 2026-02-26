@@ -31,6 +31,27 @@ type WeeklyKpiResponse = {
 
 type EventCategory = "connexion" | "deconnexion" | "navigation" | "profile";
 
+type InAppNotification = {
+  id: number;
+  customerId: number;
+  title: string;
+  message: string;
+  recipeIds: number[];
+  isRead: boolean;
+  createdAt: string;
+  expiresAt: string;
+};
+
+type Recipe = {
+  id: number;
+  mealName: string | null;
+  category: string | null;
+  calories: number | null;
+  ingredients: string | null;
+  instructions: string | null;
+  areaId: number | null;
+};
+
 const PAGE_SIZE = 12;
 const POLL_INTERVAL_MS = 5000;
 
@@ -329,6 +350,100 @@ function LoggingView({ onBack }: { onBack: () => void }) {
 }
 
 function RecipesView({ onBack }: { onBack: () => void }) {
+  const notificationBaseUrl = useMemo(
+    () =>
+      process.env.REACT_APP_NOTIFICATIONS_URL ??
+      process.env.REACT_APP_BACKEND_URL ??
+      "http://localhost:8083",
+    []
+  );
+
+  const [customerIdInput, setCustomerIdInput] = useState<string>("");
+  const [connectedCustomerId, setConnectedCustomerId] = useState<number | null>(null);
+  const [notifications, setNotifications] = useState<InAppNotification[]>([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchCustomerData = useCallback(async (customerId: number) => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const [notificationsResponse, recipesResponse] = await Promise.all([
+        fetch(`${notificationBaseUrl}/api/notifications/customer/${customerId}`),
+        fetch(`${notificationBaseUrl}/api/notifications/customer/${customerId}/recipes`),
+      ]);
+
+      if (!notificationsResponse.ok) {
+        throw new Error(`notifications HTTP ${notificationsResponse.status}`);
+      }
+      if (!recipesResponse.ok) {
+        throw new Error(`recipes HTTP ${recipesResponse.status}`);
+      }
+
+      const notificationsData = (await notificationsResponse.json()) as InAppNotification[];
+      const recipesData = (await recipesResponse.json()) as Recipe[];
+      setNotifications(notificationsData);
+      setRecipes(recipesData);
+    } catch {
+      setError("Impossible de charger les notifications de ce client.");
+    } finally {
+      setLoading(false);
+    }
+  }, [notificationBaseUrl]);
+
+  const connectCustomer = useCallback(async () => {
+    const parsed = Number(customerIdInput);
+    if (!Number.isInteger(parsed) || parsed <= 0) {
+      setError("Saisis un id client numerique valide.");
+      return;
+    }
+
+    setConnectedCustomerId(parsed);
+    await fetchCustomerData(parsed);
+  }, [customerIdInput, fetchCustomerData]);
+
+  const disconnectCustomer = useCallback(() => {
+    setConnectedCustomerId(null);
+    setCustomerIdInput("");
+    setNotifications([]);
+    setRecipes([]);
+    setError(null);
+  }, []);
+
+  const markAsRead = useCallback(async (notificationId: number) => {
+    if (connectedCustomerId === null) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${notificationBaseUrl}/api/notifications/${notificationId}/read`, {
+        method: "PUT",
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+      await fetchCustomerData(connectedCustomerId);
+    } catch {
+      setError("Impossible de mettre la notification en lu.");
+    }
+  }, [connectedCustomerId, fetchCustomerData, notificationBaseUrl]);
+
+  useEffect(() => {
+    if (connectedCustomerId === null) {
+      return;
+    }
+    const intervalId = window.setInterval(() => {
+      void fetchCustomerData(connectedCustomerId);
+    }, POLL_INTERVAL_MS);
+    return () => window.clearInterval(intervalId);
+  }, [connectedCustomerId, fetchCustomerData]);
+
+  const recipesById = useMemo(() => {
+    return new Map<number, Recipe>(recipes.map((recipe) => [recipe.id, recipe]));
+  }, [recipes]);
+
   return (
     <main className="panel">
       <header className="panel-header">
@@ -339,10 +454,125 @@ function RecipesView({ onBack }: { onBack: () => void }) {
           <p className="eyebrow">Recipes Space</p>
           <h2>Notifications Recipes</h2>
         </div>
-        <span />
+        <div className="header-actions">
+          {connectedCustomerId !== null && (
+            <button className="btn ghost" onClick={() => void fetchCustomerData(connectedCustomerId)}>
+              Rafraichir
+            </button>
+          )}
+        </div>
       </header>
-      <section className="placeholder">
-        <p>Section prete pour ta partie notifications recettes.</p>
+
+      <section className="customer-connect">
+        <label htmlFor="customer-id">ID client</label>
+        <input
+          id="customer-id"
+          className="filters-input"
+          type="number"
+          min={1}
+          placeholder="Ex: 42"
+          value={customerIdInput}
+          onChange={(e) => setCustomerIdInput(e.target.value)}
+        />
+        <button className="btn primary" onClick={() => void connectCustomer()}>
+          Se connecter
+        </button>
+        <button
+          className="btn secondary"
+          onClick={disconnectCustomer}
+          disabled={connectedCustomerId === null}
+        >
+          Deconnexion
+        </button>
+      </section>
+
+      {connectedCustomerId !== null && (
+        <section className="panel-meta">
+          <span>Client connecte: {connectedCustomerId}</span>
+          <span>Notifications: {notifications.length}</span>
+          <span>Recettes: {recipes.length}</span>
+          <span>Refresh: {POLL_INTERVAL_MS / 1000}s</span>
+        </section>
+      )}
+
+      {loading && <p className="state">Chargement...</p>}
+      {error && <p className="state error">{error}</p>}
+
+      {!loading && connectedCustomerId !== null && notifications.length === 0 && !error && (
+        <section className="placeholder">
+          <p>Aucune notification active pour ce client.</p>
+        </section>
+      )}
+
+      {connectedCustomerId !== null && notifications.length > 0 && (
+        <section className="recipes-notifications">
+          {notifications.map((notification) => (
+            <article className="event-card" key={notification.id}>
+              <div className="event-top">
+                <strong>{notification.title}</strong>
+                <span className={`event-badge ${notification.isRead ? "profile" : "navigation"}`}>
+                  {notification.isRead ? "Lu" : "Non lu"}
+                </span>
+              </div>
+              <p className="event-summary">{notification.message}</p>
+              <p><b>Creee le:</b> {new Date(notification.createdAt).toLocaleString()}</p>
+              <p><b>Expire le:</b> {new Date(notification.expiresAt).toLocaleString()}</p>
+              <div className="notification-actions">
+                {!notification.isRead && (
+                  <button className="btn secondary" onClick={() => void markAsRead(notification.id)}>
+                    Marquer comme lu
+                  </button>
+                )}
+              </div>
+              <div className="recipes-list">
+                {notification.recipeIds.map((recipeId) => {
+                  const recipe = recipesById.get(recipeId);
+                  if (!recipe) {
+                    return (
+                      <div className="recipe-chip" key={`${notification.id}-${recipeId}`}>
+                        Recette #{recipeId} (details indisponibles)
+                      </div>
+                    );
+                  }
+                  return (
+                    <div className="recipe-chip" key={`${notification.id}-${recipe.id}`}>
+                      <strong>{recipe.mealName ?? `Recette #${recipe.id}`}</strong>
+                      <span>{recipe.category ?? "Sans categorie"}</span>
+                      <span>{recipe.calories ?? "?"} kcal</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
+
+      {connectedCustomerId === null && (
+        <section className="placeholder">
+          <p>Entre un id client puis clique sur "Se connecter".</p>
+        </section>
+      )}
+
+      <section className="recipes-catalog">
+        <h3>Recettes completes recuperees</h3>
+        {recipes.length === 0 ? (
+          <p className="state">Aucune recette chargee.</p>
+        ) : (
+          <div className="events-grid">
+            {recipes.map((recipe) => (
+              <article className="event-card" key={recipe.id}>
+                <div className="event-top">
+                  <strong>{recipe.mealName ?? `Recette #${recipe.id}`}</strong>
+                  <span className="event-badge profile">{recipe.calories ?? "?"} kcal</span>
+                </div>
+                <p><b>Categorie:</b> {recipe.category ?? "N/A"}</p>
+                <p><b>Ingredients:</b> {recipe.ingredients ?? "N/A"}</p>
+                <p><b>Instructions:</b> {recipe.instructions ?? "N/A"}</p>
+              </article>
+            ))}
+          </div>
+        )}
       </section>
     </main>
   );

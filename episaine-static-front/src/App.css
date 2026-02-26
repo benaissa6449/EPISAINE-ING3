@@ -346,12 +346,70 @@ pre {
   padding: 1.2rem;
 }
 
+.customer-connect {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: auto minmax(140px, 240px) auto auto;
+  gap: 0.6rem;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.8rem;
+}
+
+.customer-connect label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.recipes-notifications {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.notification-actions {
+  margin-top: 0.6rem;
+}
+
+.recipes-list {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.recipe-chip {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid #d5e4e1;
+  background: #f5faf9;
+  border-radius: 10px;
+  padding: 0.45rem 0.55rem;
+  font-size: 0.85rem;
+  color: #2f4a4e;
+}
+
+.recipes-catalog {
+  margin-top: 1.2rem;
+}
+
+.recipes-catalog h3 {
+  margin: 0 0 0.8rem;
+}
+
 @media (max-width: 768px) {
   .panel-header {
     grid-template-columns: 1fr;
   }
 
   .filters-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-connect {
     grid-template-columns: 1fr;
   }
 }
