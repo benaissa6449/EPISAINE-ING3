@@ -5,5 +5,7 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./config/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+      - ./config/certs:/usr/local/etc/haproxy/certs:ro
