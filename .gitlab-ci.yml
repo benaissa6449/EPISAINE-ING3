@@ -42,6 +42,16 @@ build-static-front:
     - docker build -t episaine-static-front:latest ./episaine-static-front
     - echo "Build episaine-static-front done."
 
+build-send-notification:
+  stage: build
+  tags: [episaine-cicd]
+  only:
+    - main
+  script:
+    - echo "Building episaine-send-notification..."
+    - docker build -t episaine-send-notification:latest ./episaine-send-notification
+    - echo "Build episaine-send-notification done."
+
 deploy-etl:
   stage: deploy
   tags: [episaine-cicd]
@@ -83,6 +93,17 @@ deploy-generate-notification:
     - echo "Deploying episaine-generate-notification..."
     - bash scripts/deployment/deploy_generate_notification.sh "$USER" "$Host_NOTIFICATION"
     - echo "Notification deployment finished."
+
+deploy-send-notification:
+  stage: deploy
+  tags: [episaine-cicd]
+  only:
+    - main
+  needs: [build-send-notification]
+  script:
+    - echo "Deploying episaine-send-notification..."
+    - bash scripts/deployment/deploy_send_notification.sh "$USER" "$Host_NOTIFICATION"
+    - echo "Send notification deployment finished."
 
 deploy-kafka-backend:
   stage: deploy
