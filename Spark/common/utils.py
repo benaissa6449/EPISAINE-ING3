@@ -15,6 +15,13 @@ def build_spark(app_name: str, mongo_uri: str) -> SparkSession:
         .appName(app_name)
         .config("spark.mongodb.read.connection.uri", mongo_uri)
         .config("spark.mongodb.write.connection.uri", mongo_uri)
+        .config(
+            "spark.mongodb.read.partitioner",
+            os.getenv(
+                "SPARK_MONGO_READ_PARTITIONER",
+                "com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner",
+            ),
+        )
         .config("spark.sql.shuffle.partitions", os.getenv("SPARK_SQL_SHUFFLE_PARTITIONS", "8"))
         .config("spark.network.timeout", os.getenv("SPARK_NETWORK_TIMEOUT", "600s"))
         .config("spark.executor.heartbeatInterval", os.getenv("SPARK_HEARTBEAT_INTERVAL", "60s"))

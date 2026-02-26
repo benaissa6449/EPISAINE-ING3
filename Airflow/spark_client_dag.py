@@ -6,7 +6,6 @@ Pipeline: CSV -> Bronze -> Silver -> Gold
 from datetime import datetime, timedelta
 
 from airflow import DAG
-from airflow.providers.ssh.hooks.ssh import SSHHook
 from airflow.providers.ssh.operators.ssh import SSHOperator
 
 SSH_CONN_ID = "ssh_spark_vm"
@@ -22,6 +21,7 @@ CSV_FALLBACK = "~/Spark/data/cdc_diabetes_253k.csv"
 # Keep true for delta runs; set to "false" for legacy full-refresh mode
 DELTA_MODE = "true"
 JOB_HEARTBEAT_SECONDS = 60
+JOB_TIMEOUT_SECONDS = 1800
 
 
 def spark_submit_command(job_script: str) -> str:
@@ -44,6 +44,7 @@ def spark_submit_command(job_script: str) -> str:
         "BATCH_ID=\"{{ dag_run.run_id }}\" "
         f"MONGO_URI=\"{MONGO_URI}\" "
         f"POSTGRES_URI=\"{POSTGRES_URI}\" "
+        f"timeout --signal=TERM --kill-after=60s {JOB_TIMEOUT_SECONDS} "
         f"{SPARK_HOME} --packages {SPARK_PACKAGES} jobs/{job_script} "
         "> \"$LOG_FILE\" 2>&1 & "
         "PID=$!; "
@@ -64,12 +65,6 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
-ssh_hook = SSHHook(
-    ssh_conn_id=SSH_CONN_ID,
-    conn_timeout=30,
-    keepalive_interval=30,
-)
-
 with DAG(
     dag_id="spark_client",
     default_args=default_args,
@@ -81,7 +76,7 @@ with DAG(
 ) as dag:
     extract_and_copy_csv = SSHOperator(
         task_id="extract_and_copy_csv",
-        ssh_hook=ssh_hook,
+        ssh_conn_id=SSH_CONN_ID,
         command=(
             "bash -lc '"
             f"mkdir -p $(dirname {CSV_TARGET}) && "
@@ -94,31 +89,35 @@ with DAG(
             "fi"
             "'"
         ),
+        conn_timeout=30,
         cmd_timeout=600,
         get_pty=True,
     )
 
     csv_to_bronze = SSHOperator(
         task_id="csv_to_bronze",
-        ssh_hook=ssh_hook,
+        ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("csv_to_bronze.py"),
-        cmd_timeout=10800,
+        conn_timeout=30,
+        cmd_timeout=2400,
         get_pty=True,
     )
 
     bronze_to_silver = SSHOperator(
         task_id="bronze_to_silver",
-        ssh_hook=ssh_hook,
+        ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("bronze_to_silver.py"),
-        cmd_timeout=10800,
+        conn_timeout=30,
+        cmd_timeout=2400,
         get_pty=True,
     )
 
     silver_to_gold = SSHOperator(
         task_id="silver_to_gold",
-        ssh_hook=ssh_hook,
+        ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("silver_to_gold.py"),
-        cmd_timeout=10800,
+        conn_timeout=30,
+        cmd_timeout=2400,
         get_pty=True,
     )
 
