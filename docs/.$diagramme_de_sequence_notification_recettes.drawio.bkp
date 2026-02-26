@@ -139,7 +139,7 @@
             <mxPoint x="1200" y="649" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="aQeHy-J9TbHO-dpn5A31-36" value="Produces recipes for the number_of_days tailored to each customer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
+        <mxCell id="aQeHy-J9TbHO-dpn5A31-36" value="Produces recipes tailored to each customer" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="840" y="619" width="400" height="30" as="geometry" />
         </mxCell>
         <mxCell id="aQeHy-J9TbHO-dpn5A31-37" value="Kafka&lt;div&gt;notifications-to send&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
