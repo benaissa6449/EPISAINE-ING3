@@ -4,7 +4,7 @@ import os
 from datetime import datetime, timedelta
 from psycopg2.extras import execute_values
 
-random.seed()  # enlève si tu veux reproductible
+random.seed()
 
 DB_CONFIG = {
     "host": os.getenv("DB_HOST"),
@@ -13,10 +13,6 @@ DB_CONFIG = {
     "user": os.getenv("DB_USER"),
     "password": os.getenv("DB_PASSWORD")
 }
-
-# ==============================
-# DATA POOLS RÉALISTES
-# ==============================
 
 FIRST_NAMES = [
     "Emma","Liam","Olivia","Noah","Ava","Lucas","Mia","Ethan","Sophia","Leo",
@@ -73,7 +69,7 @@ COUNTRY_CITY = {
     "Spain": ["Madrid","Barcelona","Valencia"]
 }
 
-CONTACT_TYPES = ["EMAIL","PHONE","IN_APP"]
+CONTACT_TYPES = ["EMAIL","SMS","IN_APP"]
 MEAL_TIMES_OPTIONS = [
     ["07:30","12:00","19:00"],
     ["08:00","13:00","20:00"],
@@ -81,10 +77,6 @@ MEAL_TIMES_OPTIONS = [
     ["09:00","14:00","21:00"],
     ["08:30","12:30","18:00"]
 ]
-
-# ==============================
-# HELPERS
-# ==============================
 
 def wait_for_db():
     import time
@@ -119,10 +111,6 @@ def weight_goal_from_bmi(bmi):
 def generate_timestamp():
     now = datetime.now()
     return now - timedelta(days=random.randint(0, 365))
-
-# ==============================
-# MAIN
-# ==============================
 
 def main():
     wait_for_db()
@@ -218,7 +206,7 @@ def main():
     cur.close()
     conn.close()
 
-    print(f"{len(customers)} customers insérés avec dataset ultra varié !")
+    print(f"{len(customers)} customers inserted!")
 
 if __name__ == "__main__":
     main()
