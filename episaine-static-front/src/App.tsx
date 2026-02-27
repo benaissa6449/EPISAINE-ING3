@@ -96,7 +96,7 @@ function HomeView({
 
 function LoggingView({ onBack }: { onBack: () => void }) {
   const backendBaseUrl = useMemo(
-    () => process.env.REACT_APP_BACKEND_URL ?? "",
+    () => "",
     []
   );
   const [loading, setLoading] = useState<boolean>(true);

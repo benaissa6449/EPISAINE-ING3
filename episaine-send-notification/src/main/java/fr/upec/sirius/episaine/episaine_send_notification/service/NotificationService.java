@@ -47,7 +47,6 @@ public class NotificationService {
     @Value("${app.kafka.notifications-sent-topic:notifications-sent}")
     private String notificationsSentTopic;
 
-    @Transactional
     public void processNotification(NotificationBatchDto batch) {
         validateBatch(batch);
 
@@ -63,9 +62,23 @@ public class NotificationService {
         log.info("Notification saved with id {} for customer {}", saved.getId(), saved.getCustomerId());
 
         LocalDateTime sentAt = LocalDateTime.now();
-        publishNotificationSentEvent(batch.getCustomerId(), batch.getRecipesId());
-        updateNotificationStateInPsql(batch.getCustomerId(), sentAt);
-        updateNotificationStateInRedis(batch.getCustomerId(), sentAt);
+        try {
+            publishNotificationSentEvent(batch.getCustomerId(), batch.getRecipesId());
+        } catch (Exception e) {
+            log.error("Kafka notifications-sent publish failed for customer_id={}", batch.getCustomerId(), e);
+        }
+
+        try {
+            updateNotificationStateInPsql(batch.getCustomerId(), sentAt);
+        } catch (Exception e) {
+            log.error("PSQL customer last_notification update failed for customer_id={}", batch.getCustomerId(), e);
+        }
+
+        try {
+            updateNotificationStateInRedis(batch.getCustomerId(), sentAt);
+        } catch (Exception e) {
+            log.error("Redis customer last_notification update failed for customer_id={}", batch.getCustomerId(), e);
+        }
     }
 
     public List<RecipeDto> getRecipesByCustomerId(Integer customerId) {
@@ -85,7 +98,10 @@ public class NotificationService {
         }
 
         Map<Integer, RecipeDto> recipesById = recipeReadRepository.findByIds(new ArrayList<>(recipeIds)).stream()
-                .collect(java.util.stream.Collectors.toMap(RecipeDto::getId, recipe -> recipe));
+                .collect(java.util.stream.Collectors.toMap(
+                        RecipeDto::getId,
+                        recipe -> recipe,
+                        (existing, replacement) -> existing));
 
         List<RecipeDto> orderedRecipes = new ArrayList<>();
         for (Integer recipeId : recipeIds) {

@@ -10542,19 +10542,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 	
 	
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row14", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("row2", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("out6", 3, 0);
-					}           			
-				
-					if(execStat){				
-	       				runStat.updateStatOnConnection("OnRowsEnd", 3, 0);
+	       				runStat.updateStatOnConnection("row12", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -10562,7 +10550,15 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row12", 3, 0);
+	       				runStat.updateStatOnConnection("row14", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("row11", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("out6", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -10570,7 +10566,7 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("out2", 3, 0);
+	       				runStat.updateStatOnConnection("row2", 3, 0);
 					}           			
 				
 					if(execStat){				
@@ -10578,7 +10574,11 @@ globalMap.put("tLoop_1_CURRENT_ITERATION",current_iteration_tLoop_1);
 					}           			
 				
 					if(execStat){				
-	       				runStat.updateStatOnConnection("row11", 3, 0);
+	       				runStat.updateStatOnConnection("OnRowsEnd", 3, 0);
+					}           			
+				
+					if(execStat){				
+	       				runStat.updateStatOnConnection("out2", 3, 0);
 					}           			
 				
 				if(execStat){
@@ -10756,7 +10756,11 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 	    private int hashCode = DEFAULT_HASHCODE;
 	    public boolean hashCodeDirty = true;
 
-    				Integer id;StringBuilder ingredients_list = new StringBuilder();
+    				Integer id;
+    				String strMeal;
+    				String strCategory;
+    				String strInstructions;
+    				String area_id;StringBuilder ingredients_list = new StringBuilder();
            			boolean ingredients_list_firstEmpty = false;
            			
         
@@ -10767,6 +10771,14 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 				int result = DEFAULT_HASHCODE;
 		
 							result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+							
+							result = prime * result + ((this.strMeal == null) ? 0 : this.strMeal.hashCode());
+							
+							result = prime * result + ((this.strCategory == null) ? 0 : this.strCategory.hashCode());
+							
+							result = prime * result + ((this.strInstructions == null) ? 0 : this.strInstructions.hashCode());
+							
+							result = prime * result + ((this.area_id == null) ? 0 : this.area_id.hashCode());
 							
 	    		this.hashCode = result;
 	    		this.hashCodeDirty = false;		
@@ -10785,6 +10797,30 @@ java.util.Map hashAggreg_tAggregateRow_1 = new java.util.HashMap();
 								if (other.id != null) 
 									return false;
 							} else if (!this.id.equals(other.id)) 
+								return false;
+						
+							if (this.strMeal == null) {
+								if (other.strMeal != null) 
+									return false;
+							} else if (!this.strMeal.equals(other.strMeal)) 
+								return false;
+						
+							if (this.strCategory == null) {
+								if (other.strCategory != null) 
+									return false;
+							} else if (!this.strCategory.equals(other.strCategory)) 
+								return false;
+						
+							if (this.strInstructions == null) {
+								if (other.strInstructions != null) 
+									return false;
+							} else if (!this.strInstructions.equals(other.strInstructions)) 
+								return false;
+						
+							if (this.area_id == null) {
+								if (other.area_id != null) 
+									return false;
+							} else if (!this.area_id.equals(other.area_id)) 
 								return false;
 						
 			
@@ -11914,6 +11950,10 @@ if (out6.ingredients != null && !out6.ingredients.isEmpty()) {
 					
 	
 operation_finder_tAggregateRow_1.id = row3.id;
+			operation_finder_tAggregateRow_1.strMeal = row3.strMeal;
+			operation_finder_tAggregateRow_1.strCategory = row3.strCategory;
+			operation_finder_tAggregateRow_1.strInstructions = row3.strInstructions;
+			operation_finder_tAggregateRow_1.area_id = row3.area_id;
 			
 
 	operation_finder_tAggregateRow_1.hashCodeDirty = true;
@@ -11927,6 +11967,10 @@ operation_finder_tAggregateRow_1.id = row3.id;
 		operation_result_tAggregateRow_1 = new AggOperationStruct_tAggregateRow_1();
 
 		operation_result_tAggregateRow_1.id = operation_finder_tAggregateRow_1.id;
+				operation_result_tAggregateRow_1.strMeal = operation_finder_tAggregateRow_1.strMeal;
+				operation_result_tAggregateRow_1.strCategory = operation_finder_tAggregateRow_1.strCategory;
+				operation_result_tAggregateRow_1.strInstructions = operation_finder_tAggregateRow_1.strInstructions;
+				operation_result_tAggregateRow_1.area_id = operation_finder_tAggregateRow_1.area_id;
 				
 		
 		
@@ -12558,6 +12602,14 @@ for(AggOperationStruct_tAggregateRow_1 aggregated_row_tAggregateRow_1 : values_t
 	
 
             				    row12.id = aggregated_row_tAggregateRow_1.id;
+            				    
+            				    row12.strMeal = aggregated_row_tAggregateRow_1.strMeal;
+            				    
+            				    row12.strCategory = aggregated_row_tAggregateRow_1.strCategory;
+            				    
+            				    row12.strInstructions = aggregated_row_tAggregateRow_1.strInstructions;
+            				    
+            				    row12.area_id = aggregated_row_tAggregateRow_1.area_id;
             				    
     								row12.ingredients = aggregated_row_tAggregateRow_1.ingredients_list.toString();
 	    						
@@ -16491,6 +16543,6 @@ if (execStat) {
     ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- *     366066 characters generated by Talend Open Studio for Big Data 
- *     on the 24 février 2026, 20:12:34 CET
+ *     368458 characters generated by Talend Open Studio for Big Data 
+ *     on the 27 février 2026, 02:11:16 CET
  ************************************************************************************************/

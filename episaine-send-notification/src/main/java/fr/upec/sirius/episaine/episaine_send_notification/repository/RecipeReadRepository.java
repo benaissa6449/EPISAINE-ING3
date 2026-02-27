@@ -2,7 +2,10 @@ package fr.upec.sirius.episaine.episaine_send_notification.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -24,13 +27,7 @@ public class RecipeReadRepository {
         }
 
         String sql = """
-                SELECT m.id,
-                       m.ingredients,
-                       CAST(m."strInstructions" AS text) AS instructions,
-                       m.calories,
-                       CAST(m."strMeal" AS text) AS meal_name,
-                       CAST(m."strCategory" AS text) AS category,
-                       CAST(m.area_id AS text) AS area_id
+                SELECT m.*
                 FROM gold.meals m
                 WHERE m.id IN (:ids)
                 """;
@@ -41,15 +38,47 @@ public class RecipeReadRepository {
     private static final class RecipeDtoRowMapper implements RowMapper<RecipeDto> {
         @Override
         public RecipeDto mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Map<String, Object> row = new HashMap<>();
+            int columnCount = rs.getMetaData().getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                row.put(rs.getMetaData().getColumnLabel(i).toLowerCase(Locale.ROOT), rs.getObject(i));
+            }
+
             return RecipeDto.builder()
-                    .id((Integer) rs.getObject("id"))
-                    .ingredients(rs.getString("ingredients"))
-                    .instructions(rs.getString("instructions"))
-                    .calories((Integer) rs.getObject("calories"))
-                    .mealName(rs.getString("meal_name"))
-                    .category(rs.getString("category"))
-                    .areaId(rs.getString("area_id"))
+                    .id(asInteger(first(row, "id")))
+                    .ingredients(asString(first(row, "ingredients")))
+                    .instructions(asString(first(row, "strinstructions", "str_instructions", "instructions")))
+                    .calories(asInteger(first(row, "calories")))
+                    .mealName(asString(first(row, "strmeal", "str_meal", "meal_name")))
+                    .category(asString(first(row, "strcategory", "str_category", "category")))
+                    .areaId(asString(first(row, "area_id", "areaid")))
                     .build();
+        }
+
+        private static Object first(Map<String, Object> row, String... keys) {
+            for (String key : keys) {
+                if (row.containsKey(key)) {
+                    return row.get(key);
+                }
+            }
+            return null;
+        }
+
+        private static String asString(Object value) {
+            return value == null ? null : String.valueOf(value);
+        }
+
+        private static Integer asInteger(Object value) {
+            if (value == null) {
+                return null;
+            }
+            if (value instanceof Integer i) {
+                return i;
+            }
+            if (value instanceof Number n) {
+                return n.intValue();
+            }
+            return Integer.parseInt(String.valueOf(value));
         }
     }
 }
