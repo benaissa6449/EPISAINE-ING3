@@ -149,3 +149,24 @@ Le DAG Airflow (`talend_jobs_dag.py`) exécute ces trois étapes en séquence vi
 
 
 **Dernière mise à jour** : Décembre 2025
+## Test rapide Kafka temps reel
+
+### Backend local
+```bash
+cd episaine-kafka-backend
+KAFKA_BOOTSTRAP_SERVERS=192.168.248.110:9092 KAFKA_TOPIC=customer-profile mvn spring-boot:run
+```
+
+### Front local
+```bash
+cd episaine-static-front
+npm install
+REACT_APP_BACKEND_URL=http://localhost:8080 npm start
+```
+
+### Kafka mock sur la VM Kafka
+Voir les details dans `Mock/kafka-mock/README.md`.
+
+Points importants:
+- La base PostgreSQL des clients peut etre sur une autre VM (ex: `192.168.248.170`).
+- Dans `~/kafka-mock`, utiliser `docker logs` (pas `docker compose logs`) car il n'y a pas de `docker-compose.yml`.

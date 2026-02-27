@@ -21,7 +21,8 @@ CSV_FALLBACK = "~/Spark/data/cdc_diabetes_253k.csv"
 # Keep true for delta runs; set to "false" for legacy full-refresh mode
 DELTA_MODE = "true"
 JOB_HEARTBEAT_SECONDS = 60
-JOB_TIMEOUT_SECONDS = 1800
+JOB_TIMEOUT_SECONDS = 5400
+CMD_TIMEOUT_SECONDS = 6000
 
 
 def spark_submit_command(job_script: str) -> str:
@@ -99,7 +100,7 @@ with DAG(
         ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("csv_to_bronze.py"),
         conn_timeout=30,
-        cmd_timeout=2400,
+        cmd_timeout=CMD_TIMEOUT_SECONDS,
         get_pty=True,
     )
 
@@ -108,7 +109,7 @@ with DAG(
         ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("bronze_to_silver.py"),
         conn_timeout=30,
-        cmd_timeout=2400,
+        cmd_timeout=CMD_TIMEOUT_SECONDS,
         get_pty=True,
     )
 
@@ -117,7 +118,7 @@ with DAG(
         ssh_conn_id=SSH_CONN_ID,
         command=spark_submit_command("silver_to_gold.py"),
         conn_timeout=30,
-        cmd_timeout=2400,
+        cmd_timeout=CMD_TIMEOUT_SECONDS,
         get_pty=True,
     )
 

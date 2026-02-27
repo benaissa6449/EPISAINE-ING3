@@ -5,6 +5,7 @@ Service backend Spring Boot (Maven) qui consomme Kafka et pousse les events vers
 Configuration par defaut:
 - Broker Kafka: `172.31.249.144:9092`
 - Topic: `customer-profile`
+- Port backend: `8080`
 
 ## API
 
@@ -24,6 +25,21 @@ Payload attendu:
   "customer_id": 42,
   "recipes_id": [3, 4, 5]
 }
+```
+
+## Lancer en local (sans Docker)
+
+Depuis `episaine-kafka-backend`:
+
+```bash
+KAFKA_BOOTSTRAP_SERVERS=192.168.248.110:9092 \
+KAFKA_TOPIC=customer-profile \
+mvn spring-boot:run
+```
+
+Healthcheck:
+```bash
+curl http://localhost:8080/actuator/health
 ```
 
 ## Lancer en Docker
@@ -48,6 +64,8 @@ Arreter:
 ```bash
 docker compose down
 ```
+
+Note: `docker compose logs` fonctionne uniquement dans un dossier qui contient un `docker-compose.yml` (ici `episaine-kafka-backend/`).
 
 ## Test rapide
 
