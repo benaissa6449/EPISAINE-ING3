@@ -122,8 +122,15 @@ public class RecipeService {
             tdee += 500;
         }
 
+        // Prevent impossible/negative targets after adjustments.
+        double safeDailyTarget = Math.max(tdee, 900);
+        if (safeDailyTarget != tdee) {
+            log.warn("Customer {} daily calories target clamped from {} to {}",
+                    customer.getCustomer_id(), Math.round(tdee), Math.round(safeDailyTarget));
+        }
+
         int mealsPerDay = Math.max(customer.getMealsPerDay(), 1);
-        return (int) Math.round(tdee / mealsPerDay);
+        return (int) Math.round(safeDailyTarget / mealsPerDay);
     }
 
 }

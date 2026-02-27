@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(name = "customers", schema = "gold")
+@Table(name = "customers_demo", schema = "gold")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
