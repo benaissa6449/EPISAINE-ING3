@@ -7,6 +7,7 @@ Settings -> CI/CD -> Variables
 | Host_CICD | CI/CD VM IP Address |
 | Host_Datalake | Datalake VM IP Address |
 | Host_ETL | ETL VM IP Address |
+| Host_KAFKA | Kafka VM IP address |
 | Host_NOTIFICATION | Notification service and kafka service VM IP Address |
 | Host_ORCH | ORCH VM IP Address |
 | Host_PSQL | PSQL and Cache loader backend VM IP Address |
