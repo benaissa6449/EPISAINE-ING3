@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.upec.sirius.episaine.episaine_send_notification.dto.RecipeDto;
 import fr.upec.sirius.episaine.episaine_send_notification.entity.InAppNotification;
-import fr.upec.sirius.episaine.episaine_send_notification.entity.Recipe;
 import fr.upec.sirius.episaine.episaine_send_notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 
@@ -28,7 +28,7 @@ public class NotificationController {
     }
 
     @GetMapping("/customer/{customerId}/recipes")
-    public List<Recipe> getRecipes(@PathVariable Integer customerId) {
+    public List<RecipeDto> getRecipes(@PathVariable Integer customerId) {
         return service.getRecipesByCustomerId(customerId);
     }
 

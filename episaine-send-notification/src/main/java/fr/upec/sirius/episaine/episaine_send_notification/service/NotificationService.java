@@ -21,11 +21,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.upec.sirius.episaine.episaine_send_notification.dto.NotificationBatchDto;
 import fr.upec.sirius.episaine.episaine_send_notification.dto.NotificationSentEventDto;
+import fr.upec.sirius.episaine.episaine_send_notification.dto.RecipeDto;
 import fr.upec.sirius.episaine.episaine_send_notification.entity.InAppNotification;
-import fr.upec.sirius.episaine.episaine_send_notification.entity.Recipe;
 import fr.upec.sirius.episaine.episaine_send_notification.repository.CustomerNotificationStateRepository;
 import fr.upec.sirius.episaine.episaine_send_notification.repository.NotificationRepository;
-import fr.upec.sirius.episaine.episaine_send_notification.repository.RecipeRepository;
+import fr.upec.sirius.episaine.episaine_send_notification.repository.RecipeReadRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +39,7 @@ public class NotificationService {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private final NotificationRepository notificationRepository;
-    private final RecipeRepository recipeRepository;
+    private final RecipeReadRepository recipeReadRepository;
     private final CustomerNotificationStateRepository customerNotificationStateRepository;
     private final RedisTemplate<String, Object> redisTemplate;
     private final KafkaTemplate<String, String> kafkaTemplate;
@@ -68,8 +68,8 @@ public class NotificationService {
         updateNotificationStateInRedis(batch.getCustomerId(), sentAt);
     }
 
-    public List<Recipe> getRecipesByCustomerId(Integer customerId) {
-        List<InAppNotification> notifications = notificationRepository.findActiveByCustomerId(customerId, LocalDateTime.now());
+    public List<RecipeDto> getRecipesByCustomerId(Integer customerId) {
+        List<InAppNotification> notifications = notificationRepository.findByCustomerId(customerId);
         if (notifications.isEmpty()) {
             return List.of();
         }
@@ -84,12 +84,12 @@ public class NotificationService {
             return List.of();
         }
 
-        Map<Integer, Recipe> recipesById = recipeRepository.findAllById(recipeIds).stream()
-                .collect(java.util.stream.Collectors.toMap(Recipe::getId, recipe -> recipe));
+        Map<Integer, RecipeDto> recipesById = recipeReadRepository.findByIds(new ArrayList<>(recipeIds)).stream()
+                .collect(java.util.stream.Collectors.toMap(RecipeDto::getId, recipe -> recipe));
 
-        List<Recipe> orderedRecipes = new ArrayList<>();
+        List<RecipeDto> orderedRecipes = new ArrayList<>();
         for (Integer recipeId : recipeIds) {
-            Recipe recipe = recipesById.get(recipeId);
+            RecipeDto recipe = recipesById.get(recipeId);
             if (recipe != null) {
                 orderedRecipes.add(recipe);
             }
@@ -98,7 +98,7 @@ public class NotificationService {
     }
 
     public List<InAppNotification> getNotifications(Integer customerId) {
-        return notificationRepository.findActiveByCustomerId(customerId, LocalDateTime.now());
+        return notificationRepository.findByCustomerId(customerId);
     }
 
     @Transactional
@@ -140,7 +140,11 @@ public class NotificationService {
     private void updateNotificationStateInRedis(Integer customerId, LocalDateTime sentAt) {
         long epochSeconds = sentAt.toEpochSecond(ZoneOffset.UTC);
         String key = ACTIVE_CUSTOMERS_KEY + customerId;
-        redisTemplate.opsForValue().set(key, sentAt + ":" + epochSeconds);
+        try {
+            redisTemplate.opsForValue().set(key, sentAt + ":" + epochSeconds);
+        } catch (Exception e) {
+            log.warn("Redis update failed for customer_id={} (continuing without Redis sync): {}", customerId, e.getMessage());
+        }
     }
 
     private void validateBatch(NotificationBatchDto batch) {

@@ -12,8 +12,8 @@ import fr.upec.sirius.episaine.episaine_send_notification.entity.InAppNotificati
 
 public interface NotificationRepository extends JpaRepository<InAppNotification, Long> {
     
-    @Query("SELECT n FROM InAppNotification n WHERE n.customerId = :customerId AND n.expiresAt > :now ORDER BY n.createdAt DESC")
-    List<InAppNotification> findActiveByCustomerId(@Param("customerId") Integer customerId, @Param("now") LocalDateTime now);
+    @Query("SELECT n FROM InAppNotification n WHERE n.customerId = :customerId ORDER BY n.createdAt DESC")
+    List<InAppNotification> findByCustomerId(@Param("customerId") Integer customerId);
     
     @Modifying
     @Query("UPDATE InAppNotification n SET n.isRead = true WHERE n.id = :id")

@@ -60,6 +60,6 @@ public class InAppNotification {
     void onCreate() {
         LocalDateTime now = LocalDateTime.now();
         createdAt = now;
-        expiresAt = now.plusHours(24);
+        expiresAt = now.plusDays(30);
     }
 }

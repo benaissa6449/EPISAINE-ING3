@@ -1,6 +1,6 @@
 #!/bin/bash
 NOTIFICATION_ID="${1:?Usage: $0 <notification_id> [host] [port]}"
-HOST="${2:-192.168.248.106}"
+HOST="${2:-192.168.248.105}"
 PORT="${3:-8083}"
 
 echo "Marking notification ${NOTIFICATION_ID} as read..."

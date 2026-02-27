@@ -351,10 +351,7 @@ function LoggingView({ onBack }: { onBack: () => void }) {
 
 function RecipesView({ onBack }: { onBack: () => void }) {
   const notificationBaseUrl = useMemo(
-    () =>
-      process.env.REACT_APP_NOTIFICATIONS_URL ??
-      process.env.REACT_APP_BACKEND_URL ??
-      "http://localhost:8083",
+    () => process.env.REACT_APP_NOTIFICATIONS_URL ?? "",
     []
   );
 
@@ -386,8 +383,9 @@ function RecipesView({ onBack }: { onBack: () => void }) {
       const recipesData = (await recipesResponse.json()) as Recipe[];
       setNotifications(notificationsData);
       setRecipes(recipesData);
-    } catch {
-      setError("Impossible de charger les notifications de ce client.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Erreur inconnue";
+      setError(`Impossible de charger les notifications de ce client (${message}).`);
     } finally {
       setLoading(false);
     }
@@ -425,8 +423,9 @@ function RecipesView({ onBack }: { onBack: () => void }) {
         throw new Error(`HTTP ${response.status}`);
       }
       await fetchCustomerData(connectedCustomerId);
-    } catch {
-      setError("Impossible de mettre la notification en lu.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Erreur inconnue";
+      setError(`Impossible de mettre la notification en lu (${message}).`);
     }
   }, [connectedCustomerId, fetchCustomerData, notificationBaseUrl]);
 
