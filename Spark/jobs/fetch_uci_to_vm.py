@@ -46,7 +46,7 @@ def main():
     df.to_excel(xlsm_path, index=False)
     print(f"Donnees XLSM sauvegardees dans {xlsm_path}")
 
-    vm_host = "episaine@172.31.249.144"
+    vm_host = "episaine@172.31.249.46"
     vm_port = 160
     remote_dir = "~/data/uci"
     envoyer_csv_vers_vm(csv_path, vm_host, vm_port, remote_dir)
